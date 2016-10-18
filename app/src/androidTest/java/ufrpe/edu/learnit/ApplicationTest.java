@@ -1,4 +1,4 @@
-package hugoteixeira.ufrpe.edu.learnit;
+package ufrpe.edu.learnit;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

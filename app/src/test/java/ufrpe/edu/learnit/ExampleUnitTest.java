@@ -1,4 +1,4 @@
-package hugoteixeira.ufrpe.edu.learnit;
+package ufrpe.edu.learnit;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package hugoteixeira.ufrpe.edu.learnit;
+package ufrpe.edu.learnit;
 
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
