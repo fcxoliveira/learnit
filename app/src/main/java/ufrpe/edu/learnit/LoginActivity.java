@@ -1,6 +1,7 @@
 package ufrpe.edu.learnit;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,12 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         textViewForgotPassWord = (TextView)findViewById(R.id.textViewForgotPassword);
         textViewSignup = (TextView)findViewById(R.id.textViewSignUp);
+    }
+
+    public void callSignUp(View view) {
+
+        Intent secondActivity = new Intent(this, RegisterActivity.class);
+        startActivity(secondActivity);
     }
 
 }

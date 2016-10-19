@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "hugoteixeira.ufrpe.edu.learnit"
+        applicationId "ufrpe.edu.learnit"
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
