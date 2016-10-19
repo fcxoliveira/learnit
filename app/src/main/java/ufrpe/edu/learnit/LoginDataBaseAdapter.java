@@ -70,7 +70,7 @@ public class LoginDataBaseAdapter {
         return numberOFEntriesDeleted;
     }
 
-    public ArrayList<String> getUser(String userName, String password)
+    public User getUser(String userName, String password)
     {
         Cursor cursor=db.query("LOGIN", null, " USERNAME=? and PASSWORD=?", new String[]{userName,password}, null, null, null);
         if(cursor.getCount()<1) // UserName Not Exist
@@ -82,10 +82,11 @@ public class LoginDataBaseAdapter {
         cursor.moveToFirst();
         String email = cursor.getString(cursor.getColumnIndex("EMAIL"));
         cursor.close();
-        ArrayList<String> userData = new ArrayList<String>();
-        userData.add(userName);
-        userData.add(password);
-        userData.add(email);
+        User userData = new User();
+        userData.setLogin(userName);
+        userData.setSenha(password);
+        userData.setEmail(email);
+        Toast.makeText(context, "Usuario logado com sucesso", Toast.LENGTH_LONG).show();
         return userData;
     }
 }

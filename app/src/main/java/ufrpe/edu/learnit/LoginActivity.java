@@ -15,15 +15,30 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
     Button buttonLogin;
     TextView textViewForgotPassWord,textViewSignup;
+    EditText editTextLogin,editTextSenha;
+    private static User user;
+
+
+    public static User getUser() {
+        return user;
+    }
+
+    public static void setUser(User user) {
+        LoginActivity.user = user;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        Context context = getApplicationContext();
 
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         textViewForgotPassWord = (TextView)findViewById(R.id.textViewForgotPassword);
         textViewSignup = (TextView)findViewById(R.id.textViewSignUp);
+        editTextLogin = (EditText)findViewById(R.id.editTextUsername);
+        editTextSenha = (EditText)findViewById(R.id.editTextPassword);
     }
 
     public void callSignUp(View view) {
@@ -51,6 +66,21 @@ public class LoginActivity extends AppCompatActivity {
             return true;
 
         }
+    }
+
+    public void logar(View v){
+        Context context = getApplicationContext();
+        String login = editTextLogin.getText().toString();
+        String senha = editTextSenha.getText().toString();
+        if(verificarLogin(login)){
+            if(verificarSenha(senha)){
+                    LoginDataBaseAdapter adapter = new LoginDataBaseAdapter(context);
+                    adapter.open();
+                    User result = adapter.getUser(login,senha);
+                    setUser(result);
+                    adapter.close();
+                }
+            }
     }
 
 }
