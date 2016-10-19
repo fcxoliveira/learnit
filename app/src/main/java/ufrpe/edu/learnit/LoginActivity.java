@@ -1,9 +1,11 @@
 package ufrpe.edu.learnit;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,27 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent secondActivity = new Intent(this, RegisterActivity.class);
         startActivity(secondActivity);
+    }
+
+    public boolean verificarLogin(String login){
+        Context context = getApplicationContext();
+        if(TextUtils.isEmpty(login)){
+            Toast.makeText(context, "Login é um campo necessario", Toast.LENGTH_LONG).show();
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public  boolean verificarSenha(String senha){
+        Context context = getApplicationContext();
+        if (senha.length() <6) {
+            Toast.makeText(context,"Senha fraca, minimo de 6 digitos",Toast.LENGTH_LONG).show();
+            return false;
+        }else{
+            return true;
+
+        }
     }
 
 }
