@@ -22,18 +22,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase _db, int _oldVersion, int _newVersion)
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
         // Log the version upgrade.
-        Log.w("TaskDBAdapter", "Upgrading from version " +_oldVersion + " to " +_newVersion + ", which will destroy all old data");
+        Log.w("TaskDBAdapter", "Upgrading from version " +oldVersion + " to " +newVersion + ", which will destroy all old data");
 
         // Upgrade the existing database to conform to the new version. Multiple
         // previous versions can be handled by comparing _oldVersion and _newVersion
         // values.
         // The simplest case is to drop the old table and create a new one.
-        _db.execSQL("DROP TABLE IF EXISTS " + "TEMPLATE");
+        db.execSQL("DROP TABLE IF EXISTS " + "TEMPLATE");
         // Create a new one.
-        onCreate(_db);
+        onCreate(db);
     }
 
 }

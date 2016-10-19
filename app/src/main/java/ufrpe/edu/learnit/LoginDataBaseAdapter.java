@@ -47,6 +47,14 @@ public class LoginDataBaseAdapter {
 
     public void insertEntry(String userName,String password, String email)
     {
+        Cursor cursor=db.query("LOGIN", null, " USERNAME=? or EMAIL=?", new String[]{userName,email}, null, null, null);
+        if(cursor.getCount()==1){
+            cursor.close();
+            Toast.makeText(context, "Usuario ou email não disponiveis", Toast.LENGTH_LONG).show();
+            return;
+        }
+        cursor.moveToFirst();
+        cursor.close();
         ContentValues newValues = new ContentValues();
         newValues.put("USERNAME", userName);
         newValues.put("PASSWORD",password);
@@ -69,6 +77,7 @@ public class LoginDataBaseAdapter {
         {
             cursor.close();
             Toast.makeText(context, "Usuario ou senha incorretos", Toast.LENGTH_LONG).show();
+            return null;
         }
         cursor.moveToFirst();
         String email = cursor.getString(cursor.getColumnIndex("EMAIL"));
