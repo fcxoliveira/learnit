@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ufrpe.edu.learnit.RegisterActivity">
 
-    <Button
-        android:text="Button"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="146dp"
-        android:onClick="cadastrar"
-        />
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editText3"
+        android:hint="Email"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/editText2"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignStart="@+id/editText2" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -27,10 +25,11 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText"
-        android:layout_above="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="147dp"
-        android:hint="Login" />
+        android:hint="Login"
+
+        android:layout_marginTop="136dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -38,21 +37,34 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText2"
+        android:hint="Password"
+        android:layout_marginTop="83dp"
         android:layout_alignTop="@+id/editText"
         android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_marginTop="61dp"
-        android:hint="Password" />
+        android:layout_alignStart="@+id/editText" />
 
-    <EditText
+    <Button
+        android:text="Cadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:layout_below="@+id/editText2"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2"
-        android:layout_marginTop="15dp"
-        android:id="@+id/editText3"
-        android:hint="Email" />
+        android:id="@+id/button"
+        android:onClick="cadastrar"
+        android:background="#7bc8f3"
+        android:textColorLink="?attr/colorBackgroundFloating"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/editText3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
+
+
+    <TextView
+        android:text="Cadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textSize="36sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>
