@@ -1,9 +1,9 @@
+package ufrpe.edu.learnit;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import ufrpe.edu.learnit.LoginDataBaseAdapter;
 
 /**
  * Created by Filipe on 19/10/2016.
