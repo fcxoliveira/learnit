@@ -13,4 +13,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_tela__inicial">Tela_Inicial</string>
+    <string name="title_activity_tela__principal">Tela_Principal</string>
+    <string name="title_activity_tela_de__interesses">Tela_de_Interesses</string>
 </resources>
