@@ -1,6 +1,5 @@
 package ufrpe.edu.learnit;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,23 +15,12 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonLogin;
     TextView textViewForgotPassWord,textViewSignup;
     EditText editTextLogin,editTextSenha;
-    private static User user;
-
-
-    public static User getUser() {
-        return user;
-    }
-
-    public static void setUser(User user) {
-        LoginActivity.user = user;
-    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Context context = getApplicationContext();
 
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         textViewForgotPassWord = (TextView)findViewById(R.id.textViewForgotPassword);
@@ -77,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
                     LoginDataBaseAdapter adapter = new LoginDataBaseAdapter(context);
                     adapter.open();
                     User result = adapter.getUser(login,senha);
-                    setUser(result);
                     adapter.close();
                 }
             }
