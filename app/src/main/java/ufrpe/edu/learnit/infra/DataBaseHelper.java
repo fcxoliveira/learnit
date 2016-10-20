@@ -1,9 +1,11 @@
-package ufrpe.edu.learnit;
+package ufrpe.edu.learnit.infra;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import ufrpe.edu.learnit.persistencia.UsuarioPersistencia;
 
 /**
  * Created by Filipe on 19/10/2016.
@@ -17,7 +19,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE);
+        db.execSQL(UsuarioPersistencia.DATABASE_CREATE);
 
     }
 

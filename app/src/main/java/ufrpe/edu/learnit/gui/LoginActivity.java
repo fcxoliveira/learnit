@@ -1,6 +1,5 @@
-package ufrpe.edu.learnit;
+package ufrpe.edu.learnit.gui;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,19 +11,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.dominio.Usuario;
+import ufrpe.edu.learnit.negocio.UsuarioNegocio;
+
 public class LoginActivity extends AppCompatActivity {
     Button buttonLogin;
     TextView textViewForgotPassWord,textViewSignup;
     EditText editTextLogin,editTextSenha;
-    private static User user;
+    private static Usuario usuario;
 
 
-    public static User getUser() {
-        return user;
+    public static Usuario getUsuario() {
+        return usuario;
     }
 
-    public static void setUser(User user) {
-        LoginActivity.user = user;
+    public static void setUsuario(Usuario usuario) {
+        LoginActivity.usuario = usuario;
     }
 
 
@@ -74,11 +77,14 @@ public class LoginActivity extends AppCompatActivity {
         String senha = editTextSenha.getText().toString();
         if(verificarLogin(login)){
             if(verificarSenha(senha)){
-                    LoginDataBaseAdapter adapter = new LoginDataBaseAdapter(context);
-                    adapter.open();
-                    User result = adapter.getUser(login,senha);
-                    setUser(result);
-                    adapter.close();
+                UsuarioNegocio usuarioNegocio = new UsuarioNegocio(context);
+                Usuario usuario=usuarioNegocio.pesquisarUsuario(login,senha);
+                    if (usuario == null){
+                        Toast.makeText(context, "Usuario ou senha incorretos", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(context, "Usuario logado com sucesso", Toast.LENGTH_LONG).show();
+                    }
+                    setUsuario(usuario);
                 }
             }
     }
