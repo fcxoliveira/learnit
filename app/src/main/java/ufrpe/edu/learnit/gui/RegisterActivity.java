@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit;
+package ufrpe.edu.learnit.gui;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import ufrpe.edu.learnit.dominio.Usuario;
+import ufrpe.edu.learnit.persistencia.UsuarioPersistencia;
+import ufrpe.edu.learnit.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -71,10 +75,11 @@ public class RegisterActivity extends AppCompatActivity {
         if(verificarLogin(login)){
             if(verificarSenha(senha)){
                 if(verificarEmail(email)){
-                    LoginDataBaseAdapter adapter = new LoginDataBaseAdapter(context);
+                    UsuarioPersistencia adapter = new UsuarioPersistencia(context);
                     adapter.open();
-                    adapter.insertEntry(login,senha,email);
+                    Usuario usuario = adapter.insertEntry(login,senha,email);
                     adapter.close();
+                    Toast.makeText(context, "Bem vindo "+usuario.getLogin()+" voce foi registrado com sucesso", Toast.LENGTH_LONG).show();
                 }
             }
 

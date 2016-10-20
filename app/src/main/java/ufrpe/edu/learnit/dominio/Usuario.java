@@ -1,6 +1,6 @@
-package ufrpe.edu.learnit;
+package ufrpe.edu.learnit.dominio;
 
-public class User {
+public class Usuario {
 
     private String login;
     private String senha;
