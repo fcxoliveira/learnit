@@ -13,7 +13,7 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/editText3"
-        android:hint="Email"
+        android:hint="@string/email"
         android:layout_marginTop="38dp"
         android:layout_below="@+id/editText2"
         android:layout_alignLeft="@+id/editText2"
@@ -25,7 +25,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText"
-        android:hint="Login"
+        android:hint="@string/login"
 
         android:layout_marginTop="136dp"
         android:layout_alignParentTop="true"
@@ -37,14 +37,14 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText2"
-        android:hint="Password"
+        android:hint="@string/Password"
         android:layout_marginTop="83dp"
         android:layout_alignTop="@+id/editText"
         android:layout_alignLeft="@+id/editText"
         android:layout_alignStart="@+id/editText" />
 
     <Button
-        android:text="Cadastrar"
+        android:text="@string/cadastrarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
