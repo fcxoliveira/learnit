@@ -1,7 +1,6 @@
 package ufrpe.edu.learnit.negocio;
 
 import android.content.Context;
-
 import ufrpe.edu.learnit.dominio.Usuario;
 import ufrpe.edu.learnit.persistencia.UsuarioPersistencia;
 
