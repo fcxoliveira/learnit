@@ -17,7 +17,6 @@ import ufrpe.edu.learnit.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private Button buttonRegister;
     private EditText editTextLogin,editTextEmail,editTextPassword;
 
 
@@ -26,7 +25,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        buttonRegister = (Button)findViewById(R.id.button);
         editTextLogin = (EditText)findViewById(R.id.editText);
         editTextEmail = (EditText)findViewById(R.id.editText3);
         editTextPassword = (EditText)findViewById(R.id.editText2);
@@ -88,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (usuario == null){
                         Toast.makeText(context, "Login não disponível, tente novemente!", Toast.LENGTH_LONG).show();
                     }else{
-                        chamarTelaInteresses(v);
+                        this.chamarTelaInteresses(v);
                         Toast.makeText(context, "Bem vindo "+usuario.getLogin()+" voce foi registrado com sucesso", Toast.LENGTH_LONG).show();
                     }
                 }
