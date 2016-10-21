@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.dominio.Usuario;
+import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.negocio.UsuarioNegocio;
 import ufrpe.edu.learnit.R;
 
@@ -86,6 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (usuario == null){
                         Toast.makeText(context, "Login não disponível, tente novemente!", Toast.LENGTH_LONG).show();
                     }else{
+                        Session.setUsuario(usuario);
                         this.chamarTelaInteresses(v);
                         Toast.makeText(context, "Bem vindo "+usuario.getLogin()+" voce foi registrado com sucesso", Toast.LENGTH_LONG).show();
                     }
