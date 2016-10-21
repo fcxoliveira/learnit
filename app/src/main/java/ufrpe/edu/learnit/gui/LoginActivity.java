@@ -13,22 +13,14 @@ import android.widget.Toast;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.dominio.Usuario;
+import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.negocio.UsuarioNegocio;
 
 public class LoginActivity extends AppCompatActivity {
     Button buttonLogin;
     TextView textViewForgotPassWord,textViewSignup;
     EditText editTextLogin,editTextSenha;
-    private static Usuario usuario;
 
-
-    public static Usuario getUsuario() {
-        return usuario;
-    }
-
-    public static void setUsuario(Usuario usuario) {
-        LoginActivity.usuario = usuario;
-    }
 
 
     @Override
@@ -47,6 +39,12 @@ public class LoginActivity extends AppCompatActivity {
     public void callSignUp(View view) {
 
         Intent secondActivity = new Intent(this, RegisterActivity.class);
+        startActivity(secondActivity);
+    }
+
+    public void chamarTelaInicial(View view) {
+
+        Intent secondActivity = new Intent(this, HomeActivity.class);
         startActivity(secondActivity);
     }
 
@@ -82,9 +80,12 @@ public class LoginActivity extends AppCompatActivity {
                     if (usuario == null){
                         Toast.makeText(context, "Usuario ou senha incorretos", Toast.LENGTH_LONG).show();
                     }else{
+                        Session.setUsuario(usuario);
                         Toast.makeText(context, "Usuario logado com sucesso", Toast.LENGTH_LONG).show();
+                        chamarTelaInicial(v);
+
                     }
-                    setUsuario(usuario);
+
                 }
             }
     }

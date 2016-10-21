@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">LearnIT</string>
-   <string name="bem_vindo">Bem vindo ao Learn IT</string>
+    <string name="bem_vindo">Bem vindo ao Learn IT</string>
     <string name="login">Login</string>
     <string name="Password">Password</string>
     <string name="Entrar">Entrar</string>
@@ -8,4 +8,5 @@
     <string name="cadastrarButton">Cadastrar</string>
     <string name="esqueceu">Esqueceu sua senha? Clique aqui</string>
     <string name="email">Email</string>
+    <string name="cadastro">Cadastro</string>
 </resources>

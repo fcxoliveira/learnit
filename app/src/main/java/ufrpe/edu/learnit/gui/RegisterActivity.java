@@ -1,6 +1,7 @@
 package ufrpe.edu.learnit.gui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,24 +12,30 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.dominio.Usuario;
-import ufrpe.edu.learnit.persistencia.UsuarioPersistencia;
+import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.negocio.UsuarioNegocio;
 import ufrpe.edu.learnit.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private Button buttonRegister;
     private EditText editTextLogin,editTextEmail,editTextPassword;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        buttonRegister = (Button)findViewById(R.id.button);
         editTextLogin = (EditText)findViewById(R.id.editText);
         editTextEmail = (EditText)findViewById(R.id.editText3);
         editTextPassword = (EditText)findViewById(R.id.editText2);
 
+    }
+
+    public void chamarTelaInteresses(View view) {
+
+        Intent secondActivity = new Intent(this, HomeActivity.class);
+        startActivity(secondActivity);
     }
 
     public boolean verificarEmail(String email){
@@ -75,11 +82,15 @@ public class RegisterActivity extends AppCompatActivity {
         if(verificarLogin(login)){
             if(verificarSenha(senha)){
                 if(verificarEmail(email)){
-                    UsuarioPersistencia adapter = new UsuarioPersistencia(context);
-                    adapter.open();
-                    Usuario usuario = adapter.insertEntry(login,senha,email);
-                    adapter.close();
-                    Toast.makeText(context, "Bem vindo "+usuario.getLogin()+" voce foi registrado com sucesso", Toast.LENGTH_LONG).show();
+                    UsuarioNegocio negocio = new UsuarioNegocio(context);
+                    Usuario usuario = negocio.cadastrarUsuario(login, senha, email);
+                    if (usuario == null){
+                        Toast.makeText(context, "Login não disponível, tente novemente!", Toast.LENGTH_LONG).show();
+                    }else{
+                        Session.setUsuario(usuario);
+                        this.chamarTelaInteresses(v);
+                        Toast.makeText(context, "Bem vindo "+usuario.getLogin()+" voce foi registrado com sucesso", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
 
