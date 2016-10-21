@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public  boolean verificarSenha(String senha){
         Context context = getApplicationContext();
-        if (senha.length() <6) {
-            Toast.makeText(context,"Senha fraca, minimo de 6 digitos",Toast.LENGTH_LONG).show();
+        if (senha.length() == 0) {
+            Toast.makeText(context,"Senha é um campo obrigatório",Toast.LENGTH_LONG).show();
             return false;
         }else{
             return true;
