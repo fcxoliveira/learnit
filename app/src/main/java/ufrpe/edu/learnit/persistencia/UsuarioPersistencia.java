@@ -11,19 +11,16 @@ import android.support.annotation.Nullable;
 import ufrpe.edu.learnit.dominio.Usuario;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 
-/**
- * Created by Filipe on 19/10/2016.
- */
 public class UsuarioPersistencia {
     static final String DATABASE_NAME = "member.db";
     static final int DATABASE_VERSION = 1;
     public static final int NAME_COLUMN = 1;
     public static final String DATABASE_CREATE = "create table USER (ID integer primary key autoincrement, USERNAME  text,PASSWORD text, EMAIL text);";
-
-
     public SQLiteDatabase db;
     private final Context context;
     private DataBaseHelper dbHelper;
+
+
     public UsuarioPersistencia(Context iContext){
         context = iContext;
         dbHelper = new DataBaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -45,11 +42,8 @@ public class UsuarioPersistencia {
         return db;
     }
 
-    public Usuario insertEntry(String login, String senha, String email)
+    public Usuario inserirUsuario(String login, String senha, String email)
     {
-        Cursor cursor = existeUsuario(login, senha);
-        cursor.moveToFirst();
-        cursor.close();
         ContentValues newValues = new ContentValues();
         newValues.put("USERNAME", login);
         newValues.put("PASSWORD",senha);
@@ -58,7 +52,7 @@ public class UsuarioPersistencia {
         Usuario usuario = preencherDadosUsuario(login, senha, email);
         return usuario;
     }
-    public int deleteEntry(String UserName)
+    public int excluirUsuario(String UserName)
     {
         String where="USERNAME=?";
         int numeroDeEntradasDeletadas= db.delete("USER", where, new String[]{UserName}) ;
@@ -67,17 +61,21 @@ public class UsuarioPersistencia {
 
     public Usuario retornarUsuario(String userName, String password)
     {
-        Cursor cursor = existeUsuario(userName, password);
-        if (cursor == null) return null;
-        cursor.moveToFirst();
-        String email = cursor.getString(cursor.getColumnIndex("EMAIL"));
-        cursor.close();
-        Usuario usuario = preencherDadosUsuario(userName, password, email);
-        return usuario;
+        Cursor cursor=db.query("USER", null, " USERNAME=? and PASSWORD=?", new String[]{userName,password}, null, null, null);
+        int contador = cursor.getCount();
+        if(contador==1){
+            int idEmail = cursor.getColumnIndex("EMAIL");
+            String email = cursor.getString(idEmail);
+            cursor.close();
+            Usuario usuario = preencherDadosUsuario(userName, password, email);
+            return usuario;
+        }else{
+            return null;
+        }
+
     }
 
-    @NonNull
-    private Usuario preencherDadosUsuario(String userName, String password, String email) {
+    public Usuario preencherDadosUsuario(String userName, String password, String email) {
         Usuario usuario = new Usuario();
         usuario.setLogin(userName);
         usuario.setSenha(password);
@@ -85,14 +83,14 @@ public class UsuarioPersistencia {
         return usuario;
     }
 
-    @Nullable
-    private Cursor existeUsuario(String userName, String password) {
-        Cursor cursor=db.query("USER", null, " USERNAME=? and PASSWORD=?", new String[]{userName,password}, null, null, null);
-        if(cursor.getCount()<1) // UserName Not Exist
-        {
-            cursor.close();
-            return null;
-        }
-        return cursor;
+    public boolean existeUsuario(String usuario){
+        Cursor cursor=db.query("USER", null, " USERNAME=?", new String[]{usuario}, null, null, null);
+            int contador = cursor.getCount();
+            if(contador==1){
+                return true;
+            }else{
+                return false;
+            }
     }
+
 }

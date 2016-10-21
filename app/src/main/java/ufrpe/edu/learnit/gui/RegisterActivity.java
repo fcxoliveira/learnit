@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if(verificarEmail(email)){
                     UsuarioPersistencia adapter = new UsuarioPersistencia(context);
                     adapter.open();
-                    Usuario usuario = adapter.insertEntry(login,senha,email);
+                    Usuario usuario = adapter.inserirUsuario(login,senha,email);
                     adapter.close();
                     Toast.makeText(context, "Bem vindo "+usuario.getLogin()+" voce foi registrado com sucesso", Toast.LENGTH_LONG).show();
                 }
