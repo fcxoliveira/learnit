@@ -54,18 +54,17 @@ public class UsuarioPersistencia {
     }
     public int excluirUsuario(String UserName)
     {
-        String where="USERNAME=?";
-        int numeroDeEntradasDeletadas= db.delete("USER", where, new String[]{UserName}) ;
+        int numeroDeEntradasDeletadas= db.delete("USER", "USERNAME=?", new String[]{UserName}) ;
         return numeroDeEntradasDeletadas;
     }
 
     public Usuario retornarUsuario(String userName, String password)
     {
-        Cursor cursor=db.query("USER", null, " USERNAME=? and PASSWORD=?", new String[]{userName,password}, null, null, null);
+        Cursor cursor=db.query("USER",new String[]{"*"}, " USERNAME=? and PASSWORD=?", new String[]{userName,password},null ,null, null);
+        cursor.moveToFirst();
         int contador = cursor.getCount();
         if(contador==1){
-            int idEmail = cursor.getColumnIndex("EMAIL");
-            String email = cursor.getString(idEmail);
+            String email = cursor.getString(cursor.getColumnIndex("EMAIL"));
             cursor.close();
             Usuario usuario = preencherDadosUsuario(userName, password, email);
             return usuario;
@@ -85,12 +84,28 @@ public class UsuarioPersistencia {
 
     public boolean existeUsuario(String usuario){
         Cursor cursor=db.query("USER", null, " USERNAME=?", new String[]{usuario}, null, null, null);
+        cursor.moveToFirst();
             int contador = cursor.getCount();
             if(contador==1){
+                cursor.close();
                 return true;
             }else{
+                cursor.close();
                 return false;
             }
+    }
+
+    public boolean existeUsuario(String usuario, String email){
+        Cursor cursor=db.query("USER", null, " USERNAME=? or EMAIL=?", new String[]{usuario,email}, null, null, null);
+        cursor.moveToFirst();
+        int contador = cursor.getCount();
+        if(contador==1){
+            cursor.close();
+            return true;
+        }else{
+            cursor.close();
+            return false;
+        }
     }
 
 }

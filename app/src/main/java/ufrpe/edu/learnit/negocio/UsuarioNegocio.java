@@ -44,7 +44,7 @@ public class UsuarioNegocio {
     public Usuario cadastrarUsuario(String login, String senha, String email){
         UsuarioPersistencia persistencia = new UsuarioPersistencia(context);
         persistencia.open();
-        if(existeUsuario(login)==false){
+        if(persistencia.existeUsuario(login,email)==false){
             Usuario usuario = persistencia.inserirUsuario(login,senha,email);
             persistencia.close();
             return usuario;

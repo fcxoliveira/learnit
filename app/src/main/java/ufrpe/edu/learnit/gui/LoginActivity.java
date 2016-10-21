@@ -50,6 +50,12 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(secondActivity);
     }
 
+    public void chamarTelaInicial(View view) {
+
+        Intent secondActivity = new Intent(this, Tela_Inicial.class);
+        startActivity(secondActivity);
+    }
+
     public boolean verificarLogin(String login){
         Context context = getApplicationContext();
         if(TextUtils.isEmpty(login)){
@@ -82,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (usuario == null){
                         Toast.makeText(context, "Usuario ou senha incorretos", Toast.LENGTH_LONG).show();
                     }else{
+                        chamarTelaInicial(v);
                         Toast.makeText(context, "Usuario logado com sucesso", Toast.LENGTH_LONG).show();
                     }
                     setUsuario(usuario);

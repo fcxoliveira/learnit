@@ -1,6 +1,7 @@
 package ufrpe.edu.learnit.gui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,7 +13,6 @@ import android.widget.Toast;
 
 import ufrpe.edu.learnit.dominio.Usuario;
 import ufrpe.edu.learnit.negocio.UsuarioNegocio;
-import ufrpe.edu.learnit.persistencia.UsuarioPersistencia;
 import ufrpe.edu.learnit.R;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -31,6 +31,12 @@ public class RegisterActivity extends AppCompatActivity {
         editTextEmail = (EditText)findViewById(R.id.editText3);
         editTextPassword = (EditText)findViewById(R.id.editText2);
 
+    }
+
+    public void chamarTelaInteresses(View view) {
+
+        Intent secondActivity = new Intent(this, Tela_de_Interesses.class);
+        startActivity(secondActivity);
     }
 
     public boolean verificarEmail(String email){
@@ -82,6 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (usuario == null){
                         Toast.makeText(context, "Login não disponível, tente novemente!", Toast.LENGTH_LONG).show();
                     }else{
+                        chamarTelaInteresses(v);
                         Toast.makeText(context, "Bem vindo "+usuario.getLogin()+" voce foi registrado com sucesso", Toast.LENGTH_LONG).show();
                     }
                 }
