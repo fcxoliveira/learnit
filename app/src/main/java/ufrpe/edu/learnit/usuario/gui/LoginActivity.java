@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.gui;
+package ufrpe.edu.learnit.usuario.gui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.dominio.Usuario;
-import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.negocio.UsuarioNegocio;
+import ufrpe.edu.learnit.usuario.dominio.Usuario;
+import ufrpe.edu.learnit.usuario.infra.dominio.Session;
+import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 
 public class LoginActivity extends AppCompatActivity {
     Button buttonLogin;

@@ -1,11 +1,11 @@
-package ufrpe.edu.learnit.infra;
+package ufrpe.edu.learnit.usuario.infra;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import ufrpe.edu.learnit.persistencia.UsuarioPersistencia;
+import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
 /**
  * Created by Filipe on 19/10/2016.

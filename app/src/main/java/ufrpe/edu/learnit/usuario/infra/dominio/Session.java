@@ -1,7 +1,7 @@
-package ufrpe.edu.learnit.infra.dominio;
+package ufrpe.edu.learnit.usuario.infra.dominio;
 
 
-import ufrpe.edu.learnit.dominio.Usuario;
+import ufrpe.edu.learnit.usuario.dominio.Usuario;
 
 public class Session {
     public static Usuario getUsuario() {

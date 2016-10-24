@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.gui;
+package ufrpe.edu.learnit.usuario.gui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.usuario.infra.dominio.Session;
 
 public class HomeActivity extends AppCompatActivity {
 

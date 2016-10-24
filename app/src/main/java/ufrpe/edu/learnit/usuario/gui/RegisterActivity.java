@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.gui;
+package ufrpe.edu.learnit.usuario.gui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import ufrpe.edu.learnit.dominio.Usuario;
-import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.negocio.UsuarioNegocio;
+import ufrpe.edu.learnit.usuario.dominio.Usuario;
+import ufrpe.edu.learnit.usuario.infra.dominio.Session;
+import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 import ufrpe.edu.learnit.R;
 
 public class RegisterActivity extends AppCompatActivity {
