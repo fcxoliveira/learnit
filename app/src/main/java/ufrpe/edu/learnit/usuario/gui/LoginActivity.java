@@ -13,22 +13,20 @@ import android.widget.Toast;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
-import ufrpe.edu.learnit.usuario.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 
 public class LoginActivity extends AppCompatActivity {
+
     Button buttonLogin;
     TextView textViewForgotPassWord,textViewSignup;
     EditText editTextLogin,editTextSenha;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Context context = getApplicationContext();
-
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         textViewForgotPassWord = (TextView)findViewById(R.id.textViewForgotPassword);
         textViewSignup = (TextView)findViewById(R.id.textViewSignUp);
@@ -36,14 +34,12 @@ public class LoginActivity extends AppCompatActivity {
         editTextSenha = (EditText)findViewById(R.id.editTextPassword);
     }
 
-    public void callSignUp(View view) {
-
+    public void chamarTelaCadastro(View view){
         Intent secondActivity = new Intent(this, RegisterActivity.class);
         startActivity(secondActivity);
     }
 
-    public void chamarTelaInicial(View view) {
-
+    public void chamarTelaInicial(View view){
         Intent secondActivity = new Intent(this, HomeActivity.class);
         startActivity(secondActivity);
     }
@@ -52,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         if(TextUtils.isEmpty(login)){
             Toast.makeText(context, "Login é um campo necessario", Toast.LENGTH_LONG).show();
+            editTextLogin.requestFocus();
             return false;
         }else{
             return true;
@@ -62,10 +59,10 @@ public class LoginActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         if (senha.length() == 0) {
             Toast.makeText(context,"Senha é um campo obrigatório",Toast.LENGTH_LONG).show();
+            editTextSenha.requestFocus();
             return false;
         }else{
             return true;
-
         }
     }
 
@@ -73,22 +70,16 @@ public class LoginActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         String login = editTextLogin.getText().toString();
         String senha = editTextSenha.getText().toString();
-        if(verificarLogin(login)){
-            if(verificarSenha(senha)){
-                UsuarioNegocio usuarioNegocio = new UsuarioNegocio(context);
-                Usuario usuario=usuarioNegocio.pesquisarUsuario(login,senha);
-                    if (usuario == null){
-                        Toast.makeText(context, "Usuario ou senha incorretos", Toast.LENGTH_LONG).show();
-                    }else{
-                        Session.setUsuario(usuario);
-                        Toast.makeText(context, "Usuario logado com sucesso", Toast.LENGTH_LONG).show();
-                        chamarTelaInicial(v);
-
-                    }
-
-                }
+        if(verificarLogin(login) && verificarSenha(senha)){
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio(context);
+            Usuario usuario=usuarioNegocio.pesquisarUsuario(login,senha);
+            if (usuario == null){
+                Toast.makeText(context, "Usuario ou senha incorretos", Toast.LENGTH_LONG).show();
+            }else{
+                Session.setUsuario(usuario);
+                Toast.makeText(context, "Usuario logado com sucesso", Toast.LENGTH_LONG).show();
+                chamarTelaInicial(v);
             }
+        }
     }
-
 }
-

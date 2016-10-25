@@ -11,15 +11,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
-import ufrpe.edu.learnit.usuario.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 import ufrpe.edu.learnit.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText editTextLogin,editTextEmail,editTextPassword;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +26,9 @@ public class RegisterActivity extends AppCompatActivity {
         editTextLogin = (EditText)findViewById(R.id.editText);
         editTextEmail = (EditText)findViewById(R.id.editText3);
         editTextPassword = (EditText)findViewById(R.id.editText2);
-
     }
 
     public void chamarTelaInteresses(View view) {
-
         Intent secondActivity = new Intent(this, HomeActivity.class);
         startActivity(secondActivity);
     }
@@ -40,22 +36,20 @@ public class RegisterActivity extends AppCompatActivity {
     public boolean verificarEmail(String email){
         Context context = getApplicationContext();
         if(TextUtils.isEmpty(email)) {
-            Toast.makeText(context, "Email é um campo necessario", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Email é um campo necessário", Toast.LENGTH_LONG).show();
             return false;
-        }else{
-            if( Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        }else if ( Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             return true;
-            }else {
-                Toast.makeText(context, "Email em formato invalido", Toast.LENGTH_SHORT).show();
-                return false;
+        }else {
+            Toast.makeText(context, "E-mail em formato inválido", Toast.LENGTH_SHORT).show();
+            return false;
             }
         }
-    }
 
     public boolean verificarLogin(String login){
         Context context = getApplicationContext();
         if(TextUtils.isEmpty(login)){
-            Toast.makeText(context, "Login é um campo necessario", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Login é um campo necessário", Toast.LENGTH_LONG).show();
             return false;
         }else{
             return true;
@@ -69,7 +63,6 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }else{
             return true;
-
         }
     }
 
@@ -78,22 +71,17 @@ public class RegisterActivity extends AppCompatActivity {
         String login = editTextLogin.getText().toString();
         String email = editTextEmail.getText().toString();
         String senha = editTextPassword.getText().toString();
-        if(verificarLogin(login)){
-            if(verificarSenha(senha)){
-                if(verificarEmail(email)){
-                    UsuarioNegocio negocio = new UsuarioNegocio(context);
-                    Usuario usuario = negocio.cadastrarUsuario(login, senha, email);
-                    if (usuario == null){
-                        Toast.makeText(context, "Login ou e-mail não disponível, tente novemente!", Toast.LENGTH_LONG).show();
-                    }else{
-                        Session.setUsuario(usuario);
-                        this.chamarTelaInteresses(v);
-                        Toast.makeText(context, "Bem vindo "+usuario.getLogin()+" voce foi registrado com sucesso", Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
 
+        if(verificarLogin(login) && verificarSenha(senha) && verificarEmail(email)){
+            UsuarioNegocio negocio = new UsuarioNegocio(context);
+            Usuario usuario = negocio.cadastrarUsuario(login, senha, email);
+            if (usuario == null){
+                Toast.makeText(context, "Login ou e-mail não disponível, tente novemente!", Toast.LENGTH_LONG).show();
+            }else{
+                Session.setUsuario(usuario);
+                chamarTelaInteresses(v);
+                Toast.makeText(context, "Bem vindo "+usuario.getLogin()+" voce foi registrado com sucesso", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
-

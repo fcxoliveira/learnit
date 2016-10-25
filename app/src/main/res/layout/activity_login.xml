@@ -75,7 +75,7 @@
         android:layout_below="@+id/buttonLogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:onClick="callSignUp"/>
+        android:onClick="chamarTelaCadastro"/>
 
     <TextView
         android:layout_width="wrap_content"
