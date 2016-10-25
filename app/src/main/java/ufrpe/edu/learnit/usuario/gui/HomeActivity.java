@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.usuario.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.dominio.Session;
 
 public class HomeActivity extends AppCompatActivity {
 

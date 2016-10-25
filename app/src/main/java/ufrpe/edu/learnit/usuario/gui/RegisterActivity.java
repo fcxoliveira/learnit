@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
-import ufrpe.edu.learnit.usuario.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 import ufrpe.edu.learnit.R;
 
@@ -38,15 +38,13 @@ public class RegisterActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(email)) {
             Toast.makeText(context, "Email é um campo necessário", Toast.LENGTH_LONG).show();
             return false;
-        }else{
-            if( Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        }else if ( Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             return true;
-            }else {
-                Toast.makeText(context, "E-mail em formato inválido", Toast.LENGTH_SHORT).show();
-                return false;
+        }else {
+            Toast.makeText(context, "E-mail em formato inválido", Toast.LENGTH_SHORT).show();
+            return false;
             }
         }
-    }
 
     public boolean verificarLogin(String login){
         Context context = getApplicationContext();
@@ -73,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
         String login = editTextLogin.getText().toString();
         String email = editTextEmail.getText().toString();
         String senha = editTextPassword.getText().toString();
+
         if(verificarLogin(login) && verificarSenha(senha) && verificarEmail(email)){
             UsuarioNegocio negocio = new UsuarioNegocio(context);
             Usuario usuario = negocio.cadastrarUsuario(login, senha, email);

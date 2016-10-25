@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
-import ufrpe.edu.learnit.usuario.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 
 public class LoginActivity extends AppCompatActivity {
@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         if(TextUtils.isEmpty(login)){
             Toast.makeText(context, "Login é um campo necessario", Toast.LENGTH_LONG).show();
+            editTextLogin.requestFocus();
             return false;
         }else{
             return true;
@@ -58,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         if (senha.length() == 0) {
             Toast.makeText(context,"Senha é um campo obrigatório",Toast.LENGTH_LONG).show();
+            editTextSenha.requestFocus();
             return false;
         }else{
             return true;

@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.usuario.infra;
+package ufrpe.edu.learnit.infra;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,12 +7,11 @@ import android.util.Log;
 
 import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
-/**
- * Created by Filipe on 19/10/2016.
- */
+
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
+
+    public DataBaseHelper(Context context , String name, SQLiteDatabase.CursorFactory factory, int version)
     {
         super(context, name, factory, version);
     }

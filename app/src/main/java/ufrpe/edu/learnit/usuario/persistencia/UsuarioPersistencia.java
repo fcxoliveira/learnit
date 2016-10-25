@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
-import ufrpe.edu.learnit.usuario.infra.DataBaseHelper;
+import ufrpe.edu.learnit.infra.DataBaseHelper;
 
 public class UsuarioPersistencia {
 
