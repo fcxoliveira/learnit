@@ -1,11 +1,9 @@
-package ufrpe.edu.learnit.negocio;
+package ufrpe.edu.learnit.usuario.negocio;
 
 import android.content.Context;
-import android.database.Cursor;
-import android.support.annotation.Nullable;
 
-import ufrpe.edu.learnit.dominio.Usuario;
-import ufrpe.edu.learnit.persistencia.UsuarioPersistencia;
+import ufrpe.edu.learnit.usuario.dominio.Usuario;
+import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
 
 public class UsuarioNegocio {

@@ -1,15 +1,13 @@
-package ufrpe.edu.learnit.persistencia;
+package ufrpe.edu.learnit.usuario.persistencia;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-import ufrpe.edu.learnit.dominio.Usuario;
-import ufrpe.edu.learnit.infra.DataBaseHelper;
+import ufrpe.edu.learnit.usuario.dominio.Usuario;
+import ufrpe.edu.learnit.usuario.infra.DataBaseHelper;
 
 public class UsuarioPersistencia {
     static final String DATABASE_NAME = "member.db";

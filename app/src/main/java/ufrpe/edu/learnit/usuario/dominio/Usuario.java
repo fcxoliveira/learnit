@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.dominio;
+package ufrpe.edu.learnit.usuario.dominio;
 
 public class Usuario {
 
