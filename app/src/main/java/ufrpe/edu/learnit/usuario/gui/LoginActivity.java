@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
@@ -25,13 +26,21 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Session.setContext(getApplicationContext());
+        Usuario usuarioLogado = this.usuarioEstaLogado();
+        if(usuarioLogado != null){
+            Session.setUsuario(usuarioLogado);
+            View v = new View(Session.getContext());
+            chamarTelaInicial(v);
+            this.finish();
+        }
         setContentView(R.layout.activity_login);
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         textViewForgotPassWord = (TextView)findViewById(R.id.textViewForgotPassword);
         textViewSignup = (TextView)findViewById(R.id.textViewSignUp);
         editTextLogin = (EditText)findViewById(R.id.editTextUsername);
         editTextSenha = (EditText)findViewById(R.id.editTextPassword);
-        Session.setContext(getApplicationContext());
+
     }
 
     public void chamarTelaCadastro(View view){
@@ -75,9 +84,16 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(context, "Usuario ou senha incorretos", Toast.LENGTH_LONG).show();
             }else{
                 Session.setUsuario(usuario);
+                SessionNegocio sessionNegocio = new SessionNegocio();
+                sessionNegocio.cadastrarUsuarioLogado(usuario);
                 chamarTelaInicial(v);
                 this.finish();
             }
         }
+    }
+
+    public Usuario usuarioEstaLogado(){
+        SessionNegocio sessionNegociogocio = new SessionNegocio();
+        return sessionNegociogocio.retornarUsuarioLogado();
     }
 }

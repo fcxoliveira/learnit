@@ -2,6 +2,7 @@ package ufrpe.edu.learnit.usuario.dominio;
 
 public class Usuario {
 
+    private int ID;
     private String login;
     private String senha;
     private String email;
@@ -30,4 +31,11 @@ public class Usuario {
         this.email = email;
     }
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 }

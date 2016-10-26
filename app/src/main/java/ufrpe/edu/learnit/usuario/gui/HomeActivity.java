@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -38,6 +39,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void fazerLogoff(View v){
+        SessionNegocio sessionNegocio = new SessionNegocio();
+        sessionNegocio.deslogarUsuario();
         Session.setUsuario(null);
         Intent secondActivity = new Intent(this, LoginActivity.class);
         startActivity(secondActivity);

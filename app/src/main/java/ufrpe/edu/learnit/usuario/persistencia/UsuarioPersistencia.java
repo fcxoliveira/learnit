@@ -30,7 +30,12 @@ public class UsuarioPersistencia {
         newValues.put("EMAIL", email);
         db.insert("USER", null, newValues);
         Usuario usuario = preencherDadosUsuario(login, senha, email);
+        Cursor cursor=db.query("USER",new String[]{"*"}, " USERNAME=?", new String[]{login},null ,null, null);
+        cursor.moveToFirst();
+        int ID = cursor.getInt(cursor.getColumnIndex("ID"));
+        usuario.setID(ID);
         db.close();
+
         return usuario;
     }
 
@@ -46,9 +51,11 @@ public class UsuarioPersistencia {
         Usuario usuario;
         Cursor cursor=db.query("USER",new String[]{"*"}, " USERNAME=? and PASSWORD=?", new String[]{userName,password},null ,null, null);
         if(cursor.moveToFirst()) {
+            int ID = cursor.getInt(cursor.getColumnIndex("ID"));
             String email = cursor.getString(cursor.getColumnIndex("EMAIL"));
-                cursor.close();
-                usuario = preencherDadosUsuario(userName, password, email);
+            cursor.close();
+            usuario = preencherDadosUsuario(userName, password, email);
+            usuario.setID(ID);
             } else {
                 usuario = null;
             }
@@ -75,5 +82,22 @@ public class UsuarioPersistencia {
         }
         db.close();
         return result;
+    }
+
+    public Usuario retornarUsuario(int ID){
+        db = dbHelper.getReadableDatabase();
+        Usuario usuario;
+        Cursor cursor=db.query("USER",new String[]{"*"}, "ID=?", new String[]{""+ID+""},null ,null, null);
+        if(cursor.moveToFirst()) {
+            String email = cursor.getString(cursor.getColumnIndex("EMAIL"));
+            String userName = cursor.getString(cursor.getColumnIndex("USERNAME"));
+            String password = cursor.getString(cursor.getColumnIndex("PASSWORD"));
+            cursor.close();
+            usuario = preencherDadosUsuario(userName, password, email);
+        } else {
+            usuario = null;
+        }
+        db.close();
+        return usuario;
     }
 }
