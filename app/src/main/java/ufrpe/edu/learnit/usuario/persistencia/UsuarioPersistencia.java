@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 
@@ -15,15 +16,11 @@ public class UsuarioPersistencia {
     private final Context context;
     private DataBaseHelper dbHelper;
 
-    public UsuarioPersistencia(Context iContext){
-        context = iContext;
+    public UsuarioPersistencia(){
+        context = Session.getContext();
         dbHelper = new DataBaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public  SQLiteDatabase getDatabaseInstance()
-    {
-        return db;
-    }
 
     public Usuario inserirUsuario(String login, String senha, String email){
         db = dbHelper.getWritableDatabase();

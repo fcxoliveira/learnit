@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         textViewSignup = (TextView)findViewById(R.id.textViewSignUp);
         editTextLogin = (EditText)findViewById(R.id.editTextUsername);
         editTextSenha = (EditText)findViewById(R.id.editTextPassword);
+        Session.setContext(getApplicationContext());
     }
 
     public void chamarTelaCadastro(View view){
@@ -68,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         String login = editTextLogin.getText().toString();
         String senha = editTextSenha.getText().toString();
         if(verificarLogin(login) && verificarSenha(senha)){
-            UsuarioNegocio usuarioNegocio = new UsuarioNegocio(context);
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             Usuario usuario=usuarioNegocio.retornarUsuario(login,senha);
             if (usuario == null){
                 Toast.makeText(context, "Usuario ou senha incorretos", Toast.LENGTH_LONG).show();
