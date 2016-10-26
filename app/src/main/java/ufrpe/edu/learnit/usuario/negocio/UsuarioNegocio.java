@@ -8,10 +8,8 @@ import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 public class UsuarioNegocio {
 
     public Usuario retornarUsuario(String login, String senha){
-        Usuario usuario;
         UsuarioPersistencia persistencia = new UsuarioPersistencia();
-        usuario = persistencia.retornarUsuario(login,senha);
-        return usuario;
+        return persistencia.retornarUsuario(login,senha);
     }
 
     public Usuario cadastrarUsuario(String login, String senha, String email){
