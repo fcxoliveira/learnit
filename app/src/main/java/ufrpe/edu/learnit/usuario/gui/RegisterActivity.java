@@ -34,22 +34,23 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public boolean verificarEmail(String email){
-        Context context = getApplicationContext();
         if(TextUtils.isEmpty(email)) {
-            Toast.makeText(context, "Email é um campo necessário", Toast.LENGTH_LONG).show();
+            editTextEmail.requestFocus();
+            editTextEmail.setError("Email é um campo necessário");
             return false;
         }else if ( Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             return true;
         }else {
-            Toast.makeText(context, "E-mail em formato inválido", Toast.LENGTH_SHORT).show();
+            editTextEmail.requestFocus();
+            editTextEmail.setError("E-mail em formato inválido");
             return false;
             }
         }
 
     public boolean verificarLogin(String login){
-        Context context = getApplicationContext();
         if(TextUtils.isEmpty(login)){
-            Toast.makeText(context, "Login é um campo necessário", Toast.LENGTH_LONG).show();
+            editTextLogin.requestFocus();
+            editTextLogin.setError("Login é um campo necessário");
             return false;
         }else{
             return true;
@@ -57,9 +58,9 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public  boolean verificarSenha(String senha){
-        Context context = getApplicationContext();
         if (senha.length() <6) {
-            Toast.makeText(context,"Senha fraca, minimo de 6 digitos",Toast.LENGTH_LONG).show();
+            editTextPassword.requestFocus();
+            editTextPassword.setError("Senha fraca, minimo de 6 digitos");
             return false;
         }else{
             return true;
@@ -79,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
             }else{
                 Session.setUsuario(usuario);
                 chamarTelaInteresses(v);
-                Toast.makeText(context, "Bem vindo "+usuario.getLogin()+" voce foi registrado com sucesso", Toast.LENGTH_LONG).show();
+                this.finish();
             }
         }
     }
