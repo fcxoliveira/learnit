@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="ufrpe.edu.learnit.MainActivity">
+    tools:context="ufrpe.edu.learnit.usuario.gui.RegisterActivity">
 
 
     <android.support.v7.widget.Toolbar
@@ -29,6 +29,19 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:hint="@string/login"
+
+                android:layout_marginTop="136dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="18sp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:ems="10"
                 android:id="@+id/editText3"
@@ -37,18 +50,6 @@
                 android:layout_below="@+id/editText2"
                 android:layout_alignLeft="@+id/editText2"
                 android:layout_alignStart="@+id/editText2" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/editText"
-                android:hint="@string/login"
-
-                android:layout_marginTop="136dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
 
             <EditText
                 android:layout_width="wrap_content"
