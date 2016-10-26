@@ -9,11 +9,8 @@ import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 
 public class UsuarioPersistencia {
-
     static final String DATABASE_NAME = "member.db";
     static final int DATABASE_VERSION = 1;
-    public static final int NAME_COLUMN = 1;
-    public static final String DATABASE_CREATE = "create table USER (ID integer primary key autoincrement, USERNAME  text,PASSWORD text, EMAIL text);";
     public SQLiteDatabase db;
     private final Context context;
     private DataBaseHelper dbHelper;
@@ -51,18 +48,17 @@ public class UsuarioPersistencia {
         db = dbHelper.getReadableDatabase();
         Usuario usuario;
         Cursor cursor=db.query("USER",new String[]{"*"}, " USERNAME=? and PASSWORD=?", new String[]{userName,password},null ,null, null);
-        cursor.moveToFirst();
-        int contador = cursor.getCount();
-        if(contador==1){
+        if(cursor.moveToFirst()) {
             String email = cursor.getString(cursor.getColumnIndex("EMAIL"));
-            cursor.close();
-            usuario = preencherDadosUsuario(userName, password, email);
-        }else{
-            usuario = null;
+                cursor.close();
+                usuario = preencherDadosUsuario(userName, password, email);
+            } else {
+                usuario = null;
+            }
+            db.close();
+            return usuario;
         }
-        db.close();
-        return usuario;
-    }
+
 
     public Usuario preencherDadosUsuario(String userName, String password, String email){
         Usuario usuario = new Usuario();
@@ -72,27 +68,11 @@ public class UsuarioPersistencia {
         return usuario;
     }
 
-    public boolean existeUsuario(String usuario){
-        boolean result = true;
-        db = dbHelper.getReadableDatabase();
-        Cursor cursor=db.query("USER", null, " USERNAME=?", new String[]{usuario}, null, null, null);
-        cursor.moveToFirst();
-            int contador = cursor.getCount();
-            if (contador != 1){
-                cursor.close();
-                result = false;
-            }
-        db.close();
-        return result;
-    }
-
     public boolean existeUsuario(String usuario, String email){
         boolean result = true;
         db = dbHelper.getReadableDatabase();
         Cursor cursor=db.query("USER", null, " USERNAME=? or EMAIL=?", new String[]{usuario,email}, null, null, null);
-        cursor.moveToFirst();
-        int contador = cursor.getCount();
-        if (contador != 1){
+        if(!cursor.moveToFirst()){
             cursor.close();
             result = false;
         }

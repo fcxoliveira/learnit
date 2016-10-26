@@ -26,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Context context = getApplicationContext();
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         textViewForgotPassWord = (TextView)findViewById(R.id.textViewForgotPassword);
         textViewSignup = (TextView)findViewById(R.id.textViewSignUp);
@@ -45,10 +44,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean verificarLogin(String login){
-        Context context = getApplicationContext();
         if(TextUtils.isEmpty(login)){
-            Toast.makeText(context, "Login é um campo necessario", Toast.LENGTH_LONG).show();
             editTextLogin.requestFocus();
+            editTextLogin.setError("Login é um campo necessario");
             return false;
         }else{
             return true;
@@ -56,10 +54,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public  boolean verificarSenha(String senha){
-        Context context = getApplicationContext();
         if (senha.length() == 0) {
-            Toast.makeText(context,"Senha é um campo obrigatório",Toast.LENGTH_LONG).show();
             editTextSenha.requestFocus();
+            editTextSenha.setError("Senha é um campo obrigatório");
             return false;
         }else{
             return true;
@@ -72,13 +69,13 @@ public class LoginActivity extends AppCompatActivity {
         String senha = editTextSenha.getText().toString();
         if(verificarLogin(login) && verificarSenha(senha)){
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio(context);
-            Usuario usuario=usuarioNegocio.pesquisarUsuario(login,senha);
+            Usuario usuario=usuarioNegocio.retornarUsuario(login,senha);
             if (usuario == null){
                 Toast.makeText(context, "Usuario ou senha incorretos", Toast.LENGTH_LONG).show();
             }else{
                 Session.setUsuario(usuario);
-                Toast.makeText(context, "Usuario logado com sucesso", Toast.LENGTH_LONG).show();
                 chamarTelaInicial(v);
+                this.finish();
             }
         }
     }
