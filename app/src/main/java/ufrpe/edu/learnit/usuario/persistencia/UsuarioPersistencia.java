@@ -72,9 +72,7 @@ public class UsuarioPersistencia {
         boolean result = true;
         db = dbHelper.getReadableDatabase();
         Cursor cursor=db.query("USER", null, " USERNAME=? or EMAIL=?", new String[]{usuario,email}, null, null, null);
-        cursor.moveToFirst();
-        int contador = cursor.getCount();
-        if (contador != 1){
+        if(!cursor.moveToFirst()){
             cursor.close();
             result = false;
         }
