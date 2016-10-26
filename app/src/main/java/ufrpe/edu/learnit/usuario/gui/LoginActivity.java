@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         textViewSignup = (TextView)findViewById(R.id.textViewSignUp);
         editTextLogin = (EditText)findViewById(R.id.editTextUsername);
         editTextSenha = (EditText)findViewById(R.id.editTextPassword);
-        Session.setContext(getApplicationContext());
     }
 
     public void chamarTelaCadastro(View view){
