@@ -68,7 +68,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void cadastrar(View v){
-
         Context context = getApplicationContext();
         String login = editTextLogin.getText().toString();
         String email = editTextEmail.getText().toString();
