@@ -1,6 +1,7 @@
 package ufrpe.edu.learnit.usuario.gui;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Tem certeza que quer sair?");
+        builder.setMessage("Tem certeza que quer sair do APP?");
         builder.setCancelable(true);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -34,5 +35,11 @@ public class HomeActivity extends AppCompatActivity {
         });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    public void fazerLogoff(View v){
+        Session.setUsuario(null);
+        Intent secondActivity = new Intent(this, LoginActivity.class);
+        startActivity(secondActivity);
     }
 }
