@@ -12,6 +12,8 @@ import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (ID integer primary key autoincrement, USERNAME  text,PASSWORD text, EMAIL text);";
     public static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LOGED_USER_ID integer);";
+    public static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (ID_PERFIL int, BIO text, NOME text, MOEDAS "+
+    "integer, INTERESSE1 text, INTERESSE2 text, INTERESSE3 text, INTERESSE4 text, INTERESSE5 text, AVALIACAO real);";
 
     public DataBaseHelper(Context context , String name, SQLiteDatabase.CursorFactory factory, int version)
     {
@@ -22,7 +24,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     {
         db.execSQL(TABLE_USER_CREATE);
         db.execSQL(TABLE_SESSION);
-
+        db.execSQL(TABLE_PERFIL);
     }
 
     @Override
