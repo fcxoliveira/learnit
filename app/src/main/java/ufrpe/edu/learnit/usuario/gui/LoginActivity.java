@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
         String senha = editTextSenha.getText().toString();
         if(verificarLogin(login) && verificarSenha(senha)){
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio(context);
-            Usuario usuario=usuarioNegocio.pesquisarUsuario(login,senha);
+            Usuario usuario=usuarioNegocio.retornarUsuario(login,senha);
             if (usuario == null){
                 Toast.makeText(context, "Usuario ou senha incorretos", Toast.LENGTH_LONG).show();
             }else{

@@ -18,4 +18,10 @@ public class HomeActivity extends AppCompatActivity {
         textView.setText("Bem vindo "+ Session.getUsuario().getLogin());
         textView.setVisibility(View.VISIBLE);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();  // optional depending on your needs
+    }
 }

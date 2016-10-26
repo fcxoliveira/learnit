@@ -10,6 +10,8 @@ import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
 
 public class DataBaseHelper extends SQLiteOpenHelper {
+    public static final String TABLE_USER_CREATE = "create table USER (ID integer primary key autoincrement, USERNAME  text,PASSWORD text, EMAIL text);";
+
 
     public DataBaseHelper(Context context , String name, SQLiteDatabase.CursorFactory factory, int version)
     {
@@ -18,7 +20,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        db.execSQL(UsuarioPersistencia.DATABASE_CREATE);
+        db.execSQL(TABLE_USER_CREATE);
 
     }
 

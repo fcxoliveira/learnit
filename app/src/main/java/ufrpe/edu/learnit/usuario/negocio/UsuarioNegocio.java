@@ -13,14 +13,10 @@ public class UsuarioNegocio {
         this.context = context;
     }
 
-    public Usuario pesquisarUsuario(String login, String senha){
+    public Usuario retornarUsuario(String login, String senha){
         Usuario usuario;
         UsuarioPersistencia persistencia = new UsuarioPersistencia(context);
-        if(persistencia.existeUsuario(login)){
-            usuario = persistencia.retornarUsuario(login,senha);
-        }else{
-            usuario = null;
-        }
+        usuario = persistencia.retornarUsuario(login,senha);
         return usuario;
     }
 

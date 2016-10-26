@@ -71,7 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
         String login = editTextLogin.getText().toString();
         String email = editTextEmail.getText().toString();
         String senha = editTextPassword.getText().toString();
-
         if(verificarLogin(login) && verificarSenha(senha) && verificarEmail(email)){
             UsuarioNegocio negocio = new UsuarioNegocio(context);
             Usuario usuario = negocio.cadastrarUsuario(login, senha, email);
