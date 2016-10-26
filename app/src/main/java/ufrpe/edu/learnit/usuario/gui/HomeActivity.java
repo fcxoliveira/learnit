@@ -11,6 +11,7 @@ import android.widget.TextView;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
+import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -45,5 +46,10 @@ public class HomeActivity extends AppCompatActivity {
         Intent secondActivity = new Intent(this, LoginActivity.class);
         startActivity(secondActivity);
         this.finish();
+    }
+
+    public void chamarPerfil(View view){
+        Intent secondActivity = new Intent(this, PerfilActivity.class);
+        startActivity(secondActivity);
     }
 }
