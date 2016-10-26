@@ -19,6 +19,7 @@ public class UsuarioPersistencia {
     public UsuarioPersistencia(){
         context = Session.getContext();
         dbHelper = new DataBaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
+        dbHelper.onCreate(db);
     }
 
 
