@@ -22,6 +22,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        super.onBackPressed();  // optional depending on your needs
+
     }
 }
