@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="ufrpe.edu.learnit.usuario.gui.RegisterActivity">
+    android:fillViewport="true">
 
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#7bc8f3"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/ScrollView01"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
         <RelativeLayout
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/activity_register"
@@ -26,19 +13,12 @@
             android:layout_height="match_parent"
             tools:context=".usuario.gui.RegisterActivity">
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/editText"
-                android:hint="@string/login"
-
-                android:layout_marginTop="136dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:textSize="18sp" />
-
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#7bc8f3"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,6 +30,18 @@
                 android:layout_below="@+id/editText2"
                 android:layout_alignLeft="@+id/editText2"
                 android:layout_alignStart="@+id/editText2" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:hint="@string/login"
+
+                android:layout_marginTop="136dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -90,4 +82,3 @@
 
         </RelativeLayout>
         </ScrollView>
-</android.support.design.widget.CoordinatorLayout>

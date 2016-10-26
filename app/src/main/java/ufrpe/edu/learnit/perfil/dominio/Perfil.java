@@ -3,6 +3,7 @@ package ufrpe.edu.learnit.perfil.dominio;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 
 public class Perfil {
@@ -51,6 +52,5 @@ public class Perfil {
     public void setAvaliacao(float avaliacao) {
         this.avaliacao = avaliacao;
     }
-
 
 }
