@@ -35,37 +35,46 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public boolean verificarEmail(String email){
+        boolean autorizacao=false;
         if(TextUtils.isEmpty(email)) {
             editTextEmail.requestFocus();
             editTextEmail.setError("Email é um campo necessário");
-            return false;
+
         }else if ( Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            return true;
+            autorizacao=true;
         }else {
             editTextEmail.requestFocus();
             editTextEmail.setError("E-mail em formato inválido");
-            return false;
             }
+        return autorizacao;
         }
 
     public boolean verificarLogin(String login){
+        boolean autorizacao=false;
         if(TextUtils.isEmpty(login)){
             editTextLogin.requestFocus();
             editTextLogin.setError("Login é um campo necessário");
-            return false;
+        }else if(login.indexOf(" ")!=-1) {
+            editTextLogin.requestFocus();
+            editTextLogin.setError("Login não pode conter espaços");
         }else{
-            return true;
+            autorizacao=true;
         }
+        return autorizacao;
     }
 
     public  boolean verificarSenha(String senha){
+        boolean autorizacao=false;
         if (senha.length() <6) {
             editTextPassword.requestFocus();
             editTextPassword.setError("Senha fraca, minimo de 6 digitos");
-            return false;
+        }else if(senha.indexOf(" ")!=-1) {
+            editTextPassword.requestFocus();
+            editTextPassword.setError("Senha não pode conter espaços");
         }else{
-            return true;
+            autorizacao=true;
         }
+        return autorizacao;
     }
 
     public void cadastrar(View v){
@@ -82,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Session.setUsuario(usuario);
                 chamarTelaInteresses(v);
                 this.finish();
+
             }
         }
     }

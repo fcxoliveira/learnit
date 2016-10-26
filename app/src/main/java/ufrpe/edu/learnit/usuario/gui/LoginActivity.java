@@ -54,23 +54,33 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean verificarLogin(String login){
+        boolean autorizacao=false;
         if(TextUtils.isEmpty(login)){
             editTextLogin.requestFocus();
             editTextLogin.setError("Login é um campo necessario");
-            return false;
+
+        }else if (login.indexOf(" ")!=-1){
+            editTextLogin.requestFocus();
+            editTextLogin.setError("Login não pode conter espaços");
+
         }else{
-            return true;
+           autorizacao=true;
         }
+        return autorizacao;
     }
 
     public  boolean verificarSenha(String senha){
+        boolean autorizacao=false;
         if (senha.length() == 0) {
             editTextSenha.requestFocus();
             editTextSenha.setError("Senha é um campo obrigatório");
-            return false;
+        }else if(senha.indexOf(" ")!=-1){
+            editTextSenha.requestFocus();
+            editTextSenha.setError("Senha não pode conter espaços");
         }else{
-            return true;
+            autorizacao=true;
         }
+        return autorizacao;
     }
 
     public void logar(View v){
