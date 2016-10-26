@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
@@ -90,6 +91,8 @@ public class RegisterActivity extends AppCompatActivity {
             }else{
                 Session.setUsuario(usuario);
                 chamarTelaInteresses(v);
+                SessionNegocio sessionNegocio = new SessionNegocio();
+                sessionNegocio.cadastrarUsuarioLogado(usuario);
                 this.finish();
 
             }
