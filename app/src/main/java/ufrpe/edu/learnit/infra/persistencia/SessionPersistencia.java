@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.usuario.dominio.Usuario;
 
 public class SessionPersistencia {
     static final String DATABASE_NAME = "member.db";

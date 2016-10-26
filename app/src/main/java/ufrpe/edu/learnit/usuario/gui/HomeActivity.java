@@ -44,5 +44,6 @@ public class HomeActivity extends AppCompatActivity {
         Session.setUsuario(null);
         Intent secondActivity = new Intent(this, LoginActivity.class);
         startActivity(secondActivity);
+        this.finish();
     }
 }
