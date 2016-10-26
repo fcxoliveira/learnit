@@ -1,11 +1,22 @@
 package ufrpe.edu.learnit.usuario.dominio;
 
+import ufrpe.edu.learnit.perfil.dominio.Perfil;
+
 public class Usuario {
 
     private int ID;
     private String login;
     private String senha;
     private String email;
+    private Perfil perfil;
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
 
     public String getSenha() {
         return senha;

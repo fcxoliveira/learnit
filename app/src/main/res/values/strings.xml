@@ -9,4 +9,13 @@
     <string name="esqueceu">Esqueceu sua senha? Clique aqui</string>
     <string name="email">Email</string>
     <string name="cadastro">Cadastro</string>
+    <string name="nome">nome</string>
+    <string name="horas_de_aulas_dadas">Horas de aulas dadas</string>
+    <string name="aulaoferecida1">AulaOferecida1</string>
+    <string name="aulaoferecida2">AulaOferecida2</string>
+    <string name="aulaoferecida3">AulaOferecida3</string>
+    <string name="aulas_oferecidas">Aulas Oferecidas</string>
+    <string name="avaliadores">avaliadores</string>
+    <string name="horas">horas</string>
+    <string name="rate">rate</string>
 </resources>
