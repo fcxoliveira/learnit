@@ -17,11 +17,12 @@ public class HomeActivity extends AppCompatActivity {
         TextView textView = (TextView)findViewById(R.id.textView2);
         textView.setText("Bem vindo "+ Session.getUsuario().getLogin());
         textView.setVisibility(View.VISIBLE);
+        Session.setContext(getApplicationContext());
     }
 
     @Override
     public void onBackPressed()
     {
-        super.onBackPressed();  // optional depending on your needs
+
     }
 }

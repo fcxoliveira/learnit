@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
         editTextLogin = (EditText)findViewById(R.id.editText);
         editTextEmail = (EditText)findViewById(R.id.editText3);
         editTextPassword = (EditText)findViewById(R.id.editText2);
+        Session.setContext(getApplicationContext());
     }
 
     public void chamarTelaInteresses(View view) {
@@ -73,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString();
         String senha = editTextPassword.getText().toString();
         if(verificarLogin(login) && verificarSenha(senha) && verificarEmail(email)){
-            UsuarioNegocio negocio = new UsuarioNegocio(context);
+            UsuarioNegocio negocio = new UsuarioNegocio();
             Usuario usuario = negocio.cadastrarUsuario(login, senha, email);
             if (usuario == null){
                 Toast.makeText(context, "Login ou e-mail não disponível, tente novemente!", Toast.LENGTH_LONG).show();
