@@ -28,7 +28,7 @@
         <activity
             android:name=".usuario.gui.HomeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".perfil.gui.PerfilActivity"></activity>
+        <activity android:name=".perfil.gui.PerfilActivity" />
     </application>
 
 </manifest>
