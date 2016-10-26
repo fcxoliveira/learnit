@@ -11,15 +11,15 @@ public class Session {
 
     private static Context context;
 
-    private static Perfil perfil;
-
-    public static Perfil getPerfil() {
-        return perfil;
-    }
-
-    public static void setPerfil(Perfil perfil) {
-        Session.perfil = perfil;
-    }
+//    private static Perfil perfil;
+//
+//    public static Perfil getPerfil() {
+//        return perfil;
+//    }
+//
+//    public static void setPerfil(Perfil perfil) {
+//        Session.perfil = perfil;
+//    }
 
     public static Context getContext() {
        return context;
