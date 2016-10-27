@@ -10,7 +10,7 @@ import ufrpe.edu.learnit.aula.dominio.Tag;
  */
 
 public class GerenciadorAulasTutor {
-    public void cadastrarAula(String titulo, String descricao, double valor, long ID, boolean ativa, ArrayList<String> tags, int duracao){
+    public void cadastrarAula(String titulo, String descricao, int duracao,double valor,String tag1,String tag2){
 
     }
 
