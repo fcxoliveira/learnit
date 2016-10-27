@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit;
+package ufrpe.edu.learnit.usuario.gui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.infra.dominio.Session;
 
 /**
