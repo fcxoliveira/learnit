@@ -1,5 +1,7 @@
 package ufrpe.edu.learnit.aula.negocio;
 
+import java.util.ArrayList;
+
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.dominio.Tag;
 
@@ -8,7 +10,7 @@ import ufrpe.edu.learnit.aula.dominio.Tag;
  */
 
 public class GerenciadorAulasTutor {
-    public void cadastrarAula(){
+    public void cadastrarAula(String titulo, String descricao, double valor, long ID, boolean ativa, ArrayList<String> tags, int duracao){
 
     }
 
