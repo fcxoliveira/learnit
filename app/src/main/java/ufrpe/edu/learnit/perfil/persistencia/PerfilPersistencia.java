@@ -63,7 +63,6 @@ public class PerfilPersistencia {
             ArrayList<String> interesses = new ArrayList<String>();
             interesses.add(interesse1);
             interesses.add(interesse2);
-
             result.setInteresses(interesses);
             result.setHoras(horas);
             result.setAvaliadores(avaliadores);
