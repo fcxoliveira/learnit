@@ -14,7 +14,7 @@ public class Aula {
     private long id;
     private boolean ativa;
     private ArrayList<String> tags = new ArrayList<String>();
-
+    private int duracaoHorasAula;
 //    public void inscrever(){
 //        Session.getUsuario().getPerfil().inscreverAula(this);
 //    }
