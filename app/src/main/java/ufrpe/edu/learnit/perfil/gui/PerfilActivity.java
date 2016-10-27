@@ -11,7 +11,7 @@ import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 
 public class PerfilActivity extends AppCompatActivity {
-    private TextView textViewAulaOferecida1, textViewAulaOferecida2,textViewAulaOferecida3,textViewAulaOferecida4,textViewAulaOferecida5;
+    private TextView textViewAulaOferecida1, textViewAulaOferecida2;
     private TextView textViewRate, textViewAvaliadores, textViewHoras, textViewNome;
     private RatingBar ratingBar;
 
@@ -24,7 +24,7 @@ public class PerfilActivity extends AppCompatActivity {
         Perfil perfil = retornarPerfil(Session.getUsuario().getID());
         String horas = new StringBuilder().append(perfil.getHoras()).toString();
         textViewHoras.setText(horas);
-        textViewRate.setText(String.format("%.02f", perfil.getAvaliacao()));
+        textViewRate.setText(String.format("%.01f", perfil.getAvaliacao()));
         String avaliadores = new StringBuilder().append(perfil.getAvaliadores()).toString();
         textViewAvaliadores.setText(avaliadores);
         textViewNome.setText(perfil.getNome());

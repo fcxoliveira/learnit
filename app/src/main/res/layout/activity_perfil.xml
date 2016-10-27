@@ -54,36 +54,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp" />
 
-        <TextView android:text="Teste123456"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewRate"
-            android:layout_below="@+id/ratingBar2"
-            android:layout_alignLeft="@+id/ratingBar2"
-            android:layout_alignStart="@+id/ratingBar2"
-            android:layout_marginLeft="22dp"
-            android:layout_marginStart="22dp" />
-
-        <TextView android:text="Teste123456"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewAvaliadores"
-            android:layout_below="@+id/ratingBar2"
-            android:layout_alignLeft="@+id/textView6"
-            android:layout_alignStart="@+id/textView6"
-            android:layout_marginLeft="14dp"
-            android:layout_marginStart="14dp" />
-
-        <TextView android:text="Teste123456"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
-            android:id="@+id/textViewHoras"
-            android:layout_below="@+id/textView6"
-            android:layout_alignLeft="@+id/textViewAvaliadores"
-            android:layout_alignStart="@+id/textViewAvaliadores" />
-
-        <TextView android:text="Teste123456"
+        <TextView android:text="Informatica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewAulaOferecida1"
@@ -108,17 +79,49 @@
             android:layout_marginTop="61dp"
             android:id="@+id/ratingBar2"
             android:layout_below="@+id/textViewNome"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:clickable="false"
+            android:numStars="5"
+            android:focusable="false"
+            android:isIndicator="true" />
+
+        <TextView android:text="0,0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewRate"
+            android:layout_alignBaseline="@+id/textViewAvaliadores"
+            android:layout_alignBottom="@+id/textViewAvaliadores"
+            android:layout_toRightOf="@+id/textView1"
+            android:layout_toEndOf="@+id/textView1" />
+
+        <TextView android:text="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewAvaliadores"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_below="@+id/ratingBar2"
+            android:layout_alignLeft="@+id/textView6"
+            android:layout_alignStart="@+id/textView6" />
 
         <TextView
-            android:text="Teste123456"
+            android:text="Musica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewAulaOferecida2"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="23dp"
             android:layout_below="@+id/textViewAulaOferecida1"
-            android:layout_toLeftOf="@+id/textViewNome"
-            android:layout_toStartOf="@+id/textViewNome" />
+            android:layout_alignLeft="@+id/textViewAulaOferecida1"
+            android:layout_alignStart="@+id/textViewAulaOferecida1" />
+
+        <TextView android:text="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/textViewHoras"
+            android:layout_below="@+id/textView6"
+            android:layout_alignRight="@+id/textViewNome"
+            android:layout_alignEnd="@+id/textViewNome" />
     </RelativeLayout>
     </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

@@ -10,32 +10,29 @@ import java.util.ArrayList;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
-import ufrpe.edu.learnit.usuario.dominio.Usuario;
 
 public class PerfilPersistencia {
-    static final String DATABASE_NAME = "member.db";
-    static final int DATABASE_VERSION = 1;
     public SQLiteDatabase db;
     private final Context context;
     private DataBaseHelper dbHelper;
 
     public PerfilPersistencia(){
         context = Session.getContext();
-        dbHelper = new DataBaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
+        dbHelper = new DataBaseHelper(context, null);
     }
 
     public void cadastrarPerfil(int id, String bio, String nome, String interesse1, String interesse2){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
-        newValues.put("ID_PERFIL", id);
-        newValues.put("BIO", bio);
-        newValues.put("NOME", nome);
-        newValues.put("MOEDAS", 500);
-        newValues.put("AVALIADORES", 0);
-        newValues.put("AVALIACAO", 0);
-        newValues.put("HORAS", 0);
-        newValues.put("INTERESSE1",interesse1);
-        newValues.put("INTERESSE2",interesse2);
+        newValues.put("IdPerfil", id);
+        newValues.put("Bio", bio);
+        newValues.put("Nome", nome);
+        newValues.put("Moedas", 500);
+        newValues.put("Avaliadores", 0);
+        newValues.put("Avaliacao", 0);
+        newValues.put("Horas", 0);
+        newValues.put("Interesse1",interesse1);
+        newValues.put("Interesse2",interesse2);
         db.insert("PERFIL", null, newValues);
         db.close();
     }
@@ -46,19 +43,19 @@ public class PerfilPersistencia {
         StringBuilder sb = new StringBuilder();
         sb.append(id);
         String idString = sb.toString();
-        Cursor cursor=db.query("PERFIL", null, "ID_PERFIL=?",new String[]{idString}, null, null, null);
+        Cursor cursor=db.query("PERFIL", null, "IdPerfil=?",new String[]{idString}, null, null, null);
         if (!cursor.moveToFirst()){
             result = null;
             db.close();
         }else{
-            String bio = cursor.getString(cursor.getColumnIndex("BIO"));
-            String nome = cursor.getString(cursor.getColumnIndex("NOME"));
-            int moedas = cursor.getInt(cursor.getColumnIndex("MOEDAS"));
-            int avaliadores = cursor.getInt(cursor.getColumnIndex("AVALIADORES"));
-            float avaliacao = cursor.getFloat(cursor.getColumnIndex("AVALIACAO"));
-            int horas = cursor.getInt(cursor.getColumnIndex("HORAS"));
-            String interesse1= cursor.getString(cursor.getColumnIndex("INTERESSE1"));
-            String interesse2= cursor.getString(cursor.getColumnIndex("INTERESSE2"));
+            String bio = cursor.getString(cursor.getColumnIndex("Bio"));
+            String nome = cursor.getString(cursor.getColumnIndex("Nome"));
+            int moedas = cursor.getInt(cursor.getColumnIndex("Moedas"));
+            int avaliadores = cursor.getInt(cursor.getColumnIndex("Avaliadores"));
+            float avaliacao = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
+            int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
+            String interesse1= cursor.getString(cursor.getColumnIndex("Interesse1"));
+            String interesse2= cursor.getString(cursor.getColumnIndex("Interesse2"));
             result.setAvaliacao(avaliacao);
             result.setBio(bio);
             result.setMoedas(moedas);

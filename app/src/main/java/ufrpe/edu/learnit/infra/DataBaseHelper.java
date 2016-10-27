@@ -10,14 +10,17 @@ import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    public static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (ID integer primary key autoincrement, USERNAME  text,PASSWORD text, EMAIL text);";
-    public static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LOGED_USER_ID integer);";
-    public static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (ID_PERFIL int, BIO text, NOME text, MOEDAS "+
-    "integer, INTERESSE1 text, INTERESSE2 text, AVALIACAO real, AVALIADORES integer, HORAS integer);";
+    static final String DATABASE_NAME = "member.db";
+    static final int DATABASE_VERSION = 3;
+    public static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
+    public static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
+    public static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas "+
+    "integer, Interesse1 text, Interesse2 text, Avaliacao real, Avaliadores integer, Horas integer);";
+    public static final String TABLE_TAGS = "create table IF NOT EXISTS TAGS (Id integer primary key autoincrement, Tag text);";
 
-    public DataBaseHelper(Context context , String name, SQLiteDatabase.CursorFactory factory, int version)
+    public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
     {
-        super(context, name, factory, version);
+        super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db)
@@ -25,6 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_USER_CREATE);
         db.execSQL(TABLE_SESSION);
         db.execSQL(TABLE_PERFIL);
+        db.execSQL(TABLE_TAGS);
     }
 
     @Override

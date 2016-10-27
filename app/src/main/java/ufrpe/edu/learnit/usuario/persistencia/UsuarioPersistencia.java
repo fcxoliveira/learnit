@@ -10,15 +10,13 @@ import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 
 public class UsuarioPersistencia {
-    static final String DATABASE_NAME = "member.db";
-    static final int DATABASE_VERSION = 1;
     public SQLiteDatabase db;
     private final Context context;
     private DataBaseHelper dbHelper;
 
     public UsuarioPersistencia(){
         context = Session.getContext();
-        dbHelper = new DataBaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
+        dbHelper = new DataBaseHelper(context, null);
 
     }
 
@@ -26,14 +24,14 @@ public class UsuarioPersistencia {
     public Usuario inserirUsuario(String login, String senha, String email){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
-        newValues.put("USERNAME", login);
-        newValues.put("PASSWORD",senha);
-        newValues.put("EMAIL", email);
+        newValues.put("Username", login);
+        newValues.put("Password",senha);
+        newValues.put("Email", email);
         db.insert("USER", null, newValues);
         Usuario usuario = preencherDadosUsuario(login, senha, email);
-        Cursor cursor=db.query("USER",new String[]{"*"}, " USERNAME=?", new String[]{login},null ,null, null);
+        Cursor cursor=db.query("USER",new String[]{"*"}, "Username=?", new String[]{login},null ,null, null);
         cursor.moveToFirst();
-        int ID = cursor.getInt(cursor.getColumnIndex("ID"));
+        int ID = cursor.getInt(cursor.getColumnIndex("Id"));
         usuario.setID(ID);
         db.close();
 
@@ -42,7 +40,7 @@ public class UsuarioPersistencia {
 
     public int excluirUsuario(String UserName){
         db = dbHelper.getWritableDatabase();
-        int numeroDeEntradasDeletadas= db.delete("USER", "USERNAME=?", new String[]{UserName});
+        int numeroDeEntradasDeletadas= db.delete("USER", "Username=?", new String[]{UserName});
         db.close();
         return numeroDeEntradasDeletadas;
     }
@@ -50,10 +48,10 @@ public class UsuarioPersistencia {
     public Usuario retornarUsuario(String userName, String password){
         db = dbHelper.getReadableDatabase();
         Usuario usuario;
-        Cursor cursor=db.query("USER",new String[]{"*"}, " USERNAME=? and PASSWORD=?", new String[]{userName,password},null ,null, null);
+        Cursor cursor=db.query("USER",new String[]{"*"}, " Username=? and Password=?", new String[]{userName,password},null ,null, null);
         if(cursor.moveToFirst()) {
-            int ID = cursor.getInt(cursor.getColumnIndex("ID"));
-            String email = cursor.getString(cursor.getColumnIndex("EMAIL"));
+            int ID = cursor.getInt(cursor.getColumnIndex("Id"));
+            String email = cursor.getString(cursor.getColumnIndex("Email"));
             cursor.close();
             usuario = preencherDadosUsuario(userName, password, email);
             usuario.setID(ID);
@@ -76,7 +74,7 @@ public class UsuarioPersistencia {
     public boolean existeUsuario(String usuario, String email){
         boolean result = true;
         db = dbHelper.getReadableDatabase();
-        Cursor cursor=db.query("USER", null, " USERNAME=? or EMAIL=?", new String[]{usuario,email}, null, null, null);
+        Cursor cursor=db.query("USER", null, "Username=? or Email=?", new String[]{usuario,email}, null, null, null);
         if(!cursor.moveToFirst()){
             cursor.close();
             result = false;
@@ -88,11 +86,11 @@ public class UsuarioPersistencia {
     public Usuario retornarUsuario(int ID){
         db = dbHelper.getReadableDatabase();
         Usuario usuario;
-        Cursor cursor=db.query("USER",new String[]{"*"}, "ID=?", new String[]{""+ID+""},null ,null, null);
+        Cursor cursor=db.query("USER",new String[]{"*"}, "Id=?", new String[]{""+ID+""},null ,null, null);
         if(cursor.moveToFirst()) {
-            String email = cursor.getString(cursor.getColumnIndex("EMAIL"));
-            String userName = cursor.getString(cursor.getColumnIndex("USERNAME"));
-            String password = cursor.getString(cursor.getColumnIndex("PASSWORD"));
+            String email = cursor.getString(cursor.getColumnIndex("Email"));
+            String userName = cursor.getString(cursor.getColumnIndex("Username"));
+            String password = cursor.getString(cursor.getColumnIndex("Password"));
             cursor.close();
             usuario = preencherDadosUsuario(userName, password, email);
             usuario.setID(ID);
