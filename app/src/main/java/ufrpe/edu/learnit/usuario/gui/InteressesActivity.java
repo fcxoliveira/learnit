@@ -51,13 +51,11 @@ public class InteressesActivity extends AppCompatActivity {
     }
 
     public void confirmar(View v){
-        if(verificarNome(editTextNome.getText().toString())){
+        String nome =editTextNome.getText().toString();
+        if(verificarNome(nome)){
             PerfilNegocio perfilNegocio = new PerfilNegocio();
             perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(), interesse1.getSelectedItem().toString(), interesse2.getSelectedItem().toString());
             chamarHome(v);
-        }else{
-            editTextNome.requestFocus();
-            editTextNome.setError("campo obrigatorio");
         }
     }
 }
