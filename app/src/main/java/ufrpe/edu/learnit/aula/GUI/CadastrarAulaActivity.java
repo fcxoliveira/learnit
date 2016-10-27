@@ -96,7 +96,7 @@ public class CadastrarAulaActivity extends AppCompatActivity {
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
             String tag1 = this.tag1.getSelectedItem().toString();
             String tag2 = this.tag2.getSelectedItem().toString();
-            gerenciadorAulasTutor.cadastrarAula(nomeAula,descricao,horasDeAula,precoHoraAula, tag1,tag2);
+            gerenciadorAulasTutor.cadastrarAula(nomeAula,descricao,Integer.parseInt(horasDeAula),Integer.parseInt(precoHoraAula), tag1,tag2);
             chamarTelaInicial(v);
 
         }
