@@ -9,9 +9,27 @@ import ufrpe.edu.learnit.usuario.dominio.Usuario;
 public class Perfil {
     private String bio;
     private String nome;
-    private BigDecimal moedas;
+    private int moedas;
     private ArrayList<String> interesses;
     private float avaliacao;
+    private int horas;
+    private int avaliadores;
+
+    public int getHoras() {
+        return horas;
+    }
+
+    public void setHoras(int horas) {
+        this.horas = horas;
+    }
+
+    public int getAvaliadores() {
+        return avaliadores;
+    }
+
+    public void setAvaliadores(int avaliadores) {
+        this.avaliadores = avaliadores;
+    }
 
     public String getBio() {
         return bio;
@@ -29,11 +47,11 @@ public class Perfil {
         this.nome = nome;
     }
 
-    public BigDecimal getMoedas() {
+    public int getMoedas() {
         return moedas;
     }
 
-    public void setMoedas(BigDecimal moedas) {
+    public void setMoedas(int moedas) {
         this.moedas = moedas;
     }
 
