@@ -11,13 +11,13 @@ import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     static final String DATABASE_NAME = "learnit.db";
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 2;
     private static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
     private static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
     private static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas "+
     "integer, Interesse1 text, Interesse2 text, Avaliacao real, Avaliadores integer, Horas integer);";
     private static final String TABLE_TAGS = "create table IF NOT EXISTS TAGS (Id integer primary key autoincrement, Tag text);";
-    private static final String TABLE_AULAS = "create table if not exists AULAS(Id integer primary key autoincrement, Titulo text, Descricao text, Valor int, tag1 int, tag2 int,IdPerfil int);";
+    private static final String TABLE_AULAS = "create table if not exists AULAS(Id integer primary key autoincrement, Titulo text, Descricao text, Valor int, Tag1 int, Tag2 int,IdPerfil int, Horas int);";
 
     public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
     {
