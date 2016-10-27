@@ -10,13 +10,14 @@ import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    static final String DATABASE_NAME = "member.db";
-    static final int DATABASE_VERSION = 3;
-    public static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
-    public static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
-    public static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas "+
+    static final String DATABASE_NAME = "learnit.db";
+    static final int DATABASE_VERSION = 1;
+    private static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
+    private static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
+    private static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas "+
     "integer, Interesse1 text, Interesse2 text, Avaliacao real, Avaliadores integer, Horas integer);";
-    public static final String TABLE_TAGS = "create table IF NOT EXISTS TAGS (Id integer primary key autoincrement, Tag text);";
+    private static final String TABLE_TAGS = "create table IF NOT EXISTS TAGS (Id integer primary key autoincrement, Tag text);";
+    private static final String TABLE_AULAS = "create table if not exists AULAS(Id integer primary key autoincrement, Titulo text, Descricao text, Valor int, tag1 int, tag2 int,IdPerfil int);";
 
     public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
     {
@@ -29,6 +30,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_SESSION);
         db.execSQL(TABLE_PERFIL);
         db.execSQL(TABLE_TAGS);
+        db.execSQL(TABLE_AULAS);
     }
 
     @Override

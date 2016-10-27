@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 HomeActivity.super.finish();
             }
-        });
+    });
         AlertDialog alert = builder.create();
         alert.show();
     }
