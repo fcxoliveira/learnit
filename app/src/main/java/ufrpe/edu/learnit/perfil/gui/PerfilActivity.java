@@ -34,7 +34,7 @@ public class PerfilActivity extends AppCompatActivity {
     }
 
     private void gerarItens() {
-        textViewAulaOferecida1 = (TextView)findViewById(R.id.textViewAulaOferecida2);
+        textViewAulaOferecida1 = (TextView)findViewById(R.id.textViewAulaOferecida1);
         textViewAulaOferecida2 = (TextView)findViewById(R.id.textViewAulaOferecida2);
         textViewRate = (TextView)findViewById(R.id.textViewRate);
         textViewAvaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
