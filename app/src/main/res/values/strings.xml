@@ -19,4 +19,5 @@
     <string name="horas">horas</string>
     <string name="rate">rate</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_interesses">Interesses</string>
 </resources>
