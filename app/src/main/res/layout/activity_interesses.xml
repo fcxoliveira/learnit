@@ -93,6 +93,20 @@
             android:layout_marginTop="37dp"
             android:id="@+id/spinner2" />
 
+        <Button
+            android:text="Confirmar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="chamarTelaInicial"/>
+
 
     </RelativeLayout>
 </ScrollView>
