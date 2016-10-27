@@ -22,24 +22,20 @@ public class PerfilActivity extends AppCompatActivity {
         Session.setContext(getApplicationContext());
         gerarItens();
         Perfil perfil = retornarPerfil(Session.getUsuario().getID());
-        textViewHoras.setText(perfil.getHoras());
+        String horas = new StringBuilder().append(perfil.getHoras()).toString();
+        textViewHoras.setText(horas);
         textViewRate.setText(String.format("%.02f", perfil.getAvaliacao()));
-        textViewAvaliadores.setText(perfil.getAvaliadores());
+        String avaliadores = new StringBuilder().append(perfil.getAvaliadores()).toString();
+        textViewAvaliadores.setText(avaliadores);
         textViewNome.setText(perfil.getNome());
         ratingBar.setRating(perfil.getAvaliacao());
         textViewAulaOferecida1.setText(perfil.getInteresses().get(0));
         textViewAulaOferecida2.setText(perfil.getInteresses().get(1));
-        textViewAulaOferecida3.setText(perfil.getInteresses().get(2));
-        textViewAulaOferecida4.setText(perfil.getInteresses().get(3));
-        textViewAulaOferecida5.setText(perfil.getInteresses().get(4));
     }
 
     private void gerarItens() {
-        textViewAulaOferecida1 = (TextView)findViewById(R.id.textViewAulaOferecida1);
+        textViewAulaOferecida1 = (TextView)findViewById(R.id.textViewAulaOferecida2);
         textViewAulaOferecida2 = (TextView)findViewById(R.id.textViewAulaOferecida2);
-        textViewAulaOferecida3 = (TextView)findViewById(R.id.textViewAulaOferecida3);
-        textViewAulaOferecida4 = (TextView)findViewById(R.id.textViewAulaOferecida4);
-        textViewAulaOferecida5 = (TextView)findViewById(R.id.textViewAulaOferecida5);
         textViewRate = (TextView)findViewById(R.id.textViewRate);
         textViewAvaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
         textViewHoras = (TextView)findViewById(R.id.textViewHoras);

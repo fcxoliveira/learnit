@@ -14,8 +14,8 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#7bc8f3"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <ScrollView
         android:id="@+id/ScrollView01"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,42 +33,12 @@
         tools:ignore="ScrollViewSize">
 
         <TextView
-            android:text="Teste123456"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewAulaOferecida1"
-            android:layout_marginTop="13dp"
-            android:layout_below="@+id/textViewAulaOferecida2"
-            android:layout_alignLeft="@+id/textViewAulaOferecida2"
-            android:layout_alignStart="@+id/textViewAulaOferecida2" />
-
-        <TextView android:text="Teste123456"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewAulaOferecida2"
-            android:layout_below="@+id/textViewAulaOferecida4"
-            android:layout_alignLeft="@+id/textViewAulaOferecida4"
-            android:layout_alignStart="@+id/textViewAulaOferecida4"
-            android:layout_marginTop="13dp" />
-
-        <TextView android:text="Teste123456"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewAulaOferecida4"
-            android:layout_marginTop="13dp"
-            android:layout_below="@+id/textViewAulaOferecida3"
-            android:layout_alignLeft="@+id/textViewAulaOferecida3"
-            android:layout_alignStart="@+id/textViewAulaOferecida3" />
-
-        <TextView
             android:text="@string/aulas_oferecidas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="89dp"
             android:id="@+id/textView1"
             android:layout_below="@+id/textViewRate"
-            android:layout_toLeftOf="@+id/textView6"
-            android:layout_toStartOf="@+id/textView6"
             android:layout_marginRight="29dp"
             android:layout_marginEnd="29dp" />
 
@@ -83,15 +53,6 @@
             android:layout_toEndOf="@+id/textViewRate"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp" />
-
-        <TextView android:text="Teste123456"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewAulaOferecida5"
-            android:layout_below="@+id/textViewAulaOferecida1"
-            android:layout_alignLeft="@+id/textViewAulaOferecida1"
-            android:layout_alignStart="@+id/textViewAulaOferecida1"
-            android:layout_marginTop="14dp" />
 
         <TextView android:text="Teste123456"
             android:layout_width="wrap_content"
@@ -125,11 +86,10 @@
         <TextView android:text="Teste123456"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewAulaOferecida3"
+            android:id="@+id/textViewAulaOferecida1"
             android:layout_alignBaseline="@+id/textViewHoras"
             android:layout_alignBottom="@+id/textViewHoras"
-            android:layout_alignLeft="@+id/textView1"
-            android:layout_alignStart="@+id/textView1"
+
             android:layout_marginLeft="11dp"
             android:layout_marginStart="11dp" />
 
@@ -149,6 +109,16 @@
             android:id="@+id/ratingBar2"
             android:layout_below="@+id/textViewNome"
             android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="Teste123456"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewAulaOferecida2"
+            android:layout_marginTop="22dp"
+            android:layout_below="@+id/textViewAulaOferecida1"
+            android:layout_toLeftOf="@+id/textViewNome"
+            android:layout_toStartOf="@+id/textViewNome" />
     </RelativeLayout>
     </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

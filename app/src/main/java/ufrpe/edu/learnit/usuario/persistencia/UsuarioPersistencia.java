@@ -95,6 +95,7 @@ public class UsuarioPersistencia {
             String password = cursor.getString(cursor.getColumnIndex("PASSWORD"));
             cursor.close();
             usuario = preencherDadosUsuario(userName, password, email);
+            usuario.setID(ID);
         } else {
             usuario = null;
         }
