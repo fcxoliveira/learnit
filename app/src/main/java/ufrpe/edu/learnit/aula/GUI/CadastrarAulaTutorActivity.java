@@ -95,7 +95,7 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
     }
 
     public boolean anyTagNot1(ArrayList<Tag> tags) {
-        boolean autorizacao = TagNegocio.anyTagNotIs1(tags);
+        boolean autorizacao = TagNegocio.anyTagNotIsEmpty(tags);
         if (autorizacao) {
             return autorizacao;
         }

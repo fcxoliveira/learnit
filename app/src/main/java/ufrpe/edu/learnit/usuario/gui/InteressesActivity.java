@@ -68,11 +68,11 @@ public class InteressesActivity extends AppCompatActivity {
         return autorizacao;*/
 
     public boolean anyTagNot1(ArrayList<Tag> tags) {
-        boolean autorizacao = TagNegocio.anyTagNotIs1(tags);
+        boolean autorizacao = TagNegocio.anyTagNotIsEmpty(tags);
         if (autorizacao) {
             return autorizacao;
         }
-        Toast.makeText(Session.getContext(), "selecione pelo menos interesse", Toast.LENGTH_LONG).show();
+        Toast.makeText(Session.getContext(), "selecione pelo menos um interesse", Toast.LENGTH_LONG).show();
         return autorizacao;
     }
 

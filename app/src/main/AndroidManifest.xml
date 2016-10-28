@@ -32,7 +32,8 @@
         <activity
             android:name=".usuario.gui.InteressesActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".aula.gui.CadastrarAulaTutorActivity"></activity>
+        <activity android:name=".aula.gui.CadastrarAulaTutorActivity" />
+        <activity android:name=".perfil.gui.EditarPerfil"></activity>
     </application>
 
 </manifest>
