@@ -6,11 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.Spinner;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.gui.CadastrarAulaTutorActivity;
