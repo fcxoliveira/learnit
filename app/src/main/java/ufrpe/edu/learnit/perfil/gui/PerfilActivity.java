@@ -2,6 +2,7 @@ package ufrpe.edu.learnit.perfil.gui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -12,7 +13,7 @@ import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 
 public class PerfilActivity extends AppCompatActivity {
     private TextView textViewAulaOferecida1, textViewAulaOferecida2;
-    private TextView textViewRate, textViewAvaliadores, textViewHoras, textViewNome;
+    private TextView textViewRate, textViewAvaliadores, textViewHoras, textViewNome, textViewBiografia ;
     private RatingBar ratingBar;
 
     @Override
@@ -24,10 +25,12 @@ public class PerfilActivity extends AppCompatActivity {
         Perfil perfil = retornarPerfil(Session.getUsuario().getID());
         String horas = new StringBuilder().append(perfil.getHoras()).toString();
         textViewHoras.setText(horas);
-        textViewRate.setText(String.format("%.01f", perfil.getAvaliacao()));
+        textViewRate.setText(String.format("Nota "+"%.01f" , perfil.getAvaliacao()));
         String avaliadores = new StringBuilder().append(perfil.getAvaliadores()).toString();
-        textViewAvaliadores.setText(avaliadores);
+        textViewAvaliadores.setText("Avaliadores " +avaliadores);
         textViewNome.setText(perfil.getNome());
+        String bio = (perfil.getBio());
+        textViewBiografia.setText(bio);
         ratingBar.setRating(perfil.getAvaliacao());
         textViewAulaOferecida1.setText(perfil.getInteresses().get(0));
         textViewAulaOferecida2.setText(perfil.getInteresses().get(1));
@@ -41,6 +44,7 @@ public class PerfilActivity extends AppCompatActivity {
         textViewHoras = (TextView)findViewById(R.id.textViewHoras);
         textViewNome = (TextView) findViewById(R.id.textViewNome);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
+        textViewBiografia=(TextView) findViewById(R.id.textViewBiografia);
     }
 
     public Perfil retornarPerfil(int id){

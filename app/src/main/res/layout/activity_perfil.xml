@@ -54,6 +54,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp" />
 
+
+
         <TextView android:text="Informatica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,16 +87,7 @@
             android:focusable="false"
             android:isIndicator="true" />
 
-        <TextView android:text="0,0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewRate"
-            android:layout_alignBaseline="@+id/textViewAvaliadores"
-            android:layout_alignBottom="@+id/textViewAvaliadores"
-            android:layout_toRightOf="@+id/textView1"
-            android:layout_toEndOf="@+id/textView1" />
-
-        <TextView android:text="0"
+        <TextView android:text="Avaliadores 0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewAvaliadores"
@@ -122,6 +115,36 @@
             android:layout_below="@+id/textView6"
             android:layout_alignRight="@+id/textViewNome"
             android:layout_alignEnd="@+id/textViewNome" />
+
+        <TextView android:text="Nota 0,0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewRate"
+            android:layout_below="@+id/ratingBar2"
+            android:layout_toRightOf="@+id/textViewAulaOferecida1"
+            android:layout_toEndOf="@+id/textViewAulaOferecida1" />
+
+        <TextView
+            android:text=" Biografia do perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="69dp"
+            android:id="@+id/textViewBiografia"
+            android:textSize="15sp"
+            android:layout_below="@+id/textViewAulaOferecida2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Biografia:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="33dp"
+            android:id="@+id/textView8"
+            android:textSize="15sp"
+            android:layout_alignBottom="@+id/textViewBiografia"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
     </ScrollView>
 </android.support.design.widget.CoordinatorLayout>
