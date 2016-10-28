@@ -2,7 +2,7 @@ package ufrpe.edu.learnit.aula.dominio;
 
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 /**

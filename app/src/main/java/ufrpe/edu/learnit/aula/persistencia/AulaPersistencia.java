@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.Arrays;
 import ufrpe.edu.learnit.aula.dominio.Aula;
-import ufrpe.edu.learnit.aula.dominio.Tag;
+import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;

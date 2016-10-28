@@ -16,9 +16,10 @@ import java.util.Arrays;
 import ufrpe.edu.learnit.R;
 
 
-import ufrpe.edu.learnit.aula.dominio.Tag;
+import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.negocio.TagNegocio;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 
 public class InteressesActivity extends AppCompatActivity {
@@ -66,22 +67,19 @@ public class InteressesActivity extends AppCompatActivity {
         }
         return autorizacao;*/
 
-    public boolean anyTag(ArrayList<Tag> tags){
-        boolean anyTrue = false;
-        for (Tag tag: tags ){
-            if(tag.getID()!=1){
-                anyTrue=true;
-                return anyTrue;
-            }
+    public boolean anyTagNot1(ArrayList<Tag> tags) {
+        boolean autorizacao = TagNegocio.anyTagNotIs1(tags);
+        if (autorizacao) {
+            return autorizacao;
         }
-        Toast.makeText(Session.getContext(), "selecione pelo menos um interesse", Toast.LENGTH_LONG).show();
-        return anyTrue;
+        Toast.makeText(Session.getContext(), "selecione pelo menos interesse", Toast.LENGTH_LONG).show();
+        return autorizacao;
     }
 
     public void confirmar(View v){
         String nome =editTextNome.getText().toString();
         ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
-        if(verificarNome(nome) && anyTag(tags)) {
+        if(verificarNome(nome) && anyTagNot1(tags)) {
             PerfilNegocio perfilNegocio = new PerfilNegocio();
             perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(), tag1.getSelectedItem().toString(), tag2.getSelectedItem().toString());
             chamarHome(v);
