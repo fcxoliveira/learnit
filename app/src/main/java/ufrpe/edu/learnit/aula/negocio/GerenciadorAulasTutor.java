@@ -8,10 +8,8 @@ import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
 
 
 public class GerenciadorAulasTutor {
-    public void cadastrarAula(String titulo, String descricao, int duracao,int idTag1,int idTag2 ,double valor){
+    public void cadastrarAula(String titulo, String descricao, int duracao,Tag tag1,Tag tag2 ,double valor){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        Tag tag1 = aulaPersistencia.retornarTag(idTag1);
-        Tag tag2 = aulaPersistencia.retornarTag(idTag2);
         aulaPersistencia.cadastrarAula(titulo,descricao, duracao,valor,tag1,tag2);
     }
 
