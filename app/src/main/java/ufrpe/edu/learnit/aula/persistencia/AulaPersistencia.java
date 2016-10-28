@@ -37,7 +37,9 @@ public class AulaPersistencia {
         newValues.put("Tag2", tag2ID);
         db.insert("AULAS", null, newValues);
         Aula aula=preencherDadosAula(titulo,descricao,duracao,valor,tag1,tag2);
+        db.close();
         return aula;
+
 
     }
     public Aula preencherDadosAula(String titulo, String descricao, int duracao,double valor,Tag tag1,Tag tag2){

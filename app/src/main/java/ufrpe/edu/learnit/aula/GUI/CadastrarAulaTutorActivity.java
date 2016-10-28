@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Tag;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
@@ -103,7 +101,6 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
             Tag tag2 =(Tag) this.tag2.getSelectedItem();
             gerenciadorAulasTutor.cadastrarAula(nomeAula,descricao,Integer.parseInt(horasDeAula), tag1,tag2,Integer.parseInt(precoHoraAula));
             chamarTelaInicial(v);
-
         }
 }
 }
