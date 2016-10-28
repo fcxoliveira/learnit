@@ -71,4 +71,16 @@ public class PerfilPersistencia {
         return result;
     }
 
+    public void editarPerfil(int id, String bio, String nome, String interesse1, String interesse2){
+        db = dbHelper.getReadableDatabase();
+        StringBuilder sb = new StringBuilder();
+        sb.append(id);
+        String idString = sb.toString();
+        ContentValues newValues = new ContentValues();
+        newValues.put("Bio",bio);
+        newValues.put("Nome",nome);
+        newValues.put("Tag1",interesse1);
+        newValues.put("Tag2",interesse2);
+        db.update("PERFIL",newValues,"where IdPerfil='"+idString+"'",null);
+    }
 }
