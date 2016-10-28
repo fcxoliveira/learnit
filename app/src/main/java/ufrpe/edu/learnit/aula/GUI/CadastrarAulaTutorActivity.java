@@ -9,7 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.aula.dominio.Tag;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
@@ -26,8 +30,9 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_aula);
-        String[] tags = new String[]{"Informatica", "Musica", "Portugues", "Matematica", "Biologia", "Fisica", "Quimica", "Ed. Fisica"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tags);
+        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
+        ArrayList<Tag> tags = gerenciadorAulasTutor.retornarTodasTags();
+        ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,tags);
         tag1 = (Spinner) findViewById(R.id.spinner);
         tag1.setAdapter(adapter);
         tag2 = (Spinner) findViewById(R.id.spinner2);
@@ -94,9 +99,9 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
 
         if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula) ){
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
-            String tag1 = this.tag1.getSelectedItem().toString();
-            String tag2 = this.tag2.getSelectedItem().toString();
-            gerenciadorAulasTutor.cadastrarAula(nomeAula,descricao,Integer.parseInt(horasDeAula),Integer.parseInt(precoHoraAula), tag1,tag2);
+            Tag tag1 =(Tag)this.tag1.getSelectedItem();
+            Tag tag2 =(Tag) this.tag2.getSelectedItem();
+            gerenciadorAulasTutor.cadastrarAula(nomeAula,descricao,Integer.parseInt(horasDeAula), tag1.getID(),tag2.getID(),Integer.parseInt(precoHoraAula));
             chamarTelaInicial(v);
 
         }

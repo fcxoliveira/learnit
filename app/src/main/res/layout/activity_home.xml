@@ -62,6 +62,26 @@
             android:textColor="@android:color/background_light"
             android:onClick="chamarPerfil"/>
 
+        <Button
+            android:text="Cadastrar Aula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/button4"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:onClick="chamarCadastrarAula"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="46dp"
+            android:id="@+id/textView5"
+            android:textSize="27sp" />
+
     </RelativeLayout>
     </ScrollView>
 

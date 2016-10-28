@@ -1,8 +1,5 @@
 package ufrpe.edu.learnit.aula.dominio;
 
-/**
- * Created by Filipe on 27/10/2016.
- */
 
 public class Tag {
     private String titulo;
@@ -21,5 +18,10 @@ public class Tag {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    @Override
+    public String toString() {
+        return getTitulo();
     }
 }

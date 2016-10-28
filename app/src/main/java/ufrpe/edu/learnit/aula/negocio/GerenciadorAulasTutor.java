@@ -6,14 +6,22 @@ import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.dominio.Tag;
 import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
 
-/**
- * Created by silva on 26/10/2016.
- */
 
 public class GerenciadorAulasTutor {
-    public void cadastrarAula(String titulo, String descricao, int duracao,double valor,Tag tag1,Tag tag2){
+    public void cadastrarAula(String titulo, String descricao, int duracao,int idTag1,int idTag2 ,double valor){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        Tag tag1 = aulaPersistencia.retornarTag(idTag1);
+        Tag tag2 = aulaPersistencia.retornarTag(idTag2);
         aulaPersistencia.cadastrarAula(titulo,descricao, duracao,valor,tag1,tag2);
     }
 
+    public ArrayList<Tag> retornarTodasTags(){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        return aulaPersistencia.retornarTodasTags();
+    }
+
+    public int retornarQuantidadeDeAulas(int id){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        return aulaPersistencia.retornarQuantidadeDeAulas(id);
+    }
 }

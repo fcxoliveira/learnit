@@ -10,7 +10,11 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.aula.gui.CadastrarAulaTutorActivity;
+import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
@@ -21,6 +25,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
+        TextView textViewAulas = (TextView)findViewById(R.id.textView5);
+        StringBuilder sb = new StringBuilder();
+        sb.append(gerenciadorAulasTutor.retornarQuantidadeDeAulas(Session.getUsuario().getID()));
+        textViewAulas.setText("Aulas oferecidas por voce: "+sb.toString());
         TextView textView = (TextView)findViewById(R.id.textView2);
         textView.setText("Bem vindo "+ Session.getUsuario().getLogin());
         textView.setVisibility(View.VISIBLE);
@@ -52,6 +61,11 @@ public class HomeActivity extends AppCompatActivity {
 
     public void chamarPerfil(View view){
         Intent secondActivity = new Intent(this, PerfilActivity.class);
+        startActivity(secondActivity);
+    }
+
+    public void chamarCadastrarAula(View view){
+        Intent secondActivity = new Intent(this, CadastrarAulaTutorActivity.class);
         startActivity(secondActivity);
     }
 }

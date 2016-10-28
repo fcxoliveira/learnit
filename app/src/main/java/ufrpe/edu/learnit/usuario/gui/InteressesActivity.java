@@ -9,7 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.aula.dominio.Tag;
+import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 
@@ -22,8 +26,9 @@ public class InteressesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interesses);
-        String[] interesses = new String[]{"Informatica", "Musica", "Portugues", "Matematica", "Biologia", "Fisica", "Quimica", "Ed. Fisica"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, interesses);
+        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
+        ArrayList<Tag> tags = gerenciadorAulasTutor.retornarTodasTags();
+        ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,tags);
         interesse1 = (Spinner) findViewById(R.id.spinner);
         interesse1.setAdapter(adapter);
         interesse2 = (Spinner) findViewById(R.id.spinner2);
