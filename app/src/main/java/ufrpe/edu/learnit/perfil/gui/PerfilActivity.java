@@ -56,7 +56,6 @@ public class PerfilActivity extends AppCompatActivity {
     public void chamarEditarPerfil(View view){
         Intent secondActivity = new Intent(this, EditarPerfil.class);
         startActivity(secondActivity);
-        this.finish();
     }
 
 
