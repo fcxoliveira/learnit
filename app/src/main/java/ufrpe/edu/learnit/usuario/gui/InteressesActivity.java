@@ -20,7 +20,7 @@ import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 public class InteressesActivity extends AppCompatActivity {
     private EditText editTextNome;
     private EditText editTextBio;
-    private Spinner interesse1, interesse2, interesse3, interesse4, interesse5;
+    private Spinner interesse1, interesse2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +33,6 @@ public class InteressesActivity extends AppCompatActivity {
         interesse1.setAdapter(adapter);
         interesse2 = (Spinner) findViewById(R.id.spinner2);
         interesse2.setAdapter(adapter);
-        interesse3 = (Spinner) findViewById(R.id.spinner3);
-        interesse3.setAdapter(adapter);
-        interesse4 = (Spinner) findViewById(R.id.spinner4);
-        interesse4.setAdapter(adapter);
-        interesse5 = (Spinner) findViewById(R.id.spinner5);
-        interesse5.setAdapter(adapter);
         Session.setContext(getApplicationContext());
         editTextNome = (EditText) findViewById(R.id.editText5);
         editTextBio = (EditText) findViewById(R.id.editText4);
@@ -65,7 +59,7 @@ public class InteressesActivity extends AppCompatActivity {
         String nome =editTextNome.getText().toString();
         if(verificarNome(nome)){
             PerfilNegocio perfilNegocio = new PerfilNegocio();
-            perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(), interesse1.getSelectedItem().toString(), interesse2.getSelectedItem().toString(), interesse3.getSelectedItem().toString(), interesse4.getSelectedItem().toString(), interesse5.getSelectedItem().toString());
+            perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(), interesse1.getSelectedItem().toString(), interesse2.getSelectedItem().toString());
             chamarHome(v);
         }
     }

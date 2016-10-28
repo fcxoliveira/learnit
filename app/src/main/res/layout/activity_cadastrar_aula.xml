@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-
     <RelativeLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/activity_interesses"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".usuario.gui.InteressesActivity">
-
+        tools:context=".aula.gui.CadastrarAulaTutorActivity">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -21,104 +19,37 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <TextView
-            android:text="Cadastrar Aula"
+            android:text="Cadastrar aula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            android:textSize="36sp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/textView7"
+            android:textSize="30sp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:textColor="@android:color/background_light" />
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="147dp"
-            android:layout_below="@+id/textView4"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/textInputLayout">
-
-        </android.support.design.widget.TextInputLayout>
-
-
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinner"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/spinner2" />
-
-        <TextView
-            android:text=" Marque as tags que descrevem as suas aulas"
-            android:layout_width="wrap_content"
-            android:id="@+id/textView3"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:textSize="18sp"
-            android:layout_height="20dp" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Nome da aula"
-            android:ems="10"
-            android:id="@+id/editText5"
-            android:layout_marginTop="13dp"
-            android:layout_below="@+id/toolbar"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:hint="Digite aqui as descrições da sua aula"
-            android:id="@+id/editText4"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textInputLayout"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="12dp" />
-
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:id="@+id/spinner"
-            android:layout_below="@+id/textView3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:text="cadastrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button3"
+            android:id="@+id/button5"
             android:background="#7bc8f3"
             android:textColor="@android:color/background_light"
             android:onClick="cadastrarAulaTutor"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="500dp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:hint="Digite aqui as descrições da sua aula"
+            android:id="@+id/editText4"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/editText11"
-            android:hint="Preço por hora/aula"
-            android:layout_below="@+id/spinner2"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="55dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/editText5"
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -127,12 +58,61 @@
             android:ems="10"
             android:id="@+id/editText12"
             android:hint="Horas de aula fornecidas"
-            android:layout_below="@+id/textInputLayout"
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/editText4"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="16dp"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Nome da aula"
+            android:id="@+id/editText5"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText11"
+            android:hint="Preço por hora/aula"
+            android:layout_marginBottom="92dp"
+            android:layout_alignBottom="@+id/button5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Tags de aula"
+            android:layout_width="wrap_content"
+            android:id="@+id/textView3"
+            android:textSize="18sp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/editText12"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner2"
+            android:layout_marginBottom="29dp"
+            android:layout_above="@+id/editText11"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:layout_marginBottom="12dp"
+            android:layout_above="@+id/spinner2"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
-</ScrollView>
+    </ScrollView>
