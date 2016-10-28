@@ -8,12 +8,16 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.aula.dominio.Tag;
+import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.negocio.TagNegocio;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class CadastrarAulaTutorActivity extends AppCompatActivity {
@@ -89,13 +93,24 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         }
         return autorizacao;
     }
+
+    public boolean anyTagNot1(ArrayList<Tag> tags) {
+        boolean autorizacao = TagNegocio.anyTagNotIs1(tags);
+        if (autorizacao) {
+            return autorizacao;
+        }
+        Toast.makeText(Session.getContext(), "selecione pelo menos uma tag para aula", Toast.LENGTH_LONG).show();
+        return autorizacao;
+    }
+
     public void cadastrarAulaTutor(View v){
         String nomeAula = editTextNomeAula.getText().toString();
         String descricao = editTextDescricao.getText().toString();
         String horasDeAula = editTextHorasDeAula.getText().toString();
         String precoHoraAula = editTextPrecoHoraAula.getText().toString();
+        ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
 
-        if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula) ){
+        if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula) && anyTagNot1(tags)){
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
             Tag tag1 =(Tag)this.tag1.getSelectedItem();
             Tag tag2 =(Tag) this.tag2.getSelectedItem();
