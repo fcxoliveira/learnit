@@ -21,7 +21,7 @@ public class PerfilPersistencia {
         dbHelper = new DataBaseHelper(context, null);
     }
 
-    public void cadastrarPerfil(int id, String bio, String nome, String interesse1, String interesse2){
+    public void cadastrarPerfil(int id, String bio, String nome, String interesse1, String interesse2, String interesse3, String interesse4, String interesse5){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("IdPerfil", id);
@@ -33,6 +33,9 @@ public class PerfilPersistencia {
         newValues.put("Horas", 0);
         newValues.put("Interesse1",interesse1);
         newValues.put("Interesse2",interesse2);
+        newValues.put("Interesse3",interesse3);
+        newValues.put("Interesse4",interesse4);
+        newValues.put("Interesse5",interesse5);
         db.insert("PERFIL", null, newValues);
         db.close();
     }
@@ -56,6 +59,9 @@ public class PerfilPersistencia {
             int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
             String interesse1= cursor.getString(cursor.getColumnIndex("Interesse1"));
             String interesse2= cursor.getString(cursor.getColumnIndex("Interesse2"));
+            String interesse3= cursor.getString(cursor.getColumnIndex("Interesse3"));
+            String interesse4= cursor.getString(cursor.getColumnIndex("Interesse4"));
+            String interesse5= cursor.getString(cursor.getColumnIndex("Interesse5"));
             result.setAvaliacao(avaliacao);
             result.setBio(bio);
             result.setMoedas(moedas);
@@ -63,6 +69,9 @@ public class PerfilPersistencia {
             ArrayList<String> interesses = new ArrayList<String>();
             interesses.add(interesse1);
             interesses.add(interesse2);
+            interesses.add(interesse3);
+            interesses.add(interesse4);
+            interesses.add(interesse5);
             result.setInteresses(interesses);
             result.setHoras(horas);
             result.setAvaliadores(avaliadores);
