@@ -20,32 +20,32 @@
             android:background="#7bc8f3"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <TextView
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="0dp"
-                android:id="@+id/textView2"
-                android:textSize="31sp"
-                android:visibility="invisible"
-                android:textColor="@android:color/background_light" />
+        <TextView
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:id="@+id/textView2"
+            android:textSize="31sp"
+            android:visibility="invisible"
+            android:textColor="@android:color/background_light" />
 
-            <Button
-                android:text="Fazer Logoff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button2"
-                android:background="#7bc8f3"
-                android:layout_marginBottom="24dp"
-                android:textColor="@android:color/background_light"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:onClick="fazerLogoff"/>
+        <Button
+            android:text="Fazer Logoff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2"
+            android:background="#7bc8f3"
+            android:layout_marginBottom="24dp"
+            android:textColor="@android:color/background_light"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="fazerLogoff"/>
 
         <Button
             android:text="MEU PERFIL"
@@ -83,5 +83,4 @@
             android:textSize="27sp" />
 
     </RelativeLayout>
-    </ScrollView>
-
+</ScrollView>
