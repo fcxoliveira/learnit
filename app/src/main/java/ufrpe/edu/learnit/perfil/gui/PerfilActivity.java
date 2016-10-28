@@ -1,5 +1,6 @@
 package ufrpe.edu.learnit.perfil.gui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -52,6 +53,11 @@ public class PerfilActivity extends AppCompatActivity {
         return perfilNegocio.retornarPerfil(id);
     }
 
+    public void chamarEditarPerfil(View view){
+        Intent secondActivity = new Intent(this, EditarPerfil.class);
+        startActivity(secondActivity);
+        this.finish();
+    }
 
 
 }
