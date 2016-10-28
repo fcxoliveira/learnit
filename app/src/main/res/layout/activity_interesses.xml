@@ -40,17 +40,6 @@
 
             </android.support.design.widget.TextInputLayout>
 
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="149dp"
-                android:hint="Digite aqui a sua bio"
-                android:id="@+id/editText4"
-                android:layout_marginTop="63dp"
-                android:layout_alignTop="@+id/editText5"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-            android:layout_alignBottom="@+id/textInputLayout" />
-
 
         <Spinner
                 android:layout_width="match_parent"
@@ -59,21 +48,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:id="@+id/spinner2" />
-
-        <Button
-            android:text="Confirmar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button3"
-            android:background="#7bc8f3"
-            android:textColor="@android:color/background_light"
-            android:layout_below="@id/spinner2"
-            android:layout_marginTop="220dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:onClick="confirmar"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -95,14 +69,38 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="149dp"
+                android:hint="Digite aqui a sua bio"
+                android:id="@+id/editText4"
+            android:layout_below="@+id/editText5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
         <TextView
             android:text="Selecionar interesses:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView3"
-            android:layout_below="@+id/textInputLayout"
+            android:layout_below="@+id/editText4"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="24dp" />
+
+        <Button
+            android:text="Confirmar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:onClick="confirmar"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 </ScrollView>
