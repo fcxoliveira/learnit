@@ -17,7 +17,6 @@ public class SessionPersistencia {
         context = Session.getContext();
         dbHelper = new DataBaseHelper(context, null);
         db = dbHelper.getWritableDatabase();
-        dbHelper.onCreate(db);
     }
 
     public int idLogado(){

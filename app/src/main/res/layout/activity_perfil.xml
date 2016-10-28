@@ -33,7 +33,7 @@
         tools:ignore="ScrollViewSize">
 
         <TextView
-            android:text="@string/aulas_oferecidas"
+            android:text="Seus interesses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="89dp"
