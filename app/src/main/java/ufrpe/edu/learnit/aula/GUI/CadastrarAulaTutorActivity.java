@@ -14,7 +14,7 @@ import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
-public class CadastrarAulaActivity extends AppCompatActivity {
+public class CadastrarAulaTutorActivity extends AppCompatActivity {
 
     private EditText editTextNomeAula;
     private EditText editTextDescricao;

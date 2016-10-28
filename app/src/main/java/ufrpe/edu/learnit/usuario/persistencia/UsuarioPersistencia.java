@@ -21,7 +21,7 @@ public class UsuarioPersistencia {
     }
 
 
-    public Usuario inserirUsuario(String login, String senha, String email){
+    public Usuario cadastrarUsuario(String login, String senha, String email){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("Username", login);

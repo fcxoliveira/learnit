@@ -1,7 +1,5 @@
 package ufrpe.edu.learnit.usuario.negocio;
 
-import android.content.Context;
-
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
@@ -16,7 +14,7 @@ public class UsuarioNegocio {
         UsuarioPersistencia persistencia = new UsuarioPersistencia();
         Usuario usuario;
         if(!persistencia.existeUsuario(login,email)){
-            usuario = persistencia.inserirUsuario(login, senha, email);
+            usuario = persistencia.cadastrarUsuario(login, senha, email);
         }else{
             usuario = null;
         }

@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
             Session.setUsuario(usuarioLogado);
             View v = new View(Session.getContext());
             chamarTelaInicial(v);
-            this.finish();
         }
         setContentView(R.layout.activity_login);
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
@@ -46,11 +45,13 @@ public class LoginActivity extends AppCompatActivity {
     public void chamarTelaCadastro(View view){
         Intent secondActivity = new Intent(this, RegisterActivity.class);
         startActivity(secondActivity);
+        this.finish();
     }
 
     public void chamarTelaInicial(View view){
         Intent secondActivity = new Intent(this, HomeActivity.class);
         startActivity(secondActivity);
+        this.finish();
     }
 
     public boolean verificarLogin(String login){
@@ -97,7 +98,6 @@ public class LoginActivity extends AppCompatActivity {
                 SessionNegocio sessionNegocio = new SessionNegocio();
                 sessionNegocio.cadastrarUsuarioLogado(usuario);
                 chamarTelaInicial(v);
-                this.finish();
             }
         }
     }
