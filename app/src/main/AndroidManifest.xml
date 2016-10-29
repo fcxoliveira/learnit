@@ -33,7 +33,7 @@
             android:name=".usuario.gui.InteressesActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".aula.gui.CadastrarAulaTutorActivity" />
-        <activity android:name=".perfil.gui.EditarPerfil"></activity>
+        <activity android:name=".perfil.gui.EditarPerfilActivity"></activity>
     </application>
 
 </manifest>

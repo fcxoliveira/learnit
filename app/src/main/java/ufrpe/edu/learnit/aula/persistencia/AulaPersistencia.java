@@ -64,30 +64,6 @@ public class AulaPersistencia {
         return aula;
     }
 
-    public ArrayList<Tag> retornarTodasTags(){
-        db=dbHelper.getReadableDatabase();
-        ArrayList<Tag> tags = new ArrayList<>();
-        Cursor cursor=db.query("TAGS",new String[]{"*"}, null, null,null ,null, null);
-        while (cursor.moveToNext()){
-            Tag tag = new Tag();
-            tag.setID(cursor.getInt(cursor.getColumnIndex("Id")));
-            tag.setTitulo(cursor.getString(cursor.getColumnIndex("Tag")));
-            tags.add(tag);
-        }
-        db.close();
-        return tags;
-    }
-
-    public Tag retornarTag(int id){
-        db=dbHelper.getReadableDatabase();
-        Tag tag = new Tag();
-        StringBuilder sb = new StringBuilder();
-        sb.append(id);
-        Cursor cursor=db.query("TAGS",new String[]{"*"},"Id = ?",new String[]{sb.toString()},null ,null, null);
-        cursor.moveToFirst();
-        db.close();
-        return tag;
-    }
 
     public int retornarQuantidadeDeAulas(int id){
         db=dbHelper.getReadableDatabase();

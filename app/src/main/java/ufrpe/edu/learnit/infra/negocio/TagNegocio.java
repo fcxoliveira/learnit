@@ -3,6 +3,7 @@ package ufrpe.edu.learnit.infra.negocio;
 import java.util.ArrayList;
 
 import ufrpe.edu.learnit.infra.dominio.Tag;
+import ufrpe.edu.learnit.infra.persistencia.TagPersistencia;
 
 /**
  * Created by joel_ on 28/10/2016.
@@ -19,5 +20,9 @@ public class TagNegocio {
             }
         }
         return anyTrue;
+    }
+    public ArrayList<Tag> retornarTodasTags(){
+       TagPersistencia tagPersistencia = new TagPersistencia();
+        return tagPersistencia.retornarTodasTags();
     }
 }

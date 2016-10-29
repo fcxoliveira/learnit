@@ -32,8 +32,8 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_aula);
-        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
-        ArrayList<Tag> tags = gerenciadorAulasTutor.retornarTodasTags();
+        ufrpe.edu.learnit.infra.persistencia.TagNegocio tagNegocio = new ufrpe.edu.learnit.infra.persistencia.TagNegocio();
+        ArrayList<Tag> tags = tagNegocio.retornarTodasTags();
         ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,tags);
         tag1 = (Spinner) findViewById(R.id.spinner);
         tag1.setAdapter(adapter);

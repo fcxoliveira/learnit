@@ -17,7 +17,6 @@ import ufrpe.edu.learnit.R;
 
 
 import ufrpe.edu.learnit.infra.dominio.Tag;
-import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.negocio.TagNegocio;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
@@ -31,8 +30,8 @@ public class InteressesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interesses);
-        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
-        ArrayList<Tag> tags = gerenciadorAulasTutor.retornarTodasTags();
+        TagNegocio tagNegocio = new TagNegocio();
+        ArrayList<Tag> tags = tagNegocio.retornarTodasTags();
         ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,tags);
         tag1 = (Spinner) findViewById(R.id.spinner);
         tag1.setAdapter(adapter);
@@ -68,7 +67,7 @@ public class InteressesActivity extends AppCompatActivity {
         return autorizacao;*/
 
     public boolean anyTagNot1(ArrayList<Tag> tags) {
-        boolean autorizacao = TagNegocio.anyTagNotIsEmpty(tags);
+        boolean autorizacao = ufrpe.edu.learnit.infra.negocio.TagNegocio.anyTagNotIsEmpty(tags);
         if (autorizacao) {
             return autorizacao;
         }
