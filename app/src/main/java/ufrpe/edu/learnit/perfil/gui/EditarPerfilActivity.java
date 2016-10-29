@@ -1,12 +1,19 @@
 package ufrpe.edu.learnit.perfil.gui;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -45,4 +52,52 @@ public class EditarPerfilActivity extends AppCompatActivity {
         editTextBio.setText(perfil.getBio());
 
     }
+    public boolean verificarNome(String nome) {
+        boolean autorizacao = false;
+        if (TextUtils.isEmpty(nome)) {
+            editTextNome.requestFocus();
+            editTextNome.setError("nome é um campo necessario");
+        } else {
+            autorizacao = true;
+        }
+        return autorizacao;
+    }
+
+    public boolean anyTagNotIsEmpty(ArrayList<Tag> tags) {
+        boolean autorizacao = ufrpe.edu.learnit.infra.negocio.TagNegocio.anyTagNotIsEmpty(tags);
+        if (autorizacao) {
+            return autorizacao;
+        }
+        Toast.makeText(Session.getContext(), "selecione pelo menos um interesse", Toast.LENGTH_LONG).show();
+        return autorizacao;
+    }
+    public void chamarPerfil(View view) {
+        Intent secondActivity = new Intent(this, PerfilActivity.class);
+        startActivity(secondActivity);
+        this.finish();
+    }
+
+    public void confirmar(View v){
+        String nome =editTextNome.getText().toString();
+        ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
+        if(verificarNome(nome) && anyTagNotIsEmpty(tags)) {
+            PerfilNegocio perfilNegocio = new PerfilNegocio();
+            perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(),(Tag) tag1.getSelectedItem(),(Tag)tag2.getSelectedItem());
+            chamarPerfil(v);
+        }
+    }
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                EditarPerfilActivity.super.finish();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 }
+

@@ -58,15 +58,8 @@ public class InteressesActivity extends AppCompatActivity {
         }
         return autorizacao;
     }
-    /*public boolean verificarIdTag( Spinner spinner){
-        boolean autorizacao = false;
-        Tag tag= (Tag) spinner.getSelectedItem();
-        if(tag.getID()!=0){
-            autorizacao = true;
-        }
-        return autorizacao;*/
 
-    public boolean anyTagNot1(ArrayList<Tag> tags) {
+    public boolean anyTagNotIsEmpty(ArrayList<Tag> tags) {
         boolean autorizacao = ufrpe.edu.learnit.infra.negocio.TagNegocio.anyTagNotIsEmpty(tags);
         if (autorizacao) {
             return autorizacao;
@@ -78,7 +71,7 @@ public class InteressesActivity extends AppCompatActivity {
     public void confirmar(View v){
         String nome =editTextNome.getText().toString();
         ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
-        if(verificarNome(nome) && anyTagNot1(tags)) {
+        if(verificarNome(nome) && anyTagNotIsEmpty(tags)) {
             PerfilNegocio perfilNegocio = new PerfilNegocio();
             perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(),(Tag) tag1.getSelectedItem(),(Tag)tag2.getSelectedItem());
             chamarHome(v);

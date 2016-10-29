@@ -94,7 +94,7 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         return autorizacao;
     }
 
-    public boolean anyTagNot1(ArrayList<Tag> tags) {
+    public boolean anyTagNotIsEmpty(ArrayList<Tag> tags) {
         boolean autorizacao = TagNegocio.anyTagNotIsEmpty(tags);
         if (autorizacao) {
             return autorizacao;
@@ -110,7 +110,7 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         String precoHoraAula = editTextPrecoHoraAula.getText().toString();
         ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
 
-        if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula) && anyTagNot1(tags)){
+        if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula) && anyTagNotIsEmpty(tags)){
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
             Tag tag1 =(Tag)this.tag1.getSelectedItem();
             Tag tag2 =(Tag) this.tag2.getSelectedItem();
