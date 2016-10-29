@@ -77,7 +77,7 @@ public class PerfilPersistencia {
         return result;
     }
 
-    public void editarPerfil(int id, String bio, String nome, String interesse1, String interesse2){
+    public void editarPerfil(int id, String bio, String nome, Tag interesse1, Tag interesse2){
         db = dbHelper.getReadableDatabase();
         StringBuilder sb = new StringBuilder();
         sb.append(id);
@@ -85,8 +85,8 @@ public class PerfilPersistencia {
         ContentValues newValues = new ContentValues();
         newValues.put("Bio",bio);
         newValues.put("Nome",nome);
-        newValues.put("Tag1",interesse1);
-        newValues.put("Tag2",interesse2);
-        db.update("PERFIL",newValues,"where IdPerfil='"+idString+"'",null);
+        newValues.put("Interesse1",interesse1.getTitulo());
+        newValues.put("Interesse2",interesse2.getTitulo());
+        db.update("PERFIL",newValues,"IdPerfil='"+idString+"'",null);
     }
 }

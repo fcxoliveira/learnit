@@ -82,21 +82,15 @@ public class EditarPerfilActivity extends AppCompatActivity {
         ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
         if(verificarNome(nome) && anyTagNotIsEmpty(tags)) {
             PerfilNegocio perfilNegocio = new PerfilNegocio();
-            perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(),(Tag) tag1.getSelectedItem(),(Tag)tag2.getSelectedItem());
+            perfilNegocio.editarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(),(Tag) tag1.getSelectedItem(),(Tag)tag2.getSelectedItem());
             chamarPerfil(v);
         }
     }
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                EditarPerfilActivity.super.finish();
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
+        Intent activity = new Intent(this,PerfilActivity.class);
+        startActivity(activity);
+        this.finish();
     }
 
 }

@@ -15,4 +15,10 @@ public class PerfilNegocio {
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         perfilPersistencia.cadastrarPerfil(id,bio,nome,interesse1,interesse2);
     }
+
+    public void editarPerfil(int id, String bio, String nome, Tag interesse1, Tag interesse2){
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        perfilPersistencia.editarPerfil(id,bio,nome,interesse1,interesse2);
+    }
+
 }
