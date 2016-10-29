@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 
@@ -33,8 +36,9 @@ public class PerfilActivity extends AppCompatActivity {
         String bio = (perfil.getBio());
         textViewBiografia.setText(bio);
         ratingBar.setRating(perfil.getAvaliacao());
-        textViewAulaOferecida1.setText(perfil.getInteresses().get(0).getTitulo());
-        textViewAulaOferecida2.setText(perfil.getInteresses().get(1).getTitulo());
+        ArrayList <Tag> interesses = perfil.getInteresses();
+        textViewAulaOferecida1.setText(interesses.get(0).getTitulo());
+        textViewAulaOferecida2.setText(interesses.get(1).getTitulo());
     }
 
     private void gerarItens() {

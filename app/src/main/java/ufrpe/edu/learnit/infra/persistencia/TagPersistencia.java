@@ -47,6 +47,8 @@ public class TagPersistencia {
         sb.append(id);
         Cursor cursor=db.query("TAGS",new String[]{"*"},"Id = ?",new String[]{sb.toString()},null ,null, null);
         cursor.moveToFirst();
+        tag.setID(cursor.getInt(cursor.getColumnIndex("Id")));
+        tag.setTitulo(cursor.getString(cursor.getColumnIndex("Tag")));
         db.close();
         return tag;
     }
