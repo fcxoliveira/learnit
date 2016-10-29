@@ -45,7 +45,8 @@ public class TagPersistencia {
         Tag tag = new Tag();
         StringBuilder sb = new StringBuilder();
         sb.append(id);
-        Cursor cursor=db.query("TAGS",new String[]{"*"},null,new String[]{sb.toString()},null ,null, null);
+        Cursor cursor=db.query("TAGS",new String[]{"*"},"Id=?",new String[]{sb.toString()},null ,null, null);
+        Boolean b = cursor.moveToFirst();
         tag.setID(cursor.getInt(cursor.getColumnIndex("Id")));
         tag.setTitulo(cursor.getString(cursor.getColumnIndex("Tag")));
         db.close();

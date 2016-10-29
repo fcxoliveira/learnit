@@ -85,8 +85,8 @@ public class PerfilPersistencia {
         ContentValues newValues = new ContentValues();
         newValues.put("Bio",bio);
         newValues.put("Nome",nome);
-        newValues.put("Interesse1",interesse1.getTitulo());
-        newValues.put("Interesse2",interesse2.getTitulo());
+        newValues.put("Interesse1",interesse1.getID());
+        newValues.put("Interesse2",interesse2.getID());
         db.update("PERFIL",newValues,"IdPerfil='"+idString+"'",null);
     }
 }
