@@ -32,7 +32,7 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_aula);
-        ufrpe.edu.learnit.infra.persistencia.TagNegocio tagNegocio = new ufrpe.edu.learnit.infra.persistencia.TagNegocio();
+        TagNegocio tagNegocio = new TagNegocio();
         ArrayList<Tag> tags = tagNegocio.retornarTodasTags();
         ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,tags);
         tag1 = (Spinner) findViewById(R.id.spinner);

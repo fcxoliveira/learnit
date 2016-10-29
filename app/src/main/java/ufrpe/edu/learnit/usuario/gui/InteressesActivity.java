@@ -80,7 +80,7 @@ public class InteressesActivity extends AppCompatActivity {
         ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
         if(verificarNome(nome) && anyTagNot1(tags)) {
             PerfilNegocio perfilNegocio = new PerfilNegocio();
-            perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(), tag1.getSelectedItem().toString(), tag2.getSelectedItem().toString());
+            perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(),(Tag) tag1.getSelectedItem(),(Tag)tag2.getSelectedItem());
             chamarHome(v);
         }
     }

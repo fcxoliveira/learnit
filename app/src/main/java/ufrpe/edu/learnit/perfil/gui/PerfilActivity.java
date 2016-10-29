@@ -33,8 +33,8 @@ public class PerfilActivity extends AppCompatActivity {
         String bio = (perfil.getBio());
         textViewBiografia.setText(bio);
         ratingBar.setRating(perfil.getAvaliacao());
-        textViewAulaOferecida1.setText(perfil.getInteresses().get(0));
-        textViewAulaOferecida2.setText(perfil.getInteresses().get(1));
+        textViewAulaOferecida1.setText(perfil.getInteresses().get(0).getTitulo());
+        textViewAulaOferecida2.setText(perfil.getInteresses().get(1).getTitulo());
     }
 
     private void gerarItens() {
