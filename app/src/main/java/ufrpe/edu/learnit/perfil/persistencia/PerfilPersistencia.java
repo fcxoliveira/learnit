@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.dominio.Tag;
+import ufrpe.edu.learnit.infra.persistencia.TagPersistencia;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 public class PerfilPersistencia {
@@ -21,7 +23,7 @@ public class PerfilPersistencia {
         dbHelper = new DataBaseHelper(context, null);
     }
 
-    public void cadastrarPerfil(int id, String bio, String nome, String interesse1, String interesse2){
+    public void cadastrarPerfil(int id, String bio, String nome, Tag interesse1, Tag interesse2){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("IdPerfil", id);
@@ -31,8 +33,8 @@ public class PerfilPersistencia {
         newValues.put("Avaliadores", 0);
         newValues.put("Avaliacao", 0);
         newValues.put("Horas", 0);
-        newValues.put("Interesse1",interesse1);
-        newValues.put("Interesse2",interesse2);
+        newValues.put("Interesse1", interesse1.getID());
+        newValues.put("Interesse2", interesse2.getID());
         db.insert("PERFIL", null, newValues);
         db.close();
     }
@@ -54,19 +56,23 @@ public class PerfilPersistencia {
             int avaliadores = cursor.getInt(cursor.getColumnIndex("Avaliadores"));
             float avaliacao = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
             int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
-            String interesse1= cursor.getString(cursor.getColumnIndex("Interesse1"));
-            String interesse2= cursor.getString(cursor.getColumnIndex("Interesse2"));
+            int interesse1= cursor.getInt(cursor.getColumnIndex("Interesse1"));
+            int interesse2= cursor.getInt(cursor.getColumnIndex("Interesse2"));
             result.setAvaliacao(avaliacao);
             result.setBio(bio);
             result.setMoedas(moedas);
             result.setNome(nome);
-            ArrayList<String> interesses = new ArrayList<String>();
-            interesses.add(interesse1);
-            interesses.add(interesse2);
+            ArrayList<Tag> interesses = new ArrayList<Tag>();
+            TagPersistencia tagPersistencia = new TagPersistencia();
+            Tag tag1 = tagPersistencia.retornarTag(interesse1);
+            Tag tag2 = tagPersistencia.retornarTag(interesse2);
+            interesses.add(tag1);
+            interesses.add(tag2);
             result.setInteresses(interesses);
             result.setHoras(horas);
             result.setAvaliadores(avaliadores);
             db.close();
+
         }
         return result;
     }
