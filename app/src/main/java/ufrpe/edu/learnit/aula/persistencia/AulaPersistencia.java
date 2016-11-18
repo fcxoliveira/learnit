@@ -73,13 +73,23 @@ public class AulaPersistencia {
         return cursor.getCount();
     }
 
-    public void editarAula(String titulo, String descricao, int duracao,double valor,Tag tag1,Tag tag2){
+    public void editarAula(int id,String titulo, String descricao, int duracao,double valor,Tag tag1,Tag tag2){
         db = dbHelper.getReadableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("Descricao",descricao);
-        newValues.put("Titul",titulo);
+        newValues.put("Titulo",titulo);
         newValues.put("Tag1",tag1.getID());
         newValues.put("Tag2",tag2.getID());
-        db.update("PERFIL",newValues,"IdPerfil='"+"'",null);
+        newValues.put("Horas",duracao);
+        newValues.put("Valor",valor);
+        StringBuilder sb = new StringBuilder();
+        sb.append(Session.getUsuario().getID());
+        String idPerfilString=sb.toString();
+        newValues.put("IdPerfil",idPerfilString);
+        StringBuilder sbid = new StringBuilder();
+        sbid.append(Session.getUsuario().getID());
+        String idString=sbid.toString();
+        newValues.put("Id",idString);
+        db.update("",newValues,"Id='"+idString+"'",null);
     }
 }
