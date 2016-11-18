@@ -72,4 +72,14 @@ public class AulaPersistencia {
         Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil = ?",new String[]{sb.toString()},null ,null, null);
         return cursor.getCount();
     }
+
+    public void editarAula(String titulo, String descricao, int duracao,double valor,Tag tag1,Tag tag2){
+        db = dbHelper.getReadableDatabase();
+        ContentValues newValues = new ContentValues();
+        newValues.put("Descricao",descricao);
+        newValues.put("Titul",titulo);
+        newValues.put("Tag1",tag1.getID());
+        newValues.put("Tag2",tag2.getID());
+        db.update("PERFIL",newValues,"IdPerfil='"+"'",null);
+    }
 }
