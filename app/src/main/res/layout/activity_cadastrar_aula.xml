@@ -34,13 +34,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/button5"
             android:background="#7bc8f3"
+            android:layout_below="@+id/editText11"
             android:textColor="@android:color/background_light"
             android:onClick="cadastrarAulaTutor"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="500dp" />
+            />
 
         <EditText
             android:layout_width="match_parent"
@@ -81,9 +82,8 @@
             android:ems="10"
             android:id="@+id/editText11"
             android:hint="Preço por hora/aula"
-            android:layout_marginBottom="92dp"
-            android:layout_alignBottom="@+id/button5"
             android:layout_alignParentLeft="true"
+            android:layout_below="@+id/spinner2"
             android:layout_alignParentStart="true" />
 
         <TextView
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/spinner2"
             android:layout_marginBottom="29dp"
-            android:layout_above="@+id/editText11"
+            android:layout_below="@+id/spinner"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/spinner"
             android:layout_marginBottom="12dp"
-            android:layout_above="@+id/spinner2"
+            android:layout_below="@+id/textView3"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 

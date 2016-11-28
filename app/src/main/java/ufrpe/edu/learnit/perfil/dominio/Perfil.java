@@ -4,13 +4,14 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import ufrpe.edu.learnit.aula.dominio.Aula;
+import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 
 public class Perfil {
     private String bio;
     private String nome;
     private int moedas;
-    private ArrayList<String> interesses;
+    private ArrayList<Tag> interesses;
     private float avaliacao;
     private int horas;
     private int avaliadores;
@@ -62,11 +63,11 @@ public class Perfil {
         this.moedas = moedas;
     }
 
-    public ArrayList<String> getInteresses() {
+    public ArrayList<Tag> getInteresses() {
         return interesses;
     }
 
-    public void setInteresses(ArrayList<String> interesses) {
+    public void setInteresses(ArrayList<Tag> interesses) {
         this.interesses = interesses;
     }
 

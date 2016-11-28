@@ -1,13 +1,18 @@
 package ufrpe.edu.learnit.perfil.gui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 
@@ -32,8 +37,12 @@ public class PerfilActivity extends AppCompatActivity {
         String bio = (perfil.getBio());
         textViewBiografia.setText(bio);
         ratingBar.setRating(perfil.getAvaliacao());
-        textViewAulaOferecida1.setText(perfil.getInteresses().get(0));
-        textViewAulaOferecida2.setText(perfil.getInteresses().get(1));
+        ArrayList <Tag> interesses = perfil.getInteresses();
+        Tag interesse1 = interesses.get(0);
+        Tag interesse2 = interesses.get(1);
+        if (verificarTag(interesse1)){textViewAulaOferecida1.setText(interesse1.getTitulo());}else{textViewAulaOferecida1.setText("        ");}
+        if (verificarTag(interesse2)){textViewAulaOferecida2.setText(interesse2.getTitulo());}else{textViewAulaOferecida2.setText("        ");}
+
     }
 
     private void gerarItens() {
@@ -52,6 +61,18 @@ public class PerfilActivity extends AppCompatActivity {
         return perfilNegocio.retornarPerfil(id);
     }
 
+    public void chamarEditarPerfil(View view){
+        Intent secondActivity = new Intent(this, EditarPerfilActivity.class);
+        startActivity(secondActivity);
+        this.finish();
+    }
 
+    public boolean verificarTag(Tag tag){
+        Boolean result = true;
+        if(tag.getID()==1){
+            result = false;
+        }
+        return result;
+    }
 
 }

@@ -64,30 +64,6 @@ public class AulaPersistencia {
         return aula;
     }
 
-    public ArrayList<Tag> retornarTodasTags(){
-        db=dbHelper.getReadableDatabase();
-        ArrayList<Tag> tags = new ArrayList<>();
-        Cursor cursor=db.query("TAGS",new String[]{"*"}, null, null,null ,null, null);
-        while (cursor.moveToNext()){
-            Tag tag = new Tag();
-            tag.setID(cursor.getInt(cursor.getColumnIndex("Id")));
-            tag.setTitulo(cursor.getString(cursor.getColumnIndex("Tag")));
-            tags.add(tag);
-        }
-        db.close();
-        return tags;
-    }
-
-    public Tag retornarTag(int id){
-        db=dbHelper.getReadableDatabase();
-        Tag tag = new Tag();
-        StringBuilder sb = new StringBuilder();
-        sb.append(id);
-        Cursor cursor=db.query("TAGS",new String[]{"*"},"Id = ?",new String[]{sb.toString()},null ,null, null);
-        cursor.moveToFirst();
-        db.close();
-        return tag;
-    }
 
     public int retornarQuantidadeDeAulas(int id){
         db=dbHelper.getReadableDatabase();
@@ -95,5 +71,25 @@ public class AulaPersistencia {
         sb.append(id);
         Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil = ?",new String[]{sb.toString()},null ,null, null);
         return cursor.getCount();
+    }
+
+    public void editarAula(int id,String titulo, String descricao, int duracao,double valor,Tag tag1,Tag tag2){
+        db = dbHelper.getReadableDatabase();
+        ContentValues newValues = new ContentValues();
+        newValues.put("Descricao",descricao);
+        newValues.put("Titulo",titulo);
+        newValues.put("Tag1",tag1.getID());
+        newValues.put("Tag2",tag2.getID());
+        newValues.put("Horas",duracao);
+        newValues.put("Valor",valor);
+        StringBuilder sb = new StringBuilder();
+        sb.append(Session.getUsuario().getID());
+        String idPerfilString=sb.toString();
+        newValues.put("IdPerfil",idPerfilString);
+        StringBuilder sbid = new StringBuilder();
+        sbid.append(Session.getUsuario().getID());
+        String idString=sbid.toString();
+        newValues.put("Id",idString);
+        db.update("",newValues,"Id='"+idString+"'",null);
     }
 }

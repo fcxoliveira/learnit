@@ -1,5 +1,6 @@
 package ufrpe.edu.learnit.perfil.negocio;
 
+import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
 
@@ -10,8 +11,14 @@ public class PerfilNegocio {
         return perfilPersistencia.retornarPerfil(id);
     }
 
-    public void cadastrarPerfil(int id, String bio, String nome, String interesse1, String interesse2, String interesse3, String interesse4, String interesse5){
+    public void cadastrarPerfil(int id, String bio, String nome, Tag interesse1, Tag interesse2){
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        perfilPersistencia.cadastrarPerfil(id,bio,nome,interesse1,interesse2, interesse3, interesse4, interesse5);
+        perfilPersistencia.cadastrarPerfil(id,bio,nome,interesse1,interesse2);
     }
+
+    public void editarPerfil(int id, String bio, String nome, Tag interesse1, Tag interesse2){
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        perfilPersistencia.editarPerfil(id,bio,nome,interesse1,interesse2);
+    }
+
 }

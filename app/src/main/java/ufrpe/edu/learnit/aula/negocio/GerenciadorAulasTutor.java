@@ -12,10 +12,6 @@ public class GerenciadorAulasTutor {
         aulaPersistencia.cadastrarAula(titulo,descricao, duracao,valor,tag1,tag2);
     }
 
-    public ArrayList<Tag> retornarTodasTags(){
-        AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        return aulaPersistencia.retornarTodasTags();
-    }
 
     public int retornarQuantidadeDeAulas(int id){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();

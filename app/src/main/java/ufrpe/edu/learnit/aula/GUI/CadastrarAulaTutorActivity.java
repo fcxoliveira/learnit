@@ -32,8 +32,8 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_aula);
-        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
-        ArrayList<Tag> tags = gerenciadorAulasTutor.retornarTodasTags();
+        TagNegocio tagNegocio = new TagNegocio();
+        ArrayList<Tag> tags = tagNegocio.retornarTodasTags();
         ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,tags);
         tag1 = (Spinner) findViewById(R.id.spinner);
         tag1.setAdapter(adapter);
@@ -94,8 +94,8 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         return autorizacao;
     }
 
-    public boolean anyTagNot1(ArrayList<Tag> tags) {
-        boolean autorizacao = TagNegocio.anyTagNotIs1(tags);
+    public boolean anyTagNotIsEmpty(ArrayList<Tag> tags) {
+        boolean autorizacao = TagNegocio.anyTagNotIsEmpty(tags);
         if (autorizacao) {
             return autorizacao;
         }
@@ -110,7 +110,7 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         String precoHoraAula = editTextPrecoHoraAula.getText().toString();
         ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
 
-        if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula) && anyTagNot1(tags)){
+        if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula) && anyTagNotIsEmpty(tags)){
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
             Tag tag1 =(Tag)this.tag1.getSelectedItem();
             Tag tag2 =(Tag) this.tag2.getSelectedItem();
