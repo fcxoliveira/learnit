@@ -11,6 +11,7 @@ import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
 
 
@@ -91,5 +92,33 @@ public class AulaPersistencia {
         String idString=sbid.toString();
         newValues.put("Id",idString);
         db.update("",newValues,"Id='"+idString+"'",null);
+    }
+
+    public ArrayList<Aula> getTodasAulasOfertadas(){
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor=db.query("AULAS",new String[]{"*"},null,null,null ,null, null);
+        ArrayList<Aula> aulas = new ArrayList<>();
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        int i = 0;
+        while (cursor.moveToNext()){
+            Aula aula = new Aula();
+            aula.setId(cursor.getInt(cursor.getColumnIndex("Id")));
+            aula.setPerfil(perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdPerfil"))));
+            aula.setTitulo(cursor.getString(cursor.getColumnIndex("Titulo")));
+            aula.setAtiva(true);
+            aula.setDescricao(cursor.getString(cursor.getColumnIndex("Descricao")));
+            aula.setDuracaoHorasAula(cursor.getInt(cursor.getColumnIndex("Horas")));
+            ArrayList<Tag> tags = new ArrayList<Tag>();
+            Tag tag1 = new Tag();
+            Tag tag2 = new Tag();
+            tag1.setID(cursor.getInt(cursor.getColumnIndex("Tag1")));
+            tag2.setID(cursor.getInt(cursor.getColumnIndex("Tag2")));
+            tags.add(tag1);
+            tags.add(tag2);
+            aula.setTags(tags);
+            aula.setValor(cursor.getDouble(cursor.getColumnIndex("Valor")));
+            aulas.add(aula);
+        }
+        return aulas;
     }
 }

@@ -82,6 +82,10 @@ public class Aula {
         this.tags = tags;
     }
 
+    @Override
+    public String toString(){
+        return getTitulo()+"\tValor: "+getValor()+"\n\n"+getDescricao();
+    }
 
 //    public void inscrever(){
 //        Session.getUsuario().getPerfil().inscreverAula(this);

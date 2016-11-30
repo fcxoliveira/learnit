@@ -20,71 +20,40 @@
             android:background="#7bc8f3"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <TextView
-                android:text=""
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="0dp"
-                android:id="@+id/textView2"
-                android:textSize="31sp"
-                android:visibility="invisible"
-                android:textColor="@android:color/background_light" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_below="@+id/toolbar"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="46dp"
-            android:id="@+id/textView5"
-            android:textSize="27sp" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-        <Button
-            android:text="Cadastrar Aula"
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button4"
-            android:background="#7bc8f3"
-            android:textColor="@android:color/background_light"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText6"
+            android:paddingTop="0dp"
+            android:textColor="@android:color/white"
+            android:hint="Procurar"
+            android:layout_above="@+id/listView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:text="Button"
             android:onClick="chamarCadastrarAula"
-            android:layout_alignTop="@+id/textView5"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="16dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:text="MEU PERFIL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button3"
-            android:background="#7bc8f3"
-            android:textColor="@android:color/background_light"
-            android:onClick="chamarPerfil"
-            android:layout_below="@+id/button4"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="23dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:text="Fazer Logoff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button2"
-            android:background="#7bc8f3"
-            android:textColor="@android:color/background_light"
-            android:onClick="fazerLogoff"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="39dp"
+            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp" />
 
     </RelativeLayout>
     </ScrollView>
