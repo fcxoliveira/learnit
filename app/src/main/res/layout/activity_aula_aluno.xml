@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ScrollView02"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_interesses"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".aula.gui.CadastrarAulaTutorActivity">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#7bc8f3"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <TextView android:text="Aula Teste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewNome"
+            android:textSize="28sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/background_light" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="Descrições da aula"
+            android:id="@+id/editText4"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText12"
+            android:hint="Horas de aula fornecidas"
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/editText4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText11"
+            android:hint="Preço por hora/aula"
+            android:layout_below="@+id/editText12"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="24dp" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="73dp"
+            android:id="@+id/ratingBar2"
+            android:clickable="false"
+            android:numStars="5"
+            android:focusable="false"
+            android:isIndicator="true"
+            android:layout_below="@+id/editText11"
+            android:layout_centerHorizontal="true" />
+
+        <TextView android:text="Nota 0,0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewRate"
+            android:layout_toRightOf="@+id/textViewAulaOferecida1"
+            android:layout_below="@+id/ratingBar2"
+            android:layout_toStartOf="@+id/textViewNome" />
+
+        <TextView android:text="Avaliadores 0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewAvaliadores"
+            android:layout_below="@+id/ratingBar2"
+            android:layout_toRightOf="@+id/editText11"
+            android:layout_toEndOf="@+id/editText11" />
+
+        <TextView android:text="Informações do professor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewInform"
+            android:textSize="28sp"
+            android:textColor="@android:color/background_dark"
+            android:layout_marginTop="34dp"
+            android:layout_below="@+id/editText11"
+            android:layout_centerHorizontal="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="normal"
+            app:srcCompat="@android:drawable/ic_input_add"
+            android:layout_marginTop="37dp"
+            android:id="@+id/floatingActionButton3"
+            android:layout_below="@+id/textViewRate"
+            android:layout_alignRight="@+id/textViewRate"
+            android:layout_alignEnd="@+id/textViewRate"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="normal"
+            app:srcCompat="@android:drawable/sym_action_chat"
+            android:id="@+id/floatingActionButton4"
+            android:layout_alignTop="@+id/floatingActionButton3"
+            android:layout_centerHorizontal="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="normal"
+            app:srcCompat="@android:drawable/ic_menu_info_details"
+            android:id="@+id/floatingActionButton5"
+            android:layout_alignTop="@+id/floatingActionButton4"
+            android:layout_alignRight="@+id/textViewInform"
+            android:layout_alignEnd="@+id/textViewInform"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp"
+            android:tint="@android:color/holo_red_dark"
+            app:elevation="0dp" />
+
+    </RelativeLayout>
+
+</ScrollView>
