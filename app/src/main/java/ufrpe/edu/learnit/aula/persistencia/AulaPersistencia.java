@@ -121,4 +121,32 @@ public class AulaPersistencia {
         }
         return aulas;
     }
+
+    public ArrayList<Aula> getAulasPorTexto(String texto){
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"Titulo LIKE ? OR Descricao LIKE ?",new String[] { "%"+texto+"%" },null ,null, null);
+        ArrayList<Aula> aulas = new ArrayList<>();
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        int i = 0;
+        while (cursor.moveToNext()){
+            Aula aula = new Aula();
+            aula.setId(cursor.getInt(cursor.getColumnIndex("Id")));
+            aula.setPerfil(perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdPerfil"))));
+            aula.setTitulo(cursor.getString(cursor.getColumnIndex("Titulo")));
+            aula.setAtiva(true);
+            aula.setDescricao(cursor.getString(cursor.getColumnIndex("Descricao")));
+            aula.setDuracaoHorasAula(cursor.getInt(cursor.getColumnIndex("Horas")));
+            ArrayList<Tag> tags = new ArrayList<Tag>();
+            Tag tag1 = new Tag();
+            Tag tag2 = new Tag();
+            tag1.setID(cursor.getInt(cursor.getColumnIndex("Tag1")));
+            tag2.setID(cursor.getInt(cursor.getColumnIndex("Tag2")));
+            tags.add(tag1);
+            tags.add(tag2);
+            aula.setTags(tags);
+            aula.setValor(cursor.getDouble(cursor.getColumnIndex("Valor")));
+            aulas.add(aula);
+        }
+        return aulas;
+    }
 }

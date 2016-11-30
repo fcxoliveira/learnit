@@ -15,4 +15,11 @@ public class GerenciadorAulasAlunos {
         ArrayList<Aula> aulas =  aulaPersistencia.getTodasAulasOfertadas();
         return aulas;
     }
+
+    public ArrayList<Aula> getAulasPorTexto(String texto){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        ArrayList<Aula> aulas =  aulaPersistencia.getAulasPorTexto(texto);
+        return aulas;
+    }
+
 }
