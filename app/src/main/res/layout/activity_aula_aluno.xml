@@ -103,39 +103,26 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             app:fabSize="normal"
-            app:srcCompat="@android:drawable/ic_input_add"
-            android:layout_marginTop="37dp"
-            android:id="@+id/floatingActionButton3"
-            android:layout_below="@+id/textViewRate"
-            android:layout_alignRight="@+id/textViewRate"
-            android:layout_alignEnd="@+id/textViewRate"
-            android:layout_marginRight="15dp"
-            android:layout_marginEnd="15dp" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:fabSize="normal"
             app:srcCompat="@android:drawable/sym_action_chat"
             android:id="@+id/floatingActionButton4"
-            android:layout_alignTop="@+id/floatingActionButton3"
-            android:layout_centerHorizontal="true" />
+            app:backgroundTint="#7bc8f3"
+            android:layout_marginTop="54dp"
+            android:layout_below="@+id/textViewRate"
+            android:layout_alignLeft="@+id/textViewRate"
+            android:layout_alignStart="@+id/textViewRate" />
 
-        <android.support.design.widget.FloatingActionButton
+        <Button
+            android:text="Confirmar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            app:fabSize="normal"
-            app:srcCompat="@android:drawable/ic_menu_info_details"
-            android:id="@+id/floatingActionButton5"
-            android:layout_alignTop="@+id/floatingActionButton4"
-            android:layout_alignRight="@+id/textViewInform"
-            android:layout_alignEnd="@+id/textViewInform"
-            android:layout_marginRight="18dp"
-            android:layout_marginEnd="18dp"
-            android:tint="@android:color/holo_red_dark"
-            app:elevation="0dp" />
+            android:id="@+id/button4"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:layout_alignBottom="@+id/floatingActionButton4"
+            android:layout_alignLeft="@+id/textViewAvaliadores"
+            android:layout_alignStart="@+id/textViewAvaliadores"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp" />
 
     </RelativeLayout>
 

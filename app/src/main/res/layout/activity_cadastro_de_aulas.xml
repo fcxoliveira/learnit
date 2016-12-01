@@ -42,18 +42,6 @@
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/background_light" />
 
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                app:fabSize="mini"
-                android:onClick="chamarCadastrarAula"
-                app:srcCompat="@android:drawable/ic_input_add"
-                android:id="@+id/Button2"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
             <ListView
                 android:id="@+id/listViewMinhasAulas"
                 android:layout_width="match_parent"
