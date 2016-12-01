@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/ScrollView01"
+    android:id="@+id/ScrollView02"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -19,18 +19,17 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <TextView
-            android:text="Cadastrar aula"
+            android:text="Editarar Aula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:id="@+id/textView7"
             android:textSize="30sp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:textColor="@android:color/background_light" />
+            android:layout_centerHorizontal="true" />
 
         <Button
-            android:text="cadastrar"
+            android:text="Confirmar Edição"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button5"
@@ -46,7 +45,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:hint="Digite aqui as descrições da sua aula"
+            android:hint="Descrições da aula"
             android:id="@+id/editText4"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -116,4 +115,4 @@
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
-    </ScrollView>
+</ScrollView>

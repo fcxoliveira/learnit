@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/ScrollView01"
+    android:id="@+id/ScrollView02"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -19,34 +19,18 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <TextView
-            android:text="Cadastrar aula"
+            android:text="Teste Aula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:id="@+id/textView7"
             android:textSize="30sp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:textColor="@android:color/background_light" />
-
-        <Button
-            android:text="cadastrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button5"
-            android:background="#7bc8f3"
-            android:layout_below="@+id/editText11"
-            android:textColor="@android:color/background_light"
-            android:onClick="cadastrarAulaTutor"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            />
+            android:layout_centerHorizontal="true" />
 
         <EditText
             android:layout_width="match_parent"
-            android:hint="Digite aqui as descrições da sua aula"
+            android:hint="Descrições da aula"
             android:id="@+id/editText4"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -76,17 +60,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/editText11"
-            android:hint="Preço por hora/aula"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/spinner2"
-            android:layout_alignParentStart="true" />
-
         <TextView
             android:text="Tags de aula"
             android:layout_width="wrap_content"
@@ -97,23 +70,71 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <Spinner
-            android:layout_width="match_parent"
+        <EditText
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner2"
-            android:layout_marginBottom="29dp"
-            android:layout_below="@+id/spinner"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText133"
+            android:hint="Tag_1"
+            android:layout_marginTop="11dp"
+            android:layout_below="@+id/textView3"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <Spinner
-            android:layout_width="match_parent"
+        <EditText
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinner"
-            android:layout_marginBottom="12dp"
-            android:layout_below="@+id/textView3"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText144"
+            android:hint="Tag_2"
+            android:layout_below="@+id/editText133"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText11"
+            android:hint="Preço por hora/aula"
+            android:layout_below="@+id/editText144"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="12dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="normal"
+            app:srcCompat="@android:drawable/ic_delete"
+            android:layout_marginBottom="42dp"
+            android:id="@+id/floatingActionButton7"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/editText11"
+            android:layout_toEndOf="@+id/editText11"
+            android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp"
+            app:backgroundTint="#7bc8f3"
+            android:tint="@android:color/background_light" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="normal"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            android:id="@+id/floatingActionButton8"
+            android:tint="@android:color/background_light"
+            android:layout_marginRight="71dp"
+            android:layout_marginEnd="71dp"
+            android:layout_alignTop="@+id/floatingActionButton7"
+            android:layout_alignRight="@+id/editText11"
+            android:layout_alignEnd="@+id/editText11"
+            app:backgroundTint="#7bc8f3" />
 
     </RelativeLayout>
-    </ScrollView>
+</ScrollView>
