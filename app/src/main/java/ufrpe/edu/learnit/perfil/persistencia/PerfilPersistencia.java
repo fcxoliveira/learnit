@@ -88,5 +88,17 @@ public class PerfilPersistencia {
         newValues.put("Interesse1",interesse1.getID());
         newValues.put("Interesse2",interesse2.getID());
         db.update("PERFIL",newValues,"IdPerfil='"+idString+"'",null);
+        db.close();
+    }
+
+    public void removerMoedas(int id,int moedas){
+        db = dbHelper.getReadableDatabase();
+        Perfil perfil = retornarPerfil(id);
+        moedas = perfil.getMoedas()-moedas;
+        String idString = String.valueOf(id);
+        ContentValues newValues = new ContentValues();
+        newValues.put("Moedas",moedas);
+        db.update("PERFIL",newValues,"IdPerfil='"+idString+"'",null);
+        db.close();
     }
 }

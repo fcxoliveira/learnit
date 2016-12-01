@@ -91,7 +91,7 @@ public class AulaPersistencia {
         sbid.append(Session.getUsuario().getID());
         String idString=sbid.toString();
         newValues.put("Id",idString);
-        db.update("",newValues,"Id='"+idString+"'",null);
+        db.update("AULAS",newValues,"Id='"+idString+"'",null);
     }
 
     public ArrayList<Aula> getTodasAulasOfertadas(){
@@ -149,4 +149,31 @@ public class AulaPersistencia {
         }
         return aulas;
     }
+
+    public void inscreverAlunoEmAula(int idAluno, int idAula, String date,int horas,int moedas){
+        db = dbHelper.getReadableDatabase();
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        String idAlunoString = String.valueOf(idAluno);
+        String idAulaString = String.valueOf(idAula);
+        String horasString = String.valueOf(horas);
+        ContentValues newValues = new ContentValues();
+        newValues.put("IdPerfil",idAlunoString);
+        newValues.put("IdAula", idAulaString);
+        newValues.put("date",date);
+        db.insert("ALUNO_AULA", null, newValues);
+        db.close();
+        removerHorasDisponiveis(idAula,horas);
+        perfilPersistencia.removerMoedas(idAluno, moedas);
+    }
+
+    public void removerHorasDisponiveis(int idAula,int horas){
+        db = dbHelper.getReadableDatabase();
+        ContentValues newValues = new ContentValues();
+        String idAulaString = String.valueOf(idAula);
+        String horasString = String.valueOf(horas);
+        newValues.put("Horas", horasString);
+        db.update("AULA",newValues,"Id = ?",new String[]{idAulaString});
+        db.close();
+    }
+
 }

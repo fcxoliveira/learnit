@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "learnit.db";
-    private static final int DATABASE_VERSION = 22;
+    private static final int DATABASE_VERSION = 23;
     private static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
     private static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
     private static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas "+
@@ -17,6 +17,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_TAGS = "create table IF NOT EXISTS TAGS (Id integer primary key autoincrement, Tag text);";
     private static final String TABLE_AULAS = "create table if not exists AULAS(Id integer primary key autoincrement, Titulo text, Descricao text, Valor int, Tag1 int, Tag2 int,IdPerfil int, Horas int);";
     private static final ArrayList<String> TAGS = new ArrayList<String>(Arrays.asList("--Selecione--","Informatica", "Musica", "Portugues", "Matematica", "Biologia", "Fisica", "Quimica", "Ed. Fisica"));
+    private static final String TABLE_ALUNO_AULA = "create table if not exists ALUNO_AULA(IdPerfil integer, IdAula integer, date text);";
 
 
     public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
@@ -31,6 +32,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_PERFIL);
         db.execSQL(TABLE_TAGS);
         db.execSQL(TABLE_AULAS);
+        db.execSQL(TABLE_ALUNO_AULA);
         for(String tag:TAGS) {
             populateTags(tag,db);
         }
@@ -45,6 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + "PERFIL");
         db.execSQL("DROP TABLE IF EXISTS " + "TAGS");
         db.execSQL("DROP TABLE IF EXISTS " + "AULAS");
+        db.execSQL("DROP TABLE IF EXISTS " + "ALUNO_AULA");
         onCreate(db);
     }
 

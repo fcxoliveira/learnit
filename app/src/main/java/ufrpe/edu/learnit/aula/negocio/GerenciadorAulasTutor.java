@@ -17,4 +17,10 @@ public class GerenciadorAulasTutor {
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         return aulaPersistencia.retornarQuantidadeDeAulas(id);
     }
+
+    public void editarAula(int id,String titulo, String descricao, int duracao,double valor,Tag tag1,Tag tag2){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        aulaPersistencia.editarAula(id,titulo,descricao,duracao,valor,tag1,tag2);
+
+    }
 }
