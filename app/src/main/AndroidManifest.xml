@@ -34,11 +34,9 @@
             android:screenOrientation="portrait" />
         <activity android:name=".aula.gui.CadastrarAulaTutorActivity" />
         <activity android:name=".perfil.gui.EditarPerfilActivity" />
-        <activity android:name=".aula.gui.AlunoInscreverEmAulaActivity" />
         <activity
-            android:name=".NavegarActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".aula.gui.AlunoInscreverEmAulaActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
     </application>
 
 </manifest>
