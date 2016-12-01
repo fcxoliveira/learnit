@@ -39,7 +39,7 @@ public class InteressesActivity extends AppCompatActivity {
         tag2.setAdapter(adapter);
         Session.setContext(getApplicationContext());
         editTextNome = (EditText) findViewById(R.id.editText5);
-        editTextBio = (EditText) findViewById(R.id.editText4);
+        editTextBio = (EditText) findViewById(R.id.editTextDescricao);
     }
 
     public void chamarHome(View view) {

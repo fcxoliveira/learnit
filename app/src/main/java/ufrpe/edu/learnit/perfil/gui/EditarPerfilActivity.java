@@ -1,8 +1,6 @@
 package ufrpe.edu.learnit.perfil.gui;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -47,7 +45,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         tag2.setSelection((perfil.getInteresses().get(1).getID())-1);
         Session.setContext(getApplicationContext());
         editTextNome = (EditText) findViewById(R.id.editText5);
-        editTextBio = (EditText) findViewById(R.id.editText4);
+        editTextBio = (EditText) findViewById(R.id.editTextDescricao);
         editTextNome.setText(perfil.getNome());
         editTextBio.setText(perfil.getBio());
 

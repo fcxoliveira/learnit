@@ -46,7 +46,7 @@
         <EditText
             android:layout_width="match_parent"
             android:hint="Descrições da aula"
-            android:id="@+id/editText4"
+            android:id="@+id/editTextDescricao"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_below="@+id/editText5"
@@ -57,10 +57,10 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText12"
+            android:id="@+id/editTextHotasAssistidas"
             android:hint="Horas de aula fornecidas"
             android:layout_marginTop="27dp"
-            android:layout_below="@+id/editText4"
+            android:layout_below="@+id/editTextDescricao"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -92,7 +92,7 @@
             android:id="@+id/textView3"
             android:textSize="18sp"
             android:layout_height="20dp"
-            android:layout_below="@+id/editText12"
+            android:layout_below="@+id/editTextHotasAssistidas"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 

@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -43,8 +42,8 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         tag2.setAdapter(adapter);
         Session.setContext(getApplicationContext());
         editTextNomeAula = (EditText) findViewById(R.id.editText5);
-        editTextDescricao = (EditText) findViewById(R.id.editText4);
-        editTextHorasDeAula = (EditText) findViewById(R.id.editText12);
+        editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
+        editTextHorasDeAula = (EditText) findViewById(R.id.editTextHotasAssistidas);
         editTextPrecoHoraAula = (EditText) findViewById(R.id.editText11);
     }
     public void chamarTelaInicial(View view) {
