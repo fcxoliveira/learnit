@@ -155,7 +155,6 @@ public class AulaPersistencia {
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         String idAlunoString = String.valueOf(idAluno);
         String idAulaString = String.valueOf(idAula);
-        String horasString = String.valueOf(horas);
         ContentValues newValues = new ContentValues();
         newValues.put("IdPerfil",idAlunoString);
         newValues.put("IdAula", idAulaString);

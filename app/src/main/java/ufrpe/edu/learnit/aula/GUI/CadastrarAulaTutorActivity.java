@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -27,6 +28,7 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
     private EditText editTextHorasDeAula;
     private EditText editTextPrecoHoraAula;
     private Spinner tag1, tag2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
