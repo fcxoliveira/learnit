@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ScrollView01"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_aluno_inscrever_em_aula"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="ufrpe.edu.learnit.aula.gui.AlunoInscreverEmAulaActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#7bc8f3"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="147dp"
+            android:layout_below="@+id/textView4"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textInputLayout">
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <TextView
+            android:text="Nome da  Aula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:textSize="36sp"
+            android:textColor="@android:color/background_light"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:text="Chat"
+            android:layout_width="wrap_content"
+            android:id="@+id/button4"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_alignStart="@+id/textView4"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:text="Comprar"
+            android:layout_width="wrap_content"
+            android:id="@+id/button3"
+            android:onClick='confirmar'
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button4"
+            android:layout_alignBottom="@+id/button4"
+            android:layout_alignRight="@+id/textView4"
+            android:layout_alignEnd="@+id/textView4" />
+        <TextView
+            android:text="Horario total aqui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewTotalDeHoras"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/button3"
+            android:layout_alignStart="@+id/button3" />
+
+        <TextView
+            android:text="Horas Totais de aula disponiveis:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:layout_alignBaseline="@+id/TextViewTotalDeHoras"
+            android:layout_alignBottom="@+id/TextViewTotalDeHoras"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Preço por hora/aula:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:id="@+id/textView18"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="preço aqui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewPrecoPorHoraAula"
+            android:layout_alignBaseline="@+id/textView18"
+            android:layout_alignBottom="@+id/textView18"
+            android:layout_alignLeft="@+id/TextViewTotalDeHoras"
+            android:layout_alignStart="@+id/TextViewTotalDeHoras" />
+
+        <TextView
+            android:text="Descrição da aula:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:text="descrição aqui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewDescricaoAula"
+            android:layout_below="@+id/textView9"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:text="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewTotalDaCompra"
+            android:layout_below="@+id/textInputLayout"
+            android:layout_toRightOf="@+id/textView9"
+            android:layout_toEndOf="@+id/textView9"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:text="Total da compra:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView20"
+            android:layout_alignBaseline="@+id/TextViewTotalDaCompra"
+            android:layout_alignBottom="@+id/TextViewTotalDaCompra"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/EditTextTotaDeHorasDesejadas"
+            android:hint="Total de horas desejadas"
+            android:layout_alignBottom="@+id/textInputLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+</ScrollView>
