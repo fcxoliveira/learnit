@@ -1,15 +1,20 @@
 package ufrpe.edu.learnit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import ufrpe.edu.learnit.aula.dominio.Aula;
+import ufrpe.edu.learnit.aula.gui.AlunoInscreverEmAulaActivity;
+import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.perfil.gui.EditarPerfilActivity;
 
 public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickListener{
 
@@ -31,9 +36,6 @@ public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        int position=(Integer) v.getTag();
-        Object object= getItem(position);
-        Aula aula=(Aula)object;
 
     }
 
@@ -59,7 +61,6 @@ public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickLis
             viewHolder = (ViewHolder) convertView.getTag();
 
         }
-
 
         String titulo = ajustarTitulo(aula.getTitulo());
         String descricao = ajustarDescricao(aula.getDescricao());
@@ -89,6 +90,5 @@ public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickLis
         }
         return string;
     }
-
 
 }

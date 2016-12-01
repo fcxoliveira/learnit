@@ -26,4 +26,7 @@ public class aula_aluno extends AppCompatActivity {
         horasPagas = (TextView)findViewById(R.id.textViewHoras);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
     }
+
+
+
 }

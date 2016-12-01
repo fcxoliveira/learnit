@@ -46,7 +46,7 @@ public class AlunoInscreverEmAulaActivity extends AppCompatActivity {
         TextViewDescricaoAula.setText(aula.getDescricao());
         TextViewPrecoPorHoraAula.setText(new StringBuilder().append(aula.getValor()).toString());
         TextViewTotalDeHoras.setText(new StringBuilder().append(aula.getDuracaoHorasAula()).toString());
-        TextViewTotalDaCompra.setText('0');
+        TextViewTotalDaCompra.setText("0");
         EditTextTotalDeHorasDesejadas=(EditText) findViewById(R.id.EditTextTotaDeHorasDesejadas);
         this.setOnUserInputValue();
     }
@@ -59,7 +59,6 @@ public class AlunoInscreverEmAulaActivity extends AppCompatActivity {
     }
 
     public void setOnUserInputValue() {
-
         EditTextTotalDeHorasDesejadas.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -69,12 +68,13 @@ public class AlunoInscreverEmAulaActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String text = EditTextTotalDeHorasDesejadas.getText().toString();
-                if (text != "") {
+                if(text== ""){
+                    TextViewTotalDaCompra.setText("0");
+                }
+                else{
                     double valorDesejado = Double.parseDouble(text);
                     double resultado = valorDesejado * aula.getValor();
-                    TextViewTotalDaCompra.setText(new StringBuilder().append(resultado).toString());
-                } else {
-                    TextViewTotalDaCompra.setText('0');
+                    TextViewTotalDaCompra.setText(String.valueOf(resultado));
                 }
 
             }

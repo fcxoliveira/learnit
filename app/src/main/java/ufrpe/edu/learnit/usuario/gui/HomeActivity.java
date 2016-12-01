@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import ufrpe.edu.learnit.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
+import ufrpe.edu.learnit.aula.gui.AlunoInscreverEmAulaActivity;
 import ufrpe.edu.learnit.aula.gui.CadastrarAulaTutorActivity;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -31,6 +32,7 @@ import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
 public class HomeActivity extends AppCompatActivity {
     ListView listView;
     EditText editText;
+    CustomAdapter adapter;
 
 
 
@@ -42,9 +44,24 @@ public class HomeActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.listView);
         editText = (EditText)findViewById(R.id.editText6);
         ArrayList<Aula> values = getValoresListView();
-        CustomAdapter adapter= new CustomAdapter(values,getApplicationContext());
+        adapter= new CustomAdapter(values,getApplicationContext());
+        setOnItemClickListener();
         listView.setAdapter(adapter);
         setOnlistenerSearch();
+
+    }
+
+    public void setOnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object object= adapter.getItem(position);
+                Aula aula=(Aula)object;
+                Session.setAula(aula);
+                Intent secondActivity = new Intent(Session.getContext(),AlunoInscreverEmAulaActivity.class);
+                startActivity(secondActivity);
+            }
+        });
     }
 
     @Override
