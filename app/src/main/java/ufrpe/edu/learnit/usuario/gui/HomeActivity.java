@@ -116,15 +116,8 @@ public class HomeActivity extends AppCompatActivity {
                 GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
                 String text = editText.getText().toString();
                 CustomAdapter adapter;
-                if (text != "") {
-                    ArrayList<Aula> aulas = gerenciadorAulasAlunos.getAulasPorTexto(text);
-                    adapter = new CustomAdapter(aulas, getApplicationContext());
-
-                } else {
-                    ArrayList<Aula> values = getValoresListView();
-                    adapter = new CustomAdapter(values, getApplicationContext());
-                }
-
+                ArrayList<Aula> aulas = gerenciadorAulasAlunos.getAulasPorTexto(text);
+                adapter = new CustomAdapter(aulas, getApplicationContext());
                 listView.setAdapter(adapter);
             }
 

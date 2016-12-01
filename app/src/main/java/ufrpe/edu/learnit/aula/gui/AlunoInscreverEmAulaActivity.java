@@ -67,8 +67,10 @@ public class AlunoInscreverEmAulaActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String text = EditTextTotalDeHorasDesejadas.getText().toString();
-                if(text== ""){
+                StringBuilder sb = new StringBuilder();
+                sb.append(EditTextTotalDeHorasDesejadas.getText().toString());
+                String text =sb.toString();
+                if (text == "") {
                     TextViewTotalDaCompra.setText("0");
                 }
                 else{
