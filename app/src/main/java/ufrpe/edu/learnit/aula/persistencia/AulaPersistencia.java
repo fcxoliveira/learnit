@@ -124,7 +124,7 @@ public class AulaPersistencia {
 
     public ArrayList<Aula> getAulasPorTexto(String texto){
         db = dbHelper.getReadableDatabase();
-        Cursor cursor=db.query("AULAS",new String[]{"*"},"Titulo LIKE ? OR Descricao LIKE ?",new String[] { "%"+texto+"%" },null ,null, null);
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"Titulo LIKE ? OR Descricao LIKE ?",new String[] { "%"+texto+"%","%"+texto+"%" },null ,null, null);
         ArrayList<Aula> aulas = new ArrayList<>();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         int i = 0;
