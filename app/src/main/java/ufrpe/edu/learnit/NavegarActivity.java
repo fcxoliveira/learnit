@@ -9,7 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import ufrpe.edu.learnit.aula.gui.CadastrarAulaTutorActivity;
+import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
+import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
 import ufrpe.edu.learnit.usuario.gui.CoinsActivity;
+import ufrpe.edu.learnit.usuario.gui.HomeActivity;
+import ufrpe.edu.learnit.usuario.gui.LoginActivity;
 
 
 /**
@@ -31,7 +37,8 @@ public class NavegarActivity extends AppCompatActivity implements NavigationView
         int i = item.getItemId();
 
         if (i == R.id.home){
-            Toast.makeText(this, "Home selecionado",Toast.LENGTH_SHORT).show();
+            Intent secondActivity = new Intent(this, HomeActivity.class);
+            startActivity(secondActivity);
             return true;
         }
         else if (i == R.id.minhaaulas){
@@ -39,21 +46,27 @@ public class NavegarActivity extends AppCompatActivity implements NavigationView
             return true;
         }
         else if (i == R.id.cadastraraulas){
-            Toast.makeText(this, "Cadastrar aulas selecionado",Toast.LENGTH_SHORT).show();
+            Intent secondActivity = new Intent(this, CadastrarAulaTutorActivity.class);
+            startActivity(secondActivity);
             return true;
         }
         else if (i == R.id.editarperfil){
-            Toast.makeText(this, "Editar perfil selecionado",Toast.LENGTH_SHORT).show();
+            Intent secondActivity = new Intent(this, PerfilActivity.class);
+            startActivity(secondActivity);
             return true;
         }
         else if (i == R.id.carregarcoins){
-            Toast.makeText(this, "Carregar Coins selecionado",Toast.LENGTH_SHORT).show();
-            Intent secondActivity = new Intent(this,CoinsActivity.class);
+            Intent secondActivity = new Intent(this, CoinsActivity.class);
             startActivity(secondActivity);
             return true;
         }
         else if (i == R.id.logout){
-            Toast.makeText(this, "Fazendo logoff",Toast.LENGTH_SHORT).show();
+            SessionNegocio sessionNegocio = new SessionNegocio();
+            sessionNegocio.deslogarUsuario();
+            Session.setUsuario(null);
+            Intent secondActivity = new Intent(this, LoginActivity.class);
+            startActivity(secondActivity);
+            this.finish();
             return true;
         }
         else {
