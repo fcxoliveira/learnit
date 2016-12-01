@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/coins" android:title="XX Coins" android:icon="@drawable/ic_menu_camera"/>
     <item android:id="@+id/home" android:title="Home" android:icon="@android:drawable/ic_menu_compass"/>
     <item android:id="@+id/minhaaulas" android:title="Minhas Aulas" android:icon="@android:drawable/ic_menu_edit"/>
     <item android:id="@+id/cadastraraulas" android:title="Cadastrar Aulas" android:icon="@android:drawable/ic_menu_add"/>
     <item android:id="@+id/editarperfil" android:title="Editar Perfil" android:icon="@android:drawable/ic_menu_agenda"/>
+    <item android:id="@+id/carregarcoins" android:title="Carregar Coins" android:icon="@drawable/ic_menu_camera"/>
     <item android:id="@+id/logout" android:title="Logout" android:icon="@android:drawable/ic_menu_close_clear_cancel"/>
 </menu>
