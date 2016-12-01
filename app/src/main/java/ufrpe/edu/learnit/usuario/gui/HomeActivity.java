@@ -31,11 +31,7 @@ import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
 public class HomeActivity extends AppCompatActivity {
     ListView listView;
     EditText editText;
-    private ListView mDrawerList;
-    ArrayAdapter<String> mAdapter;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerLayout;
-    private String mActivityTitle;
+
 
 
     @Override
@@ -49,11 +45,6 @@ public class HomeActivity extends AppCompatActivity {
         CustomAdapter adapter= new CustomAdapter(values,getApplicationContext());
         listView.setAdapter(adapter);
         setOnlistenerSearch();
-        mDrawerList = (ListView)findViewById(R.id.navList);
-        addDrawerItems();
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        mActivityTitle = getTitle().toString();
-        setupDrawer();
     }
 
     @Override
@@ -127,34 +118,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         }
-    private void addDrawerItems() {
-        String[] osArray = { "Android", "iOS", "Windows", "OS X", "Linux" };
-        mAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, osArray);
-        mDrawerList.setAdapter(mAdapter);mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
-    }
 
-    private void setupDrawer() {
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.string.drawer_open, R.string.drawer_close) {
 
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
-
-    }
 }

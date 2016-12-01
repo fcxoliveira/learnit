@@ -18,10 +18,6 @@ import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 import ufrpe.edu.learnit.usuario.gui.LoginActivity;
 
 
-/**
- * Created by matheusc on 29/11/16.
- */
-
 public class NavegarActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
