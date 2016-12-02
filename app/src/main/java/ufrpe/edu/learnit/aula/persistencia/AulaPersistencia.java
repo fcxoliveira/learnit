@@ -165,16 +165,17 @@ public class AulaPersistencia {
         perfilPersistencia.removerMoedas(idAluno, moedas);
         db.close();
 
+
     }
 
     public void removerHorasDisponiveis(int idAula,int horas){
-        db = dbHelper.getReadableDatabase();
         ContentValues newValues = new ContentValues();
         Aula aula =  retornarAula(idAula);
         int horasTotal = aula.getHoras()-horas;
         String idAulaString = String.valueOf(idAula);
         String horasString = String.valueOf(horasTotal);
         newValues.put("Horas", horasString);
+        db = dbHelper.getReadableDatabase();
         db.update("AULAS",newValues,"Id = ?",new String[]{idAulaString});
         db.close();
     }
