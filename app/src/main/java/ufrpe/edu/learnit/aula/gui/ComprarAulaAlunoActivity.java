@@ -46,7 +46,7 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
         TextViewNomeDaAula.setText(aula.getTitulo());
         TextViewDescricaoAula.setText(aula.getDescricao());
         TextViewPrecoPorHoraAula.setText(new StringBuilder().append(aula.getValor()).toString());
-        TextViewTotalDeHoras.setText(new StringBuilder().append(aula.getDuracaoHorasAula()).toString());
+        TextViewTotalDeHoras.setText(new StringBuilder().append(aula.getHoras()).toString());
         TextViewTotalDaCompra.setText("0");
         EditTextTotalDeHorasDesejadas=(EditText) findViewById(R.id.EditTextTotaDeHorasDesejadas);
         this.setOnUserInputValue();
@@ -123,7 +123,8 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
     private boolean verificarMoedas(){
         PerfilNegocio perfilNegocio = new PerfilNegocio();
         boolean result = true;
-        if(Integer.parseInt(TextViewTotalDaCompra.getText().toString())>perfilNegocio.retornarPerfil(Session.getUsuario().getID()).getMoedas()){
+        int moedas =(int) Float.parseFloat(TextViewTotalDaCompra.getText().toString());
+        if(moedas>perfilNegocio.retornarPerfil(Session.getUsuario().getID()).getMoedas()){
             result = false;
         }
         return result;
@@ -131,7 +132,7 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
 
     public boolean verificarHoras(){
         boolean result = true;
-        if(Integer.parseInt(EditTextTotalDeHorasDesejadas.getText().toString())<Session.getAula().getHoras()){
+        if(Integer.parseInt(EditTextTotalDeHorasDesejadas.getText().toString())>Session.getAula().getHoras()){
             result = false;
         }
         return result;

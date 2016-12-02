@@ -62,7 +62,7 @@ public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickLis
         viewHolder.name.setText(titulo);
         viewHolder.price.setText(String.valueOf(aula.getValor()));
         viewHolder.description.setText(descricao);
-        viewHolder.time.setText(String.valueOf(aula.getDuracaoHorasAula()));
+        viewHolder.time.setText(String.valueOf(aula.getHoras()));
         return convertView;
     }
 

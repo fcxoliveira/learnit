@@ -108,7 +108,7 @@ public class AulaPersistencia {
             aula.setTitulo(cursor.getString(cursor.getColumnIndex("Titulo")));
             aula.setAtiva(true);
             aula.setDescricao(cursor.getString(cursor.getColumnIndex("Descricao")));
-            aula.setDuracaoHorasAula(cursor.getInt(cursor.getColumnIndex("Horas")));
+            aula.setHoras(cursor.getInt(cursor.getColumnIndex("Horas")));
             ArrayList<Tag> tags = new ArrayList<Tag>();
             Tag tag1 = new Tag();
             Tag tag2 = new Tag();
@@ -136,7 +136,7 @@ public class AulaPersistencia {
             aula.setTitulo(cursor.getString(cursor.getColumnIndex("Titulo")));
             aula.setAtiva(true);
             aula.setDescricao(cursor.getString(cursor.getColumnIndex("Descricao")));
-            aula.setDuracaoHorasAula(cursor.getInt(cursor.getColumnIndex("Horas")));
+            aula.setHoras(cursor.getInt(cursor.getColumnIndex("Horas")));
             ArrayList<Tag> tags = new ArrayList<Tag>();
             Tag tag1 = tagPersistencia.retornarTag(cursor.getInt(cursor.getColumnIndex("Tag1")));
             Tag tag2 = tagPersistencia.retornarTag(cursor.getInt(cursor.getColumnIndex("Tag2")));
