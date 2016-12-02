@@ -224,10 +224,10 @@ public class AulaPersistencia {
     public ArrayList<Aula> retornarAulasOfertadas(){
         db = dbHelper.getReadableDatabase();
         ArrayList<Aula> aulas = new ArrayList<>();
-        String idAlunoString = String.valueOf(Session.getUsuario().getID());
-        Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil = ?",new String[] {idAlunoString},null ,null, null);
+        String idPerfilString = String.valueOf(Session.getUsuario().getID());
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil = ?",new String[] {idPerfilString},null ,null, null);
         while (cursor.moveToNext()){
-            aulas.add(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));
+            aulas.add(retornarAula(cursor.getInt(cursor.getColumnIndex("Id"))));
         }
         return aulas;
     }
