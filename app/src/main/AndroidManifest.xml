@@ -41,6 +41,7 @@
         <activity android:name=".usuario.gui.CoinsActivity"/>
         <activity android:name=".aula.gui.CadastrarAulaTutorActivity"/>
         <activity android:name=".aula.gui.AulaProfessorActivity"/>
+        <activity android:name=".aula.gui.AulaAlunoActivity"/>
     </application>
 
 </manifest>
