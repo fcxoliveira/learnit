@@ -40,6 +40,7 @@
         <activity android:name=".aula.gui.AulasCompradasActivity"/>
         <activity android:name=".usuario.gui.CoinsActivity"/>
         <activity android:name=".aula.gui.CadastrarAulaTutorActivity"/>
+        <activity android:name=".aula.gui.AulaProfessorActivity"/>
     </application>
 
 </manifest>

@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import ufrpe.edu.learnit.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
@@ -19,7 +19,7 @@ import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 public class AulasOferecidasActivity extends AppCompatActivity {
 
     ListView listView;
-    ArrayAdapter<Aula> adapter;
+    CustomAdapter adapter;
     ArrayList<Aula> aulas;
 
 
@@ -30,7 +30,7 @@ public class AulasOferecidasActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.listViewMinhasAulas);
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         aulas = aulaPersistencia.retornarAulasOfertadas();
-        adapter = new ArrayAdapter<Aula>(this, android.R.layout.simple_list_item_1, aulas);
+        adapter = new CustomAdapter(aulas, getApplicationContext());
         listView.setAdapter(adapter);
         setOnItemClickListener();
     }
@@ -42,7 +42,7 @@ public class AulasOferecidasActivity extends AppCompatActivity {
                 Object object= adapter.getItem(position);
                 Aula aula=(Aula)object;
                 Session.setAula(aula);
-                Intent secondActivity = new Intent(Session.getContext(),ComprarAulaAlunoActivity.class);
+                Intent secondActivity = new Intent(Session.getContext(),AulaProfessorActivity.class);
                 startActivity(secondActivity);
             }
         });
