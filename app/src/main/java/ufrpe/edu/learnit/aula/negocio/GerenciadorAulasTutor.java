@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
+import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 
 public class GerenciadorAulasTutor {
@@ -33,5 +34,10 @@ public class GerenciadorAulasTutor {
     public ArrayList<Aula> retornarAulasOfertadas(){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         return aulaPersistencia.retornarAulasOfertadas();
+    }
+
+    public ArrayList<Perfil> retornarAlunosCadastrados(int id){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        return aulaPersistencia.retornarAlunosCadastrados(id);
     }
 }

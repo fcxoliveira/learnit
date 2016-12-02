@@ -231,6 +231,19 @@ public class AulaPersistencia {
         return aulas;
     }
 
+    public ArrayList<Perfil> retornarAlunosCadastrados(int id){
+        db = dbHelper.getReadableDatabase();
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        ArrayList<Perfil> alunos = new ArrayList<>();
+        String idAulaString = String.valueOf(Session.getUsuario().getID());
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAula = ?",new String[] {idAulaString},null ,null, null);
+        while (cursor.moveToNext()){
+            alunos.add(perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdA"))));
+        }
+        return alunos;
+
+    }
+
 
 
 }
