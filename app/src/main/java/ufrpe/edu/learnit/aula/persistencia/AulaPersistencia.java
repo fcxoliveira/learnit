@@ -161,9 +161,10 @@ public class AulaPersistencia {
         newValues.put("IdAula", idAulaString);
         newValues.put("date",date);
         db.insert("ALUNO_AULA", null, newValues);
-        db.close();
         removerHorasDisponiveis(idAula,horas);
         perfilPersistencia.removerMoedas(idAluno, moedas);
+        db.close();
+
     }
 
     public void removerHorasDisponiveis(int idAula,int horas){
