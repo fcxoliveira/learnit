@@ -186,6 +186,7 @@ public class AulaPersistencia {
         sb.append(id);
         String idString = sb.toString();
         Cursor cursor=db.query("AULAS", null, "Id=?",new String[]{idString}, null, null, null);
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         if (!cursor.moveToFirst()){
             result = null;
             db.close();
@@ -196,6 +197,7 @@ public class AulaPersistencia {
             int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
             int interesse1= cursor.getInt(cursor.getColumnIndex("Tag1"));
             int interesse2= cursor.getInt(cursor.getColumnIndex("Tag2"));
+            result.setPerfil(perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdPerfil"))));
             result.setDescricao(descricao);
             result.setValor(valor);
             result.setTitulo(nome);

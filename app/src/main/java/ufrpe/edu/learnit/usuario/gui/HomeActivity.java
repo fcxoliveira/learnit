@@ -112,7 +112,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void chamarPerfil(){
         Intent secondActivity = new Intent(this, PerfilActivity.class);
         startActivity(secondActivity);
-        finish();
     }
 
     public void chamarCadastrarAula(){
