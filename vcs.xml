@@ -3,11 +3,19 @@
     <option name="visitedUrls">
       <list>
         <UrlAndUserName>
-          <option name="url" value="https://github.com/azren22/learnit.git" />
+          <option name="url" value="http://github.com/azren22/learnit.git" />
           <option name="userName" value="" />
+        </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://www.github.com/azren22/learnit.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="http://github.com" />
+          <option name="userName" value="filcarx@gmail.com" />
         </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="E:\Android\MPOO" />
+    <option name="cloneParentDir" value="C:\Users\Filipe\AndroidStudioProjects" />
   </component>
 </application>
