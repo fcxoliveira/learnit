@@ -8,6 +8,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,7 @@ import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class ComprarAulaAlunoActivity extends AppCompatActivity {
@@ -94,11 +97,17 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
                 int horas = Math.round(Float.parseFloat(TotalDeHoras));
                 String TotalMoedas =TextViewTotalDaCompra.getText().toString();
                 int moedas = Math.round(Float.parseFloat(TotalMoedas));
-                gerenciadorAulasAlunos.inscreverAlunoEmAula(usuarioId,aulaId,data,horas,moedas);
-                Intent secondActivity = new Intent(this, HomeActivity.class);
-                startActivity(secondActivity);
-                this.finish();
-            }
+                if(verificarHoras()) {
+                    if (verificarMoedas()) {
+                        gerenciadorAulasAlunos.inscreverAlunoEmAula(usuarioId, aulaId, data, horas, moedas);
+                        Intent secondActivity = new Intent(this, HomeActivity.class);
+                        startActivity(secondActivity);
+                        this.finish();
+                    }else{Toast toast = Toast.makeText(getApplicationContext(), "Moedas insuficientes", Toast.LENGTH_SHORT);
+                    toast.show();}
+                }else{Toast toast = Toast.makeText(getApplicationContext(), "Horas não disponiveis", Toast.LENGTH_SHORT);
+                toast.show();}
+    }
 
     @Override
     public void onBackPressed(){
@@ -111,5 +120,21 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
         finish();
     }
 
+    private boolean verificarMoedas(){
+        PerfilNegocio perfilNegocio = new PerfilNegocio();
+        boolean result = true;
+        if(Integer.parseInt(TextViewTotalDaCompra.getText().toString())>perfilNegocio.retornarPerfil(Session.getUsuario().getID()).getMoedas()){
+            result = false;
+        }
+        return result;
+    }
+
+    public boolean verificarHoras(){
+        boolean result = true;
+        if(Integer.parseInt(EditTextTotalDeHorasDesejadas.getText().toString())<Session.getAula().getHoras()){
+            result = false;
+        }
+        return result;
+    }
 
 }
