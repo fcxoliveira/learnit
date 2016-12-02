@@ -29,4 +29,9 @@ public class GerenciadorAulasTutor {
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         return aulaPersistencia.retornarAula(id);
     }
+
+    public ArrayList<Aula> retornarAulasOfertadas(){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        return aulaPersistencia.retornarAulasOfertadas();
+    }
 }

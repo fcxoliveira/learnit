@@ -38,6 +38,8 @@
             android:name=".aula.gui.ComprarAulaAlunoActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity android:name=".aula.gui.AulasOferecidasActivity"></activity>
+        <activity android:name=".usuario.gui.CoinsActivity"></activity>
+        <activity android:name=".aula.gui.AulasCompradasActivity"></activity>
     </application>
 
 </manifest>

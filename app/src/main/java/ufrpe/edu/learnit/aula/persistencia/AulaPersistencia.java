@@ -209,7 +209,7 @@ public class AulaPersistencia {
         return result;
     }
 
-    public ArrayList<Aula> retornarAulasQueAlunoAssistiu(){
+    public ArrayList<Aula> retornarAulasQueAlunoComprou(){
         ArrayList<Aula> aulas = new ArrayList<>();
         db = dbHelper.getReadableDatabase();
         String idAlunoString = String.valueOf(Session.getUsuario().getID());
@@ -219,6 +219,18 @@ public class AulaPersistencia {
         }
         return aulas;
     }
+
+    public ArrayList<Aula> retornarAulasOfertadas(){
+        db = dbHelper.getReadableDatabase();
+        ArrayList<Aula> aulas = new ArrayList<>();
+        String idAlunoString = String.valueOf(Session.getUsuario().getID());
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil = ?",new String[] {idAlunoString},null ,null, null);
+        while (cursor.moveToNext()){
+            aulas.add(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));
+        }
+        return aulas;
+    }
+
 
 
 }

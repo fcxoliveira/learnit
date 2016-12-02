@@ -25,7 +25,7 @@ public class GerenciadorAulasAlunos {
 
     public ArrayList<Aula> retornarAulasQueAlunoAssistiu(){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        return aulaPersistencia.retornarAulasQueAlunoAssistiu();
+        return aulaPersistencia.retornarAulasQueAlunoComprou();
     }
 
 }

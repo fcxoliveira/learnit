@@ -7,7 +7,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
-import ufrpe.edu.learnit.aula.negocio.AulaNegocio;
+import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
+import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 
@@ -51,7 +52,7 @@ public class AulaProfessorActivity extends AppCompatActivity {
         textView108=(TextView) findViewById(R.id.textView8);
     }
     public Aula retornarAula(int id){
-        AulaNegocio aulaNegocio = new AulaNegocio();
+        GerenciadorAulasTutor  aulaNegocio = new GerenciadorAulasTutor();
         return aulaNegocio.retornarAula(id);
     }
 }

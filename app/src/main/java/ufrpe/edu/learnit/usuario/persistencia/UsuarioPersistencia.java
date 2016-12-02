@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 
@@ -93,6 +94,8 @@ public class UsuarioPersistencia {
             String password = cursor.getString(cursor.getColumnIndex("Password"));
             cursor.close();
             usuario = preencherDadosUsuario(userName, password, email);
+            PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+            usuario.setPerfil(perfilPersistencia.retornarPerfil(ID));
             usuario.setID(ID);
         } else {
             usuario = null;

@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import ufrpe.edu.learnit.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
+import ufrpe.edu.learnit.aula.gui.AulasCompradasActivity;
+import ufrpe.edu.learnit.aula.gui.AulasOferecidasActivity;
 import ufrpe.edu.learnit.aula.gui.ComprarAulaAlunoActivity;
 import ufrpe.edu.learnit.aula.gui.CadastrarAulaTutorActivity;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
@@ -34,7 +36,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ListView listView;
     EditText editText;
     CustomAdapter adapter;
-    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +87,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void fazerLogoff(View v){
+    public void fazerLogoff(){
         SessionNegocio sessionNegocio = new SessionNegocio();
         sessionNegocio.deslogarUsuario();
         Session.setUsuario(null);
@@ -95,12 +96,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         this.finish();
     }
 
-    public void chamarPerfil(View view){
+    public void chamarPerfil(){
         Intent secondActivity = new Intent(this, PerfilActivity.class);
         startActivity(secondActivity);
     }
 
-    public void chamarCadastrarAula(View view){
+    public void chamarCadastrarAula(){
         Intent secondActivity = new Intent(this, CadastrarAulaTutorActivity.class);
         startActivity(secondActivity);
     }
@@ -149,27 +150,32 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.moedas) {
-            Intent secondActivity = new Intent(this, CoinsActivity.class);
-            startActivity(secondActivity);
+            chamarMoedas();
 
         } else if (id == R.id.perfil) {
-            Intent secondActivity = new Intent(this, PerfilActivity.class);
-            startActivity(secondActivity);
+            chamarPerfil();
 
         } else if (id == R.id.cadastrarAula) {
-
+            chamarCadastrarAula();
         } else if (id == R.id.aulasCompradas) {
-
+            Intent secondActivity = new Intent(this, AulasCompradasActivity.class);
+            startActivity(secondActivity);
         } else if (id == R.id.aulasOferecidas) {
-
+            Intent secondActivity = new Intent(this, AulasOferecidasActivity.class);
+            startActivity(secondActivity);
         } else if (id == R.id.chat) {
 
         } else if (id == R.id.sair) {
-
+            fazerLogoff();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void chamarMoedas() {
+        Intent secondActivity = new Intent(this, CoinsActivity.class);
+        startActivity(secondActivity);
     }
 
 
