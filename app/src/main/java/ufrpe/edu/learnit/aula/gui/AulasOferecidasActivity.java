@@ -1,7 +1,8 @@
 package ufrpe.edu.learnit.aula.gui;
 
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import ufrpe.edu.learnit.R;
 
 public class AulasOferecidasActivity extends AppCompatActivity {
 
