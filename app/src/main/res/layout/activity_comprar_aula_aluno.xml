@@ -40,39 +40,6 @@
             android:textColor="@android:color/background_light"
             android:layout_centerHorizontal="true" />
 
-        <Button
-            android:text="Chat"
-            android:layout_width="wrap_content"
-            android:id="@+id/button4"
-            android:background="#7bc8f3"
-            android:textColor="@android:color/background_light"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignLeft="@+id/textView4"
-            android:layout_alignStart="@+id/textView4"
-            android:layout_marginBottom="32dp" />
-
-        <Button
-            android:text="Comprar"
-            android:layout_width="wrap_content"
-            android:id="@+id/button3"
-            android:onClick='confirmar'
-            android:background="#7bc8f3"
-            android:textColor="@android:color/background_light"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button4"
-            android:layout_alignBottom="@+id/button4"
-            android:layout_alignRight="@+id/textView4"
-            android:layout_alignEnd="@+id/textView4" />
-        <TextView
-            android:text="Horario total aqui"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TextViewTotalDeHoras"
-            android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/button3"
-            android:layout_alignStart="@+id/button3" />
-
         <TextView
             android:text="Horas Totais de aula disponiveis:"
             android:layout_width="wrap_content"
@@ -92,16 +59,6 @@
             android:layout_below="@+id/textView5"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text="preço aqui"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TextViewPrecoPorHoraAula"
-            android:layout_alignBaseline="@+id/textView18"
-            android:layout_alignBottom="@+id/textView18"
-            android:layout_alignLeft="@+id/TextViewTotalDeHoras"
-            android:layout_alignStart="@+id/TextViewTotalDeHoras" />
 
         <TextView
             android:text="Descrição da aula:"
@@ -153,6 +110,52 @@
             android:layout_alignBottom="@+id/textInputLayout"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="preço aqui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewPrecoPorHoraAula"
+            android:layout_alignBaseline="@+id/textView18"
+            android:layout_alignBottom="@+id/textView18"
+            android:layout_alignRight="@+id/TextViewTotalDeHoras"
+            android:layout_alignEnd="@+id/TextViewTotalDeHoras" />
+
+        <TextView
+            android:text="Horario total aqui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewTotalDeHoras"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="27dp"
+            android:layout_marginEnd="27dp" />
+
+        <Button
+            android:text="Chat"
+            android:layout_width="wrap_content"
+            android:id="@+id/button4"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="78dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/textView18"
+            android:layout_alignEnd="@+id/textView18" />
+
+        <Button
+            android:text="Comprar"
+            android:layout_width="wrap_content"
+            android:id="@+id/button3"
+            android:onClick='confirmar'
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button4"
+            android:layout_alignBottom="@+id/button4"
+            android:layout_alignRight="@+id/TextViewPrecoPorHoraAula"
+            android:layout_alignEnd="@+id/TextViewPrecoPorHoraAula" />
 
     </RelativeLayout>
 </ScrollView>
