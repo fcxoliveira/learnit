@@ -128,6 +128,7 @@ public class AulaPersistencia {
         Cursor cursor=db.query("AULAS",new String[]{"*"},"Titulo LIKE ? OR Descricao LIKE ?",new String[] { "%"+texto+"%","%"+texto+"%" },null ,null, null);
         ArrayList<Aula> aulas = new ArrayList<>();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        TagPersistencia tagPersistencia = new TagPersistencia();
         while (cursor.moveToNext()){
             Aula aula = new Aula();
             aula.setId(cursor.getInt(cursor.getColumnIndex("Id")));
@@ -137,10 +138,8 @@ public class AulaPersistencia {
             aula.setDescricao(cursor.getString(cursor.getColumnIndex("Descricao")));
             aula.setDuracaoHorasAula(cursor.getInt(cursor.getColumnIndex("Horas")));
             ArrayList<Tag> tags = new ArrayList<Tag>();
-            Tag tag1 = new Tag();
-            Tag tag2 = new Tag();
-            tag1.setID(cursor.getInt(cursor.getColumnIndex("Tag1")));
-            tag2.setID(cursor.getInt(cursor.getColumnIndex("Tag2")));
+            Tag tag1 = tagPersistencia.retornarTag(cursor.getInt(cursor.getColumnIndex("Tag1")));
+            Tag tag2 = tagPersistencia.retornarTag(cursor.getInt(cursor.getColumnIndex("Tag2")));
             tags.add(tag1);
             tags.add(tag2);
             aula.setTags(tags);
