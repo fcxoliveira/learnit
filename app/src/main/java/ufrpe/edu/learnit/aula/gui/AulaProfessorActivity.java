@@ -34,20 +34,20 @@ public class AulaProfessorActivity extends AppCompatActivity {
         Tag interesse2 = interesses.get(1);
         String tag1 = new StringBuilder().append(interesse1).toString();
         String tag2 = new StringBuilder().append(interesse2).toString();
-        textView108.setText(tag1);
+        textView105.setText(tag1);
         textView104.setText(tag2);
         String preco = new StringBuilder().append(aula.getValor()).toString();
-        textView105.setText(preco);
+        textView7.setText(preco);
 
     }
     private void gerarItens() {
-        textView7 = (TextView)findViewById(R.id.textView7);
+        textView7 = (TextView)findViewById(R.id.textViewNome);
         textView101 = (TextView)findViewById(R.id.textView101);
         textView100 = (TextView) findViewById(R.id.textView100);
-        textView7 = (TextView) findViewById(R.id.textView7);
+        textView7 = (TextView) findViewById(R.id.textViewNome);
         textView102=(TextView) findViewById(R.id.textView102);
         textView104=(TextView) findViewById(R.id.textView4);
-        textView105=(TextView) findViewById(R.id.textView105);
+        textView105=(TextView) findViewById(R.id.textView5);
         textView108=(TextView) findViewById(R.id.textView8);
     }
     public Aula retornarAula(int id){

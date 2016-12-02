@@ -204,10 +204,9 @@ public class AulaPersistencia {
             Tag tag2 = tagPersistencia.retornarTag(interesse2);
             interesses.add(tag1);
             interesses.add(tag2);
-            result.setInteresses(interesses);
+            result.setTags(interesses);
             result.setHoras(horas);
             db.close();
-
         }
         return result;
     }
