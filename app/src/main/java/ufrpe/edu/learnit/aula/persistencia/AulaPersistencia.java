@@ -192,7 +192,7 @@ public class AulaPersistencia {
             int valor = cursor.getInt(cursor.getColumnIndex("Valor"));
             int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
             int interesse1= cursor.getInt(cursor.getColumnIndex("Tag1"));
-            int interesse2= cursor.getInt(cursor.getColumnIndex("Tag22"));
+            int interesse2= cursor.getInt(cursor.getColumnIndex("Tag2"));
             result.setDescricao(descricao);
             result.setValor(valor);
             result.setNome(nome);
