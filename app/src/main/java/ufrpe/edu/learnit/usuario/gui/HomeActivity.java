@@ -109,11 +109,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void chamarPerfil(){
         Intent secondActivity = new Intent(this, PerfilActivity.class);
         startActivity(secondActivity);
+        finish();
     }
 
     public void chamarCadastrarAula(){
         Intent secondActivity = new Intent(this, CadastrarAulaTutorActivity.class);
         startActivity(secondActivity);
+        finish();
     }
 
     public ArrayList<Aula> getValoresListView() {
@@ -186,6 +188,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void chamarMoedas() {
         Intent secondActivity = new Intent(this, CoinsActivity.class);
         startActivity(secondActivity);
+        finish();
     }
 
 

@@ -45,7 +45,7 @@
                 android:textColor="@android:color/background_light" />
 
             <ImageView
-                app:srcCompat="@drawable/ic_menu_camera"
+                app:srcCompat="@drawable/coinicon"
                 android:layout_marginTop="47dp"
                 android:id="@+id/imageView3"
                 android:layout_width="60dp"
@@ -93,7 +93,7 @@
                 android:layout_centerHorizontal="true" />
 
             <ImageView
-                app:srcCompat="@drawable/ic_menu_camera"
+                app:srcCompat="@drawable/coinicon"
                 android:layout_marginTop="51dp"
                 android:id="@+id/imageView5"
                 android:layout_width="60dp"
@@ -101,7 +101,7 @@
                 android:layout_below="@+id/imageView2"/>
 
             <ImageView
-                app:srcCompat="@drawable/ic_menu_camera"
+                app:srcCompat="@drawable/coinicon"
                 android:layout_marginTop="45dp"
                 android:id="@+id/imageView2"
                 android:layout_width="60dp"
@@ -111,7 +111,7 @@
                 android:layout_alignEnd="@+id/imageView4" />
 
             <ImageView
-                app:srcCompat="@drawable/ic_menu_camera"
+                app:srcCompat="@drawable/coinicon"
                 android:layout_marginTop="71dp"
                 android:id="@+id/imageView4"
                 android:layout_width="60dp"
@@ -137,7 +137,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
-                android:layout_alignTop="@+id/imageView4">
+                android:layout_alignTop="@+id/imageView4"
+                android:id="@+id/radioGroup">
 
                 <RadioButton
                     android:text="comprar"
@@ -182,6 +183,19 @@
                     android:backgroundTint="#7CFC00" />
 
             </RadioGroup>
+
+            <Button
+                android:text="Comprar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@+id/textView11"
+                android:layout_alignEnd="@+id/textView11"
+                android:layout_marginBottom="49dp"
+                android:id="@+id/buttonComprar"
+                android:background="#7bc8f3"
+                android:textColor="@android:color/background_light"
+                android:onClick="carregarMoedas"/>
 
         </RelativeLayout>
     </ScrollView>

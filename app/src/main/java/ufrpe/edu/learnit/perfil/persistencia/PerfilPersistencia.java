@@ -101,4 +101,14 @@ public class PerfilPersistencia {
         db.update("PERFIL",newValues,"IdPerfil='"+idString+"'",null);
         db.close();
     }
+
+    public void addMoeda(int moedas) {
+        db = dbHelper.getReadableDatabase();
+        String idString = String.valueOf(Session.getUsuario().getID());
+        moedas = Session.getUsuario().getPerfil().getMoedas()+moedas;
+        ContentValues newValues = new ContentValues();
+        newValues.put("Moedas",moedas);
+        db.update("PERFIL",newValues,"IdPerfil='"+idString+"'",null);
+        db.close();
+    }
 }

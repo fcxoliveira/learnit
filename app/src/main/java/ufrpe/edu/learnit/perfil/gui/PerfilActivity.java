@@ -15,6 +15,7 @@ import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
+import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class PerfilActivity extends AppCompatActivity {
     private TextView textViewAulaOferecida1, textViewAulaOferecida2;
@@ -74,5 +75,17 @@ public class PerfilActivity extends AppCompatActivity {
         }
         return result;
     }
+
+    @Override
+    public void onBackPressed(){
+        carregarHome();
+    }
+
+    public void carregarHome() {
+        Intent secondActivity = new Intent(this, HomeActivity.class);
+        startActivity(secondActivity);
+        finish();
+    }
+
 
 }

@@ -21,4 +21,8 @@ public class PerfilNegocio {
         perfilPersistencia.editarPerfil(id,bio,nome,interesse1,interesse2);
     }
 
+    public void addMoedas(int moedas) {
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        perfilPersistencia.addMoeda(moedas);
+    }
 }
