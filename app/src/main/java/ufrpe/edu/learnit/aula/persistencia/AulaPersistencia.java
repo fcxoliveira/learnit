@@ -209,4 +209,41 @@ public class AulaPersistencia {
         return result;
     }
 
+    public ArrayList<Aula> retornarAulasQueAlunoAssistiu(){
+        ArrayList<Aula> aulas = new ArrayList<>();
+        db = dbHelper.getReadableDatabase();
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        String idAlunoString = String.valueOf(Session.getUsuario().getID());
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAluno = ?",new String[] {idAlunoString},null ,null, null);
+        while (cursor.moveToNext()){
+            aulas.add(retornarAulaPorId(cursor.getInt(cursor.getColumnIndex("IdAula"))));
+        }
+        return aulas;
+    }
+
+    public Aula retornarAulaPorId(int id){
+        db = dbHelper.getReadableDatabase();
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        String idString = String.valueOf(id);
+        Cursor cursor = db.query("AULA",new String[]{"*"},"Id = ?", new String[]{idString},null,null,null);
+        cursor.moveToFirst();
+        Aula aula = new Aula();
+        aula.setId(cursor.getInt(cursor.getColumnIndex("Id")));
+        aula.setPerfil(perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdPerfil"))));
+        aula.setTitulo(cursor.getString(cursor.getColumnIndex("Titulo")));
+        aula.setAtiva(true);
+        aula.setDescricao(cursor.getString(cursor.getColumnIndex("Descricao")));
+        aula.setDuracaoHorasAula(cursor.getInt(cursor.getColumnIndex("Horas")));
+        ArrayList<Tag> tags = new ArrayList();
+        Tag tag1 = new Tag();
+        Tag tag2 = new Tag();
+        tag1.setID(cursor.getInt(cursor.getColumnIndex("Tag1")));
+        tag2.setID(cursor.getInt(cursor.getColumnIndex("Tag2")));
+        tags.add(tag1);
+        tags.add(tag2);
+        aula.setTags(tags);
+        aula.setValor(cursor.getDouble(cursor.getColumnIndex("Valor")));
+        return aula;
+    }
+
 }
