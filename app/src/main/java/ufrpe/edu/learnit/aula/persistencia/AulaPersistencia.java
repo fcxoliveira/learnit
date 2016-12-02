@@ -13,6 +13,7 @@ import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
+import ufrpe.edu.learnit.infra.persistencia.TagPersistencia;
 
 
 public class AulaPersistencia {
@@ -171,8 +172,53 @@ public class AulaPersistencia {
         String idAulaString = String.valueOf(idAula);
         String horasString = String.valueOf(horas);
         newValues.put("Horas", horasString);
-        db.update("AULA",newValues,"Id = ?",new String[]{idAulaString});
+        db.update("AULAS",newValues,"Id = ?",new String[]{idAulaString});
         db.close();
     }
+    public Aula retornarAula(long id){
+        Aula result = new Aula();
+        db = dbHelper.getReadableDatabase();
+        StringBuilder sb = new StringBuilder();
+        sb.append(id);
+        String idString = sb.toString();
+        Cursor cursor=db.query("AULAS", null, "IdAula=?",new String[]{idString}, null, null, null);
+        if (!cursor.moveToFirst()){
+            result = null;
+            db.close();
+        }else{
+            String descricao = cursor.getString(cursor.getColumnIndex("Descricao"));
+            String nome = cursor.getString(cursor.getColumnIndex("Nome"));
+            int valor = cursor.getInt(cursor.getColumnIndex("Valor"));
+            int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
+            int interesse1= cursor.getInt(cursor.getColumnIndex("Interesse1"));
+            int interesse2= cursor.getInt(cursor.getColumnIndex("Interesse2"));
+            result.setDescricao(descricao);
+            result.setValor(valor);
+            result.setNome(nome);
+            ArrayList<Tag> interesses = new ArrayList<Tag>();
+            TagPersistencia tagPersistencia = new TagPersistencia();
+            Tag tag1 = tagPersistencia.retornarTag(interesse1);
+            Tag tag2 = tagPersistencia.retornarTag(interesse2);
+            interesses.add(tag1);
+            interesses.add(tag2);
+            result.setInteresses(interesses);
+            result.setHoras(horas);
+            db.close();
+
+        }
+        return result;
+    }
+
+    public ArrayList<Aula> retornarAulasQueAlunoAssistiu(){
+        ArrayList<Aula> aulas = new ArrayList<>();
+        db = dbHelper.getReadableDatabase();
+        String idAlunoString = String.valueOf(Session.getUsuario().getID());
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAluno = ?",new String[] {idAlunoString},null ,null, null);
+        while (cursor.moveToNext()){
+            aulas.add(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));
+        }
+        return aulas;
+    }
+
 
 }

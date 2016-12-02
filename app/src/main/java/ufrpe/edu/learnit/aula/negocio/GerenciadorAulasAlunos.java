@@ -23,4 +23,9 @@ public class GerenciadorAulasAlunos {
         aulaPersistencia.inscreverAlunoEmAula(idAluno,idAula,date,horas,moedas);
     }
 
+    public ArrayList<Aula> retornarAulasQueAlunoAssistiu(){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        return aulaPersistencia.retornarAulasQueAlunoAssistiu();
+    }
+
 }

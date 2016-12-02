@@ -10,6 +10,10 @@ import ufrpe.edu.learnit.perfil.dominio.Perfil;
  */
 
 public class Aula {
+
+    private String nome;
+    private int horas;
+    private ArrayList<Tag> interesses;
     private Perfil perfil;
     private String titulo, descricao;
     private double valor;
@@ -18,6 +22,17 @@ public class Aula {
     private int duracaoHorasAula;
     private ArrayList<Tag> tags = new ArrayList<Tag>();
 
+    public ArrayList<Tag> getInteresses() {return interesses;}
+
+    public void setInteresses(ArrayList<Tag> interesses) {this.interesses = interesses;}
+
+    public int getHoras() {return horas;}
+
+    public void setHoras(int horas) {this.horas = horas;}
+
+    public String getNome() {return nome;}
+
+    public void setNome(String nome) {this.nome = nome;}
     public Perfil getPerfil() {
         return perfil;
     }

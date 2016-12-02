@@ -8,7 +8,7 @@ import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.infra.dominio.Session;
 
-public class aula_aluno extends AppCompatActivity {
+public class AulaAlunoActivity extends AppCompatActivity {
     TextView nomeAula, descricaoAula, horasPagas, nomeProfessor, avaliadores, nota;
     RatingBar ratingBar;
 
@@ -25,6 +25,7 @@ public class aula_aluno extends AppCompatActivity {
         descricaoAula = (TextView)findViewById(R.id.textViewDescricao);
         horasPagas = (TextView)findViewById(R.id.textViewHoras);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
+
     }
 
 
