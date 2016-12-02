@@ -214,7 +214,7 @@ public class AulaPersistencia {
         ArrayList<Aula> aulas = new ArrayList<>();
         db = dbHelper.getReadableDatabase();
         String idAlunoString = String.valueOf(Session.getUsuario().getID());
-        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAluno = ?",new String[] {idAlunoString},null ,null, null);
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfil = ?",new String[] {idAlunoString},null ,null, null);
         while (cursor.moveToNext()){
             aulas.add(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));
         }
@@ -239,7 +239,7 @@ public class AulaPersistencia {
         String idAulaString = String.valueOf(Session.getUsuario().getID());
         Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAula = ?",new String[] {idAulaString},null ,null, null);
         while (cursor.moveToNext()){
-            alunos.add(perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdA"))));
+            alunos.add(perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdPerfil"))));
         }
         return alunos;
 
