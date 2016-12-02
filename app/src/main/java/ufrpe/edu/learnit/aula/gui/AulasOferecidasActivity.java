@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import ufrpe.edu.learnit.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
-import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
+import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
@@ -28,8 +28,8 @@ public class AulasOferecidasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aulas_oferecidas);
         listView = (ListView)findViewById(R.id.listViewMinhasAulas);
-        AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        aulas = aulaPersistencia.retornarAulasOfertadas();
+        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
+        aulas = gerenciadorAulasTutor.retornarAulasOfertadas();
         adapter = new CustomAdapter(aulas, getApplicationContext());
         listView.setAdapter(adapter);
         setOnItemClickListener();

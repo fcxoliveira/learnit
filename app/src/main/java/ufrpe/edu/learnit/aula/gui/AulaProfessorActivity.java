@@ -1,7 +1,9 @@
 package ufrpe.edu.learnit.aula.gui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -10,11 +12,11 @@ import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.dominio.Tag;
+import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 
 public class AulaProfessorActivity extends AppCompatActivity {
-    private TextView  textView7, textView104,textView105;
-    private TextView  textView101, textView100, textView102,textView108;
+    private TextView  textView7, textView104,textView105, textView101, textView100, textView102,textView108;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +39,13 @@ public class AulaProfessorActivity extends AppCompatActivity {
         textView105.setText(tag1);
         textView104.setText(tag2);
         String preco = new StringBuilder().append(aula.getValor()).toString();
-        textView7.setText(preco);
+        textView108.setText(preco);
 
     }
     private void gerarItens() {
         textView7 = (TextView)findViewById(R.id.textViewNome);
         textView101 = (TextView)findViewById(R.id.textView101);
         textView100 = (TextView) findViewById(R.id.textView100);
-        textView7 = (TextView) findViewById(R.id.textViewNome);
         textView102=(TextView) findViewById(R.id.textView102);
         textView104=(TextView) findViewById(R.id.textView4);
         textView105=(TextView) findViewById(R.id.textView5);
@@ -53,5 +54,22 @@ public class AulaProfessorActivity extends AppCompatActivity {
     public Aula retornarAula(int id){
         GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
         return gerenciadorAulasTutor.retornarAula(id);
+    }
+
+    public void editarAula(View view){
+        Intent secondActivity = new Intent(this, EditarAulaActivity.class);
+        startActivity(secondActivity);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed(){
+        chamarHome();
+    }
+
+    public void chamarHome() {
+        Intent secondActivity = new Intent(this, HomeActivity.class);
+        startActivity(secondActivity);
+        finish();
     }
 }

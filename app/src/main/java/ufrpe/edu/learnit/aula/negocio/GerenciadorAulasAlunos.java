@@ -20,7 +20,7 @@ public class GerenciadorAulasAlunos {
 
     public void inscreverAlunoEmAula(int idAluno, int idAula,String date,int horas,int moedas){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        aulaPersistencia.inscreverAlunoEmAula(idAluno,idAula,date,horas,moedas);
+        aulaPersistencia.inscreverAlunoEmAula(idAluno, idAula, date, horas, moedas);
     }
 
     public ArrayList<Aula> retornarAulasQueAlunoAssistiu(){
