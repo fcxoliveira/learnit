@@ -128,7 +128,6 @@ public class AulaPersistencia {
         Cursor cursor=db.query("AULAS",new String[]{"*"},"Titulo LIKE ? OR Descricao LIKE ?",new String[] { "%"+texto+"%","%"+texto+"%" },null ,null, null);
         ArrayList<Aula> aulas = new ArrayList<>();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        int i = 0;
         while (cursor.moveToNext()){
             Aula aula = new Aula();
             aula.setId(cursor.getInt(cursor.getColumnIndex("Id")));
@@ -160,6 +159,7 @@ public class AulaPersistencia {
         newValues.put("IdPerfil",idAlunoString);
         newValues.put("IdAula", idAulaString);
         newValues.put("date",date);
+        newValues.put("horas",horas);
         db.insert("ALUNO_AULA", null, newValues);
         removerHorasDisponiveis(idAula,horas);
         perfilPersistencia.removerMoedas(idAluno, moedas);
