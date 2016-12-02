@@ -31,6 +31,7 @@ import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
+import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -44,6 +45,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Session.setContext(getApplicationContext());
+        PerfilNegocio perfilNegocio = new PerfilNegocio();
+        Session.getUsuario().setPerfil(perfilNegocio.retornarPerfil(Session.getUsuario().getID()));
         listView = (ListView) findViewById(R.id.listView);
         editText = (EditText) findViewById(R.id.editText6);
         ArrayList<Aula> values = getValoresListView();
@@ -172,9 +175,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.aulasCompradas) {
             Intent secondActivity = new Intent(this, AulasCompradasActivity.class);
             startActivity(secondActivity);
+            finish();
         } else if (id == R.id.aulasOferecidas) {
             Intent secondActivity = new Intent(this, AulasOferecidasActivity.class);
             startActivity(secondActivity);
+            finish();
         } else if (id == R.id.chat) {
 
         } else if (id == R.id.sair) {

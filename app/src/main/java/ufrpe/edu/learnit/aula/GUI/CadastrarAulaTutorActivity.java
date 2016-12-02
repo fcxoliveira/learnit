@@ -119,4 +119,16 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
             chamarTelaInicial(v);
         }
 }
+
+    @Override
+    public void onBackPressed(){
+        carregarHome();
+    }
+
+    public void carregarHome() {
+        Intent secondActivity = new Intent(this, HomeActivity.class);
+        startActivity(secondActivity);
+        finish();
+    }
+
 }
