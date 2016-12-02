@@ -2,6 +2,7 @@ package ufrpe.edu.learnit.aula.negocio;
 
 import java.util.ArrayList;
 
+import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
 
@@ -28,4 +29,9 @@ public class GerenciadorAulasAlunos {
         return aulaPersistencia.retornarAulasQueAlunoComprou();
     }
 
-}
+    public ArrayList<AlunoAula> retornarAlunoAula(int idAluno, int idAula) {
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        return aulaPersistencia.retornarAlunoAula(idAluno,idAula);
+    }
+
+    }

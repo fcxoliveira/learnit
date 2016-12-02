@@ -14,6 +14,7 @@ import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
 import ufrpe.edu.learnit.infra.persistencia.TagPersistencia;
+import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 
 
 public class AulaPersistencia {
@@ -247,6 +248,25 @@ public class AulaPersistencia {
         }
         return alunos;
 
+    }
+
+    public ArrayList<AlunoAula> retornarAlunoAula(int idAluno, int idAula){
+        db = dbHelper.getReadableDatabase();
+        String idAulaString = String.valueOf(idAula);
+        String idAlunoString = String.valueOf(idAluno);
+        ArrayList<AlunoAula> result = new ArrayList<>();
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAula = ? AND IdPerfil = ?",new String[] {idAulaString,idAlunoString},null ,null, null);
+        while (cursor.moveToNext()){
+            AlunoAula alunoAula = new AlunoAula();
+            alunoAula.setPerfil(perfilPersistencia.retornarPerfil(idAluno));
+            alunoAula.setAula(retornarAula(idAula));
+            alunoAula.setDate(cursor.getString(cursor.getColumnIndex("date")));
+            alunoAula.setHorasTotal(cursor.getInt(cursor.getColumnIndex("horas")));
+            alunoAula.setValorTotal(cursor.getInt(cursor.getColumnIndex("moedas")));
+            result.add(alunoAula);
+        }
+        return result;
     }
 
 
