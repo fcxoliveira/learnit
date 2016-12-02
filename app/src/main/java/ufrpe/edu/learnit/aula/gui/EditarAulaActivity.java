@@ -19,11 +19,7 @@ import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.infra.negocio.TagNegocio;
-
-
-/**
- * Created by Felipe on 01/12/2016.
- */
+import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class EditarAulaActivity extends AppCompatActivity {
 
@@ -123,7 +119,7 @@ public class EditarAulaActivity extends AppCompatActivity {
     }
 
     public void voltar() {
-        Intent secondActivity = new Intent(this, AulaProfessorActivity.class);
+        Intent secondActivity = new Intent(this, HomeActivity.class);
         startActivity(secondActivity);
         finish();
     }
