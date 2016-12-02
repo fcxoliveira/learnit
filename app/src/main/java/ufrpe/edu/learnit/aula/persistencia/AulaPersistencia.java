@@ -188,7 +188,7 @@ public class AulaPersistencia {
             db.close();
         }else{
             String descricao = cursor.getString(cursor.getColumnIndex("Descricao"));
-            String nome = cursor.getString(cursor.getColumnIndex("Nome"));
+            String nome = cursor.getString(cursor.getColumnIndex("Titulo"));
             int valor = cursor.getInt(cursor.getColumnIndex("Valor"));
             int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
             int interesse1= cursor.getInt(cursor.getColumnIndex("Interesse1"));
