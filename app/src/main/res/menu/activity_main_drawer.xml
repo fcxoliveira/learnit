@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/moedas"
+            android:icon="@drawable/Coin_Icon"
+            android:title="XX Coins" />
+        <item
+            android:id="@+id/perfil"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="Perfil"/>
+        <item
+            android:id="@+id/cadastrarAula"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Cadastrar Aula" />
+        <item
+            android:id="@+id/aulasCompradas"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Aulas Compradas" />
+        <item
+            android:id="@+id/aulasOferecidas"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Aulas Oferecidas" />
+        <item
+            android:id="@+id/chat"
+            android:icon="@android:drawable/sym_action_chat"
+            android:title="Chat" />
+        <item
+            android:id="@+id/sair"
+            android:icon="@android:drawable/ic_lock_power_off"
+            android:title="Sair" />
+    </group>
+</menu>
