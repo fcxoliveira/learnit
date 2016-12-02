@@ -17,7 +17,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_TAGS = "create table IF NOT EXISTS TAGS (Id integer primary key autoincrement, Tag text);";
     private static final String TABLE_AULAS = "create table if not exists AULAS(Id integer primary key autoincrement, Titulo text, Descricao text, Valor int, Tag1 int, Tag2 int,IdPerfil int, Horas int);";
     private static final ArrayList<String> TAGS = new ArrayList<String>(Arrays.asList("--Selecione--","Informatica", "Musica", "Portugues", "Matematica", "Biologia", "Fisica", "Quimica", "Ed. Fisica"));
-    private static final String TABLE_ALUNO_AULA = "create table if not exists ALUNO_AULA(IdPerfil integer, IdAula integer, date text, horas integer);";
+    private static final String TABLE_ALUNO_AULA = "create table if not exists ALUNO_AULA(IdPerfil integer, IdAula integer, date text, horas integer, moedas integer);";
 
 
     public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
