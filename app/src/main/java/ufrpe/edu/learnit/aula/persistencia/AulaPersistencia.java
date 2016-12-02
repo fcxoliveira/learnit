@@ -182,7 +182,7 @@ public class AulaPersistencia {
         StringBuilder sb = new StringBuilder();
         sb.append(id);
         String idString = sb.toString();
-        Cursor cursor=db.query("AULAS", null, "IdAula=?",new String[]{idString}, null, null, null);
+        Cursor cursor=db.query("AULAS", null, "Id=?",new String[]{idString}, null, null, null);
         if (!cursor.moveToFirst()){
             result = null;
             db.close();
