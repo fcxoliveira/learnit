@@ -2,6 +2,7 @@ package ufrpe.edu.learnit.aula.negocio;
 
 import java.util.ArrayList;
 
+import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
 
@@ -22,5 +23,10 @@ public class GerenciadorAulasTutor {
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         aulaPersistencia.editarAula(id,titulo,descricao,duracao,valor,tag1,tag2);
 
+    }
+
+    public Aula retornarAula(int id){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        return aulaPersistencia.retornarAula(id);
     }
 }
