@@ -87,15 +87,15 @@ public class AlunoInscreverEmAulaActivity extends AppCompatActivity {
             }
         });
     }
-    public void confirmar(){
+    public void confirmar(View view){
                 GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
                 int usuarioId =Session.getUsuario().getID();
                 int aulaId =(int)Session.getAula().getId();
                 String data = this.getDateTime();
                 String TotalDeHoras = EditTextTotalDeHorasDesejadas.getText().toString();
-                int horas = Integer.parseInt(TotalDeHoras);
+                int horas = Math.round(Float.parseFloat(TotalDeHoras));
                 String TotalMoedas =TextViewTotalDaCompra.getText().toString();
-                int moedas = Integer.parseInt(TotalMoedas);
+                int moedas = Math.round(Float.parseFloat(TotalMoedas));
                 gerenciadorAulasAlunos.inscreverAlunoEmAula(usuarioId,aulaId,data,horas,moedas);
                 Intent secondActivity = new Intent(this, HomeActivity.class);
                 startActivity(secondActivity);
