@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.infra;
+package ufrpe.edu.learnit;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.gui.AlunoInscreverEmAulaActivity;
 import ufrpe.edu.learnit.infra.dominio.Session;

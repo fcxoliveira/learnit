@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,7 +20,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.infra.CustomAdapter;
+import ufrpe.edu.learnit.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.gui.AlunoInscreverEmAulaActivity;
@@ -57,10 +58,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object object = adapter.getItem(position);
-                Aula aula = (Aula) object;
+                Object object= adapter.getItem(position);
+                Aula aula=(Aula)object;
                 Session.setAula(aula);
-                Intent secondActivity = new Intent(Session.getContext(), AlunoInscreverEmAulaActivity.class);
+                Intent secondActivity = new Intent(Session.getContext(),AlunoInscreverEmAulaActivity.class);
                 startActivity(secondActivity);
             }
         });
@@ -86,7 +87,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    public void fazerLogoff(View v) {
+    public void fazerLogoff(View v){
         SessionNegocio sessionNegocio = new SessionNegocio();
         sessionNegocio.deslogarUsuario();
         Session.setUsuario(null);
@@ -95,21 +96,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         this.finish();
     }
 
-    public void chamarPerfil(View view) {
+    public void chamarPerfil(View view){
         Intent secondActivity = new Intent(this, PerfilActivity.class);
         startActivity(secondActivity);
     }
 
-    public void chamarCadastrarAula(View view) {
+    public void chamarCadastrarAula(View view){
         Intent secondActivity = new Intent(this, CadastrarAulaTutorActivity.class);
         startActivity(secondActivity);
     }
 
     public ArrayList<Aula> getValoresListView() {
         GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
-        ArrayList<Aula> aulas = gerenciadorAulasAlunos.getTodasAulasOfertadas();
+        ArrayList<Aula> aulas =  gerenciadorAulasAlunos.getTodasAulasOfertadas();
         return aulas;
     }
+
 
     public void setOnlistenerSearch() {
 
@@ -136,7 +138,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
-    }
+
+
+        }
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -145,19 +149,29 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            Toast.makeText(this, "Minhas aulas selecionado", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.moedas) {
+            Intent secondActivity = new Intent(this, CoinsActivity.class);
+            startActivity(secondActivity);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.perfil) {
+            Intent secondActivity = new Intent(this, PerfilActivity.class);
+            startActivity(secondActivity);
 
-        } else if (id == R.id.nav_manage) {}
+        } else if (id == R.id.cadastrarAula) {
 
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
-            return true;
+        } else if (id == R.id.aulasCompradas) {
+
+        } else if (id == R.id.aulasOferecidas) {
+
+        } else if (id == R.id.chat) {
+
+        } else if (id == R.id.sair) {
+
         }
-
-
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
+
+}
