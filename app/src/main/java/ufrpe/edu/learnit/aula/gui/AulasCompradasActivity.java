@@ -14,6 +14,7 @@ import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 
 public class AulasCompradasActivity extends AppCompatActivity {
@@ -50,6 +51,16 @@ public class AulasCompradasActivity extends AppCompatActivity {
         GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
         ArrayList<Aula> aulas =  gerenciadorAulasAlunos.retornarAulasQueAlunoAssistiu();
         return aulas;
+    }
+
+    @Override
+    public void onBackPressed(){
+        carregarHome();
+    }
+    public void carregarHome() {
+        Intent secondActivity = new Intent(this, HomeActivity.class);
+        startActivity(secondActivity);
+        finish();
     }
 
 }

@@ -27,8 +27,8 @@ public class AulaProfessorActivity extends AppCompatActivity {
         Aula aula = Session.getAula();
         String horas = new StringBuilder().append(aula.getHoras()).toString();
         textView101.setText(horas);
-        textView100.setText(aula.getNome());
-        textView7.setText(aula.getNome());
+        textView100.setText(aula.getTitulo());
+        textView7.setText(aula.getTitulo());
         String descricao = (aula.getDescricao());
         textView102.setText(descricao);
         ArrayList<Tag> interesses = aula.getTags();
