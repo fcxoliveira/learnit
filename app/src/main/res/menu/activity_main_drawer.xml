@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/moedas"
-            android:icon="@drawable/coin_icon"
+            android:icon="@drawable/coinicon"
             android:title="XX Coins" />
         <item
             android:id="@+id/perfil"
