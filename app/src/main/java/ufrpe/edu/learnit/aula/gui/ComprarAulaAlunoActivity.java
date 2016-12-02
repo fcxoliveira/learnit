@@ -132,7 +132,8 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
 
     public boolean verificarHoras(){
         boolean result = true;
-        if(Integer.parseInt(EditTextTotalDeHorasDesejadas.getText().toString())>Session.getAula().getHoras()){
+        int horas = Integer.parseInt(EditTextTotalDeHorasDesejadas.getText().toString());
+        if(horas>Session.getAula().getHoras()||horas==0){
             result = false;
         }
         return result;
