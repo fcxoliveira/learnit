@@ -11,20 +11,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import ufrpe.edu.learnit.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
-import ufrpe.edu.learnit.aula.gui.AlunoInscreverEmAulaActivity;
+import ufrpe.edu.learnit.aula.gui.ComprarAulaAlunoActivity;
 import ufrpe.edu.learnit.aula.gui.CadastrarAulaTutorActivity;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -62,7 +60,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Object object= adapter.getItem(position);
                 Aula aula=(Aula)object;
                 Session.setAula(aula);
-                Intent secondActivity = new Intent(Session.getContext(),AlunoInscreverEmAulaActivity.class);
+                Intent secondActivity = new Intent(Session.getContext(),ComprarAulaAlunoActivity.class);
                 startActivity(secondActivity);
             }
         });

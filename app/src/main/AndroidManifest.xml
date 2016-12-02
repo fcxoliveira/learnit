@@ -35,8 +35,9 @@
         <activity android:name=".aula.gui.CadastrarAulaTutorActivity" />
         <activity android:name=".perfil.gui.EditarPerfilActivity" />
         <activity
-            android:name=".aula.gui.AlunoInscreverEmAulaActivity"
+            android:name=".aula.gui.ComprarAulaAlunoActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity android:name=".aula.gui.AulasOferecidasActivity"></activity>
     </application>
 
 </manifest>

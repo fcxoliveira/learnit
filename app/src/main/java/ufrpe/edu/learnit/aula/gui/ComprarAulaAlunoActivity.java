@@ -1,8 +1,6 @@
 package ufrpe.edu.learnit.aula.gui;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,7 +18,7 @@ import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
-public class AlunoInscreverEmAulaActivity extends AppCompatActivity {
+public class ComprarAulaAlunoActivity extends AppCompatActivity {
     static Aula aula;
     private TextView TextViewNomeDaAula;
     private TextView TextViewDescricaoAula;
@@ -34,7 +32,7 @@ public class AlunoInscreverEmAulaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         aula=Session.getAula();
-        setContentView(R.layout.activity_aluno_inscrever_em_aula);
+        setContentView(R.layout.activity_comprar_aula_aluno);
         Session.setContext(getApplicationContext());
 
         TextViewNomeDaAula = (TextView)findViewById(R.id.textView4);

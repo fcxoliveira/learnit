@@ -11,7 +11,7 @@
         android:id="@+id/activity_aluno_inscrever_em_aula"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="ufrpe.edu.learnit.aula.gui.AlunoInscreverEmAulaActivity">
+        tools:context="ufrpe.edu.learnit.aula.gui.ComprarAulaAlunoActivity">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
