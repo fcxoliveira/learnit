@@ -22,7 +22,7 @@ public class AulaProfessorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_aula_professor);
         Session.setContext(getApplicationContext());
         gerarItens();
-        Aula aula = retornarAula((int) Session.getAula().getId());
+        Aula aula = Session.getAula();
         String horas = new StringBuilder().append(aula.getHoras()).toString();
         textView101.setText(horas);
         textView100.setText(aula.getNome());
