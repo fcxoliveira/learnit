@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +37,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ListView listView;
     EditText editText;
     CustomAdapter adapter;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +51,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setOnItemClickListener();
         listView.setAdapter(adapter);
         setOnlistenerSearch();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        mudarMoedas();
+    }
+
+    public void mudarMoedas() {
+        Menu menu = navigationView.getMenu();
+        MenuItem coins = menu.findItem(R.id.moedas);
+        String moedas = String.valueOf(Session.getUsuario().getPerfil().getMoedas());
+        coins.setTitle(moedas+" Moedas");
     }
 
 
