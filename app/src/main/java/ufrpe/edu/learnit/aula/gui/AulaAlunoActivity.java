@@ -21,7 +21,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         findItens();
         nomeAula.setText(aula.getTitulo());
         nomeProfessor.setText(aula.getPerfil().getNome());
-        avaliadores.setText(aula.getPerfil().getAvaliadores());
+        avaliadores.setText(String.valueOf(aula.getPerfil().getAvaliadores()));
         nota.setText(String.valueOf(aula.getPerfil().getAvaliadores()));
         descricaoAula.setText(aula.getDescricao());
         horasPagas.setText(String.valueOf(aula.getDuracaoHorasAula()));
