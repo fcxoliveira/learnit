@@ -195,7 +195,7 @@ public class AulaPersistencia {
             int interesse2= cursor.getInt(cursor.getColumnIndex("Tag2"));
             result.setDescricao(descricao);
             result.setValor(valor);
-            result.setNome(nome);
+            result.setTitulo(nome);
             ArrayList<Tag> interesses = new ArrayList<Tag>();
             TagPersistencia tagPersistencia = new TagPersistencia();
             Tag tag1 = tagPersistencia.retornarTag(interesse1);
