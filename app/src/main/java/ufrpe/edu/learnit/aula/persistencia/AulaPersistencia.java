@@ -77,7 +77,7 @@ public class AulaPersistencia {
     }
 
     public void editarAula(int id,String titulo, String descricao, int duracao,double valor,Tag tag1,Tag tag2){
-        db = dbHelper.getReadableDatabase();
+        db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("Descricao",descricao);
         newValues.put("Titulo",titulo);
@@ -151,7 +151,7 @@ public class AulaPersistencia {
     }
 
     public void inscreverAlunoEmAula(int idAluno, int idAula, String date,int horas,int moedas){
-        db = dbHelper.getReadableDatabase();
+        db = dbHelper.getWritableDatabase();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         String idAlunoString = String.valueOf(idAluno);
         String idAulaString = String.valueOf(idAula);
@@ -176,7 +176,7 @@ public class AulaPersistencia {
         String idAulaString = String.valueOf(idAula);
         String horasString = String.valueOf(horasTotal);
         newValues.put("Horas", horasString);
-        db = dbHelper.getReadableDatabase();
+        db = dbHelper.getWritableDatabase();
         db.update("AULAS",newValues,"Id = ?",new String[]{idAulaString});
         db.close();
     }

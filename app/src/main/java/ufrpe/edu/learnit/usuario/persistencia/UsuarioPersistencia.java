@@ -49,7 +49,7 @@ public class UsuarioPersistencia {
     public Usuario retornarUsuario(String userName, String password){
         db = dbHelper.getReadableDatabase();
         Usuario usuario;
-        Cursor cursor=db.query("USER",new String[]{"*"}, " Username=? and Password=?", new String[]{userName,password},null ,null, null);
+        Cursor cursor=db.query("USER",new String[]{"*"}, "Username=? and Password=?", new String[]{userName,password},null ,null, null);
         if(cursor.moveToFirst()) {
             int ID = cursor.getInt(cursor.getColumnIndex("Id"));
             String email = cursor.getString(cursor.getColumnIndex("Email"));
