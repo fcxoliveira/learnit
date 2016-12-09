@@ -29,7 +29,7 @@ public class CustomAdapterPerfil extends ArrayAdapter<Perfil> implements View.On
 
     }
     public CustomAdapterPerfil(ArrayList<Perfil> perfis, Context context) {
-        super(context, R.layout.textview_adapter, perfis);
+        super(context, R.layout.textview_adapter_perfil, perfis);
         this.perfis = perfis;
         this.mContext=context;
 
@@ -45,8 +45,8 @@ public class CustomAdapterPerfil extends ArrayAdapter<Perfil> implements View.On
 
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.textview_adapter, parent, false);
-            viewHolder.nome = (TextView) convertView.findViewById(R.id.name);
+            convertView = inflater.inflate(R.layout.textview_adapter_perfil, parent, false);
+            viewHolder.nome = (TextView) convertView.findViewById(R.id.nome);
 
             convertView.setTag(viewHolder);
         } else {
