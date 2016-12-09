@@ -9,17 +9,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.CustomAdapterPerfil;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
-import ufrpe.edu.learnit.perfil.gui.PerfilAlheioActivity;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 /**
@@ -29,8 +29,9 @@ import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 public class ConfirmarAulaProfessorActivity extends AppCompatActivity {
     ListView listView;
     private EditText editText;
-    private CustomAdapterPerfil adapter;
+    private ArrayAdapter<String> adapter;
     private ArrayList<Perfil> perfis;
+    private ArrayList<String> nomesPerfis;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,22 +40,33 @@ public class ConfirmarAulaProfessorActivity extends AppCompatActivity {
         Session.setContext(getApplicationContext());
         GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
         perfis = gerenciadorAulasTutor.retornarAlunosCadastrados((int)Session.getAula().getId());
-        adapter = new CustomAdapterPerfil(perfis, getApplicationContext());
+        nomesPerfis = pegarNomesPerfil(perfis);
+        adapter = new ArrayAdapter<>(this, R.layout.checked_list, R.id.textViewPerfis, nomesPerfis);
         listView = (ListView) findViewById(R.id.listView);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setAdapter(adapter);
         editText = (EditText)findViewById(R.id.editTextHorasDadas);
         setOnItemClickListener();
+    }
+
+    private ArrayList<String> pegarNomesPerfil(ArrayList<Perfil> perfis) {
+        ArrayList<String> nomesPerfil = new ArrayList<>();
+        for (int i = 0; i<perfis.size(); i++){
+            nomesPerfil.add(perfis.get(i).getNome());
+        }
+        return nomesPerfil;
     }
 
     public void setOnItemClickListener() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object object= adapter.getItem(position);
-                Perfil perfil = (Perfil)object;
-                Session.setPerfilAlheio(perfil);
-                Intent secondActivity = new Intent(Session.getContext(), PerfilAlheioActivity.class);
-                startActivity(secondActivity);
+                String string = ((TextView)view).getText().toString();
+                if (nomesPerfis.contains(string)){
+                    nomesPerfis.remove(string);
+                }else{
+                    nomesPerfis.add(string);
+                }
             }
         });
     }

@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1">
 
-    <CheckedTextView
+    <CheckedTextView android:id="@+id/textViewPerfis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:gravity="left"
+        android:text="Perfil aqui"
         android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:id="@+id/txt_lan"/>
+        android:padding="5dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"/>
 
 </LinearLayout>
