@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckedTextView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class CustomAdapterPerfil extends ArrayAdapter<Perfil> implements View.On
 
     private ArrayList<Perfil> perfis;
     Context mContext;
+    int layout, view;
 
     @Override
     public void onClick(View view) {
@@ -32,7 +34,14 @@ public class CustomAdapterPerfil extends ArrayAdapter<Perfil> implements View.On
         super(context, R.layout.textview_adapter_perfil, perfis);
         this.perfis = perfis;
         this.mContext=context;
+    }
 
+    public CustomAdapterPerfil(ArrayList<Perfil> perfis, Context context, int layout, int view){
+        super(context, layout, view, perfis);
+        this.perfis = perfis;
+        this.mContext = context;
+        this.layout = layout;
+        this.view = view;
     }
 
     @Override
@@ -56,6 +65,10 @@ public class CustomAdapterPerfil extends ArrayAdapter<Perfil> implements View.On
 
         String nomePerfil = perfil.getNome();
         viewHolder.nome.setText(nomePerfil);
+        return convertView;
+    }
+
+    public View getView(int position, View convertView){
         return convertView;
     }
 }
