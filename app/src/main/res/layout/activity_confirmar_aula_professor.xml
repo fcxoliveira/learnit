@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/layout_confirmarAulaProfessor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".aula.gui.ConfirmarAulaProfessorActivity">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#7bc8f3"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <TextView
+            android:text="Confirmar horas de aula lecionadas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewNome"
+            android:textSize="24sp"
+            android:textColor="@android:color/background_light"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/textViewPergunta"
+            android:layout_alignParentTop="true" />
+
+        <TextView
+            android:text="Insira a quantidade de aulas/hora ensinadas abaixo:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="34dp"
+            android:id="@+id/textViewPergunta"
+            android:textSize="18sp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:layout_below="@+id/textViewPergunta"
+            android:layout_alignLeft="@+id/textViewNome"
+            android:layout_alignStart="@+id/textViewNome"
+            android:layout_marginTop="13dp"
+            android:id="@+id/editTextHorasDadas"
+            android:hint="ex: 2" />
+
+        <TextView
+            android:text="Selecione os alunos que assistiram:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextHorasDadas"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="22dp"
+            android:id="@+id/textView12"
+            android:textSize="18sp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/textView12"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="35dp"
+            android:id="@+id/listView" />
+
+        <Button
+            android:text="Confirmar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView12"
+            android:layout_alignRight="@+id/textViewNome"
+            android:layout_alignEnd="@+id/textViewNome"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp"
+            app:backgroundTint="#7bc8f3"
+            android:onClick="confirmar"
+            android:id="@+id/button" />
+
+    </RelativeLayout>
+</ScrollView>

@@ -19,7 +19,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <TextView
-            android:text="Editarar Aula"
+            android:text="Editar Aula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

@@ -62,6 +62,18 @@ public class AulaProfessorActivity extends AppCompatActivity {
         finish();
     }
 
+    public void confirmarAula(View view){
+        Intent secondActivity = new Intent(this, ConfirmarAulaProfessorActivity.class);
+        startActivity(secondActivity);
+        finish();
+    }
+
+    public void mostrarAlunos(View view){
+        Intent secondActivity = new Intent(this, AlunosCadastradosActivity.class);
+        startActivity(secondActivity);
+        finish();
+    }
+
     @Override
     public void onBackPressed(){
         chamarHome();

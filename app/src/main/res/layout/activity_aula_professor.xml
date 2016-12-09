@@ -126,20 +126,30 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="30dp" />
 
-        <android.support.design.widget.FloatingActionButton
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            app:fabSize="normal"
-            app:srcCompat="@android:drawable/ic_delete"
             android:id="@+id/floatingActionButton7"
             app:backgroundTint="#7bc8f3"
             android:tint="@android:color/background_light"
-
-
+            android:onClick="confirmarAula"
             android:layout_alignTop="@+id/floatingActionButton8"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:text="Confirmar horas" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/botaoMostrarAlunos"
+            android:onClick="mostrarAlunos"
+            app:backgroundTint="#7bc8f3"
+            android:tint="@android:color/background_light"
+            android:text="Mostrar alunos desta aula"/>
 
     </RelativeLayout>
 </ScrollView>

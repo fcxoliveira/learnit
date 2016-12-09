@@ -14,6 +14,8 @@ public class Session {
 
     private static Aula aula;
 
+    private static Perfil perfilAlheio;
+
     public static Aula getAula() {
         return aula;
     }
@@ -37,5 +39,13 @@ public class Session {
 
     public static void setUsuario(Usuario usuario) {
         Session.usuario = usuario;
+    }
+
+    public static void setPerfilAlheio(Perfil perfilAlheio){
+        Session.perfilAlheio = perfilAlheio;
+    }
+
+    public static Perfil getPerfilAlheio() {
+        return perfilAlheio;
     }
 }

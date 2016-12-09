@@ -43,6 +43,9 @@
         <activity android:name=".aula.gui.AulaProfessorActivity"/>
         <activity android:name=".aula.gui.AulaAlunoActivity"/>
         <activity android:name=".aula.gui.EditarAulaActivity"/>
+        <activity android:name=".aula.gui.ConfirmarAulaProfessorActivity"/>
+        <activity android:name=".perfil.gui.PerfilAlheioActivity"/>
+        <activity android:name=".aula.gui.AlunosCadastradosActivity"/>
     </application>
 
 </manifest>
