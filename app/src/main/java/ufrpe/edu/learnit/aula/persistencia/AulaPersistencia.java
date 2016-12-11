@@ -99,7 +99,7 @@ public class AulaPersistencia {
         String idAlunoString = String.valueOf(idAluno);
         String idAulaString = String.valueOf(idAula);
         ContentValues newValues = new ContentValues();
-        newValues.put("IdPerfil",idAlunoString);
+        newValues.put("IdPerfilAluno",idAlunoString);
         newValues.put("IdAula", idAulaString);
         newValues.put("date",date);
         newValues.put("horas",horas);
@@ -151,7 +151,7 @@ public class AulaPersistencia {
         ArrayList<Aula> aulas = new ArrayList<>();
         db = dbHelper.getReadableDatabase();
         String idAlunoString = String.valueOf(Session.getUsuario().getID());
-        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfil = ?",new String[] {idAlunoString},null ,null, null);
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfilAluno = ?",new String[] {idAlunoString},null ,null, null);
         while (cursor.moveToNext()){
             aulas.add(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));
         }
@@ -180,7 +180,7 @@ public class AulaPersistencia {
         String idAulaString = String.valueOf(id);
         Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAula = ?",new String[] {idAulaString},null ,null, null);
         while (cursor.moveToNext()){
-            alunos.add(perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdPerfil"))));
+            alunos.add(perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdPerfilAluno"))));
         }
         cursor.close();
         db.close();
@@ -194,7 +194,7 @@ public class AulaPersistencia {
         String idAlunoString = String.valueOf(idAluno);
         ArrayList<AlunoAula> result = new ArrayList<>();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAula = ? AND IdPerfil = ?",new String[] {idAulaString,idAlunoString},null ,null, null);
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAula = ? AND IdPerfilAluno = ?",new String[] {idAulaString,idAlunoString},null ,null, null);
         while (cursor.moveToNext()){
             AlunoAula alunoAula = new AlunoAula();
             alunoAula.setPerfil(perfilPersistencia.retornarPerfil(idAluno));
