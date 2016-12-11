@@ -147,19 +147,6 @@ public class AulaPersistencia {
         return result;
     }
 
-    public ArrayList<Aula> retornarAulasQueAlunoComprou(){
-        ArrayList<Aula> aulas = new ArrayList<>();
-        db = dbHelper.getReadableDatabase();
-        String idAlunoString = String.valueOf(Session.getUsuario().getID());
-        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfilAluno = ?",new String[] {idAlunoString},null ,null, null);
-        while (cursor.moveToNext()){
-            aulas.add(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));
-        }
-        cursor.close();
-        db.close();
-        return aulas;
-    }
-
     public ArrayList<Aula> retornarAulasOfertadas(){
         db = dbHelper.getReadableDatabase();
         ArrayList<Aula> aulas = new ArrayList<>();
@@ -188,20 +175,19 @@ public class AulaPersistencia {
 
     }
 
-    public ArrayList<AlunoAula> retornarAlunoAula(int idAluno, int idAula){
+    public ArrayList<AlunoAula> retornarAulasCompradas(int idAluno, int idAula){
         db = dbHelper.getReadableDatabase();
-        String idAulaString = String.valueOf(idAula);
         String idAlunoString = String.valueOf(idAluno);
         ArrayList<AlunoAula> result = new ArrayList<>();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAula = ? AND IdPerfilAluno = ?",new String[] {idAulaString,idAlunoString},null ,null, null);
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfilAluno = ?",new String[] {idAlunoString},null ,null, null);
         while (cursor.moveToNext()){
             AlunoAula alunoAula = new AlunoAula();
             alunoAula.setPerfil(perfilPersistencia.retornarPerfil(idAluno));
             alunoAula.setAula(retornarAula(idAula));
-            alunoAula.setDate(cursor.getString(cursor.getColumnIndex("date")));
-            alunoAula.setHorasTotal(cursor.getInt(cursor.getColumnIndex("horas")));
-            alunoAula.setValorTotal(cursor.getInt(cursor.getColumnIndex("moedas")));
+            alunoAula.setDate(cursor.getString(cursor.getColumnIndex("Date")));
+            alunoAula.setHorasTotal(cursor.getInt(cursor.getColumnIndex("HorasCompradas")));
+            alunoAula.setValorTotal(cursor.getInt(cursor.getColumnIndex("ValorPago")));
             result.add(alunoAula);
         }
         cursor.close();
