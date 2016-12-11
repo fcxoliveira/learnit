@@ -6,12 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 import java.util.ArrayList;
-import ufrpe.edu.learnit.CustomAdapter;
+import ufrpe.edu.learnit.CustomAdapterAlunoAula;
 import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.aula.dominio.Aula;
+import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
@@ -19,15 +18,16 @@ import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class AulasCompradasActivity extends AppCompatActivity {
     ListView listView;
-    CustomAdapter adapter;
+    CustomAdapterAlunoAula adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aulas_compradas);
         Session.setContext(getApplicationContext());
         listView = (ListView) findViewById(R.id.listViewMinhasAulas);
-        ArrayList<Aula> values = getValoresListView();
-        adapter = new CustomAdapter(values, getApplicationContext());
+        ArrayList<AlunoAula> values;
+        values = getValoresListView();
+        adapter = new CustomAdapterAlunoAula(values, getApplicationContext());
         setOnItemClickListener();
         listView.setAdapter(adapter);
     }
@@ -38,8 +38,8 @@ public class AulasCompradasActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Object object= adapter.getItem(position);
-                Aula aula=(Aula)object;
-                Session.setAula(aula);
+                AlunoAula aula=(AlunoAula)object;
+                Session.setAlunoAula(aula);
                 Intent secondActivity = new Intent(Session.getContext(),AulaAlunoActivity.class);
                 startActivity(secondActivity);
                 AulasCompradasActivity.super.finish();
@@ -47,9 +47,10 @@ public class AulasCompradasActivity extends AppCompatActivity {
         });
     }
 
-    public ArrayList<Aula> getValoresListView() {
+    public ArrayList<AlunoAula> getValoresListView() {
         GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
-        ArrayList<Aula> aulas =  gerenciadorAulasAlunos.retornarAulasQueAlunoAssistiu();
+        ArrayList<AlunoAula> aulas =  gerenciadorAulasAlunos.retornarAulasCompradas(Session.getUsuario().getID());
+
         return aulas;
     }
 

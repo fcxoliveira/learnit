@@ -17,14 +17,10 @@ public class GerenciadorAulasAlunos {
         aulaPersistencia.inscreverAlunoEmAula(idAluno, idAula, date, horas, moedas);
     }
 
-    public ArrayList<Aula> retornarAulasQueAlunoAssistiu(){
+    public ArrayList<AlunoAula> retornarAulasCompradas(int idAluno){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        return aulaPersistencia.retornarAulasQueAlunoComprou();
+        return aulaPersistencia.retornarAulasCompradas(idAluno);
     }
 
-    public ArrayList<AlunoAula> retornarAlunoAula(int idAluno, int idAula) {
-        AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        return aulaPersistencia.retornarAlunoAula(idAluno,idAula);
-    }
 
     }

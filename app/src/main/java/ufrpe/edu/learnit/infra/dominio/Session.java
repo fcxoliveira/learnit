@@ -3,6 +3,7 @@ package ufrpe.edu.learnit.infra.dominio;
 
 import android.content.Context;
 
+import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
@@ -15,6 +16,13 @@ public class Session {
     private static Aula aula;
 
     private static Perfil perfilAlheio;
+
+    private static AlunoAula alunoAula;
+
+    public static AlunoAula getAlunoAula() {return alunoAula;}
+
+    public static void setAlunoAula(AlunoAula alunoAula) {Session.alunoAula = alunoAula;}
+
 
     public static Aula getAula() {
         return aula;

@@ -57,7 +57,7 @@ public class Aula {
         this.descricao = descricao;
     }
 
-    public double getValor() {
+    public int getValor() {
         return valor;
     }
 
@@ -65,7 +65,7 @@ public class Aula {
         this.valor = valor;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

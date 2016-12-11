@@ -108,7 +108,7 @@ public class EditarAulaActivity extends AppCompatActivity {
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
             Tag tag1 =(Tag)this.tag1.getSelectedItem();
             Tag tag2 =(Tag) this.tag2.getSelectedItem();
-            gerenciadorAulasTutor.editarAula((int)Session.getAula().getId(), nomeAula, descricao, Integer.parseInt(horasDeAula), Double.parseDouble(precoHoraAula), tag1, tag2);
+            gerenciadorAulasTutor.editarAula((int)Session.getAula().getId(), nomeAula, descricao, Integer.parseInt(horasDeAula),Integer.parseInt(precoHoraAula), tag1, tag2);
             voltar();
         }
     }
