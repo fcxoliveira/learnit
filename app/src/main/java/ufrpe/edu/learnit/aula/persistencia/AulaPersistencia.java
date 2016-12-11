@@ -175,16 +175,15 @@ public class AulaPersistencia {
 
     }
 
-    public ArrayList<AlunoAula> retornarAulasCompradas(int idAluno, int idAula){
+    public ArrayList<AlunoAula> retornarAulasCompradas(int idAluno){
         db = dbHelper.getReadableDatabase();
-        String idAlunoString = String.valueOf(idAluno);
         ArrayList<AlunoAula> result = new ArrayList<>();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfilAluno = ?",new String[] {idAlunoString},null ,null, null);
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfilAluno = ?",new String[] {idAluno+""},null ,null, null);
         while (cursor.moveToNext()){
             AlunoAula alunoAula = new AlunoAula();
             alunoAula.setPerfil(perfilPersistencia.retornarPerfil(idAluno));
-            alunoAula.setAula(retornarAula(idAula));
+            alunoAula.setAula(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));
             alunoAula.setDate(cursor.getString(cursor.getColumnIndex("Date")));
             alunoAula.setHorasTotal(cursor.getInt(cursor.getColumnIndex("HorasCompradas")));
             alunoAula.setValorTotal(cursor.getInt(cursor.getColumnIndex("ValorPago")));
