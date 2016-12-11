@@ -66,7 +66,7 @@ public class AulaPersistencia {
         return cursor.getCount();
         }
 
-    public void editarAula(int id,String titulo, String descricao, int duracao,double valor,Tag tag1,Tag tag2){
+    public void editarAula(int id,String titulo, String descricao, int duracao,int valor,Tag tag1,Tag tag2){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("Descricao",descricao);
