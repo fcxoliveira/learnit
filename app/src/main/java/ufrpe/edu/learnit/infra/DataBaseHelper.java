@@ -12,10 +12,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 26;
     private static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
     private static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
-    private static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas "+
-    "integer, Interesse1 text, Interesse2 text, Avaliacao real, Avaliadores integer, Horas integer);";
+    private static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas integer, Avaliacao real, Avaliadores integer, Horas integer);";
     private static final String TABLE_TAGS = "create table IF NOT EXISTS TAGS (Id integer primary key autoincrement, Tag text);";
-    private static final String TABLE_AULAS = "create table if not exists AULAS(Id integer primary key autoincrement, Titulo text, Descricao text, Valor integer, Tag1 integer, Tag2 integer,IdPerfil integer, HorasDisponiveis integer);";
+    private static final String TABLE_AULAS = "create table if not exists AULAS(Id integer primary key autoincrement, Titulo text, Descricao text, Valor integer, IdPerfil integer, HorasDisponiveis integer);";
     private static final ArrayList<String> TAGS = new ArrayList<>(Arrays.asList("Informatica", "Musica", "Portugues", "Matematica", "Biologia", "Fisica", "Quimica", "Ed. Fisica"));
     private static final String TABLE_ALUNO_AULA = "create table if not exists ALUNO_AULA(IdPerfilAluno integer, IdAula integer, Date text, HorasCompradas integer, ValorPago integer);";
 

@@ -23,7 +23,7 @@ public class PerfilPersistencia {
         dbHelper = new DataBaseHelper(context, null);
     }
 
-    public void cadastrarPerfil(int id, String bio, String nome, Tag interesse1, Tag interesse2){
+    public void cadastrarPerfil(int id, String bio, String nome){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("IdPerfil", id);
@@ -33,8 +33,6 @@ public class PerfilPersistencia {
         newValues.put("Avaliadores", 0);
         newValues.put("Avaliacao", 0);
         newValues.put("Horas", 0);
-        newValues.put("Interesse1", interesse1.getID());
-        newValues.put("Interesse2", interesse2.getID());
         db.insert("PERFIL", null, newValues);
         db.close();
     }
@@ -56,19 +54,10 @@ public class PerfilPersistencia {
             int avaliadores = cursor.getInt(cursor.getColumnIndex("Avaliadores"));
             float avaliacao = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
             int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
-            int interesse1= cursor.getInt(cursor.getColumnIndex("Interesse1"));
-            int interesse2= cursor.getInt(cursor.getColumnIndex("Interesse2"));
             result.setAvaliacao(avaliacao);
             result.setBio(bio);
             result.setMoedas(moedas);
             result.setNome(nome);
-            ArrayList<Tag> interesses = new ArrayList<Tag>();
-            TagPersistencia tagPersistencia = new TagPersistencia();
-            Tag tag1 = tagPersistencia.retornarTag(interesse1);
-            Tag tag2 = tagPersistencia.retornarTag(interesse2);
-            interesses.add(tag1);
-            interesses.add(tag2);
-            result.setInteresses(interesses);
             result.setHoras(horas);
             result.setAvaliadores(avaliadores);
             db.close();
@@ -77,7 +66,7 @@ public class PerfilPersistencia {
         return result;
     }
 
-    public void editarPerfil(int id, String bio, String nome, Tag interesse1, Tag interesse2){
+    public void editarPerfil(int id, String bio, String nome){
         db = dbHelper.getReadableDatabase();
         StringBuilder sb = new StringBuilder();
         sb.append(id);
@@ -85,8 +74,6 @@ public class PerfilPersistencia {
         ContentValues newValues = new ContentValues();
         newValues.put("Bio",bio);
         newValues.put("Nome",nome);
-        newValues.put("Interesse1",interesse1.getID());
-        newValues.put("Interesse2",interesse2.getID());
         db.update("PERFIL",newValues,"IdPerfil='"+idString+"'",null);
         db.close();
     }

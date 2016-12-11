@@ -43,7 +43,7 @@ public class AulaPersistencia {
         db.close();
     }
 
-    private Aula preencherDadosAula(int id, String titulo, String descricao, int duracao, int valor, Tag tag1, Tag tag2, int IdPerfil){
+    private Aula preencherDadosAula(int id, String titulo, String descricao, int duracao, int valor, int IdPerfil){
         Aula aula = new Aula();
         aula.setId(id);
         aula.setTitulo(titulo);
@@ -52,8 +52,6 @@ public class AulaPersistencia {
         aula.setValor(valor);
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         aula.setPerfil(perfilPersistencia.retornarPerfil(IdPerfil));
-        ArrayList<Tag> listaTags = new ArrayList<>(Arrays.asList(tag1,tag2));
-        aula.setTags(listaTags);
         return aula;
     }
 
@@ -66,13 +64,11 @@ public class AulaPersistencia {
         return cursor.getCount();
         }
 
-    public void editarAula(int id,String titulo, String descricao, int duracao,int valor,Tag tag1,Tag tag2){
+    public void editarAula(int id,String titulo, String descricao, int duracao,int valor){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("Descricao",descricao);
         newValues.put("Titulo",titulo);
-        newValues.put("Tag1",tag1.getID());
-        newValues.put("Tag2",tag2.getID());
         newValues.put("Horas",duracao);
         newValues.put("Valor",valor);
         newValues.put("IdPerfil",id+"");
@@ -127,7 +123,6 @@ public class AulaPersistencia {
         Aula result;
         db = dbHelper.getReadableDatabase();
         Cursor cursor=db.query("AULAS", null, "Id=?",new String[]{id+""}, null, null, null);
-        TagPersistencia tagPersistencia = new TagPersistencia();
         if (!cursor.moveToFirst()){
             result = null;
             db.close();
@@ -136,10 +131,8 @@ public class AulaPersistencia {
             String nome = cursor.getString(cursor.getColumnIndex("Titulo"));
             int valor = cursor.getInt(cursor.getColumnIndex("Valor"));
             int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
-            int interesse1= cursor.getInt(cursor.getColumnIndex("Tag1"));
-            int interesse2= cursor.getInt(cursor.getColumnIndex("Tag2"));
             int idPerfil = cursor.getInt(cursor.getColumnIndex("IdPerfil"));
-            result = preencherDadosAula(id,nome,descricao,horas,valor,tagPersistencia.retornarTag(interesse1),tagPersistencia.retornarTag(interesse2),idPerfil);
+            result = preencherDadosAula(id,nome,descricao,horas,valor,idPerfil);
             db.close();
         }
         cursor.close();
