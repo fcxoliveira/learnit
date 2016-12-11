@@ -11,12 +11,11 @@ import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 
 public class UsuarioPersistencia {
-    public SQLiteDatabase db;
-    private final Context context;
+    private SQLiteDatabase db;
     private DataBaseHelper dbHelper;
 
     public UsuarioPersistencia(){
-        context = Session.getContext();
+        Context context = Session.getContext();
         dbHelper = new DataBaseHelper(context, null);
 
     }
@@ -34,8 +33,9 @@ public class UsuarioPersistencia {
         cursor.moveToFirst();
         int ID = cursor.getInt(cursor.getColumnIndex("Id"));
         usuario.setID(ID);
+        cursor.close();
         db.close();
-
+        cursor.close();
         return usuario;
     }
 
@@ -64,7 +64,7 @@ public class UsuarioPersistencia {
         }
 
 
-    public Usuario preencherDadosUsuario(String userName, String password, String email){
+    private Usuario preencherDadosUsuario(String userName, String password, String email){
         Usuario usuario = new Usuario();
         usuario.setLogin(userName);
         usuario.setSenha(password);
@@ -87,7 +87,7 @@ public class UsuarioPersistencia {
     public Usuario retornarUsuario(int ID){
         db = dbHelper.getReadableDatabase();
         Usuario usuario;
-        Cursor cursor=db.query("USER",new String[]{"*"}, "Id=?", new String[]{""+ID+""},null ,null, null);
+        Cursor cursor=db.query("USER",new String[]{"*"}, "Id=?", new String[]{""+ID},null ,null, null);
         if(cursor.moveToFirst()) {
             String email = cursor.getString(cursor.getColumnIndex("Email"));
             String userName = cursor.getString(cursor.getColumnIndex("Username"));

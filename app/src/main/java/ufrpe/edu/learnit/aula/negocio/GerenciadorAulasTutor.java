@@ -9,7 +9,7 @@ import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 
 public class GerenciadorAulasTutor {
-    public void cadastrarAula(String titulo, String descricao, int duracao,Tag tag1,Tag tag2 ,double valor){
+    public void cadastrarAula(String titulo, String descricao, int duracao, Tag tag1, Tag tag2 , int valor){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         aulaPersistencia.cadastrarAula(titulo,descricao, duracao,valor,tag1,tag2);
     }

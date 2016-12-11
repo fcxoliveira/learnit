@@ -7,16 +7,9 @@ import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
 
 public class GerenciadorAulasAlunos {
-    public ArrayList<Aula> getTodasAulasOfertadas(){
-        AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        ArrayList<Aula> aulas =  aulaPersistencia.getTodasAulasOfertadas();
-        return aulas;
-    }
-
     public ArrayList<Aula> getAulasPorTexto(String texto){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        ArrayList<Aula> aulas =  aulaPersistencia.getAulasPorTexto(texto);
-        return aulas;
+        return  aulaPersistencia.getAulasPorTexto(texto);
     }
 
     public void inscreverAlunoEmAula(int idAluno, int idAula,String date,int horas,int moedas){

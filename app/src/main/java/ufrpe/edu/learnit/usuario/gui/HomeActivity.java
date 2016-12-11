@@ -56,10 +56,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setOnlistenerSearch();
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        mudarMoedas();
+        preencherMoedas();
     }
 
-    public void mudarMoedas() {
+    public void preencherMoedas() {
         Menu menu = navigationView.getMenu();
         MenuItem coins = menu.findItem(R.id.moedas);
         String moedas = String.valueOf(Session.getUsuario().getPerfil().getMoedas());
@@ -122,8 +122,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     public ArrayList<Aula> getValoresListView() {
         GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
-        ArrayList<Aula> aulas =  gerenciadorAulasAlunos.getTodasAulasOfertadas();
-        return aulas;
+        return gerenciadorAulasAlunos.getAulasPorTexto("");
     }
 
 
@@ -162,7 +161,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.moedas) {
             chamarMoedas();
 
