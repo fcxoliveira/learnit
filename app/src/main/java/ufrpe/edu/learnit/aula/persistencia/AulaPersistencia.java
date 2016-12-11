@@ -25,17 +25,13 @@ public class AulaPersistencia {
 
     }
 
-    public void cadastrarAula(String titulo, String descricao, int duracao, int valor, Tag tag1, Tag tag2){
+    public void cadastrarAula(String titulo, String descricao, int duracao, int valor){
         db = dbHelper.getWritableDatabase();
-        int tag1ID = tag1.getID();
-        int tag2ID = tag2.getID();
         ContentValues newValues = new ContentValues();
         newValues.put("Titulo", titulo);
         newValues.put("Descricao",descricao);
         newValues.put("Horas",duracao);
         newValues.put("Valor",valor);
-        newValues.put("Tag1", tag1ID);
-        newValues.put("Tag2", tag2ID);
         newValues.put("IdPerfil",Session.getUsuario().getID());
         db.insert("AULAS", null, newValues);
         db.close();
@@ -95,9 +91,9 @@ public class AulaPersistencia {
         ContentValues newValues = new ContentValues();
         newValues.put("IdPerfilAluno",idAlunoString);
         newValues.put("IdAula", idAulaString);
-        newValues.put("date",date);
-        newValues.put("horas",horas);
-        newValues.put("moedas",moedas);
+        newValues.put("Date",date);
+        newValues.put("HorasCompradas",horas);
+        newValues.put("ValorPago",moedas);
         db.insert("ALUNO_AULA", null, newValues);
         removerHorasDisponiveis(idAula,horas);
         perfilPersistencia.removerMoedas(idAluno, moedas);
@@ -128,7 +124,7 @@ public class AulaPersistencia {
             String descricao = cursor.getString(cursor.getColumnIndex("Descricao"));
             String nome = cursor.getString(cursor.getColumnIndex("Titulo"));
             int valor = cursor.getInt(cursor.getColumnIndex("Valor"));
-            int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
+            int horas = cursor.getInt(cursor.getColumnIndex("HorasDisponiveis"));
             int idPerfil = cursor.getInt(cursor.getColumnIndex("IdPerfil"));
             result = preencherDadosAula(id,nome,descricao,horas,valor,idPerfil);
             db.close();
