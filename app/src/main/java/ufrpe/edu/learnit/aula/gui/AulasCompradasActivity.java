@@ -24,9 +24,12 @@ public class AulasCompradasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aulas_compradas);
         Session.setContext(getApplicationContext());
+        newListViewAulasCompradas();
+    }
+
+    private void newListViewAulasCompradas() {
         listView = (ListView) findViewById(R.id.listViewMinhasAulas);
-        ArrayList<AlunoAula> values;
-        values = getValoresListView();
+        ArrayList<AlunoAula> values = getValoresListView();
         adapter = new CustomAdapterAlunoAula(values, getApplicationContext());
         setOnItemClickListener();
         listView.setAdapter(adapter);

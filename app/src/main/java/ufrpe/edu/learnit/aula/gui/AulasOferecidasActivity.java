@@ -20,19 +20,27 @@ public class AulasOferecidasActivity extends AppCompatActivity {
 
     ListView listView;
     CustomAdapter adapter;
-    ArrayList<Aula> aulas;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aulas_oferecidas);
+        newListViewAulasOferecidas();
+    }
+
+    private void newListViewAulasOferecidas() {
         listView = (ListView)findViewById(R.id.listViewMinhasAulas);
-        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
-        aulas = gerenciadorAulasTutor.retornarAulasOfertadas();
+        ArrayList<Aula> aulas = getValoresListView();
         adapter = new CustomAdapter(aulas, getApplicationContext());
         listView.setAdapter(adapter);
         setOnItemClickListener();
+    }
+
+    private ArrayList<Aula> getValoresListView() {
+        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
+        ArrayList<Aula> aulas = gerenciadorAulasTutor.retornarAulasOfertadas();
+        return aulas;
     }
 
     public void setOnItemClickListener() {
@@ -50,11 +58,9 @@ public class AulasOferecidasActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        carregarHome();
-    }
-    public void carregarHome() {
         Intent secondActivity = new Intent(this, HomeActivity.class);
         startActivity(secondActivity);
         finish();
     }
+
 }

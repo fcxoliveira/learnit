@@ -37,19 +37,26 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
         aula=Session.getAula();
         setContentView(R.layout.activity_comprar_aula_aluno);
         Session.setContext(getApplicationContext());
+        findEditableItens();
+        editItenss();
+        this.setOnUserInputValue();
+    }
 
+    private void editItenss() {
+        TextViewNomeDaAula.setText(aula.getTitulo());
+        TextViewDescricaoAula.setText(aula.getDescricao());
+        TextViewPrecoPorHoraAula.setText(aula.getValor()+"");
+        TextViewTotalDeHoras.setText(aula.getHoras()+"");
+        TextViewTotalDaCompra.setText("0");
+    }
+
+    private void findEditableItens() {
+        EditTextTotalDeHorasDesejadas=(EditText) findViewById(R.id.EditTextTotaDeHorasDesejadas);
         TextViewNomeDaAula = (TextView)findViewById(R.id.textView4);
         TextViewDescricaoAula = (TextView)findViewById(R.id.TextViewDescricaoAula);
         TextViewTotalDeHoras = (TextView)findViewById(R.id.TextViewTotalDeHoras);
         TextViewPrecoPorHoraAula = (TextView)findViewById(R.id.TextViewPrecoPorHoraAula);
         TextViewTotalDaCompra = (TextView)findViewById(R.id.TextViewTotalDaCompra);
-        TextViewNomeDaAula.setText(aula.getTitulo());
-        TextViewDescricaoAula.setText(aula.getDescricao());
-        TextViewPrecoPorHoraAula.setText(new StringBuilder().append(aula.getValor()).toString());
-        TextViewTotalDeHoras.setText(new StringBuilder().append(aula.getHoras()).toString());
-        TextViewTotalDaCompra.setText("0");
-        EditTextTotalDeHorasDesejadas=(EditText) findViewById(R.id.EditTextTotaDeHorasDesejadas);
-        this.setOnUserInputValue();
     }
 
 
@@ -75,8 +82,8 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
                     TextViewTotalDaCompra.setText("0");
                 }
                 else{
-                    double valorDesejado = Double.parseDouble(text);
-                    double resultado = valorDesejado * aula.getValor();
+                    int valorDesejado = Integer.parseInt(text);
+                    int resultado = valorDesejado * aula.getValor();
                     TextViewTotalDaCompra.setText(String.valueOf(resultado));
                 }
 
@@ -91,7 +98,7 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
     public void confirmar(View view){
                 GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
                 int usuarioId =Session.getUsuario().getID();
-                int aulaId =(int)Session.getAula().getId();
+                int aulaId =Session.getAula().getId();
                 String data = this.getDateTime();
                 String TotalDeHoras = EditTextTotalDeHorasDesejadas.getText().toString();
                 int horas = Math.round(Float.parseFloat(TotalDeHoras));
