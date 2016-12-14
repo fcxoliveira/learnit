@@ -42,7 +42,7 @@ public class AulaPersistencia {
         aula.setId(id);
         aula.setTitulo(titulo);
         aula.setDescricao(descricao);
-        aula.setDuracaoHorasAula(duracao);
+        aula.setHoras(duracao);
         aula.setValor(valor);
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         aula.setPerfil(perfilPersistencia.retornarPerfil(IdPerfil));
@@ -72,7 +72,7 @@ public class AulaPersistencia {
 
     public ArrayList<Aula> getAulasPorTexto(String texto){
         db = dbHelper.getReadableDatabase();
-        Cursor cursor=db.query("AULAS",new String[]{"*"},"Titulo LIKE ? OR Descricao LIKE ? AND IdPerfil!=?",new String[] { "%"+texto+"%","%"+texto+"%",Session.getUsuario().getID()+"" },null ,null, null);
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"(Titulo LIKE ? OR Descricao LIKE ?) AND IdPerfil!=?",new String[] { "%"+texto+"%","%"+texto+"%",Session.getUsuario().getID()+"" },null ,null, null);
         ArrayList<Aula> aulas = new ArrayList<>();
         while (cursor.moveToNext()){
             Aula aula = retornarAula(cursor.getInt(cursor.getColumnIndex("Id")));

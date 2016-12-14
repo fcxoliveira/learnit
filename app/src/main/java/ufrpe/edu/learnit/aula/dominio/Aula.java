@@ -13,7 +13,6 @@ public class Aula {
     private String titulo, descricao;
     private int valor;
     private int id;
-    private int duracaoHorasAula;
 
 
 
@@ -71,14 +70,6 @@ public class Aula {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getDuracaoHorasAula() {
-        return duracaoHorasAula;
-    }
-
-    public void setDuracaoHorasAula(int duracaoHorasAula) {
-        this.duracaoHorasAula = duracaoHorasAula;
     }
 
 

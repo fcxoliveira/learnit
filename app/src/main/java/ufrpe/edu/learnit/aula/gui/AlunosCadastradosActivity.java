@@ -31,6 +31,7 @@ public class AlunosCadastradosActivity extends AppCompatActivity {
         Session.setContext(getApplicationContext());
         Aula aula=Session.getAula();
         int idAula = Session.getAula().getId();
+        listView = (ListView) findViewById(R.id.listViewAlunosCadastrados);
         newTextViewNomeDaAula(aula);
         newListViewAlunosCadastrados(idAula);
     }
