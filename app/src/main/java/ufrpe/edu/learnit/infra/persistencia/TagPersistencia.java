@@ -10,20 +10,14 @@ import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 
-/**
- * Created by joel_ on 28/10/2016.
- */
-
 public class TagPersistencia {
-    public SQLiteDatabase db;
-    private final Context context;
+    private SQLiteDatabase db;
     private DataBaseHelper dbHelper;
 
 
     public TagPersistencia(){
-        context = Session.getContext();
+        Context context = Session.getContext();
         dbHelper = new DataBaseHelper(context, null);
-
     }
 
     public ArrayList<Tag> retornarTodasTags(){
@@ -36,20 +30,38 @@ public class TagPersistencia {
             tag.setTitulo(cursor.getString(cursor.getColumnIndex("Tag")));
             tags.add(tag);
         }
+        cursor.close();
         db.close();
         return tags;
     }
 
-    public Tag retornarTag(int id){
+    private Tag retornarTag(int id){
         db=dbHelper.getReadableDatabase();
         Tag tag = new Tag();
-        StringBuilder sb = new StringBuilder();
-        sb.append(id);
-        Cursor cursor=db.query("TAGS",new String[]{"*"},"Id=?",new String[]{sb.toString()},null ,null, null);
-        Boolean b = cursor.moveToFirst();
+        Cursor cursor=db.query("TAGS",new String[]{"*"},"Id=?",new String[]{id+""},null ,null, null);
         tag.setID(cursor.getInt(cursor.getColumnIndex("Id")));
         tag.setTitulo(cursor.getString(cursor.getColumnIndex("Tag")));
+        cursor.close();
         db.close();
+        return tag;
+    }
+
+    public ArrayList<Tag> retornarTagPorTexto(String texto){
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor=db.query("TAGS",new String[]{"*"},"Tag LIKE ?",new String[] {"%"+texto+"%"},null ,null, null);
+        ArrayList<Tag> tags = new ArrayList<>();
+        while (cursor.moveToNext()){
+            tags.add(preencherTag(cursor.getInt(cursor.getColumnIndex("Id")),cursor.getString(cursor.getColumnIndex("Tag"))));
+        }
+        cursor.close();
+        db.close();
+        return tags;
+    }
+
+    private Tag preencherTag(int id,String nome){
+        Tag tag = new Tag();
+        tag.setID(id);
+        tag.setTitulo(nome);
         return tag;
     }
 }

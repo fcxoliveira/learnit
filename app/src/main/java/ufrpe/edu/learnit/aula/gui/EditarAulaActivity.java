@@ -102,13 +102,10 @@ public class EditarAulaActivity extends AppCompatActivity {
         String descricao = editTextDescricao.getText().toString();
         String horasDeAula = editTextHorasDeAula.getText().toString();
         String precoHoraAula = editTextPrecoHoraAula.getText().toString();
-        ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
-
-        if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula) && anyTagNotIsEmpty(tags)){
+        if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula)){
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
-            Tag tag1 =(Tag)this.tag1.getSelectedItem();
-            Tag tag2 =(Tag) this.tag2.getSelectedItem();
-            gerenciadorAulasTutor.editarAula((int)Session.getAula().getId(), nomeAula, descricao, Integer.parseInt(horasDeAula),Integer.parseInt(precoHoraAula), tag1, tag2);
+
+            gerenciadorAulasTutor.editarAula(Session.getAula().getId(), nomeAula, descricao, Integer.parseInt(horasDeAula),Integer.parseInt(precoHoraAula));
             voltar();
         }
     }

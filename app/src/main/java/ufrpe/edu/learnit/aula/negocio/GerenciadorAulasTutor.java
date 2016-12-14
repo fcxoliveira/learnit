@@ -9,9 +9,9 @@ import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 
 public class GerenciadorAulasTutor {
-    public void cadastrarAula(String titulo, String descricao, int duracao, Tag tag1, Tag tag2 , int valor){
+    public void cadastrarAula(String titulo, String descricao, int duracao, int valor){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        aulaPersistencia.cadastrarAula(titulo,descricao, duracao,valor,tag1,tag2);
+        aulaPersistencia.cadastrarAula(titulo,descricao, duracao,valor);
     }
 
 
@@ -20,9 +20,9 @@ public class GerenciadorAulasTutor {
         return aulaPersistencia.retornarQuantidadeDeAulas(id);
     }
 
-    public void editarAula(int id,String titulo, String descricao, int duracao,int valor,Tag tag1,Tag tag2){
+    public void editarAula(int id,String titulo, String descricao, int duracao,int valor){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        aulaPersistencia.editarAula(id,titulo,descricao,duracao,valor,tag1,tag2);
+        aulaPersistencia.editarAula(id,titulo,descricao,duracao,valor);
 
     }
 

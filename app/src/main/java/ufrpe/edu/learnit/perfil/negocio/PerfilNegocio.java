@@ -13,12 +13,12 @@ public class PerfilNegocio {
 
     public void cadastrarPerfil(int id, String bio, String nome, Tag interesse1, Tag interesse2){
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        perfilPersistencia.cadastrarPerfil(id,bio,nome,interesse1,interesse2);
+        perfilPersistencia.cadastrarPerfil(id,bio,nome);
     }
 
-    public void editarPerfil(int id, String bio, String nome, Tag interesse1, Tag interesse2){
+    public void editarPerfil(int id, String bio, String nome){
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        perfilPersistencia.editarPerfil(id,bio,nome,interesse1,interesse2);
+        perfilPersistencia.editarPerfil(id,bio,nome);
     }
 
     public void addMoedas(int moedas) {

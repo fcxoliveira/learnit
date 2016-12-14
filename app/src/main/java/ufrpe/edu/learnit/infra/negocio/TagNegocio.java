@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.infra.persistencia.TagPersistencia;
 
-/**
- * Created by joel_ on 28/10/2016.
- */
-
 public class TagNegocio {
 
     public static boolean anyTagNotIsEmpty(ArrayList<Tag> tags){
@@ -24,5 +20,10 @@ public class TagNegocio {
     public ArrayList<Tag> retornarTodasTags(){
        TagPersistencia tagPersistencia = new TagPersistencia();
         return tagPersistencia.retornarTodasTags();
+    }
+
+    public ArrayList<Tag> retornarTagsPorTexto(String texto){
+        TagPersistencia tagPersistencia = new TagPersistencia();
+        return tagPersistencia.retornarTagPorTexto(texto);
     }
 }

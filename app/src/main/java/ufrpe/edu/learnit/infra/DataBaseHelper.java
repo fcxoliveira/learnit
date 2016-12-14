@@ -17,6 +17,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_AULAS = "create table if not exists AULAS(Id integer primary key autoincrement, Titulo text, Descricao text, Valor integer, IdPerfil integer, HorasDisponiveis integer);";
     private static final ArrayList<String> TAGS = new ArrayList<>(Arrays.asList("Informatica", "Musica", "Portugues", "Matematica", "Biologia", "Fisica", "Quimica", "Ed. Fisica"));
     private static final String TABLE_ALUNO_AULA = "create table if not exists ALUNO_AULA(IdPerfilAluno integer, IdAula integer, Date text, HorasCompradas integer, ValorPago integer);";
+    private static final String TABLE_AULA_TAG = "create table if not exists AULA_TAG(IdAula integer,IdTag integer);";
 
 
     public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
@@ -32,6 +33,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_TAGS);
         db.execSQL(TABLE_AULAS);
         db.execSQL(TABLE_ALUNO_AULA);
+        db.execSQL(TABLE_AULA_TAG);
         for(String tag:TAGS) {
             populateTags(tag,db);
         }
@@ -41,12 +43,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
         Log.w("TaskDBAdapter", "Upgrading from version " +oldVersion + " to " +newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS " + "USER");
-        db.execSQL("DROP TABLE IF EXISTS " + "SESSION");
-        db.execSQL("DROP TABLE IF EXISTS " + "PERFIL");
-        db.execSQL("DROP TABLE IF EXISTS " + "TAGS");
-        db.execSQL("DROP TABLE IF EXISTS " + "AULAS");
-        db.execSQL("DROP TABLE IF EXISTS " + "ALUNO_AULA");
+        db.execSQL("DROP TABLE IF EXISTS USER");
+        db.execSQL("DROP TABLE IF EXISTS SESSION");
+        db.execSQL("DROP TABLE IF EXISTS PERFIL");
+        db.execSQL("DROP TABLE IF EXISTS TAGS");
+        db.execSQL("DROP TABLE IF EXISTS AULAS");
+        db.execSQL("DROP TABLE IF EXISTS ALUNO_AULA");
+        db.execSQL("DROP TABLE IF EXISTS ALUNO_AULA");
         onCreate(db);
     }
 

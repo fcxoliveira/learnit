@@ -77,10 +77,9 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
     public void confirmar(View v){
         String nome =editTextNome.getText().toString();
-        ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
-        if(verificarNome(nome) && anyTagNotIsEmpty(tags)) {
+        if(verificarNome(nome)) {
             PerfilNegocio perfilNegocio = new PerfilNegocio();
-            perfilNegocio.editarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(),(Tag) tag1.getSelectedItem(),(Tag)tag2.getSelectedItem());
+            perfilNegocio.editarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString());
             chamarPerfil(v);
         }
     }
