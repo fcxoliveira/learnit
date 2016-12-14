@@ -24,20 +24,16 @@ import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 public class InteressesActivity extends AppCompatActivity {
     private EditText editTextNome;
     private EditText editTextBio;
-    private Spinner tag1, tag2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interesses);
-        TagNegocio tagNegocio = new TagNegocio();
-        ArrayList<Tag> tags = tagNegocio.retornarTodasTags();
-        ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,tags);
-        tag1 = (Spinner) findViewById(R.id.spinner);
-        tag1.setAdapter(adapter);
-        tag2 = (Spinner) findViewById(R.id.spinner2);
-        tag2.setAdapter(adapter);
         Session.setContext(getApplicationContext());
+        findEditableItens();
+    }
+
+    private void findEditableItens() {
         editTextNome = (EditText) findViewById(R.id.editText5);
         editTextBio = (EditText) findViewById(R.id.editTextDescricao);
     }
@@ -59,21 +55,12 @@ public class InteressesActivity extends AppCompatActivity {
         return autorizacao;
     }
 
-    public boolean anyTagNotIsEmpty(ArrayList<Tag> tags) {
-        boolean autorizacao = ufrpe.edu.learnit.infra.negocio.TagNegocio.anyTagNotIsEmpty(tags);
-        if (autorizacao) {
-            return autorizacao;
-        }
-        Toast.makeText(Session.getContext(), "selecione pelo menos um interesse", Toast.LENGTH_LONG).show();
-        return autorizacao;
-    }
 
     public void confirmar(View v){
         String nome =editTextNome.getText().toString();
-        ArrayList<Tag> tags = new ArrayList<Tag>(Arrays.asList((Tag) tag1.getSelectedItem(),(Tag) tag2.getSelectedItem()));
-        if(verificarNome(nome) && anyTagNotIsEmpty(tags)) {
+        if(verificarNome(nome)) {
             PerfilNegocio perfilNegocio = new PerfilNegocio();
-            perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString(),(Tag) tag1.getSelectedItem(),(Tag)tag2.getSelectedItem());
+            perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString());
             chamarHome(v);
         }
     }

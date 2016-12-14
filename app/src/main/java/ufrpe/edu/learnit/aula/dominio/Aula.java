@@ -14,7 +14,7 @@ public class Aula {
     private int valor;
     private int id;
     private int duracaoHorasAula;
-    private ArrayList<Tag> tags = new ArrayList<>();
+
 
 
     public int getHoras() {
@@ -81,13 +81,6 @@ public class Aula {
         this.duracaoHorasAula = duracaoHorasAula;
     }
 
-    public ArrayList<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(ArrayList<Tag> tags) {
-        this.tags = tags;
-    }
 
     @Override
     public String toString() {

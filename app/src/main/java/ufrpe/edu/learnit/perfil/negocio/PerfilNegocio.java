@@ -11,7 +11,7 @@ public class PerfilNegocio {
         return perfilPersistencia.retornarPerfil(id);
     }
 
-    public void cadastrarPerfil(int id, String bio, String nome, Tag interesse1, Tag interesse2){
+    public void cadastrarPerfil(int id, String bio, String nome){
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         perfilPersistencia.cadastrarPerfil(id,bio,nome);
     }

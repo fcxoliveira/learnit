@@ -24,10 +24,14 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        findEditableItens();
+        Session.setContext(getApplicationContext());
+    }
+
+    private void findEditableItens() {
         editTextLogin = (EditText)findViewById(R.id.editText);
         editTextEmail = (EditText)findViewById(R.id.editText3);
         editTextPassword = (EditText)findViewById(R.id.editText2);
-        Session.setContext(getApplicationContext());
     }
 
     public void chamarTelaInteresses(View view) {

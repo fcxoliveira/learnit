@@ -27,19 +27,27 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Session.setContext(getApplicationContext());
-        Usuario usuarioLogado = this.usuarioEstaLogado();
+        Usuario usuarioLogado = this.usuarioLogado();
+        logarAuto(usuarioLogado);
+        setContentView(R.layout.activity_login);
+        findEditableItens();
+
+    }
+
+    private void logarAuto(Usuario usuarioLogado) {
         if(usuarioLogado != null){
             Session.setUsuario(usuarioLogado);
             View v = new View(Session.getContext());
             chamarTelaInicial(v);
         }
-        setContentView(R.layout.activity_login);
+    }
+
+    private void findEditableItens() {
         buttonLogin = (Button)findViewById(R.id.buttonLogin);
         textViewForgotPassWord = (TextView)findViewById(R.id.textViewForgotPassword);
         textViewSignup = (TextView)findViewById(R.id.textViewSignUp);
         editTextLogin = (EditText)findViewById(R.id.editTextUsername);
         editTextSenha = (EditText)findViewById(R.id.editTextPassword);
-
     }
 
     public void chamarTelaCadastro(View view){
@@ -102,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public Usuario usuarioEstaLogado(){
+    public Usuario usuarioLogado(){
         SessionNegocio sessionNegociogocio = new SessionNegocio();
         return sessionNegociogocio.retornarUsuarioLogado();
     }

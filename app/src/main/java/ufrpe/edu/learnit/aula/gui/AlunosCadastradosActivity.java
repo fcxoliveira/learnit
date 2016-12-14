@@ -30,14 +30,22 @@ public class AlunosCadastradosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alunos_cadastrados);
         Session.setContext(getApplicationContext());
         Aula aula=Session.getAula();
-        nomeDaAula = (TextView) findViewById(R.id.textViewNomeDaAula);
-        nomeDaAula.setText(aula.getTitulo());
-        listView = (ListView)findViewById(R.id.listViewAlunosCadastrados);
-        long idAula = Session.getAula().getId();
-        ArrayList<Perfil> perfis =getAlunosCadastrados((int) idAula);
+        int idAula = Session.getAula().getId();
+        newTextViewNomeDaAula(aula);
+        newListViewAlunosCadastrados(idAula);
+    }
+
+    private void newListViewAlunosCadastrados(int idAula) {
+        ArrayList<Perfil> perfis =getAlunosCadastrados(idAula);
         adapter = new CustomAdapterPerfil(perfis,getApplicationContext());
         listView.setAdapter(adapter);
+
         setOnItemClickListener();
+    }
+
+    private void newTextViewNomeDaAula(Aula aula) {
+        nomeDaAula = (TextView) findViewById(R.id.textViewNomeDaAula);
+        nomeDaAula.setText(aula.getTitulo());
     }
 
     private ArrayList<Perfil> getAlunosCadastrados(int idAula) {
@@ -67,6 +75,6 @@ public class AlunosCadastradosActivity extends AppCompatActivity {
     public void chamarAulaProfessor() {
         Intent secondActivity = new Intent(this, AulaProfessorActivity.class);
         startActivity(secondActivity);
-        finish();
+        this.finish();
     }
 }

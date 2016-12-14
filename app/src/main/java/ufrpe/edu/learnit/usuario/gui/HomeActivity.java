@@ -47,16 +47,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Session.setContext(getApplicationContext());
         PerfilNegocio perfilNegocio = new PerfilNegocio();
         Session.getUsuario().setPerfil(perfilNegocio.retornarPerfil(Session.getUsuario().getID()));
+        newListViewHome();
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        preencherMoedas();
+    }
+
+    private void newListViewHome() {
         listView = (ListView) findViewById(R.id.listView);
         editText = (EditText) findViewById(R.id.editText6);
         ArrayList<Aula> values = getValoresListView();
         adapter = new CustomAdapter(values, getApplicationContext());
-        setOnItemClickListener();
         listView.setAdapter(adapter);
+        setOnItemClickListener();
         setOnlistenerSearch();
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        preencherMoedas();
     }
 
     public void preencherMoedas() {
