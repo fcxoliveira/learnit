@@ -30,9 +30,9 @@ public class AulaPersistencia {
         ContentValues newValues = new ContentValues();
         newValues.put("Titulo", titulo);
         newValues.put("Descricao",descricao);
-        newValues.put("Horas",duracao);
-        newValues.put("Valor",valor);
-        newValues.put("IdPerfil",Session.getUsuario().getID());
+        newValues.put("HorasDisponiveis",duracao+"");
+        newValues.put("Valor",valor+"");
+        newValues.put("IdPerfil",Session.getUsuario().getID()+"");
         db.insert("AULAS", null, newValues);
         db.close();
     }
@@ -138,7 +138,7 @@ public class AulaPersistencia {
         db = dbHelper.getReadableDatabase();
         ArrayList<Aula> aulas = new ArrayList<>();
         String idPerfilString = String.valueOf(Session.getUsuario().getID());
-        Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil = ?",new String[] {idPerfilString},null ,null, null);
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil LIKE ?",new String[] {idPerfilString},null ,null, null);
         while (cursor.moveToNext()){
             aulas.add(retornarAula(cursor.getInt(cursor.getColumnIndex("Id"))));
         }
