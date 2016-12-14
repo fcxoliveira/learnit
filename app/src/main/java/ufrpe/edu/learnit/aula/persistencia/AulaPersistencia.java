@@ -63,7 +63,7 @@ public class AulaPersistencia {
         ContentValues newValues = new ContentValues();
         newValues.put("Descricao",descricao);
         newValues.put("Titulo",titulo);
-        newValues.put("Horas",duracao);
+        newValues.put("HorasDisponiveis",duracao);
         newValues.put("Valor",valor);
         newValues.put("IdPerfil",id+"");
         newValues.put("Id",id+"");
@@ -108,7 +108,7 @@ public class AulaPersistencia {
         int horasTotal = aula.getHoras()-horas;
         String idAulaString = String.valueOf(idAula);
         String horasString = String.valueOf(horasTotal);
-        newValues.put("Horas", horasString);
+        newValues.put("HorasDisponiveis", horasString);
         db = dbHelper.getWritableDatabase();
         db.update("AULAS",newValues,"Id = ?",new String[]{idAulaString});
         db.close();
