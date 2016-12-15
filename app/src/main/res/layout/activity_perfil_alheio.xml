@@ -42,29 +42,6 @@
                 android:layout_marginRight="29dp"
                 android:layout_marginEnd="29dp" />
 
-            <TextView
-                android:text="@string/horas_de_aulas_dadas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView6"
-                android:layout_alignBaseline="@+id/textView1"
-                android:layout_alignBottom="@+id/textView1"
-                android:layout_toRightOf="@+id/textViewRate"
-                android:layout_toEndOf="@+id/textViewRate"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp" />
-
-
-
-            <TextView android:text="Informatica"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewAulaOferecida1"
-                android:layout_alignBaseline="@+id/textViewHoras"
-                android:layout_alignBottom="@+id/textViewHoras"
-
-                android:layout_marginLeft="11dp"
-                android:layout_marginStart="11dp" />
 
             <TextView android:text="Teste123456"
                 android:layout_width="wrap_content"
@@ -97,16 +74,6 @@
                 android:layout_alignLeft="@+id/textView6"
                 android:layout_alignStart="@+id/textView6" />
 
-            <TextView
-                android:text="Musica"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewAulaOferecida2"
-                android:layout_marginTop="23dp"
-                android:layout_below="@+id/textViewAulaOferecida1"
-                android:layout_alignLeft="@+id/textViewAulaOferecida1"
-                android:layout_alignStart="@+id/textViewAulaOferecida1" />
-
             <TextView android:text="Nota 0,0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -114,28 +81,6 @@
                 android:layout_below="@+id/ratingBar2"
                 android:layout_toRightOf="@+id/textViewAulaOferecida1"
                 android:layout_toEndOf="@+id/textViewAulaOferecida1" />
-
-            <TextView
-                android:text=" Biografia do perfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="69dp"
-                android:id="@+id/textViewBiografia"
-                android:textSize="15sp"
-                android:layout_below="@+id/textViewAulaOferecida2"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:text="Biografia:"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="33dp"
-                android:id="@+id/textView8"
-                android:textSize="15sp"
-                android:layout_alignBottom="@+id/textViewBiografia"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
 
             <TextView android:text="0"
                 android:layout_width="wrap_content"
@@ -145,6 +90,50 @@
                 android:layout_below="@+id/textView6"
                 android:layout_alignLeft="@+id/textViewAvaliadores"
                 android:layout_alignStart="@+id/textViewAvaliadores" />
+
+            <TextView
+                android:text="@string/horas_de_aulas_dadas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="39dp"
+                android:layout_marginEnd="39dp" />
+
+            <TextView
+                android:text=" Biografia do perfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="38dp"
+                android:id="@+id/textViewBiografia"
+                android:textSize="15sp"
+                android:layout_alignTop="@+id/textView8"
+                android:layout_alignLeft="@+id/textView8"
+                android:layout_alignStart="@+id/textView8" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/ListViewTags"
+                android:layout_below="@+id/textView6"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_above="@+id/textViewBiografia"
+                android:layout_toLeftOf="@+id/textView6"
+                android:layout_toStartOf="@+id/textView6" />
+
+            <TextView
+                android:text="Biografia:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8"
+                android:textSize="15sp"
+                android:layout_marginTop="96dp"
+                android:layout_below="@+id/textViewHoras"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
         </RelativeLayout>
     </ScrollView>

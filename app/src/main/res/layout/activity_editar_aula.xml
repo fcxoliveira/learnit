@@ -28,41 +28,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
-        <Button
-            android:text="Confirmar Edição"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button5"
-            android:background="#7bc8f3"
-            android:layout_below="@+id/editText11"
-            android:textColor="@android:color/background_light"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:onClick="cadastrarAulaTutor" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:hint="Descrições da aula"
-            android:id="@+id/editTextDescricao"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_below="@+id/editText5"
-            android:layout_centerHorizontal="true" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/editTextHotasAssistidas"
-            android:hint="Horas de aula fornecidas"
-            android:layout_marginTop="27dp"
-            android:layout_below="@+id/editTextDescricao"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,6 +39,42 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
+        <Button
+            android:text="Confirmar Edição"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button5"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:onClick="cadastrarAulaTutor"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="Descrições da aula"
+            android:id="@+id/editTextDescricao"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/editText5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editTextHotasAssistidas"
+            android:hint="Horas de aula fornecidas"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/editTextDescricao"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,37 +82,42 @@
             android:ems="10"
             android:id="@+id/editText11"
             android:hint="Preço por hora/aula"
+            android:layout_above="@+id/button5"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/spinner2"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="26dp" />
 
-        <TextView
-            android:text="Tags de aula"
+        <Button
+            android:text="Add"
             android:layout_width="wrap_content"
-            android:id="@+id/textView3"
-            android:textSize="18sp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ButtonAddTag"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:onClick="populateListView"
             android:layout_below="@+id/editTextHotasAssistidas"
+            android:layout_toRightOf="@+id/textViewNome"
+            android:layout_toEndOf="@+id/textViewNome"
+            android:layout_marginTop="19dp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ListViewTags"
+            android:layout_below="@+id/ButtonAddTag"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/editText11" />
+
+        <AutoCompleteTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/editTextTag"
+            android:hint="Tag"
+            android:layout_above="@+id/ListViewTags"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner2"
-            android:layout_marginBottom="29dp"
-            android:layout_below="@+id/spinner"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner"
-            android:layout_marginBottom="12dp"
-            android:layout_below="@+id/textView3"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 </ScrollView>

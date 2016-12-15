@@ -61,52 +61,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <TextView
-            android:text="Tags de aula"
-            android:layout_width="wrap_content"
-            android:id="@+id/textView3"
-            android:textSize="18sp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/editTextHotasAssistidas"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_above="@+id/editText11"
-            android:layout_below="@+id/editTextTag"
-            android:id="@+id/ListViewTags" />
-
-        <AutoCompleteTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/editTextTag"
-            android:layout_marginTop="12dp"
-            android:layout_below="@+id/textView3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:hint="Tag"
-            />
-
-        <Button
-            android:text="Add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ButtonAddTag"
-            android:background="#7bc8f3"
-            android:textColor="@android:color/background_light"
-            android:layout_alignTop="@+id/editTextTag"
-            android:layout_toRightOf="@+id/editTextHotasAssistidas"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:onClick="populateListView"
-            android:layout_above="@+id/ListViewTags" />
-
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -132,6 +86,40 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
+        <Button
+            android:text="Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ButtonAddTag"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:onClick="populateListView"
+            android:layout_below="@+id/editTextHotasAssistidas"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="27dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginTop="32dp" />
+
+        <AutoCompleteTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/editTextTag"
+            android:hint="Tag"
+            android:layout_alignBottom="@+id/ButtonAddTag"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ListViewTags"
+            android:layout_below="@+id/ButtonAddTag"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/editText11" />
 
     </RelativeLayout>
     </ScrollView>
