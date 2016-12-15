@@ -21,6 +21,18 @@ public class TagPersistencia {
         dbHelper = new DataBaseHelper(context, null);
     }
 
+    public ArrayList<Tag> retornarTagsAula(int idAula){
+        db=dbHelper.getReadableDatabase();
+        ArrayList<Tag> tagsAula= new ArrayList<>();
+        Cursor cursor=db.query("AULA_TAG",new String[]{"*"}, "IdAula=?",new String[] {idAula+""},null ,null, null);
+        while (cursor.moveToNext()){
+            tagsAula.add(retornarTag(cursor.getInt(cursor.getColumnIndex("IdTag"))));
+        }
+        cursor.close();
+        db.close();
+        return tagsAula;
+
+    }
     public ArrayList<Tag> retornarTodasTags(){
         db=dbHelper.getReadableDatabase();
         ArrayList<Tag> tags = new ArrayList<>();

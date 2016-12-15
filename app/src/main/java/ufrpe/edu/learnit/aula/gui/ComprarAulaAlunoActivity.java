@@ -29,6 +29,7 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
     private TextView TextViewPrecoPorHoraAula;
     private TextView TextViewTotalDaCompra;
     private EditText EditTextTotalDeHorasDesejadas;
+    int horas;
 
 
     @Override
@@ -101,7 +102,12 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
                 int aulaId =Session.getAula().getId();
                 String data = this.getDateTime();
                 String TotalDeHoras = EditTextTotalDeHorasDesejadas.getText().toString();
-                int horas = Math.round(Float.parseFloat(TotalDeHoras));
+                try {
+                    horas = Math.round(Float.parseFloat(TotalDeHoras));
+                }catch (NumberFormatException exception){
+                    Toast.makeText(this, "Colocar um valor para horas é obrigatório", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String TotalMoedas =TextViewTotalDaCompra.getText().toString();
                 int moedas = Math.round(Float.parseFloat(TotalMoedas));
                 if(verificarHoras()) {
