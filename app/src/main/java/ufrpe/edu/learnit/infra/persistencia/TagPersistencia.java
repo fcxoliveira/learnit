@@ -21,6 +21,7 @@ public class TagPersistencia {
         dbHelper = new DataBaseHelper(context, null);
     }
 
+
     public ArrayList<Tag> retornarTagsAula(int idAula){
         db=dbHelper.getReadableDatabase();
         ArrayList<Tag> tagsAula= new ArrayList<>();

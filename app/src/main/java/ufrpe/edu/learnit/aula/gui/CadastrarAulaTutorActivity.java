@@ -121,10 +121,16 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         finish();
     }
 
-    public void populateListView(View v){
-        tags.add(editTextTags.getText().toString());
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
-        listViewTags.setAdapter(adapter);
+    public void populateListView(View v) {
+        String tag = editTextTags.getText().toString();
+        if (tags.contains(tag)){
+            editTextTags.requestFocus();
+            editTextTags.setError("esta tag ja foi adicionada a esta aula");
+        }else{
+            tags.add(tag);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);
+            listViewTags.setAdapter(adapter);
+        }
     }
 
     public void setOnlistenerSearch() {
