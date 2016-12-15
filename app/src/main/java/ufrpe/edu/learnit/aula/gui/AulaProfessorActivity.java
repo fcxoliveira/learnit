@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
@@ -17,43 +19,41 @@ import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.infra.negocio.TagNegocio;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
+import static ufrpe.edu.learnit.aula.gui.ComprarAulaAlunoActivity.aula;
+
 
 public class AulaProfessorActivity extends AppCompatActivity {
     private TextView  textView7,textView101, textView100, textView102,textView108;
-    private TextView tags;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aula_professor);
         Session.setContext(getApplicationContext());
+        aula = Session.getAula();
         findEditableItens();
-        Aula aula = Session.getAula();
-        editItens(aula);
-
+        editItens();
+        newListViewTags();
     }
 
-    private String exibirTags(){
-        String tgs = "";
+    private void newListViewTags(){
+        listView=(ListView) findViewById(R.id.ListViewTags);
         TagNegocio tagNegocio = new TagNegocio();
         ArrayList<Tag> arrayTags = tagNegocio.retornarTagsAula(Session.getAula().getId());
-        for (int i = 0; i< arrayTags.size(); i++){
-            if (i == arrayTags.size()-1){
-                tgs += arrayTags.get(i).getTitulo();
-                break;
-            }
-            tgs += arrayTags.get(i).getTitulo() + ", ";
+        ArrayList<String> tagsString= new ArrayList<String>();
+        for (Tag tag :arrayTags){
+            tagsString.add(tag.getTitulo());
         }
-        return tgs;
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tagsString);
     }
 
-    private void editItens(Aula aula) {
+    private void editItens() {
         textView101.setText(aula.getHoras()+"");
         textView100.setText(aula.getTitulo());
         textView7.setText(aula.getTitulo());
         textView102.setText(aula.getDescricao());
         textView108.setText(aula.getValor()+"");
-        tags.setText(exibirTags());
     }
 
     private void findEditableItens() {
@@ -62,7 +62,6 @@ public class AulaProfessorActivity extends AppCompatActivity {
         textView100 = (TextView) findViewById(R.id.textView100);
         textView102=(TextView) findViewById(R.id.textView102);
         textView108=(TextView) findViewById(R.id.textView8);
-        tags = (TextView) findViewById(R.id.textViewTags);
     }
     public Aula retornarAula(int id){
         GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
