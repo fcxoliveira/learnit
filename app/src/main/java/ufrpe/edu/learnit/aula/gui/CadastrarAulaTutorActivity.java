@@ -160,9 +160,9 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
     private void trabalharTags(){
         TagNegocio tagNegocio = new TagNegocio();
         for(String tag : tags){
-            if(tagNegocio.existeTag(tag)){
+            if(!tagNegocio.existeTag(tag)){
                 tagNegocio.inserirTag(tag);
-            }else if(!tagNegocio.existeRelacaoTagAula(tagNegocio.retornarTag(tag).getID())){
+            }else{
                 tagNegocio.inserirRelacaoTagAula(tagNegocio.retornarTag(tag).getID());
             }
         }

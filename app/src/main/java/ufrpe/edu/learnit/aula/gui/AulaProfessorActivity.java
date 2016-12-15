@@ -62,7 +62,6 @@ public class AulaProfessorActivity extends AppCompatActivity {
         textView100 = (TextView) findViewById(R.id.textView100);
         textView102=(TextView) findViewById(R.id.textView102);
         textView108=(TextView) findViewById(R.id.textView8);
-        tags = (TextView) findViewById(R.id.textViewTags);
     }
     public Aula retornarAula(int id){
         GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();

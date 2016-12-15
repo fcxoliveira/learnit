@@ -16,7 +16,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_TAGS = "create table IF NOT EXISTS TAGS (Id integer primary key autoincrement, Tag text);";
     private static final String TABLE_AULAS = "create table if not exists AULAS(Id integer primary key autoincrement, Titulo text, Descricao text, Valor integer, IdPerfil integer, HorasDisponiveis integer);";
     private static final ArrayList<String> TAGS = new ArrayList<>(Arrays.asList("Informatica", "Musica", "Portugues", "Matematica", "Biologia", "Fisica", "Quimica", "Ed. Fisica"));
-    private static final String TABLE_ALUNO_AULA = "create table if not exists ALUNO_AULA(IdPerfilAluno integer, IdAula integer, Date text, HorasCompradas integer, ValorPago integer);";
+    private static final String TABLE_ALUNO_AULA = "create table if not exists ALUNO_AULA(IdPerfilAluno integer, IdAula integer, Date text, HorasCompradas integer, ValorPago integer, HorasConfirmadas integer);";
+    private static final String TABLE_CONFIRMACAO = "create table if not exists CONFIRMACAO(IdAula integer,IdAluno integer, HorasParaConfirmar integer, Status integer);";
     private static final String TABLE_AULA_TAG = "create table if not exists AULA_TAG(IdAula integer,IdTag integer);";
 
 
