@@ -22,9 +22,9 @@ import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 public class CadastrarAulaTutorActivity extends AppCompatActivity {
 
     private EditText editTextHorasDeAula,editTextPrecoHoraAula,editTextDescricao, editTextNomeAula;
-    private ListView listViewTags;
-    private ArrayAdapter<String> adapter;
     private AutoCompleteTextView editTextTags;
+    ListView listViewTags;
+    ArrayList<String> tags = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,9 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
         editTextHorasDeAula = (EditText) findViewById(R.id.editTextHotasAssistidas);
         editTextPrecoHoraAula = (EditText) findViewById(R.id.editText11);
-        listViewTags = (ListView)findViewById(R.id.ListViewTags);
+        listViewTags = (ListView) findViewById(R.id.ListViewTags);
         editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
-        adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
         listViewTags.setAdapter(adapter);
         setOnlistenerSearch();
 
@@ -121,7 +121,9 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
     }
 
     public void populateListView(View v){
-        adapter.add(editTextTags.getText().toString());
+        tags.add(editTextTags.getText().toString());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
+        listViewTags.setAdapter(adapter);
     }
 
     public void setOnlistenerSearch() {
@@ -129,7 +131,6 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         editTextTags.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -144,8 +145,11 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
             }
         });
+
+
+
+
     }
 }

@@ -30,9 +30,9 @@ public class AulaPersistencia {
         ContentValues newValues = new ContentValues();
         newValues.put("Titulo", titulo);
         newValues.put("Descricao",descricao);
-        newValues.put("Horas",duracao);
-        newValues.put("Valor",valor);
-        newValues.put("IdPerfil",Session.getUsuario().getID());
+        newValues.put("HorasDisponiveis",duracao+"");
+        newValues.put("Valor",valor+"");
+        newValues.put("IdPerfil",Session.getUsuario().getID()+"");
         db.insert("AULAS", null, newValues);
         db.close();
     }
@@ -42,7 +42,7 @@ public class AulaPersistencia {
         aula.setId(id);
         aula.setTitulo(titulo);
         aula.setDescricao(descricao);
-        aula.setDuracaoHorasAula(duracao);
+        aula.setHoras(duracao);
         aula.setValor(valor);
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         aula.setPerfil(perfilPersistencia.retornarPerfil(IdPerfil));
@@ -63,7 +63,7 @@ public class AulaPersistencia {
         ContentValues newValues = new ContentValues();
         newValues.put("Descricao",descricao);
         newValues.put("Titulo",titulo);
-        newValues.put("Horas",duracao);
+        newValues.put("HorasDisponiveis",duracao);
         newValues.put("Valor",valor);
         newValues.put("IdPerfil",id+"");
         newValues.put("Id",id+"");
@@ -72,7 +72,7 @@ public class AulaPersistencia {
 
     public ArrayList<Aula> getAulasPorTexto(String texto){
         db = dbHelper.getReadableDatabase();
-        Cursor cursor=db.query("AULAS",new String[]{"*"},"Titulo LIKE ? OR Descricao LIKE ? AND IdPerfil!=?",new String[] { "%"+texto+"%","%"+texto+"%",Session.getUsuario().getID()+"" },null ,null, null);
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"(Titulo LIKE ? OR Descricao LIKE ?) AND IdPerfil!=?",new String[] { "%"+texto+"%","%"+texto+"%",Session.getUsuario().getID()+"" },null ,null, null);
         ArrayList<Aula> aulas = new ArrayList<>();
         while (cursor.moveToNext()){
             Aula aula = retornarAula(cursor.getInt(cursor.getColumnIndex("Id")));
@@ -108,7 +108,7 @@ public class AulaPersistencia {
         int horasTotal = aula.getHoras()-horas;
         String idAulaString = String.valueOf(idAula);
         String horasString = String.valueOf(horasTotal);
-        newValues.put("Horas", horasString);
+        newValues.put("HorasDisponiveis", horasString);
         db = dbHelper.getWritableDatabase();
         db.update("AULAS",newValues,"Id = ?",new String[]{idAulaString});
         db.close();
@@ -138,7 +138,7 @@ public class AulaPersistencia {
         db = dbHelper.getReadableDatabase();
         ArrayList<Aula> aulas = new ArrayList<>();
         String idPerfilString = String.valueOf(Session.getUsuario().getID());
-        Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil = ?",new String[] {idPerfilString},null ,null, null);
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil LIKE ?",new String[] {idPerfilString},null ,null, null);
         while (cursor.moveToNext()){
             aulas.add(retornarAula(cursor.getInt(cursor.getColumnIndex("Id"))));
         }
