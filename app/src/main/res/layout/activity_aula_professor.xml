@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
-            android:id="@+id/textView4"
+            android:id="@+id/textViewTags"
             android:textSize="18sp"
             android:layout_below="@+id/textView103"
             android:layout_alignRight="@+id/editText5"
@@ -63,19 +63,6 @@
             android:layout_alignRight="@+id/floatingActionButton8"
             android:layout_alignEnd="@+id/floatingActionButton8"
             android:layout_marginTop="46dp" />
-
-        <TextView
-            android:text="Tag_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView5"
-            android:textSize="20sp"
-            android:layout_marginTop="11dp"
-            android:layout_below="@+id/textView4"
-            android:layout_alignRight="@+id/floatingActionButton7"
-            android:layout_alignEnd="@+id/floatingActionButton7"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
 
         <TextView
             android:text="Horas de aula fornecidas"

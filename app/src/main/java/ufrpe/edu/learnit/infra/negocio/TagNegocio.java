@@ -26,4 +26,9 @@ public class TagNegocio {
         TagPersistencia tagPersistencia = new TagPersistencia();
         return tagPersistencia.retornarTagPorTexto(texto);
     }
+
+    public ArrayList<Tag> retornarTagsAula(int id){
+        TagPersistencia tagPersistencia = new TagPersistencia();
+        return tagPersistencia.retornarTagsAula(id);
+    }
 }
