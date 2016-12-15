@@ -7,7 +7,6 @@ import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 public class Aula {
 
-    private String nome;
     private int horas;
     private Perfil perfil;
     private String titulo, descricao;
@@ -22,14 +21,6 @@ public class Aula {
 
     public void setHoras(int horas) {
         this.horas = horas;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public Perfil getPerfil() {

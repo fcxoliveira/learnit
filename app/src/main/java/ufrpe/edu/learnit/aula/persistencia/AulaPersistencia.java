@@ -34,6 +34,17 @@ public class AulaPersistencia {
         newValues.put("Valor",valor+"");
         newValues.put("IdPerfil",Session.getUsuario().getID()+"");
         db.insert("AULAS", null, newValues);
+        Cursor cursor = db.query("AULAS",new String[]{"*"},"IdPerfil = ?",new String[]{Session.getUsuario().getID()+""},null ,null, null);
+        cursor.moveToLast();
+        Aula aula = new Aula();
+        aula.setId(cursor.getInt(cursor.getColumnIndex("Id")));
+        aula.setHoras(duracao);
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        aula.setPerfil(perfilPersistencia.retornarPerfil(Session.getUsuario().getID()));
+        aula.setTitulo(titulo);
+        aula.setDescricao(descricao);
+        aula.setValor(valor);
+        Session.setAula(aula);
         db.close();
     }
 
