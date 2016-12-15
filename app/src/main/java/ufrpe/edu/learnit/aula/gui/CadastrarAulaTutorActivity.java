@@ -148,8 +148,16 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
             }
         });
 
-
-
-
+    }
+    private void trabalharTags(){
+        boolean result = true;
+        TagNegocio tagNegocio = new TagNegocio();
+        for(String tag : tags){
+            if(tagNegocio.existeTag(tag)){
+                tagNegocio.inserirTag(tag);
+            }else if(!tagNegocio.existeRelacaoTagAula(tagNegocio.retornarTag(tag).getID())){
+                tagNegocio.inserirRelacaoTagAula(tagNegocio.retornarTag(tag).getID());
+            }
+        }
     }
 }

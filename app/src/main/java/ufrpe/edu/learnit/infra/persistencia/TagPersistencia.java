@@ -1,5 +1,6 @@
 package ufrpe.edu.learnit.infra.persistencia;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -63,5 +64,45 @@ public class TagPersistencia {
         tag.setID(id);
         tag.setTitulo(nome);
         return tag;
+    }
+
+    public Tag retornarTagTexto(String texto){
+        db=dbHelper.getReadableDatabase();
+        Tag tag = new Tag();
+        Cursor cursor=db.query("TAGS",new String[]{"*"},"Tag=?",new String[]{texto},null ,null, null);
+        tag.setID(cursor.getInt(cursor.getColumnIndex("Id")));
+        tag.setTitulo(cursor.getString(cursor.getColumnIndex("Tag")));
+        cursor.close();
+        db.close();
+        return tag;
+    }
+
+    public void inserirTag(String texto){
+        db=dbHelper.getWritableDatabase();
+        ContentValues newValues = new ContentValues();
+        newValues.put("Tag",texto);
+        db.insert("TAGS",null,newValues);
+        db.close();
+    }
+
+    public boolean existeRealcaoTagAula(int idAula, int idTag){
+        db=dbHelper.getReadableDatabase();
+        boolean result = false;
+        Cursor cursor=db.query("AULA_TAG",new String[]{"*"},"IdAula=? AND IdTag=?",new String[]{idAula+"",idTag+""},null ,null, null);
+        if(cursor.moveToFirst()){
+            result=true;
+        }
+        db.close();
+        cursor.close();
+        return result;
+    }
+
+    public void inserirRelacaoTagAula(int idTag,int idAula){
+        db=dbHelper.getWritableDatabase();
+        ContentValues newValues = new ContentValues();
+        newValues.put("IdTag",idTag);
+        newValues.put("IdAula",idAula);
+        db.insert("AULA_TAG",null,newValues);
+        db.close();
     }
 }
