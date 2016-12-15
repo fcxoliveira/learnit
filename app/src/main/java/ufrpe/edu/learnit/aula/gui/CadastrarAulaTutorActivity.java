@@ -130,6 +130,7 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
             tags.add(tag);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);
             listViewTags.setAdapter(adapter);
+            editTextTags.setText("");
         }
     }
 
