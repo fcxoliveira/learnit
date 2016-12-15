@@ -82,10 +82,12 @@ public class TagPersistencia {
         db=dbHelper.getReadableDatabase();
         Tag tag = new Tag();
         Cursor cursor=db.query("TAGS",new String[]{"*"},"Tag=?",new String[]{texto},null ,null, null);
-        tag.setID(cursor.getInt(cursor.getColumnIndex("Id")));
-        tag.setTitulo(cursor.getString(cursor.getColumnIndex("Tag")));
-        cursor.close();
-        db.close();
+        if (cursor.moveToFirst()) {
+            tag.setID(cursor.getInt(cursor.getColumnIndex("Id")));
+            tag.setTitulo(cursor.getString(cursor.getColumnIndex("Tag")));
+            cursor.close();
+            db.close();
+        }
         return tag;
     }
 
