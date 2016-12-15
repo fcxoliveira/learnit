@@ -105,6 +105,7 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula)){
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
             gerenciadorAulasTutor.cadastrarAula(nomeAula,descricao,Integer.parseInt(horasDeAula),Integer.parseInt(precoHoraAula));
+            trabalharTags();
             chamarTelaInicial(v);
         }
 }
@@ -150,7 +151,6 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
 
     }
     private void trabalharTags(){
-        boolean result = true;
         TagNegocio tagNegocio = new TagNegocio();
         for(String tag : tags){
             if(tagNegocio.existeTag(tag)){
