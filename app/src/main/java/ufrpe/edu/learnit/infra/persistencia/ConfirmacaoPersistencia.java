@@ -68,8 +68,11 @@ public class ConfirmacaoPersistencia {
         return confirmacoes;
     }
 
-    public void cancelarConfirmacao(Confirmacao confirmacao){
+    public void cancelarConfirmacao(int idConfirmacao){
         db=dbHelper.getWritableDatabase();
-        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Id = ?", new String[]{idConfirmacao + ""}, null, null, null);
+        ContentValues newValues = new ContentValues();
+        newValues.put("Status", 2);
+        db.update("CONFIRMACAO",newValues,"Id='"+idConfirmacao+"'",null);
     }
+    
 }
