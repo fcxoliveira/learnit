@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.dominio.Tag;
+import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.infra.negocio.TagNegocio;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
+import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 
 public class InteressesActivity extends AppCompatActivity {
     private EditText editTextNome;
@@ -39,7 +41,7 @@ public class InteressesActivity extends AppCompatActivity {
     private void findEditableItens() {
         editTextNome = (EditText) findViewById(R.id.EditTextNome);
         editTextBio = (EditText) findViewById(R.id.editTextDescricao);
-        listViewTags = (ListView) findViewById(R.id.ListViewTags);
+        listViewTags = (ListView) findViewById(R.id.listViewTags);
         editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
     }
 
@@ -113,6 +115,25 @@ public class InteressesActivity extends AppCompatActivity {
             }
             tagNegocio.inserirRelacaoTagPerfil(tagNegocio.retornarTag(tag).getID());
         }
+    }
+
+    public void onBackPressed(){
+        cancelarUsuario();
+        chamarTelaLogin();
+    }
+
+    private void cancelarUsuario() {
+        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+        usuarioNegocio.excluirUsuario(Session.getUsuario());
+        SessionNegocio sessionNegocio = new SessionNegocio();
+        sessionNegocio.deslogarUsuario();
+        Session.setUsuario(null);
+    }
+
+    private void chamarTelaLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
 

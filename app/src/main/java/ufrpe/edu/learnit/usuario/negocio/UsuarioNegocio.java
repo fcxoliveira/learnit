@@ -20,4 +20,9 @@ public class UsuarioNegocio {
         }
         return usuario;
     }
+
+    public void excluirUsuario(Usuario usuario){
+        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
+        usuarioPersistencia.excluirUsuario(usuario.getLogin());
+    }
 }

@@ -39,9 +39,9 @@ public class UsuarioPersistencia {
         return usuario;
     }
 
-    public int excluirUsuario(String UserName){
+    public int excluirUsuario(String login){
         db = dbHelper.getWritableDatabase();
-        int numeroDeEntradasDeletadas= db.delete("USER", "Username=?", new String[]{UserName});
+        int numeroDeEntradasDeletadas= db.delete("USER", "Username=?", new String[]{login});
         db.close();
         return numeroDeEntradasDeletadas;
     }

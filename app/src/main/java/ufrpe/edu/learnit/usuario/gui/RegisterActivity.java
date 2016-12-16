@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
             UsuarioNegocio negocio = new UsuarioNegocio();
             Usuario usuario = negocio.cadastrarUsuario(login, senha, email);
             if (usuario == null){
-                Toast.makeText(context, "Login ou e-mail não disponível, tente novemente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Login ou e-mail não disponível, tente novamente!", Toast.LENGTH_LONG).show();
             }else{
                 Session.setUsuario(usuario);
                 SessionNegocio sessionNegocio = new SessionNegocio();
