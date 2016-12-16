@@ -19,7 +19,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_ALUNO_AULA = "create table if not exists ALUNO_AULA(IdPerfilAluno integer, IdAula integer, Date text, HorasCompradas integer, ValorPago integer, HorasConfirmadas integer);";
     private static final String TABLE_CONFIRMACAO = "create table if not exists CONFIRMACAO(IdAula integer,IdAluno integer, HorasParaConfirmar integer, Status integer);";
     private static final String TABLE_AULA_TAG = "create table if not exists AULA_TAG(IdAula integer,IdTag integer);";
-
+    private static final String TABLE_PERFIL_TAG="create table if not exits PERFIL_TAG(IdPerfil integer,IdTag integer);";
 
     public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
     {
@@ -35,6 +35,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_AULAS);
         db.execSQL(TABLE_ALUNO_AULA);
         db.execSQL(TABLE_AULA_TAG);
+        db.execSQL(TABLE_PERFIL_TAG);
         for(String tag:TAGS) {
             populateTags(tag,db);
         }
@@ -50,7 +51,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS TAGS");
         db.execSQL("DROP TABLE IF EXISTS AULAS");
         db.execSQL("DROP TABLE IF EXISTS ALUNO_AULA");
-        db.execSQL("DROP TABLE IF EXISTS ALUNO_AULA");
+        db.execSQL("DROP TABLE IF EXISTS AULA_TAG");
+        db.execSQL("DROP TABLE IF EXISTS TABLE_PERFIL_TAG");
         onCreate(db);
     }
 

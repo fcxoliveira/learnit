@@ -34,6 +34,18 @@ public class TagPersistencia {
         return tagsAula;
 
     }
+
+    public ArrayList<Tag> retornarTagasPerfil(int idPerfil){
+        db=dbHelper.getReadableDatabase();
+        ArrayList<Tag> tagsPerfil= new ArrayList<>();
+        Cursor cursor=db.query("AULA_PERFIL",new String[]{"*"}, "IdPerfil=?",new String[] {idPerfil+""},null ,null, null);
+        while (cursor.moveToNext()){
+            tagsPerfil.add(retornarTag(cursor.getInt(cursor.getColumnIndex("IdPerfil"))));
+        }
+        cursor.close();
+        db.close();
+        return tagsPerfil;
+    }
     public ArrayList<Tag> retornarTodasTags(){
         db=dbHelper.getReadableDatabase();
         ArrayList<Tag> tags = new ArrayList<>();
@@ -119,6 +131,15 @@ public class TagPersistencia {
         newValues.put("IdTag",idTag);
         newValues.put("IdAula",idAula);
         db.insert("AULA_TAG",null,newValues);
+        db.close();
+    }
+
+    public void inserirRelacaoTagPerfil(int idTag, int idPerfil) {
+        db=dbHelper.getWritableDatabase();
+        ContentValues newValues = new ContentValues();
+        newValues.put("IdTag",idTag);
+        newValues.put("IdPerfil",idPerfil);
+        db.insert("PERFIL_TAG",null,newValues);
         db.close();
     }
 }

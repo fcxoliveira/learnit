@@ -65,4 +65,9 @@ public class TagNegocio {
         TagPersistencia tagPersistencia = new TagPersistencia();
         return tagPersistencia.retornarTagsAula(id);
     }
+
+    public void inserirRelacaoTagPerfil(int idTag) {
+        TagPersistencia  tagPersistencia = new TagPersistencia();
+        tagPersistencia.inserirRelacaoTagPerfil(idTag,Session.getUsuario().getID());
+    }
 }
