@@ -44,6 +44,7 @@ public class PerfilPersistencia {
             int avaliadores = cursor.getInt(cursor.getColumnIndex("Avaliadores"));
             float avaliacao = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
             int horas = cursor.getInt(cursor.getColumnIndex("Horas"));
+            result.setId(id);
             result.setAvaliacao(avaliacao);
             result.setBio(bio);
             result.setMoedas(moedas);
