@@ -41,11 +41,8 @@ public class AulaProfessorActivity extends AppCompatActivity {
         listView=(ListView) findViewById(R.id.ListViewTags);
         TagNegocio tagNegocio = new TagNegocio();
         ArrayList<Tag> arrayTags = tagNegocio.retornarTagsAula(Session.getAula().getId());
-        ArrayList<String> tagsString= new ArrayList<String>();
-        for (Tag tag :arrayTags){
-            tagsString.add(tag.getTitulo());
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tagsString);
+        ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayTags);
+        listView.setAdapter(adapter);
     }
 
     private void editItens() {
