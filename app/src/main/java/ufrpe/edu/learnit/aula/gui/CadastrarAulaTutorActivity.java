@@ -31,10 +31,10 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_aula);
         Session.setContext(getApplicationContext());
-        editTextNomeAula = (EditText) findViewById(R.id.editText5);
-        editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
-        editTextHorasDeAula = (EditText) findViewById(R.id.editTextHotasAssistidas);
-        editTextPrecoHoraAula = (EditText) findViewById(R.id.editText11);
+        editTextNomeAula = (EditText) findViewById(R.id.TextViewNomeAula);
+        editTextDescricao = (EditText) findViewById(R.id.TextViewDescricao);
+        editTextHorasDeAula = (EditText) findViewById(R.id.TextViewHorasDeAula);
+        editTextPrecoHoraAula = (EditText) findViewById(R.id.TextViewPreco);
         listViewTags = (ListView) findViewById(R.id.ListViewTags);
         editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);

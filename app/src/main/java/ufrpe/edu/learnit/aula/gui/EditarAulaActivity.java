@@ -8,13 +8,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.dominio.Tag;
@@ -22,29 +22,51 @@ import ufrpe.edu.learnit.infra.negocio.TagNegocio;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class EditarAulaActivity extends AppCompatActivity {
-    EditText editTextNomeAula, editTextDescricao, editTextHorasDeAula, editTextPrecoHoraAula;
+    EditText  editTextHorasDeAula, editTextPreco;
+    TextView TextViewNomeAula,TextViewDescricao;
+    private ListView listView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_aula);
-        TagNegocio tagNegocio = new TagNegocio();
+        Aula aula=Session.getAula();
         Session.setContext(getApplicationContext());
-        findItens();
+        newListViewTags();
+        findEditablesItens();
+        editItens(aula);
     }
 
-    private void findItens() {
-        editTextNomeAula = (EditText) findViewById(R.id.editText5);
-        editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
-        editTextHorasDeAula = (EditText) findViewById(R.id.editTextHotasAssistidas);
-        editTextPrecoHoraAula = (EditText) findViewById(R.id.editText11);
+    private void editItens(Aula aula) {
+        editTextHorasDeAula.setText(aula.getHoras()+"");
+        editTextPreco.setText(aula.getValor()+"");
+        TextViewDescricao.setText(aula.getDescricao());
+        TextViewNomeAula.setText(aula.getTitulo());
+    }
+
+
+    private void findEditablesItens() {
+        TextViewNomeAula = (TextView) findViewById(R.id.TextViewNomeAula);
+        TextViewDescricao = (TextView) findViewById(R.id.TextViewDescricao);
+        editTextHorasDeAula = (EditText) findViewById(R.id.TextViewHorasDeAula);
+        editTextPreco = (EditText) findViewById(R.id.TextViewPreco);
+    }
+    private void newListViewTags(){
+        listView=(ListView) findViewById(R.id.ListViewTags);
+        TagNegocio tagNegocio = new TagNegocio();
+        ArrayList<Tag> arrayTags = tagNegocio.retornarTagsAula(Session.getAula().getId());
+        ArrayList<String> tagsString= new ArrayList<String>();
+        for (Tag tag :arrayTags){
+            tagsString.add(tag.getTitulo());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tagsString);
     }
 
     public boolean verificarNomeAula(String nomeAula){
         boolean autorizacao = false;
         if (TextUtils.isEmpty(nomeAula)) {
-            editTextNomeAula.requestFocus();
-            editTextNomeAula.setError("Nome da aula é um campo necessario");
+            TextViewNomeAula.requestFocus();
+            TextViewNomeAula.setError("Nome da aula é um campo necessario");
         } else {
             autorizacao = true;
         }
@@ -54,8 +76,8 @@ public class EditarAulaActivity extends AppCompatActivity {
     public boolean verificarDescricao(String descricao){
         boolean autorizacao = false;
         if (TextUtils.isEmpty(descricao)) {
-            editTextDescricao.requestFocus();
-            editTextDescricao.setError("Descrição da aula é um campo necessario");
+            TextViewDescricao.requestFocus();
+            TextViewDescricao.setError("Descrição da aula é um campo necessario");
         } else {
             autorizacao = true;
         }
@@ -76,8 +98,8 @@ public class EditarAulaActivity extends AppCompatActivity {
     public boolean verificarPrecoHoraAula(String precoHoraAula){
         boolean autorizacao = false;
         if (TextUtils.isEmpty(precoHoraAula)){
-            editTextPrecoHoraAula.requestFocus();
-            editTextPrecoHoraAula.setError("Preço da hora/aula é um campo necessário");
+            editTextPreco.requestFocus();
+            editTextPreco.setError("Preço da hora/aula é um campo necessário");
         } else {
             autorizacao = true;
         }
@@ -87,10 +109,10 @@ public class EditarAulaActivity extends AppCompatActivity {
 
 
     public void cadastrarAulaTutor(View v){
-        String nomeAula = editTextNomeAula.getText().toString();
-        String descricao = editTextDescricao.getText().toString();
+        String nomeAula = TextViewNomeAula.getText().toString();
+        String descricao = TextViewDescricao.getText().toString();
         String horasDeAula = editTextHorasDeAula.getText().toString();
-        String precoHoraAula = editTextPrecoHoraAula.getText().toString();
+        String precoHoraAula = editTextPreco.getText().toString();
         if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula)){
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
 
