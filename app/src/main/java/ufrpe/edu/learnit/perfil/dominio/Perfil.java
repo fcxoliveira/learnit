@@ -15,7 +15,6 @@ public class Perfil {
     private float avaliacao;
     private int horas;
     private int avaliadores;
-    boolean select = false;
 
 
     public int getHoras() {
@@ -72,11 +71,4 @@ public class Perfil {
         this.avaliacao = avaliacao;
     }
 
-    public boolean isSelect() {
-        return select ;
-    }
-
-    public void setSelect(boolean select) {
-        this.select = select;
-    }
 }

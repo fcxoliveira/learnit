@@ -32,10 +32,10 @@
         <EditText
             android:layout_width="match_parent"
             android:hint="Digite aqui as descrições da sua aula"
-            android:id="@+id/editTextDescricao"
+            android:id="@+id/TextViewDescricao"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_below="@+id/editText5"
+            android:layout_below="@+id/TextViewNomeAula"
             android:layout_centerHorizontal="true" />
 
         <EditText
@@ -43,10 +43,10 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextHotasAssistidas"
+            android:id="@+id/TextViewHorasDeAula"
             android:hint="Horas de aula fornecidas"
             android:layout_marginTop="27dp"
-            android:layout_below="@+id/editTextDescricao"
+            android:layout_below="@+id/TextViewDescricao"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:hint="Nome da aula"
-            android:id="@+id/editText5"
+            android:id="@+id/TextViewNomeAula"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/toolbar"
             android:layout_alignParentLeft="true"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText11"
+            android:id="@+id/TextViewPreco"
             android:hint="@string/pre_o_por_hora_aula"
             android:layout_marginBottom="17dp"
             android:layout_above="@+id/button5"
@@ -95,7 +95,7 @@
             android:background="#7bc8f3"
             android:textColor="@android:color/background_light"
             android:onClick="populateListView"
-            android:layout_below="@+id/editTextHotasAssistidas"
+            android:layout_below="@+id/TextViewHorasDeAula"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="27dp"
@@ -119,7 +119,7 @@
             android:layout_below="@+id/ButtonAddTag"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_above="@+id/editText11" />
+            android:layout_above="@+id/TextViewPreco" />
 
     </RelativeLayout>
     </ScrollView>

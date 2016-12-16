@@ -26,8 +26,8 @@ public class InteressesActivity extends AppCompatActivity {
     }
 
     private void findEditableItens() {
-        editTextNome = (EditText) findViewById(R.id.editText5);
-        editTextBio = (EditText) findViewById(R.id.editTextDescricao);
+        editTextNome = (EditText) findViewById(R.id.TextViewNomeAula);
+        editTextBio = (EditText) findViewById(R.id.TextViewDescricao);
     }
 
     public void chamarHome(View view) {

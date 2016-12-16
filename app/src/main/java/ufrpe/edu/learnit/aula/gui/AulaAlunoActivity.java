@@ -3,7 +3,6 @@ package ufrpe.edu.learnit.aula.gui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import ufrpe.edu.learnit.R;
@@ -40,12 +39,6 @@ public class AulaAlunoActivity extends AppCompatActivity {
         descricaoAula.setText(aula.getAula().getDescricao());
         horasPagas.setText(String.valueOf(aula.getHorasTotal()));
         ratingBar.setRating(aula.getAula().getPerfil().getAvaliacao());
-    }
-
-    public void confirmarAulaAluno(View view){
-        Intent intent = new Intent(this, ConfirmarAulaAlunoActivity.class);
-        startActivity(intent);
-        finish();
     }
     @Override
     public void onBackPressed(){
