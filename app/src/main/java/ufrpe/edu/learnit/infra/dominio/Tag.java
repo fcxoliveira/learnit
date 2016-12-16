@@ -3,7 +3,7 @@ package ufrpe.edu.learnit.infra.dominio;
 
 public class Tag {
     private String titulo;
-    private int ID;
+    private int ID =0;
 
     public String getTitulo() {
         return titulo;
