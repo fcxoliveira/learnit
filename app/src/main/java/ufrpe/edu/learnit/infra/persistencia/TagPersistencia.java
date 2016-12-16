@@ -134,6 +134,7 @@ public class TagPersistencia {
         db.close();
     }
 
+
     public void inserirRelacaoTagPerfil(int idTag, int idPerfil) {
         db=dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
