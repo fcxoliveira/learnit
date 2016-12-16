@@ -35,10 +35,10 @@ public class TagPersistencia {
 
     }
 
-    public ArrayList<Tag> retornarTagasPerfil(int idPerfil){
+    public ArrayList<Tag> retornarTagsPerfil(int idPerfil){
         db=dbHelper.getReadableDatabase();
         ArrayList<Tag> tagsPerfil= new ArrayList<>();
-        Cursor cursor=db.query("AULA_PERFIL",new String[]{"*"}, "IdPerfil=?",new String[] {idPerfil+""},null ,null, null);
+        Cursor cursor=db.query("PERFIL_TAG",new String[]{"*"}, "IdPerfil=?",new String[] {idPerfil+""},null ,null, null);
         while (cursor.moveToNext()){
             tagsPerfil.add(retornarTag(cursor.getInt(cursor.getColumnIndex("IdPerfil"))));
         }
@@ -125,6 +125,17 @@ public class TagPersistencia {
         return result;
     }
 
+    public boolean existeRelacaoTagPerfil(int idPerfil, int idTag){
+        db=dbHelper.getReadableDatabase();
+        boolean result = false;
+        Cursor cursor=db.query("PERFIL_TAG",new String[]{"*"},"IdPerfil=? AND IdTag=?",new String[]{idPerfil+"",idTag+""},null ,null, null);
+        if(cursor.moveToFirst()){
+            result=true;
+        }
+        db.close();
+        cursor.close();
+        return result;
+    }
     public void inserirRelacaoTagAula(int idTag,int idAula){
         db=dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();

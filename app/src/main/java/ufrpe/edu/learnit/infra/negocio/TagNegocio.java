@@ -48,10 +48,18 @@ public class TagNegocio {
     }
 
     public boolean existeRelacaoTagAula(int tagId){
-        boolean result = true;
+        boolean result = false;
         TagPersistencia tagPersistencia = new TagPersistencia();
         if(tagPersistencia.existeRealcaoTagAula(Session.getAula().getId(),tagId)){
-            result = false;
+            result = true;
+        }
+        return  result;
+    }
+    public boolean existeRelacaoTagPerfil(int tagId){
+        boolean result = false;
+        TagPersistencia tagPersistencia = new TagPersistencia();
+        if(tagPersistencia.existeRelacaoTagPerfil(Session.getUsuario().getID(),tagId)){
+            result = true;
         }
         return  result;
     }
@@ -61,11 +69,15 @@ public class TagNegocio {
         tagPersistencia.inserirRelacaoTagAula(tagId,Session.getAula().getId());
     }
 
-    public ArrayList<Tag> retornarTagsAula(int id){
+    public ArrayList<Tag> retornarTagsAula(int idAula){
         TagPersistencia tagPersistencia = new TagPersistencia();
-        return tagPersistencia.retornarTagsAula(id);
+        return tagPersistencia.retornarTagsAula(idAula);
     }
 
+    public ArrayList<Tag> retornarTagsPerfil(int idPerfil){
+        TagPersistencia tagPersistencia = new TagPersistencia();
+        return tagPersistencia.retornarTagsPerfil(idPerfil);
+    }
     public void inserirRelacaoTagPerfil(int idTag) {
         TagPersistencia  tagPersistencia = new TagPersistencia();
         tagPersistencia.inserirRelacaoTagPerfil(idTag,Session.getUsuario().getID());
