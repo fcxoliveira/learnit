@@ -1,12 +1,9 @@
 package ufrpe.edu.learnit.aula.gui;
 
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -75,6 +73,8 @@ public class ConfirmarAulaProfessorActivity extends AppCompatActivity implements
 
     public void confirmar(View view) {
         ConfirmacaoNegocio confirmacaoNegocio = new ConfirmacaoNegocio();
+        if (perfis.isEmpty())
+            Toast.makeText(this, "Não é possível confirmar horas sem ter alunos", Toast.LENGTH_SHORT).show();
         for(Perfil perfil:perfis) {
             if (perfil.isSelected()) {
                 confirmacaoNegocio.enviarConfirmacao(Session.getAula().getId(), perfil.getId(), Integer.parseInt(editText.getText().toString()), 0);

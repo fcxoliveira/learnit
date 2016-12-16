@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.dominio.Tag;
+import ufrpe.edu.learnit.infra.negocio.TagNegocio;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
@@ -19,6 +22,7 @@ import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 public class PerfilActivity extends AppCompatActivity {
     private TextView textViewRate, textViewAvaliadores, textViewHoras, textViewNome, textViewBiografia ;
     private RatingBar ratingBar;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,14 @@ public class PerfilActivity extends AppCompatActivity {
         Perfil perfil = retornarPerfil(Session.getUsuario().getID());
         findEditableItens();
         editItens(perfil);
+        newListViewTags();
+    }
+    private void newListViewTags(){
+        listView=(ListView) findViewById(R.id.ListViewTags);
+        TagNegocio tagNegocio = new TagNegocio();
+        ArrayList<Tag> arrayTags = tagNegocio.retornarTagsPerfil(Session.getUsuario().getID());
+        ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayTags);
+        listView.setAdapter(adapter);
     }
 
     private void editItens(Perfil perfil) {
