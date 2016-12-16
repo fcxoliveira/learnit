@@ -21,6 +21,7 @@ import ufrpe.edu.learnit.ListaAlunoCheckboxAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.infra.negocio.ConfirmacaoNegocio;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
@@ -31,6 +32,7 @@ public class ConfirmarAulaProfessorActivity extends AppCompatActivity implements
     private ArrayList<Perfil> perfis;
     private ArrayList<String> nomesPerfis;
     private ListaAlunoCheckboxAdapter lacAdapter;
+    private ArrayList<Perfil> perfisMarcados;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,15 +74,13 @@ public class ConfirmarAulaProfessorActivity extends AppCompatActivity implements
     }
 
     public void confirmar(View view) {
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.coinicon)
-                        .setContentTitle("My notification")
-                        .setContentText("Hello World!");
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(Session.getAula().getId(), mBuilder.build());
-        chamarHome(view);
+        ConfirmacaoNegocio confirmacaoNegocio = new ConfirmacaoNegocio();
+        for(Perfil perfil:perfis) {
+            if (perfil.isSelected()) {
+                confirmacaoNegocio.enviarConfirmacao(Session.getAula().getId(), perfil.getId(), Integer.parseInt(editText.getText().toString()), 0);
+                chamarHome(view);
+            }
+        }
     }
 
     public void chamarHome(View view) {

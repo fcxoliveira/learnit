@@ -8,6 +8,8 @@ import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 
 public class Perfil {
+
+    private int id;
     private String bio;
     private String nome;
     private int moedas;
@@ -15,6 +17,15 @@ public class Perfil {
     private float avaliacao;
     private int horas;
     private int avaliadores;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public boolean isSelected() {
         return selected;

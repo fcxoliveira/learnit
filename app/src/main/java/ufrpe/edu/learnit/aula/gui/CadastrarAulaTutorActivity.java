@@ -31,8 +31,8 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_aula);
         Session.setContext(getApplicationContext());
-        editTextNomeAula = (EditText) findViewById(R.id.TextViewNomeAula);
-        editTextDescricao = (EditText) findViewById(R.id.TextViewDescricao);
+        editTextNomeAula = (EditText) findViewById(R.id.EditTextNome);
+        editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
         editTextHorasDeAula = (EditText) findViewById(R.id.TextViewHorasDeAula);
         editTextPrecoHoraAula = (EditText) findViewById(R.id.TextViewPreco);
         listViewTags = (ListView) findViewById(R.id.ListViewTags);

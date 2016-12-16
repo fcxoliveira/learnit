@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:hint="Nome da aula"
-            android:id="@+id/TextViewNomeAula"
+            android:id="@+id/EditTextNome"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/toolbar"
             android:layout_alignParentLeft="true"
@@ -57,10 +57,10 @@
         <TextView
             android:layout_width="match_parent"
             android:hint="Descrições da aula"
-            android:id="@+id/TextViewDescricao"
+            android:id="@+id/editTextDescricao"
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
-            android:layout_below="@+id/TextViewNomeAula"
+            android:layout_below="@+id/EditTextNome"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textSize="20sp" />
@@ -73,7 +73,7 @@
             android:id="@+id/TextViewHorasDeAula"
             android:hint="Horas de aula fornecidas"
             android:layout_marginTop="25dp"
-            android:layout_below="@+id/TextViewDescricao"
+            android:layout_below="@+id/editTextDescricao"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 

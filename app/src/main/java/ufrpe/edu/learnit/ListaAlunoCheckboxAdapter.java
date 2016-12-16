@@ -34,7 +34,6 @@ public class ListaAlunoCheckboxAdapter extends ArrayAdapter {
         View v = convertView;
         final Perfil perfil = listaPerfis.get(position);
         ListaAlunoCheckboxHolder holder = new ListaAlunoCheckboxHolder();
-
         if (convertView == null){
             LayoutInflater inflater=(LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             v= inflater.inflate(R.layout.activity_main,null);
@@ -53,7 +52,6 @@ public class ListaAlunoCheckboxAdapter extends ArrayAdapter {
         holder.nomeAluno.setText(perfil.getNome());
         holder.checkbox.setChecked(perfil.isSelected());
         holder.checkbox.setTag(perfil);
-
         return v;
     }
 }

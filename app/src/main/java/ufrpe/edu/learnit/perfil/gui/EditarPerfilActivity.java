@@ -33,8 +33,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
     }
 
     private void findEditablesItens() {
-        editTextNome = (EditText) findViewById(R.id.TextViewNomeAula);
-        editTextBio = (EditText) findViewById(R.id.TextViewDescricao);
+        editTextNome = (EditText) findViewById(R.id.EditTextNome);
+        editTextBio = (EditText) findViewById(R.id.editTextDescricao);
     }
 
     public boolean verificarNome(String nome) {

@@ -46,8 +46,8 @@ public class EditarAulaActivity extends AppCompatActivity {
 
 
     private void findEditablesItens() {
-        TextViewNomeAula = (TextView) findViewById(R.id.TextViewNomeAula);
-        TextViewDescricao = (TextView) findViewById(R.id.TextViewDescricao);
+        TextViewNomeAula = (TextView) findViewById(R.id.EditTextNome);
+        TextViewDescricao = (TextView) findViewById(R.id.editTextDescricao);
         editTextHorasDeAula = (EditText) findViewById(R.id.TextViewHorasDeAula);
         editTextPreco = (EditText) findViewById(R.id.TextViewPreco);
     }
