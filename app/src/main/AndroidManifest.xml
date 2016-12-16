@@ -48,6 +48,7 @@
         <activity android:name=".aula.gui.ConfirmarAulaProfessorActivity"/>
         <activity android:name=".perfil.gui.PerfilAlheioActivity"/>
         <activity android:name=".aula.gui.AlunosCadastradosActivity"/>
+        <activity android:name=".aula.gui.ConfirmarAulaAlunoActivity"/>
     </application>
 
 </manifest>

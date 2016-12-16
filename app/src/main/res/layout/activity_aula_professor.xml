@@ -35,7 +35,7 @@
             android:text="Horas de aula fornecidas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView101"
+            android:id="@+id/textViewFrase"
             android:textSize="20sp"
             android:layout_marginTop="27dp"
             android:layout_below="@+id/textView102"

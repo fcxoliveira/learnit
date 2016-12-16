@@ -48,6 +48,10 @@ public class AulaPersistencia {
         db.close();
     }
 
+    public void descontarHoras(int idAula){
+        return;
+    }
+
     private Aula preencherDadosAula(int id, String titulo, String descricao, int duracao, int valor, int IdPerfil){
         Aula aula = new Aula();
         aula.setId(id);

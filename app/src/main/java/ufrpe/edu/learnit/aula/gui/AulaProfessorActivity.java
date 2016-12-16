@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ufrpe.edu.learnit.R;
@@ -55,7 +54,7 @@ public class AulaProfessorActivity extends AppCompatActivity {
 
     private void findEditableItens() {
         textView7 = (TextView)findViewById(R.id.textViewNome);
-        textView101 = (TextView)findViewById(R.id.textView101);
+        textView101 = (TextView)findViewById(R.id.textViewFrase);
         textView100 = (TextView) findViewById(R.id.textView100);
         textView102=(TextView) findViewById(R.id.textView102);
         textView108=(TextView) findViewById(R.id.textView8);
