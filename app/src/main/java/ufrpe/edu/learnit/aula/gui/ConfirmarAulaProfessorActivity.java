@@ -38,13 +38,13 @@ public class ConfirmarAulaProfessorActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_confirmar_aula_professor);
         Session.setContext(getApplicationContext());
         GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
+        perfis = gerenciadorAulasTutor.retornarAlunosCadastrados(Session.getAula().getId());
         nomesPerfis = pegarNomesPerfil(perfis);
         listView = (ListView) findViewById(R.id.listView);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         editText = (EditText) findViewById(R.id.editTextHorasDadas);
         setOnItemClickListener();
-        perfis = gerenciadorAulasTutor.retornarAlunosCadastrados(Session.getAula().getId());
-        lacAdapter=new ListaAlunoCheckboxAdapter(perfis,getApplicationContext());
+        lacAdapter=new ListaAlunoCheckboxAdapter(perfis,this);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(lacAdapter);
     }
