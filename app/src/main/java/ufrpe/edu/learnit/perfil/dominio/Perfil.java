@@ -16,6 +16,16 @@ public class Perfil {
     private int horas;
     private int avaliadores;
 
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    private boolean selected = false;
+
 
     public int getHoras() {
         return horas;

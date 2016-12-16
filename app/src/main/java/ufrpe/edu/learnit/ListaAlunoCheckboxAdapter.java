@@ -43,7 +43,7 @@ public class ListaAlunoCheckboxAdapter extends ArrayAdapter {
             holder.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    perfil.setSelect(b);
+                    perfil.setSelected(b);
                 }
             });
             v.setTag(holder);
@@ -51,7 +51,7 @@ public class ListaAlunoCheckboxAdapter extends ArrayAdapter {
             holder= (ListaAlunoCheckboxHolder) v.getTag();
         }
         holder.nomeAluno.setText(perfil.getNome());
-        holder.checkbox.setChecked(perfil.isSelect());
+        holder.checkbox.setChecked(perfil.isSelected());
         holder.checkbox.setTag(perfil);
 
         return v;
