@@ -105,6 +105,7 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula)){
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
             gerenciadorAulasTutor.cadastrarAula(nomeAula,descricao,Integer.parseInt(horasDeAula),Integer.parseInt(precoHoraAula));
+            trabalharTags();
             chamarTelaInicial(v);
         }
 }
@@ -120,10 +121,17 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         finish();
     }
 
-    public void populateListView(View v){
-        tags.add(editTextTags.getText().toString());
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
-        listViewTags.setAdapter(adapter);
+    public void populateListView(View v) {
+        String tag = editTextTags.getText().toString();
+        if (tags.contains(tag)){
+            editTextTags.requestFocus();
+            editTextTags.setError("esta tag ja foi adicionada a esta aula");
+        }else{
+            tags.add(tag);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);
+            listViewTags.setAdapter(adapter);
+            editTextTags.setText("");
+        }
     }
 
     public void setOnlistenerSearch() {
@@ -148,8 +156,14 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
             }
         });
 
-
-
-
+    }
+    private void trabalharTags(){
+        TagNegocio tagNegocio = new TagNegocio();
+        for(String tag : tags){
+            if(!tagNegocio.existeTag(tag)) {
+                tagNegocio.inserirTag(tag);
+            }
+            tagNegocio.inserirRelacaoTagAula(tagNegocio.retornarTag(tag).getID());
+        }
     }
 }

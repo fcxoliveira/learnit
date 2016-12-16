@@ -22,8 +22,6 @@ import ufrpe.edu.learnit.infra.negocio.TagNegocio;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class EditarAulaActivity extends AppCompatActivity {
-
-    Spinner tag1, tag2;
     EditText editTextNomeAula, editTextDescricao, editTextHorasDeAula, editTextPrecoHoraAula;
 
     @Override
@@ -31,13 +29,11 @@ public class EditarAulaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_aula);
         TagNegocio tagNegocio = new TagNegocio();
-        ArrayList<Tag> tags = tagNegocio.retornarTodasTags();
-        ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,tags);
-        tag1 = (Spinner) findViewById(R.id.spinner);
-        tag1.setAdapter(adapter);
-        tag2 = (Spinner) findViewById(R.id.spinner2);
-        tag2.setAdapter(adapter);
         Session.setContext(getApplicationContext());
+        findItens();
+    }
+
+    private void findItens() {
         editTextNomeAula = (EditText) findViewById(R.id.editText5);
         editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
         editTextHorasDeAula = (EditText) findViewById(R.id.editTextHotasAssistidas);
@@ -88,14 +84,7 @@ public class EditarAulaActivity extends AppCompatActivity {
         return autorizacao;
     }
 
-    public boolean anyTagNotIsEmpty(ArrayList<Tag> tags) {
-        boolean autorizacao = TagNegocio.anyTagNotIsEmpty(tags);
-        if (autorizacao) {
-            return autorizacao;
-        }
-        Toast.makeText(Session.getContext(), "selecione pelo menos uma tag para aula", Toast.LENGTH_LONG).show();
-        return autorizacao;
-    }
+
 
     public void cadastrarAulaTutor(View v){
         String nomeAula = editTextNomeAula.getText().toString();

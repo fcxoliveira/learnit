@@ -29,59 +29,13 @@
             android:layout_centerHorizontal="true" />
 
 
-        <TextView
-            android:text="Tag_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:id="@+id/textView4"
-            android:textSize="18sp"
-            android:layout_below="@+id/textView103"
-            android:layout_alignRight="@+id/editText5"
-            android:layout_alignEnd="@+id/editText5"
-            android:layout_marginRight="21dp"
-            android:layout_marginEnd="21dp" />
 
-        <TextView
-            android:text="Tags de aula"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView103"
-            android:textSize="20sp"
-            android:layout_below="@+id/textView101"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="34dp" />
-
-        <TextView
-            android:text="Preço"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView8"
-            android:textSize="20sp"
-            android:layout_below="@+id/textView5"
-            android:layout_alignRight="@+id/floatingActionButton8"
-            android:layout_alignEnd="@+id/floatingActionButton8"
-            android:layout_marginTop="46dp" />
-
-        <TextView
-            android:text="Tag_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView5"
-            android:textSize="20sp"
-            android:layout_marginTop="11dp"
-            android:layout_below="@+id/textView4"
-            android:layout_alignRight="@+id/floatingActionButton7"
-            android:layout_alignEnd="@+id/floatingActionButton7"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
 
         <TextView
             android:text="Horas de aula fornecidas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView101"
+            android:id="@+id/textViewFrase"
             android:textSize="20sp"
             android:layout_marginTop="27dp"
             android:layout_below="@+id/textView102"
@@ -99,46 +53,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <TextView
-            android:text="Nome da aula"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView100"
-            android:textSize="20sp"
-
-            android:layout_marginTop="46dp"
-            android:layout_below="@+id/toolbar"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:fabSize="normal"
-            app:srcCompat="@android:drawable/ic_menu_edit"
-            android:id="@+id/floatingActionButton8"
-            android:tint="@android:color/background_light"
-            android:onClick="editarAula"
-            app:backgroundTint="#7bc8f3"
-            android:layout_below="@+id/textView8"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="30dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:id="@+id/floatingActionButton7"
-            app:backgroundTint="#7bc8f3"
-            android:tint="@android:color/background_light"
-            android:onClick="confirmarAula"
-            android:layout_alignTop="@+id/floatingActionButton8"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:text="Confirmar horas" />
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -150,6 +64,77 @@
             app:backgroundTint="#7bc8f3"
             android:tint="@android:color/background_light"
             android:text="Mostrar alunos desta aula"/>
+
+        <TextView
+            android:text="Preço"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView8"
+            android:textSize="20sp"
+            android:layout_marginTop="17dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Nome da aula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView100"
+            android:textSize="20sp"
+
+            android:layout_marginTop="21dp"
+            android:layout_below="@+id/textView8"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Tags da Aula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTags"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/textViewNome"
+            android:layout_toStartOf="@+id/textViewNome" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ListViewTags"
+            android:layout_below="@+id/textViewTags"
+            android:layout_alignLeft="@+id/textViewTags"
+            android:layout_alignStart="@+id/textViewTags"
+            android:layout_marginTop="13dp"
+            android:layout_above="@+id/floatingActionButton8" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:id="@+id/floatingActionButton7"
+            app:backgroundTint="#7bc8f3"
+            android:tint="@android:color/background_light"
+            android:onClick="confirmarAula"
+            android:text="Confirmar horas"
+            android:layout_below="@+id/ListViewTags"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="normal"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            android:id="@+id/floatingActionButton8"
+            android:tint="@android:color/background_light"
+            android:onClick="editarAula"
+            app:backgroundTint="#7bc8f3"
+            android:layout_marginBottom="17dp"
+            android:layout_above="@+id/botaoMostrarAlunos"
+            android:layout_alignLeft="@+id/ListViewTags"
+            android:layout_alignStart="@+id/ListViewTags" />
 
     </RelativeLayout>
 </ScrollView>

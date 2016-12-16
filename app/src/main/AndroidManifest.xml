@@ -39,13 +39,16 @@
         <activity android:name=".aula.gui.AulasOferecidasActivity"/>
         <activity android:name=".aula.gui.AulasCompradasActivity"/>
         <activity android:name=".usuario.gui.CoinsActivity"/>
-        <activity android:name=".aula.gui.CadastrarAulaTutorActivity"/>
+        <activity
+            android:name=".aula.gui.CadastrarAulaTutorActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
         <activity android:name=".aula.gui.AulaProfessorActivity"/>
         <activity android:name=".aula.gui.AulaAlunoActivity"/>
         <activity android:name=".aula.gui.EditarAulaActivity"/>
         <activity android:name=".aula.gui.ConfirmarAulaProfessorActivity"/>
         <activity android:name=".perfil.gui.PerfilAlheioActivity"/>
         <activity android:name=".aula.gui.AlunosCadastradosActivity"/>
+        <activity android:name=".aula.gui.ConfirmarAulaAlunoActivity"/>
     </application>
 
 </manifest>

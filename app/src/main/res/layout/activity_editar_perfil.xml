@@ -31,14 +31,6 @@
         </android.support.design.widget.TextInputLayout>
 
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinner"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/spinner2" />
-
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,15 +39,6 @@
             android:ems="10"
             android:id="@+id/editText5"
             android:layout_below="@+id/toolbar"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:id="@+id/spinner"
-            android:layout_below="@+id/textView3"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -69,14 +52,14 @@
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:text="Selecionar interesses:"
+            android:text="Editar Perfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            android:layout_below="@+id/editTextDescricao"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="24dp" />
+            android:id="@+id/textView4"
+            android:textSize="36sp"
+            android:textColor="@android:color/background_light"
+            android:layout_above="@+id/editText5"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:text="Confirmar"
@@ -86,21 +69,44 @@
             android:background="#7bc8f3"
             android:textColor="@android:color/background_light"
             android:onClick="confirmar"
-            android:layout_below="@+id/spinner2"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
-        <TextView
-            android:text="Editar Perfil"
+        <AutoCompleteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            android:textSize="36sp"
+            android:ems="10"
+            android:id="@+id/editTextTag"
+            android:hint="Tag"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:text="Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ButtonAddTag"
+            android:background="#7bc8f3"
             android:textColor="@android:color/background_light"
-            android:layout_above="@+id/editText5"
-            android:layout_centerHorizontal="true" />
+            android:onClick="populateListView"
+            android:layout_alignTop="@+id/editTextTag"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="28dp"
+            android:layout_marginEnd="28dp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ListViewTags"
+            android:layout_below="@+id/ButtonAddTag"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/button3" />
 
     </RelativeLayout>
 </ScrollView>

@@ -22,5 +22,10 @@ public class GerenciadorAulasAlunos {
         return aulaPersistencia.retornarAulasCompradas(idAluno);
     }
 
+    public void descontarHoras(int idAula){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        aulaPersistencia.descontarHoras(idAula);
+    }
+
 
     }
