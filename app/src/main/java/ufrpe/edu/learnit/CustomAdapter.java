@@ -42,7 +42,6 @@ public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickLis
 
 
         if (convertView == null) {
-
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.textview_adapter, parent, false);

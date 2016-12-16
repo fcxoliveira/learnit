@@ -38,7 +38,7 @@ public class ConfirmarAulaProfessorActivity extends AppCompatActivity implements
         Session.setContext(getApplicationContext());
         GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
         perfis = gerenciadorAulasTutor.retornarAlunosCadastrados(Session.getAula().getId());
-        lacAdapter=new ListaAlunoCheckboxAdapter(perfis,getApplicationContext());
+        lacAdapter=new ListaAlunoCheckboxAdapter(perfis,this);
         listView = (ListView) findViewById(R.id.listView);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setAdapter(lacAdapter);

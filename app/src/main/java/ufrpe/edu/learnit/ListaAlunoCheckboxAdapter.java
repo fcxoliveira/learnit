@@ -14,10 +14,6 @@ import java.util.List;
 import ufrpe.edu.learnit.aula.gui.ConfirmarAulaProfessorActivity;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
-/**
- * Created by Filipe on 15/12/2016.
- */
-
 public class ListaAlunoCheckboxAdapter extends ArrayAdapter {
     private List<Perfil> listaPerfis;
     private Context context;
@@ -50,6 +46,7 @@ public class ListaAlunoCheckboxAdapter extends ArrayAdapter {
                     perfil.setSelect(b);
                 }
             });
+            v.setTag(holder);
         }else{
             holder= (ListaAlunoCheckboxHolder) v.getTag();
         }
