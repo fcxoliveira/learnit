@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,20 +25,50 @@ import ufrpe.edu.learnit.infra.negocio.TagNegocio;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class EditarAulaActivity extends AppCompatActivity {
-    EditText  editTextHorasDeAula, editTextPreco;
-    TextView TextViewNomeAula,TextViewDescricao;
+    private EditText  editTextHorasDeAula, editTextPreco;
+    private TextView TextViewNomeAula,TextViewDescricao;
+    private AutoCompleteTextView editTextTags;
     private ListView listView;
+    private ArrayList<String> tags = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_aula);
-        Aula aula=Session.getAula();
         Session.setContext(getApplicationContext());
-        newListViewTags();
+        Aula aula=Session.getAula();
+        listView = (ListView) findViewById(R.id.ListViewTags);
+        editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
+        listView.setAdapter(adapter);
+        setOnlistenerSearch();
         findEditablesItens();
         editItens(aula);
+        newListViewTags();
     }
+
+
+    public void populateListView(View v) {
+        String tag = editTextTags.getText().toString();
+        if (tags.contains(tag)){
+            editTextTags.requestFocus();
+            editTextTags.setError("esta tag ja foi adicionada a esta aula");
+        }else{
+            tags.add(tag);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);
+            listView.setAdapter(adapter);
+            editTextTags.setText("");
+
+        }
+    }
+    private void newListViewTags(){
+        listView=(ListView) findViewById(R.id.ListViewTags);
+        TagNegocio tagNegocio = new TagNegocio();
+        ArrayList<Tag> arrayTags = tagNegocio.retornarTagsAula(Session.getAula().getId());
+        ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayTags);
+        listView.setAdapter(adapter);
+    }
+
 
     private void editItens(Aula aula) {
         editTextHorasDeAula.setText(aula.getHoras()+"");
@@ -51,16 +84,7 @@ public class EditarAulaActivity extends AppCompatActivity {
         editTextHorasDeAula = (EditText) findViewById(R.id.TextViewHorasDeAula);
         editTextPreco = (EditText) findViewById(R.id.TextViewPreco);
     }
-    private void newListViewTags(){
-        listView=(ListView) findViewById(R.id.ListViewTags);
-        TagNegocio tagNegocio = new TagNegocio();
-        ArrayList<Tag> arrayTags = tagNegocio.retornarTagsAula(Session.getAula().getId());
-        ArrayList<String> tagsString= new ArrayList<String>();
-        for (Tag tag :arrayTags){
-            tagsString.add(tag.getTitulo());
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tagsString);
-    }
+
 
     public boolean verificarNomeAula(String nomeAula){
         boolean autorizacao = false;
@@ -113,9 +137,10 @@ public class EditarAulaActivity extends AppCompatActivity {
         String descricao = TextViewDescricao.getText().toString();
         String horasDeAula = editTextHorasDeAula.getText().toString();
         String precoHoraAula = editTextPreco.getText().toString();
+
         if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula)){
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
-
+            trabalharTags();
             gerenciadorAulasTutor.editarAula(Session.getAula().getId(), nomeAula, descricao, Integer.parseInt(horasDeAula),Integer.parseInt(precoHoraAula));
             voltar();
         }
@@ -131,4 +156,45 @@ public class EditarAulaActivity extends AppCompatActivity {
         startActivity(secondActivity);
         finish();
     }
+    public void setOnlistenerSearch() {
+
+        editTextTags.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                TagNegocio tagNegocio = new TagNegocio();
+                String text = editTextTags.getText().toString();
+                ArrayList<Tag> tags = tagNegocio.retornarTagsPorTexto(text);
+                ArrayAdapter<Tag> adapterSugerido = new ArrayAdapter<>(EditarAulaActivity.this, android.R.layout.simple_list_item_1);
+                adapterSugerido.addAll(tags);
+                editTextTags.setAdapter(adapterSugerido);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+
+    }
+    private void trabalharTags(){
+        TagNegocio tagNegocio = new TagNegocio();
+        for(String tag : tags){
+            if(!tagNegocio.existeTag(tag)) {
+                tagNegocio.inserirTag(tag);
+            }
+            tagNegocio.inserirRelacaoTagAula(tagNegocio.retornarTag(tag).getID());
+        }
+    }
+
+
+
+
+
+
+
+
 }
+

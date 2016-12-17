@@ -38,8 +38,10 @@ public class EditarPerfilActivity extends AppCompatActivity {
         int idUsuario = sessionNegocio.retornarUsuarioLogado().getID();
         PerfilNegocio perfilNegocio = new PerfilNegocio();
         Perfil perfil = perfilNegocio.retornarPerfil(idUsuario);
+        listView = (ListView) findViewById(R.id.ListViewTags);
         Session.setContext(getApplicationContext());
         editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
         findEditablesItens();
         editItens(perfil);
         newListViewTags();

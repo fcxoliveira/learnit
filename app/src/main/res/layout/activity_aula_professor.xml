@@ -32,13 +32,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:id="@+id/botaoMostrarAlunos"
             android:onClick="mostrarAlunos"
             android:backgroundTint="#7bc8f3"
-            android:text="Mostrar alunos desta aula"/>
+            android:text="Mostrar alunos desta aula"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:text="Preço"
@@ -77,41 +77,6 @@
             android:textStyle="normal|bold" />
 
         <TextView
-            android:text="Horas de aula fornecidas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewHoras"
-            android:textSize="20sp"
-            android:layout_above="@+id/textViewTags"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="25dp"
-            android:textStyle="normal|bold" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:fabSize="normal"
-            app:srcCompat="@android:drawable/ic_menu_edit"
-            android:id="@+id/floatingActionButton8"
-            android:tint="@android:color/background_light"
-            android:onClick="editarAula"
-            app:backgroundTint="#7bc8f3"
-            android:layout_above="@+id/botaoMostrarAlunos"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/ListViewTags"
-            android:layout_below="@+id/textViewTags"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_above="@+id/floatingActionButton8" />
-
-        <TextView
             android:text="Preço"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,28 +85,6 @@
             android:layout_below="@+id/textViewPreço"
             android:layout_alignLeft="@+id/textView100"
             android:layout_alignStart="@+id/textView100" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:id="@+id/floatingActionButton7"
-            android:backgroundTint="#7bc8f3"
-            android:onClick="confirmarAula"
-            android:text="Confirmar horas"
-            android:layout_above="@+id/botaoMostrarAlunos"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:text="Descrições da aula"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView102"
-            android:textSize="20sp"
-            android:layout_below="@+id/textViewDescricao"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
 
         <TextView
             android:text="Nome da aula"
@@ -155,15 +98,25 @@
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:text="Descrições da aula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView102"
+            android:textSize="20sp"
+            android:layout_below="@+id/textViewDescricao"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
             android:text="Horas de aula fornecidas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView101"
             android:textSize="20sp"
-            android:layout_marginTop="59dp"
-            android:layout_below="@+id/textView102"
+            android:layout_alignTop="@+id/textViewHoras"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="24dp" />
 
         <TextView
             android:text="Tags da Aula"
@@ -171,11 +124,62 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewTags"
             android:textSize="20sp"
-            android:layout_marginTop="13dp"
+            android:textStyle="normal|bold"
+            android:layout_marginTop="22dp"
             android:layout_below="@+id/textView101"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Horas de aula fornecidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewHoras"
+            android:textSize="20sp"
+            android:textStyle="normal|bold"
+            android:layout_below="@+id/textView102"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textStyle="normal|bold" />
+            android:layout_marginTop="11dp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ListViewTags"
+            android:layout_below="@+id/textViewTags"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/botaoMostrarAlunos"
+            android:layout_alignRight="@+id/textViewHoras"
+            android:layout_alignEnd="@+id/textViewHoras" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:id="@+id/floatingActionButton7"
+            android:backgroundTint="#7bc8f3"
+            android:onClick="confirmarAula"
+            android:text="Confirmar horas"
+            android:layout_above="@+id/botaoMostrarAlunos"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            android:id="@+id/floatingActionButton8"
+            android:tint="@android:color/background_light"
+            android:onClick="editarAula"
+            app:backgroundTint="#7bc8f3"
+            android:layout_marginRight="13dp"
+            android:layout_marginEnd="13dp"
+            android:layout_below="@+id/textViewPreço"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 </ScrollView>
