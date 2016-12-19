@@ -140,7 +140,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 tagNegocio.inserirTag(tag);
             }
             if (!tagNegocio.existeRelacaoTagPerfil(tagNegocio.retornarTag(tag).getID())){
-                tagNegocio.inserirRelacaoTagAula(tagNegocio.retornarTag(tag).getID());
+                tagNegocio.inserirRelacaoTagPerfil(tagNegocio.retornarTag(tag).getID());
             }
 
         }
