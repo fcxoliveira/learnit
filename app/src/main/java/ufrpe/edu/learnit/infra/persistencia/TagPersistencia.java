@@ -40,7 +40,7 @@ public class TagPersistencia {
         ArrayList<Tag> tagsPerfil= new ArrayList<>();
         Cursor cursor=db.query("PERFIL_TAG",new String[]{"*"}, "IdPerfil=?",new String[] {idPerfil+""},null ,null, null);
         while (cursor.moveToNext()){
-            tagsPerfil.add(retornarTag(cursor.getInt(cursor.getColumnIndex("IdPerfil"))));
+            tagsPerfil.add(retornarTag(cursor.getInt(cursor.getColumnIndex("IdTag"))));
         }
         cursor.close();
         db.close();

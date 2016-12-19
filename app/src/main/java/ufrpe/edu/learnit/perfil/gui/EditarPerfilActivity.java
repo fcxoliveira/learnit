@@ -15,7 +15,6 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.aula.gui.CadastrarAulaTutorActivity;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
@@ -41,7 +40,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.ListViewTags);
         Session.setContext(getApplicationContext());
         editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
         findEditablesItens();
         editItens(perfil);
         newListViewTags();
@@ -75,7 +73,10 @@ public class EditarPerfilActivity extends AppCompatActivity {
         listView=(ListView) findViewById(R.id.ListViewTags);
         TagNegocio tagNegocio = new TagNegocio();
         ArrayList<Tag> arrayTags = tagNegocio.retornarTagsPerfil(Session.getUsuario().getID());
-        ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayTags);
+        for(Tag tag:arrayTags){
+            tags.add(tag.getTitulo());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);
         listView.setAdapter(adapter);
     }
     private void editItens(Perfil perfil) {
