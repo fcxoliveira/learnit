@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "learnit.db";
-    private static final int DATABASE_VERSION = 28;
+    private static final int DATABASE_VERSION = 30;
     private static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
     private static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
     private static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas integer, Avaliacao real, Avaliadores integer, Horas integer);";
@@ -53,8 +53,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS AULAS");
         db.execSQL("DROP TABLE IF EXISTS ALUNO_AULA");
         db.execSQL("DROP TABLE IF EXISTS AULA_TAG");
-        db.execSQL("DROP TABLE IF EXISTS TABLE_PERFIL_TAG");
-        db.execSQL("DROP TABLE IF EXISTS TABLE_CONFIRMACAO");
+        db.execSQL("DROP TABLE IF EXISTS PERFIL_TAG");
+        db.execSQL("DROP TABLE IF EXISTS CONFIRMACAO");
         onCreate(db);
     }
 
