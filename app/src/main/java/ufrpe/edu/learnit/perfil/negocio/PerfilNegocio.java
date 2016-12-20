@@ -25,4 +25,8 @@ public class PerfilNegocio {
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         perfilPersistencia.addMoeda(moedas);
     }
+    public void setNota(int idPerfil,float avaliacao){
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        perfilPersistencia.setNota(idPerfil,avaliacao);
+    }
 }

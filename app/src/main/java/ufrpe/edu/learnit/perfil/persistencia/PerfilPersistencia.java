@@ -31,6 +31,17 @@ public class PerfilPersistencia {
         db.close();
     }
 
+    public void setNota(int idPerfil,float avaliacao){
+        db=dbHelper.getWritableDatabase();
+        Cursor cursor=db.query("PERFIL", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
+        int avaliadores = cursor.getInt(cursor.getColumnIndex("Avaliadores"));
+        float avaliacaoTotal = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
+        avaliacaoTotal= avaliacao+avaliacaoTotal;
+        ContentValues newValues = new ContentValues();
+        newValues.put("Avaliacao", avaliacaoTotal);
+        newValues.put("Avaliadores", avaliadores+1);
+    }
+
     public Perfil retornarPerfil(int id){
         Perfil result = new Perfil();
         db = dbHelper.getReadableDatabase();
