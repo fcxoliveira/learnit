@@ -46,9 +46,10 @@ public class ConfirmacaoPersistencia {
     public Confirmacao retornarConfirmacao(int idConfirmacao) {
         db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Id = ?", new String[]{idConfirmacao + ""}, null, null, null);
+        cursor.moveToFirst();
         int id = cursor.getInt(cursor.getColumnIndex("Id"));
         int idAula = cursor.getInt(cursor.getColumnIndex("IdAula"));
-        int horasConfirmadas = cursor.getInt(cursor.getColumnIndex("HorasConfirmadas"));
+        int horasConfirmadas = cursor.getInt(cursor.getColumnIndex("HorasParaConfirmar"));
         int status = cursor.getInt(cursor.getColumnIndex("Status"));
         int idAluno = cursor.getInt(cursor.getColumnIndex("IdAluno"));
         Confirmacao confirmacao = preencherConfirmacao(idAula, idAluno, horasConfirmadas, status);
@@ -83,7 +84,8 @@ public class ConfirmacaoPersistencia {
         db = dbHelper.getReadableDatabase();
         int idAula = Session.getAlunoAula().getAula().getId();
         int idAluno = Session.getUsuario().getID();
-        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        cursor.moveToFirst();
         int id = cursor.getInt(cursor.getColumnIndex("Id"));
         return retornarConfirmacao(id);
     }
@@ -95,7 +97,7 @@ public class ConfirmacaoPersistencia {
         newValues.put("Status", 1);
         int idAula=confirmacao.getIdAula();
         int idAluno=confirmacao.getIdAluno();
-        Cursor cursor = db.query("ALUNO_AULA", new String[]{"*"}, "Status = 0 AND IdAAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        Cursor cursor = db.query("ALUNO_AULA", new String[]{"*"}, "Status = 0 AND IdAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
         int horasConfirmadasTotais = cursor.getInt(cursor.getColumnIndex("HorasConfirmadas"));
         int horasConfirmadas = horasConfirmadasTotais+confirmacao.getHorasConfirmadas();
         newValuesAlunoAula.put("HorasConfirmadas",horasConfirmadas);
@@ -113,7 +115,7 @@ public class ConfirmacaoPersistencia {
     public boolean confirmacaoPendente(int idAluno){ //checar se o professor ja enviou uma confirmação
         int idAula=Session.getAula().getId();
         db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
         if(cursor.moveToFirst()){
             return true;
         }else{

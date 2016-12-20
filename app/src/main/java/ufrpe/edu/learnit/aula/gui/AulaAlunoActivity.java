@@ -28,6 +28,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         Session.setContext(getApplicationContext());
         GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
         if(gerenciadorAulasAlunos.existeConfirmacaoRecebida()){
+            buttonConfirmar=(Button)findViewById(R.id.button4) ;
             buttonConfirmar.setVisibility(View.VISIBLE);
             confirmacao=gerenciadorAulasAlunos.retornarConfirmacaoRecebida();
         }

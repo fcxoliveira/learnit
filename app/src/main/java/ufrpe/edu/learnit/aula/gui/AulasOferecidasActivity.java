@@ -52,6 +52,7 @@ public class AulasOferecidasActivity extends AppCompatActivity {
                 Session.setAula(aula);
                 Intent secondActivity = new Intent(Session.getContext(),AulaProfessorActivity.class);
                 startActivity(secondActivity);
+                finish();
             }
         });
     }
