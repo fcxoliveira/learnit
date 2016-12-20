@@ -3,17 +3,21 @@ package ufrpe.edu.learnit.aula.gui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.dominio.Aula;
+import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class AulaAlunoActivity extends AppCompatActivity {
     private TextView nomeAula, descricaoAula, horasPagas, nomeProfessor, avaliadores, nota;
     RatingBar ratingBar;
+    Button buttonConfirmar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +25,10 @@ public class AulaAlunoActivity extends AppCompatActivity {
         AlunoAula aula= Session.getAlunoAula();
         setContentView(R.layout.activity_aula_aluno);
         Session.setContext(getApplicationContext());
-        findItens();
-        editItens(aula);
-    }
-
-    private void findItens() {
+        GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
+        if(gerenciadorAulasAlunos.existeConfirmacaoRecebida()){
+            buttonConfirmar.setVisibility(View.VISIBLE);
+        }
         nomeAula = (TextView)findViewById(R.id.textViewNome);
         nomeProfessor = (TextView)findViewById(R.id.textViewNomeDoProfessor);
         avaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
@@ -33,6 +36,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         descricaoAula = (TextView)findViewById(R.id.textViewDescricao);
         horasPagas = (TextView)findViewById(R.id.textViewHoras);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
+        editItens(aula);
     }
 
     private void editItens(AlunoAula aula) {

@@ -85,7 +85,8 @@
             android:layout_alignRight="@+id/textViewAvaliadores"
             android:layout_alignEnd="@+id/textViewAvaliadores"
             android:layout_marginRight="11dp"
-            android:layout_marginEnd="11dp" />
+            android:layout_marginEnd="11dp"
+            android:visibility="invisible" />
 
         <TextView android:text="Avaliadores 0"
             android:layout_width="wrap_content"
