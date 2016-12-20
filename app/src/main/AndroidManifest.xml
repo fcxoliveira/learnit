@@ -31,28 +31,29 @@
         <activity android:name=".perfil.gui.PerfilActivity" />
         <activity
             android:name=".usuario.gui.InteressesActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".perfil.gui.EditarPerfilActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".aula.gui.ComprarAulaAlunoActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
-        <activity android:name=".aula.gui.AulasOferecidasActivity"/>
-        <activity android:name=".aula.gui.AulasCompradasActivity"/>
-        <activity android:name=".usuario.gui.CoinsActivity"/>
+        <activity android:name=".aula.gui.AulasOferecidasActivity" />
+        <activity android:name=".aula.gui.AulasCompradasActivity" />
+        <activity android:name=".usuario.gui.CoinsActivity" />
         <activity
             android:name=".aula.gui.CadastrarAulaTutorActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize"/>
-        <activity android:name=".aula.gui.AulaProfessorActivity"/>
-        <activity android:name=".aula.gui.AulaAlunoActivity"/>
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity android:name=".aula.gui.AulaProfessorActivity" />
+        <activity android:name=".aula.gui.AulaAlunoActivity" />
         <activity
             android:name=".aula.gui.EditarAulaActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
-        <activity android:name=".aula.gui.ConfirmarAulaProfessorActivity"/>
-        <activity android:name=".perfil.gui.PerfilAlheioActivity"/>
-        <activity android:name=".aula.gui.AlunosCadastradosActivity"/>
+        <activity android:name=".aula.gui.ConfirmarAulaProfessorActivity" />
+        <activity android:name=".perfil.gui.PerfilAlheioActivity" />
+        <activity android:name=".aula.gui.AlunosCadastradosActivity" />
+        <activity android:name=".RatingActivity"></activity>
     </application>
 
 </manifest>
