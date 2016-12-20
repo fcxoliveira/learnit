@@ -68,13 +68,14 @@ public class AulaAlunoActivity extends AppCompatActivity {
     }
     public void confirmar(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Você confirma essa quantidade de horas dita pelo professor?");
+        builder.setMessage("Você confirma as "+confirmacao.getHorasConfirmadas()+" horas de aula, dita(s) pelo professor?");
         builder.setCancelable(true);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 GerenciadorAulasAlunos gerenciadorAulasAlunos=new GerenciadorAulasAlunos();
                 gerenciadorAulasAlunos.aceitarConfirmacao(confirmacao);
                 AulaAlunoActivity.super.finish();
+
             }
         });
         AlertDialog alert = builder.create();
