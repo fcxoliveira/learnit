@@ -9,6 +9,11 @@ public class AlunoAula {
     private String date;
     private int horasTotal;
     private int valorTotal;
+    private int valorConfirmado;
+
+    public int getValorConfirmado() {return valorConfirmado;}
+
+    public void setValorConfirmado(int valorConfirmado) {this.valorConfirmado = valorConfirmado;}
 
     public Aula getAula() {
         return aula;

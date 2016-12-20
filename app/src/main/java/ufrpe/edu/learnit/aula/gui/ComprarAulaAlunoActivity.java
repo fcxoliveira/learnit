@@ -109,10 +109,10 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
                     return;
                 }
                 String TotalMoedas =TextViewTotalDaCompra.getText().toString();
-                int moedas = Math.round(Float.parseFloat(TotalMoedas));
+                int valorPago = Math.round(Float.parseFloat(TotalMoedas));
                 if(verificarHoras()) {
                     if (verificarMoedas()) {
-                        gerenciadorAulasAlunos.inscreverAlunoEmAula(usuarioId, aulaId, data, horas, moedas);
+                        gerenciadorAulasAlunos.inscreverAlunoEmAula(usuarioId, aulaId, data, horas, valorPago);
                         Intent secondActivity = new Intent(this, HomeActivity.class);
                         startActivity(secondActivity);
                         this.finish();

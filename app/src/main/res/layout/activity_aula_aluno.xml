@@ -48,19 +48,6 @@
             android:layout_alignRight="@+id/ratingBar2"
             android:layout_alignEnd="@+id/ratingBar2" />
 
-        <TextView android:text="Informações do professor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewNomeDoProfessor"
-            android:textSize="28sp"
-            android:textColor="@android:color/background_dark"
-            android:layout_above="@+id/ratingBar2"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="33dp"
-            android:layout_marginStart="33dp"
-            android:layout_marginBottom="34dp" />
-
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,21 +59,6 @@
             android:layout_marginBottom="19dp"
             android:layout_above="@+id/textViewRate"
             android:layout_centerHorizontal="true" />
-
-        <Button
-            android:text="Confirmar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button4"
-            android:background="#7bc8f3"
-            android:textColor="@android:color/background_light"
-            android:layout_marginBottom="70dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/textViewAvaliadores"
-            android:layout_alignEnd="@+id/textViewAvaliadores"
-            android:layout_marginRight="11dp"
-            android:layout_marginEnd="11dp"
-            android:visibility="invisible" />
 
         <TextView android:text="Avaliadores 0"
             android:layout_width="wrap_content"
@@ -108,18 +80,39 @@
             android:id="@+id/textViewDescricao"
             android:layout_alignRight="@+id/textViewAvaliadores"
             android:layout_alignEnd="@+id/textViewAvaliadores"
-            android:layout_below="@+id/toolbar"
-            android:textSize="25sp" />
+            android:layout_below="@+id/toolbar" />
+
+        <Button
+            android:text="Confirmar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button4"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:layout_marginBottom="72dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/textViewAvaliadores"
+            android:layout_alignStart="@+id/textViewAvaliadores" />
 
         <TextView
             android:text="Horas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/textViewNomeDoProfessor"
+            android:id="@+id/textViewHoras"
+            android:layout_below="@+id/textViewDescricao"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:id="@+id/textViewHoras"
-            android:textSize="25sp" />
+            android:layout_marginTop="103dp" />
+
+        <TextView android:text="Informações do professor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewNomeDoProfessor"
+            android:textColor="@android:color/background_dark"
+            android:layout_below="@+id/textViewHoras"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="14dp" />
 
     </RelativeLayout>
 

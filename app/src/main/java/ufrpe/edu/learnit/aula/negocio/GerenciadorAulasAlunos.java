@@ -14,9 +14,9 @@ public class GerenciadorAulasAlunos {
         return  aulaPersistencia.getAulasPorTexto(texto);
     }
 
-    public void inscreverAlunoEmAula(int idAluno, int idAula,String date,int horas,int moedas){
+    public void inscreverAlunoEmAula(int idAluno, int idAula,String date,int horas,int valorPago){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        aulaPersistencia.inscreverAlunoEmAula(idAluno, idAula, date, horas, moedas);
+        aulaPersistencia.inscreverAlunoEmAula(idAluno, idAula, date, horas, valorPago);
     }
 
     public ArrayList<AlunoAula> retornarAulasCompradas(int idAluno){

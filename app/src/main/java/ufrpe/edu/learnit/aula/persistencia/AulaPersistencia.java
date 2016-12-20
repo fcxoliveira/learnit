@@ -94,7 +94,7 @@ public class AulaPersistencia {
         return aulas;
     }
 
-    public void inscreverAlunoEmAula(int idAluno, int idAula, String date,int horas,int moedas){
+    public void inscreverAlunoEmAula(int idAluno, int idAula, String date,int horas,int valorPago){
         db = dbHelper.getWritableDatabase();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         String idAlunoString = String.valueOf(idAluno);
@@ -104,10 +104,11 @@ public class AulaPersistencia {
         newValues.put("IdAula", idAulaString);
         newValues.put("Date",date);
         newValues.put("HorasCompradas",horas);
-        newValues.put("ValorPago",moedas);
+        newValues.put("ValorPago",valorPago);
+        newValues.put("HorasConfirmadas","0");
         db.insert("ALUNO_AULA", null, newValues);
         removerHorasDisponiveis(idAula,horas);
-        perfilPersistencia.removerMoedas(idAluno, moedas);
+        perfilPersistencia.removerMoedas(idAluno, valorPago);
         db.close();
 
 
@@ -185,6 +186,7 @@ public class AulaPersistencia {
             alunoAula.setDate(cursor.getString(cursor.getColumnIndex("Date")));
             alunoAula.setHorasTotal(cursor.getInt(cursor.getColumnIndex("HorasCompradas")));
             alunoAula.setValorTotal(cursor.getInt(cursor.getColumnIndex("ValorPago")));
+            alunoAula.setValorConfirmado(cursor.getInt(cursor.getColumnIndex("HorasConfirmadas")));
             result.add(alunoAula);
         }
         cursor.close();
