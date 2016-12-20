@@ -71,7 +71,7 @@ public class ConfirmacaoPersistencia {
         db = dbHelper.getReadableDatabase();
         int idAula = Session.getAlunoAula().getAula().getId();
         int idAluno = Session.getUsuario().getID();
-        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
         if(cursor.moveToFirst()){
             return true;
         }else{

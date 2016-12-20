@@ -1,6 +1,5 @@
 package ufrpe.edu.learnit.aula.dominio;
 
-import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 public class AlunoAula {
@@ -9,11 +8,11 @@ public class AlunoAula {
     private String date;
     private int horasTotal;
     private int valorTotal;
-    private int valorConfirmado;
+    private int horasConfirmadas;
 
-    public int getValorConfirmado() {return valorConfirmado;}
+    public int getHorasConfirmadas() {return horasConfirmadas;}
 
-    public void setValorConfirmado(int valorConfirmado) {this.valorConfirmado = valorConfirmado;}
+    public void setHorasConfirmadas(int horasConfirmadas) {this.horasConfirmadas = horasConfirmadas;}
 
     public Aula getAula() {
         return aula;

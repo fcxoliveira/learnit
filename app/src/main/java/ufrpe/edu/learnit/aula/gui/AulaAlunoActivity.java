@@ -29,6 +29,11 @@ public class AulaAlunoActivity extends AppCompatActivity {
         if(gerenciadorAulasAlunos.existeConfirmacaoRecebida()){
             buttonConfirmar.setVisibility(View.VISIBLE);
         }
+        findEditableItens();
+        editItens(aula);
+    }
+
+    private void findEditableItens() {
         nomeAula = (TextView)findViewById(R.id.textViewNome);
         nomeProfessor = (TextView)findViewById(R.id.textViewNomeDoProfessor);
         avaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
@@ -36,16 +41,15 @@ public class AulaAlunoActivity extends AppCompatActivity {
         descricaoAula = (TextView)findViewById(R.id.textViewDescricao);
         horasPagas = (TextView)findViewById(R.id.textViewHoras);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
-        editItens(aula);
     }
 
     private void editItens(AlunoAula aula) {
         nomeAula.setText(aula.getAula().getTitulo());
-        nomeProfessor.setText(aula.getAula().getPerfil().getNome());
-        avaliadores.setText(String.valueOf(aula.getAula().getPerfil().getAvaliadores()));
-        nota.setText(String.valueOf(aula.getAula().getPerfil().getAvaliadores()));
-        descricaoAula.setText(aula.getAula().getDescricao());
-        horasPagas.setText(String.valueOf(aula.getHorasTotal()));
+        nomeProfessor.setText("Professor:"+"\n"+aula.getAula().getPerfil().getNome());
+        avaliadores.setText("Avaliadores:"+aula.getAula().getPerfil().getAvaliadores()+"");
+        nota.setText("Nota:"+"\n"+aula.getAula().getPerfil().getAvaliacao()+"");
+        descricaoAula.setText("Descrição:"+"\n"+aula.getAula().getDescricao());
+        horasPagas.setText("Horas compradas:"+aula.getHorasTotal()+"     "+"Horas confirmadas:"+aula.getHorasConfirmadas());
         ratingBar.setRating(aula.getAula().getPerfil().getAvaliacao());
     }
     @Override
