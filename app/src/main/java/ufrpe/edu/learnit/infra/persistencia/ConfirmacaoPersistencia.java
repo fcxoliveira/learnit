@@ -4,9 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import java.util.ArrayList;
-
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Confirmacao;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -61,11 +59,40 @@ public class ConfirmacaoPersistencia {
     public ArrayList<Confirmacao> retornarTodasConfirmacoes(int idPerfil) {
         ArrayList<Confirmacao> confirmacoes = new ArrayList<Confirmacao>();
         db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ?", new String[]{"1"}, null, null, null);
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ?", new String[]{"0"}, null, null, null);
         while (cursor.moveToNext()){
             confirmacoes.add(retornarConfirmacao(cursor.getInt(cursor.getColumnIndex("Id"))));
         }
         return confirmacoes;
+    }
+
+
+    public boolean existeConfirmacaoRecebida(){
+        db = dbHelper.getReadableDatabase();
+        int idAula = Session.getAlunoAula().getAula().getId();
+        int idAluno = Session.getUsuario().getID();
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        if(cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Confirmacao retornarConfirmacaoRecebida(){
+        db = dbHelper.getReadableDatabase();
+        int idAula = Session.getAlunoAula().getAula().getId();
+        int idAluno = Session.getUsuario().getID();
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        int id = cursor.getInt(cursor.getColumnIndex("Id"));
+        return retornarConfirmacao(id);
+    }
+
+    public void aceitarConfirmacao(int idConfirmacao){
+        db=dbHelper.getWritableDatabase();
+        ContentValues newValues = new ContentValues();
+        newValues.put("Status", 1);
+        db.update("CONFIRMACAO",newValues,"Id='"+idConfirmacao+"'",null);
     }
 
     public void cancelarConfirmacao(int idConfirmacao){
@@ -74,5 +101,16 @@ public class ConfirmacaoPersistencia {
         newValues.put("Status", 2);
         db.update("CONFIRMACAO",newValues,"Id='"+idConfirmacao+"'",null);
     }
-    
+
+    public boolean confirmacaoPendente(int idAluno){
+        int idAula=Session.getAula().getId();
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        if(cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
+//0-enviado 1-confirmado 2-cancelado

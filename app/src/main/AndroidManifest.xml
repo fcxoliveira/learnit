@@ -31,8 +31,11 @@
         <activity android:name=".perfil.gui.PerfilActivity" />
         <activity
             android:name=".usuario.gui.InteressesActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"
             android:screenOrientation="portrait" />
-        <activity android:name=".perfil.gui.EditarPerfilActivity" />
+        <activity
+            android:name=".perfil.gui.EditarPerfilActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".aula.gui.ComprarAulaAlunoActivity"
             android:windowSoftInputMode="adjustPan|adjustResize" />
@@ -44,7 +47,9 @@
             android:windowSoftInputMode="adjustPan|adjustResize"/>
         <activity android:name=".aula.gui.AulaProfessorActivity"/>
         <activity android:name=".aula.gui.AulaAlunoActivity"/>
-        <activity android:name=".aula.gui.EditarAulaActivity"/>
+        <activity
+            android:name=".aula.gui.EditarAulaActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity android:name=".aula.gui.ConfirmarAulaProfessorActivity"/>
         <activity android:name=".perfil.gui.PerfilAlheioActivity"/>
         <activity android:name=".aula.gui.AlunosCadastradosActivity"/>

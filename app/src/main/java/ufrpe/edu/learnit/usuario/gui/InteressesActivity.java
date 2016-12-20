@@ -75,9 +75,9 @@ public class InteressesActivity extends AppCompatActivity {
 
     public void populateListView(View v) {
         String tag = editTextTags.getText().toString();
-        if (tags.contains(tag)){
+        if (tags.contains(tag) || tag== null) {
             editTextTags.requestFocus();
-            editTextTags.setError("este interesse ja foi adicionada a este perfil");
+            editTextTags.setError("este interesse ja foi adicionada a este perfil,ou esta vazia");
         }else{
             tags.add(tag);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);
@@ -85,6 +85,7 @@ public class InteressesActivity extends AppCompatActivity {
             editTextTags.setText("");
         }
     }
+
     public void setOnlistenerSearch() {
 
         editTextTags.addTextChangedListener(new TextWatcher() {
@@ -109,6 +110,7 @@ public class InteressesActivity extends AppCompatActivity {
     }
     private void trabalharTags(){
         TagNegocio tagNegocio = new TagNegocio();
+
         for(String tag : tags){
             if(!tagNegocio.existeTag(tag)) {
                 tagNegocio.inserirTag(tag);

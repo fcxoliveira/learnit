@@ -10,6 +10,7 @@ import ufrpe.edu.learnit.infra.persistencia.ConfirmacaoPersistencia;
  */
 
 public class ConfirmacaoNegocio {
+
     public void enviarConfirmacao(int idAula, int idAluno, int HorasConfirmadas, int status) {
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
         confirmacaoPersistencia.enviarConfirmacao(idAula, idAluno, HorasConfirmadas, status);

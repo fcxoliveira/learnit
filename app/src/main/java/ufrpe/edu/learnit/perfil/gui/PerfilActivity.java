@@ -80,7 +80,7 @@ public class PerfilActivity extends AppCompatActivity {
     public void carregarHome() {
         Intent secondActivity = new Intent(this, HomeActivity.class);
         startActivity(secondActivity);
-        finish();
+        this.finish();
     }
 
 
