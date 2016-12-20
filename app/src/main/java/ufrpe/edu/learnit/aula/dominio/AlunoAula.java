@@ -7,8 +7,8 @@ public class AlunoAula {
     private Aula aula;
     private Perfil perfil;
     private String date;
-    private int valorTotal;
     private int horasTotal;
+    private int valorTotal;
 
     public Aula getAula() {
         return aula;

@@ -21,6 +21,11 @@ public class AulaAlunoActivity extends AppCompatActivity {
         AlunoAula aula= Session.getAlunoAula();
         setContentView(R.layout.activity_aula_aluno);
         Session.setContext(getApplicationContext());
+        findItens();
+        editItens(aula);
+    }
+
+    private void findItens() {
         nomeAula = (TextView)findViewById(R.id.textViewNome);
         nomeProfessor = (TextView)findViewById(R.id.textViewNomeDoProfessor);
         avaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
@@ -28,7 +33,6 @@ public class AulaAlunoActivity extends AppCompatActivity {
         descricaoAula = (TextView)findViewById(R.id.textViewDescricao);
         horasPagas = (TextView)findViewById(R.id.textViewHoras);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
-        editItens(aula);
     }
 
     private void editItens(AlunoAula aula) {

@@ -56,10 +56,10 @@ public class ConfirmacaoPersistencia {
         return confirmacao;
     }
 
-    public ArrayList<Confirmacao> retornarTodasConfirmacoes(int idPerfil) {
+    public ArrayList<Confirmacao> retornarTodasConfirmacoes(int idPerfil) {//retorna todas as confirmações do banco
         ArrayList<Confirmacao> confirmacoes = new ArrayList<Confirmacao>();
         db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ?", new String[]{"0"}, null, null, null);
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdPerfil=?", new String[]{"0",idPerfil+""}, null, null, null);
         while (cursor.moveToNext()){
             confirmacoes.add(retornarConfirmacao(cursor.getInt(cursor.getColumnIndex("Id"))));
         }
@@ -67,7 +67,7 @@ public class ConfirmacaoPersistencia {
     }
 
 
-    public boolean existeConfirmacaoRecebida(){
+    public boolean existeConfirmacaoRecebida(){ //checar se a aula do aluno tem confirmação a ser aceita
         db = dbHelper.getReadableDatabase();
         int idAula = Session.getAlunoAula().getAula().getId();
         int idAluno = Session.getUsuario().getID();
@@ -79,7 +79,7 @@ public class ConfirmacaoPersistencia {
         }
     }
 
-    public Confirmacao retornarConfirmacaoRecebida(){
+    public Confirmacao retornarConfirmacaoRecebida(){//recuperar a confirmação do banco
         db = dbHelper.getReadableDatabase();
         int idAula = Session.getAlunoAula().getAula().getId();
         int idAluno = Session.getUsuario().getID();
@@ -88,21 +88,21 @@ public class ConfirmacaoPersistencia {
         return retornarConfirmacao(id);
     }
 
-    public void aceitarConfirmacao(int idConfirmacao){
+    public void aceitarConfirmacao(int idConfirmacao){//aluno aceitar confirmação recebida
         db=dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("Status", 1);
         db.update("CONFIRMACAO",newValues,"Id='"+idConfirmacao+"'",null);
     }
 
-    public void cancelarConfirmacao(int idConfirmacao){
+    public void cancelarConfirmacao(int idConfirmacao){ //aluno cancelar confirmação recebida
         db=dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("Status", 2);
         db.update("CONFIRMACAO",newValues,"Id='"+idConfirmacao+"'",null);
     }
 
-    public boolean confirmacaoPendente(int idAluno){
+    public boolean confirmacaoPendente(int idAluno){ //checar se o professor ja enviou uma confirmação
         int idAula=Session.getAula().getId();
         db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);

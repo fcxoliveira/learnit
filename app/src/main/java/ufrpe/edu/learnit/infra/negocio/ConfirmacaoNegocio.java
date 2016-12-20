@@ -21,4 +21,9 @@ public class ConfirmacaoNegocio {
         return confirmacaoPersistencia.retornarTodasConfirmacoes(idPerfil);
 
     }
+    public boolean confirmacaoPendente(int idAluno){
+        ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
+        return confirmacaoPersistencia.confirmacaoPendente(idAluno);
+    }
+
 }
