@@ -74,13 +74,17 @@ public class AulaAlunoActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 GerenciadorAulasAlunos gerenciadorAulasAlunos=new GerenciadorAulasAlunos();
                 gerenciadorAulasAlunos.aceitarConfirmacao(confirmacao);
+                Intent secondActivity = new Intent(getApplicationContext(),AulaAlunoActivity.class);
+                startActivity(secondActivity);
+                AulaAlunoActivity.super.finish();
+
 
 
             }
         });
         AlertDialog alert = builder.create();
         alert.show();
-        this.carregarHome();
+
     }
 
 
