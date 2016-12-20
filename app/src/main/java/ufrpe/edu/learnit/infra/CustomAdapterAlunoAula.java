@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
  * Created by joel_ on 02/12/2016.
  */
 
+
 public class CustomAdapterAlunoAula extends ArrayAdapter<AlunoAula> implements View.OnClickListener {
 
     private ArrayList<AlunoAula> dataSet;
