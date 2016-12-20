@@ -41,7 +41,6 @@ public class PerfilPersistencia {
         newValues.put("Avaliacao", avaliacaoTotal);
         newValues.put("Avaliadores", avaliadores+1);
     }
-
     public Perfil retornarPerfil(int id){
         Perfil result = new Perfil();
         db = dbHelper.getReadableDatabase();
