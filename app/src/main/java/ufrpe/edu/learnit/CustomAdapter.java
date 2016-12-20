@@ -46,9 +46,9 @@ public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickLis
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.textview_adapter, parent, false);
             viewHolder.name = (TextView) convertView.findViewById(R.id.name);
-            viewHolder.price = (TextView) convertView.findViewById(R.id.price);
+            viewHolder.price = (TextView) convertView.findViewById(R.id.horasCompradas);
             viewHolder.description = (TextView) convertView.findViewById(R.id.description);
-            viewHolder.time = (TextView) convertView.findViewById(R.id.time);
+            viewHolder.time = (TextView) convertView.findViewById(R.id.horasTotaisCompradas);
 
             convertView.setTag(viewHolder);
         } else {

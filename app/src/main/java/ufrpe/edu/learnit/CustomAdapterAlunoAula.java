@@ -6,10 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.ArrayList;
-import ufrpe.edu.learnit.R;
+
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import android.widget.ArrayAdapter;
-import static ufrpe.edu.learnit.infra.dominio.Session.getContext;
 
 /**
  * Created by joel_ on 02/12/2016.
@@ -23,8 +22,8 @@ public class CustomAdapterAlunoAula extends ArrayAdapter<AlunoAula> implements V
     private static class ViewHolder{
         TextView name;
         TextView description;
-        TextView price;
-        TextView time;
+        TextView horasCompradas;
+        TextView horasTotaisCompradas;
     }
 
     public CustomAdapterAlunoAula(ArrayList<AlunoAula> data, Context context) {
@@ -49,11 +48,11 @@ public class CustomAdapterAlunoAula extends ArrayAdapter<AlunoAula> implements V
 
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.textview_adapter, parent, false);
+            convertView = inflater.inflate(R.layout.aulas_compradas_adapter, parent, false);
             viewHolder.name = (TextView) convertView.findViewById(R.id.name);
-            viewHolder.price = (TextView) convertView.findViewById(R.id.price);
+            viewHolder.horasCompradas = (TextView) convertView.findViewById(R.id.horasCompradas);
             viewHolder.description = (TextView) convertView.findViewById(R.id.description);
-            viewHolder.time = (TextView) convertView.findViewById(R.id.time);
+            viewHolder.horasTotaisCompradas = (TextView) convertView.findViewById(R.id.horasTotaisCompradas);
 
             convertView.setTag(viewHolder);
         } else {
@@ -64,9 +63,9 @@ public class CustomAdapterAlunoAula extends ArrayAdapter<AlunoAula> implements V
         String titulo = ajustarTitulo(aulaAluno.getAula().getTitulo());
         String descricao = ajustarDescricao(aulaAluno.getAula().getDescricao());
         viewHolder.name.setText(titulo);
-        viewHolder.price.setText(String.valueOf(aulaAluno.getValorTotal()));
+        viewHolder.horasCompradas.setText(aulaAluno.getValorTotal()+"");
         viewHolder.description.setText(descricao);
-        viewHolder.time.setText(String.valueOf(aulaAluno.getHorasTotal()));
+        viewHolder.horasTotaisCompradas.setText(aulaAluno.getHorasTotal()+"");
         return convertView;
     }
     public String ajustarTitulo(String string){
