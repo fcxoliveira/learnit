@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
-import ufrpe.edu.learnit.infra.dominio.Confirmacao;
-import ufrpe.edu.learnit.infra.persistencia.ConfirmacaoPersistencia;
+import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
+import ufrpe.edu.learnit.confirmacao.persistencia.ConfirmacaoPersistencia;
 
 public class GerenciadorAulasAlunos {
     public ArrayList<Aula> getAulasPorTexto(String texto){
@@ -31,9 +31,9 @@ public class GerenciadorAulasAlunos {
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
         return confirmacaoPersistencia.retornarConfirmacaoRecebida();
     }
-    public void aceitarConfirmacao(int idConfirmacao){
+    public void aceitarConfirmacao(Confirmacao confirmacao){
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
-        confirmacaoPersistencia.aceitarConfirmacao(idConfirmacao);
+        confirmacaoPersistencia.aceitarConfirmacao(confirmacao);
     }
     public void cancelarConfirmacao(int idConfirmacao){
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();

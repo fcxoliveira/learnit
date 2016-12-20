@@ -8,15 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.infra.dominio.Tag;
-import ufrpe.edu.learnit.infra.negocio.TagNegocio;
+import ufrpe.edu.learnit.tag.dominio.Tag;
+import ufrpe.edu.learnit.tag.negocio.TagNegocio;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 import static ufrpe.edu.learnit.aula.gui.ComprarAulaAlunoActivity.aula;

@@ -6,12 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.gui.AlunosCadastradosActivity;
 import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 /**

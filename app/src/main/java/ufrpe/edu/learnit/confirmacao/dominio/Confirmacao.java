@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.infra.dominio;
+package ufrpe.edu.learnit.confirmacao.dominio;
 
 /**
  * Created by joel_ on 16/12/2016.

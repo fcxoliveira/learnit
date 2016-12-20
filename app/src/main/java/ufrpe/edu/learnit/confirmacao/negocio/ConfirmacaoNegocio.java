@@ -1,9 +1,9 @@
-package ufrpe.edu.learnit.infra.negocio;
+package ufrpe.edu.learnit.confirmacao.negocio;
 
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.infra.dominio.Confirmacao;
-import ufrpe.edu.learnit.infra.persistencia.ConfirmacaoPersistencia;
+import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
+import ufrpe.edu.learnit.confirmacao.persistencia.ConfirmacaoPersistencia;
 
 /**
  * Created by joel_ on 16/12/2016.

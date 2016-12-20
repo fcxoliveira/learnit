@@ -1,10 +1,10 @@
-package ufrpe.edu.learnit.infra.negocio;
+package ufrpe.edu.learnit.tag.negocio;
 
 import java.util.ArrayList;
 
 import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.infra.dominio.Tag;
-import ufrpe.edu.learnit.infra.persistencia.TagPersistencia;
+import ufrpe.edu.learnit.tag.dominio.Tag;
+import ufrpe.edu.learnit.tag.persistencia.TagPersistencia;
 
 public class TagNegocio {
 

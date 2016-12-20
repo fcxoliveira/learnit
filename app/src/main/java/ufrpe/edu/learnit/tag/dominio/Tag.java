@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.infra.dominio;
+package ufrpe.edu.learnit.tag.dominio;
 
 
 public class Tag {

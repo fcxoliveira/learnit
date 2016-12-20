@@ -7,8 +7,8 @@ public class AlunoAula {
     private Perfil perfil;
     private String date;
     private int horasTotal;
-    private int valorTotal;
     private int horasConfirmadas;
+    private int valorTotal;
 
     public int getHorasConfirmadas() {return horasConfirmadas;}
 

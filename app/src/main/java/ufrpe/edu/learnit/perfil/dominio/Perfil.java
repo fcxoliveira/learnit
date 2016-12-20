@@ -1,11 +1,8 @@
 package ufrpe.edu.learnit.perfil.dominio;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.aula.dominio.Aula;
-import ufrpe.edu.learnit.infra.dominio.Tag;
-import ufrpe.edu.learnit.usuario.dominio.Usuario;
+import ufrpe.edu.learnit.tag.dominio.Tag;
 
 public class Perfil {
 

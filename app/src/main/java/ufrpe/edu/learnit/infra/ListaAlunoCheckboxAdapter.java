@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit;
+package ufrpe.edu.learnit.infra;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.gui.ConfirmarAulaProfessorActivity;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 

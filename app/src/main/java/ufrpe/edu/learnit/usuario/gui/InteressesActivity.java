@@ -14,9 +14,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.infra.dominio.Tag;
+import ufrpe.edu.learnit.tag.dominio.Tag;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
-import ufrpe.edu.learnit.infra.negocio.TagNegocio;
+import ufrpe.edu.learnit.tag.negocio.TagNegocio;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 

@@ -20,7 +20,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.CustomAdapter;
+import ufrpe.edu.learnit.infra.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.gui.AulasCompradasActivity;

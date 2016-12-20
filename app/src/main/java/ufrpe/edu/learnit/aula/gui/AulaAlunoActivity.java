@@ -11,16 +11,15 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
-import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
+import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
 import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class AulaAlunoActivity extends AppCompatActivity {
     private TextView nomeAula, descricaoAula, horasPagas, nomeProfessor, avaliadores, nota;
     RatingBar ratingBar;
     Button buttonConfirmar;
-
+    Confirmacao confirmacao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +29,9 @@ public class AulaAlunoActivity extends AppCompatActivity {
         GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
         if(gerenciadorAulasAlunos.existeConfirmacaoRecebida()){
             buttonConfirmar.setVisibility(View.VISIBLE);
+            confirmacao=gerenciadorAulasAlunos.retornarConfirmacaoRecebida();
         }
+
         findEditableItens();
         editItens(aula);
 
@@ -70,6 +71,8 @@ public class AulaAlunoActivity extends AppCompatActivity {
         builder.setCancelable(true);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                GerenciadorAulasAlunos gerenciadorAulasAlunos=new GerenciadorAulasAlunos();
+                gerenciadorAulasAlunos.aceitarConfirmacao(confirmacao);
                 AulaAlunoActivity.super.finish();
             }
         });

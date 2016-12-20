@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.ArrayList;
-import ufrpe.edu.learnit.CustomAdapterAlunoAula;
+import ufrpe.edu.learnit.infra.CustomAdapterAlunoAula;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;

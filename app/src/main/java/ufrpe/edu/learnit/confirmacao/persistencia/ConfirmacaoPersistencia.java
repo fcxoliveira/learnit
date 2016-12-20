@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.infra.persistencia;
+package ufrpe.edu.learnit.confirmacao.persistencia;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
-import ufrpe.edu.learnit.infra.dominio.Confirmacao;
+import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
 import ufrpe.edu.learnit.infra.dominio.Session;
 
 public class ConfirmacaoPersistencia {
@@ -88,11 +88,19 @@ public class ConfirmacaoPersistencia {
         return retornarConfirmacao(id);
     }
 
-    public void aceitarConfirmacao(int idConfirmacao){//aluno aceitar confirmação recebida
+    public void aceitarConfirmacao(Confirmacao confirmacao){//aluno aceitar confirmação recebida
         db=dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
+        ContentValues newValuesAlunoAula= new ContentValues();
         newValues.put("Status", 1);
-        db.update("CONFIRMACAO",newValues,"Id='"+idConfirmacao+"'",null);
+        int idAula=confirmacao.getIdAula();
+        int idAluno=confirmacao.getIdAluno();
+        Cursor cursor = db.query("ALUNO_AULA", new String[]{"*"}, "Status = 0 AND IdAAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        int horasConfirmadasTotais = cursor.getInt(cursor.getColumnIndex("HorasConfirmadas"));
+        int horasConfirmadas = horasConfirmadasTotais+confirmacao.getHorasConfirmadas();
+        newValuesAlunoAula.put("HorasConfirmadas",horasConfirmadas);
+        db.update("CONFIRMACAO",newValues,"Id='"+confirmacao.getId()+"'",null);
+        db.update("ALUNO_AULA",newValuesAlunoAula,"IdAula='"+confirmacao.getIdAula()+" AND "+"IdAluno="+confirmacao.getIdAluno()+"'",null);
     }
 
     public void cancelarConfirmacao(int idConfirmacao){ //aluno cancelar confirmação recebida

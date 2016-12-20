@@ -1,6 +1,5 @@
 package ufrpe.edu.learnit.perfil.negocio;
 
-import ufrpe.edu.learnit.infra.dominio.Tag;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
 

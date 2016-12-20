@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.infra.persistencia;
+package ufrpe.edu.learnit.tag.persistencia;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.infra.dominio.Tag;
+import ufrpe.edu.learnit.tag.dominio.Tag;
 
 public class TagPersistencia {
     private SQLiteDatabase db;

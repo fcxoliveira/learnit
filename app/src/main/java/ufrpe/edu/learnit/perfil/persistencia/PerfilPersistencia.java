@@ -40,6 +40,7 @@ public class PerfilPersistencia {
         ContentValues newValues = new ContentValues();
         newValues.put("Avaliacao", avaliacaoTotal);
         newValues.put("Avaliadores", avaliadores+1);
+        db.update("PERFIL",newValues,"IdPerfil='"+idPerfil+"'",null);
     }
     public Perfil retornarPerfil(int id){
         Perfil result = new Perfil();

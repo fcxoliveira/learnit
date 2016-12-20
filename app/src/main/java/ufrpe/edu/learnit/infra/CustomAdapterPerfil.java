@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit;
+package ufrpe.edu.learnit.infra;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 /**

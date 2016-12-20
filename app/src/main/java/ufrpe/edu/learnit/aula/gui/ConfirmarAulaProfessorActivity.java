@@ -15,11 +15,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.ListaAlunoCheckboxAdapter;
+import ufrpe.edu.learnit.infra.ListaAlunoCheckboxAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.infra.negocio.ConfirmacaoNegocio;
+import ufrpe.edu.learnit.confirmacao.negocio.ConfirmacaoNegocio;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
