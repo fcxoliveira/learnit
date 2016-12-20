@@ -93,7 +93,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/textViewAvaliadores"
             android:layout_alignStart="@+id/textViewAvaliadores"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:onClick="confirmar"/>
 
         <TextView
             android:text="Horas"

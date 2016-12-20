@@ -1,7 +1,9 @@
 package ufrpe.edu.learnit.aula.gui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +33,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         }
         findEditableItens();
         editItens(aula);
+
     }
 
     private void findEditableItens() {
@@ -61,6 +64,19 @@ public class AulaAlunoActivity extends AppCompatActivity {
         startActivity(secondActivity);
         finish();
     }
+    public void confirmar(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Você confirma essa quantidade de horas dita pelo professor?");
+        builder.setCancelable(true);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                AulaAlunoActivity.super.finish();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 
 
 
