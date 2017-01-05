@@ -41,16 +41,6 @@
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:text="Horas Totais de aula disponiveis:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView5"
-            android:layout_alignBaseline="@+id/TextViewTotalDeHoras"
-            android:layout_alignBottom="@+id/TextViewTotalDeHoras"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
             android:text="Preço por hora/aula:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,26 +49,6 @@
             android:layout_below="@+id/textView5"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text="Descrição da aula:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView9"
-            android:layout_below="@+id/toolbar"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="24dp" />
-
-        <TextView
-            android:text="descrição aqui"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/TextViewDescricaoAula"
-            android:layout_below="@+id/textView9"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp" />
 
         <TextView
             android:text="0"
@@ -95,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView20"
+            android:layout_above="@+id/textView5"
             android:layout_alignBaseline="@+id/TextViewTotalDaCompra"
             android:layout_alignBottom="@+id/TextViewTotalDaCompra"
             android:layout_alignParentLeft="true"
@@ -107,6 +78,7 @@
             android:ems="10"
             android:id="@+id/EditTextTotaDeHorasDesejadas"
             android:hint="Total de horas desejadas"
+            android:layout_above="@+id/textView20"
             android:layout_alignBottom="@+id/textInputLayout"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -156,6 +128,39 @@
             android:layout_alignBottom="@+id/button4"
             android:layout_alignRight="@+id/TextViewPrecoPorHoraAula"
             android:layout_alignEnd="@+id/TextViewPrecoPorHoraAula" />
+
+        <TextView
+            android:text="Descrição da aula:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_above="@+id/TextViewDescricaoAula"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="descrição aqui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewDescricaoAula"
+            android:layout_above="@+id/EditTextTotaDeHorasDesejadas"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="13dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"/>
+
+        <TextView
+            android:text="Horas Totais de aula disponiveis:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:layout_alignBaseline="@+id/TextViewTotalDeHoras"
+            android:layout_alignBottom="@+id/TextViewTotalDeHoras"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 </ScrollView>

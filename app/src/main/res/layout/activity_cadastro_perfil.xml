@@ -11,7 +11,7 @@
         android:id="@+id/activity_interesses"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".usuario.gui.InteressesActivity">
+        tools:context=".usuario.gui.CadastroPerfilActivity">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -59,7 +59,9 @@
                 android:id="@+id/editTextDescricao"
             android:layout_below="@+id/EditTextNome"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:maxLines="3"
+            android:scrollbars="vertical"/>
 
         <Button
             android:text="Confirmar"
@@ -74,6 +76,25 @@
             android:layout_alignRight="@+id/ListViewTags"
             />
 
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ButtonAddTag"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/listViewTags"
+            android:layout_above="@+id/button3" />
+
+        <AutoCompleteTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/editTextTag"
+            android:hint="Tag"
+            android:layout_below="@+id/editTextDescricao"
+            android:layout_above="@+id/listViewTags"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
         <Button
             android:text="Add"
             android:layout_width="wrap_content"
@@ -82,31 +103,11 @@
             android:background="#7bc8f3"
             android:textColor="@android:color/background_light"
             android:onClick="populateListView"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="33dp"
-            android:layout_marginEnd="33dp"
             android:layout_below="@+id/editTextDescricao"
-            android:layout_toRightOf="@+id/editTextTag"/>
-
-        <AutoCompleteTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/editTextTag"
-            android:hint="Tag"
-            android:layout_above="@+id/listViewTags"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/ButtonAddTag"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@+id/button3"
-            android:id="@+id/listViewTags" />
+            android:layout_toRightOf="@+id/editTextTag"
+            android:layout_toEndOf="@+id/editTextTag"
+            android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp" />
 
     </RelativeLayout>
 </ScrollView>

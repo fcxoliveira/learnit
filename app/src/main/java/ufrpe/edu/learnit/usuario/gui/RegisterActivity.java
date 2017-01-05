@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void chamarTelaInteresses(View view) {
-        Intent secondActivity = new Intent(this, InteressesActivity.class);
+        Intent secondActivity = new Intent(this, CadastroPerfilActivity.class);
         startActivity(secondActivity);
     }
 

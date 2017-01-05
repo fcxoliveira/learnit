@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
@@ -46,6 +47,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         descricaoAula = (TextView)findViewById(R.id.textViewDescricao);
         horasPagas = (TextView)findViewById(R.id.textViewHoras);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
+        descricaoAula.setMovementMethod(new ScrollingMovementMethod());
     }
 
     private void editItens(AlunoAula aula) {

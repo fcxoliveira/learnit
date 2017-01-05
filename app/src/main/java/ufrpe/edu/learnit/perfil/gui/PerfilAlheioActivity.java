@@ -3,6 +3,7 @@ package ufrpe.edu.learnit.perfil.gui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -47,6 +48,7 @@ public class PerfilAlheioActivity extends AppCompatActivity{
         textViewNome = (TextView) findViewById(R.id.textViewNome);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
         textViewBiografia=(TextView) findViewById(R.id.textViewBiografia);
+        textViewBiografia.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public void onBackPressed(){

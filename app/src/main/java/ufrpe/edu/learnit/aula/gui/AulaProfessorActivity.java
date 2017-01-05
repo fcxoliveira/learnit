@@ -3,6 +3,7 @@ package ufrpe.edu.learnit.aula.gui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -58,6 +59,7 @@ public class AulaProfessorActivity extends AppCompatActivity {
         textView100 = (TextView) findViewById(R.id.textView100);
         textView102=(TextView) findViewById(R.id.textView102);
         textView108=(TextView) findViewById(R.id.textView8);
+        textView102.setMovementMethod(new ScrollingMovementMethod());
     }
     public Aula retornarAula(int id){
         GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();

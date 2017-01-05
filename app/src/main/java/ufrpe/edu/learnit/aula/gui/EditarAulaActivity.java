@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -83,6 +84,7 @@ public class EditarAulaActivity extends AppCompatActivity {
         TextViewDescricao = (TextView) findViewById(R.id.editTextDescricao);
         editTextHorasDeAula = (EditText) findViewById(R.id.TextViewHorasDeAula);
         editTextPreco = (EditText) findViewById(R.id.TextViewPreco);
+        TextViewDescricao.setMovementMethod(new ScrollingMovementMethod());
     }
 
 

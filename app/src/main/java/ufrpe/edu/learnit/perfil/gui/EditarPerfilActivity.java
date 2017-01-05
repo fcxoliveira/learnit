@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -87,6 +88,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private void findEditablesItens() {
         editTextNome = (EditText) findViewById(R.id.EditTextNome);
         editTextBio = (EditText) findViewById(R.id.editTextDescricao);
+        editTextBio.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public boolean verificarNome(String nome) {

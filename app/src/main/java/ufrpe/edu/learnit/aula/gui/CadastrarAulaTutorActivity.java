@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -33,6 +34,7 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         Session.setContext(getApplicationContext());
         editTextNomeAula = (EditText) findViewById(R.id.EditTextNome);
         editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
+        editTextDescricao.setMovementMethod(new ScrollingMovementMethod());
         editTextHorasDeAula = (EditText) findViewById(R.id.TextViewHorasDeAula);
         editTextPrecoHoraAula = (EditText) findViewById(R.id.TextViewPreco);
         listViewTags = (ListView) findViewById(R.id.ListViewTags);

@@ -52,18 +52,6 @@
             android:textStyle="normal|bold" />
 
         <TextView
-            android:text="Descrições da aula"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewDescricao"
-            android:textSize="20sp"
-            android:layout_marginTop="13dp"
-            android:layout_below="@+id/textView100"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="normal|bold" />
-
-        <TextView
             android:text="Nome da aula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,53 +93,9 @@
             android:textSize="20sp"
             android:layout_below="@+id/textViewDescricao"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text="Horas de aula fornecidas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView101"
-            android:textSize="20sp"
-            android:layout_alignTop="@+id/textViewHoras"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="24dp" />
-
-        <TextView
-            android:text="Tags da Aula"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewTags"
-            android:textSize="20sp"
-            android:textStyle="normal|bold"
-            android:layout_marginTop="22dp"
-            android:layout_below="@+id/textView101"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text="Horas de aula fornecidas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewHoras"
-            android:textSize="20sp"
-            android:textStyle="normal|bold"
-            android:layout_below="@+id/textView102"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="11dp" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/ListViewTags"
-            android:layout_below="@+id/textViewTags"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_above="@+id/botaoMostrarAlunos"
-            android:layout_alignRight="@+id/textViewHoras"
-            android:layout_alignEnd="@+id/textViewHoras" />
+            android:maxLines="3"
+            android:scrollbars="vertical"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -180,6 +124,63 @@
             android:layout_below="@+id/textViewPreço"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:text="Horas de aula fornecidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewHoras"
+            android:textSize="20sp"
+            android:textStyle="normal|bold"
+            android:layout_alignBottom="@+id/textView101"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:text="Descrições da aula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewDescricao"
+            android:textSize="20sp"
+            android:textStyle="normal|bold"
+            android:layout_below="@+id/textView100"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Horas de aula fornecidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView101"
+            android:textSize="20sp"
+            android:layout_below="@+id/textView102"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="73dp" />
+
+        <TextView
+            android:text="Tags da Aula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTags"
+            android:textSize="20sp"
+            android:textStyle="normal|bold"
+            android:layout_marginTop="11dp"
+            android:layout_below="@+id/textViewHoras"
+            android:layout_toLeftOf="@+id/textViewNome"
+            android:layout_toStartOf="@+id/textViewNome" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ListViewTags"
+            android:layout_below="@+id/textViewTags"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/floatingActionButton7"
+            android:layout_toStartOf="@+id/floatingActionButton7"
+            android:layout_above="@+id/botaoMostrarAlunos" />
 
     </RelativeLayout>
 </ScrollView>

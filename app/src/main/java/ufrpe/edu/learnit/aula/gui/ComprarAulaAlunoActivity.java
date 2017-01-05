@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -58,6 +59,7 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
         TextViewTotalDeHoras = (TextView)findViewById(R.id.TextViewTotalDeHoras);
         TextViewPrecoPorHoraAula = (TextView)findViewById(R.id.TextViewPrecoPorHoraAula);
         TextViewTotalDaCompra = (TextView)findViewById(R.id.TextViewTotalDaCompra);
+        TextViewDescricaoAula.setMovementMethod(new ScrollingMovementMethod());
     }
 
 

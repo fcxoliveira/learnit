@@ -36,7 +36,9 @@
             android:layout_marginTop="15dp"
             android:layout_below="@+id/EditTextNome"
             android:layout_centerHorizontal="true"
-            android:layout_height="100dp" />
+            android:layout_height="100dp"
+            android:maxLines="4"
+            android:scrollbars="vertical"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -58,18 +60,6 @@
             android:id="@+id/EditTextNome"
             android:layout_marginTop="20dp"
             android:layout_below="@+id/toolbar"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/TextViewPreco"
-            android:hint="@string/pre_o_por_hora_aula"
-            android:layout_marginBottom="17dp"
-            android:layout_above="@+id/button5"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -96,6 +86,7 @@
             android:textColor="@android:color/background_light"
             android:onClick="populateListView"
             android:layout_below="@+id/TextViewHorasDeAula"
+            android:layout_toRightOf="@+id/editTextTag"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="27dp"
@@ -120,6 +111,18 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_above="@+id/TextViewPreco" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/TextViewPreco"
+            android:hint="@string/pre_o_por_hora_aula"
+            android:layout_marginBottom="22dp"
+            android:layout_above="@+id/button5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
     </ScrollView>

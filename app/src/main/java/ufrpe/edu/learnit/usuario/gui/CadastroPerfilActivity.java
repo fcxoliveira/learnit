@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -20,7 +21,7 @@ import ufrpe.edu.learnit.tag.negocio.TagNegocio;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 
-public class InteressesActivity extends AppCompatActivity {
+public class CadastroPerfilActivity extends AppCompatActivity {
     private EditText editTextNome;
     private EditText editTextBio;
     AutoCompleteTextView editTextTags;
@@ -43,6 +44,7 @@ public class InteressesActivity extends AppCompatActivity {
         editTextBio = (EditText) findViewById(R.id.editTextDescricao);
         listViewTags = (ListView) findViewById(R.id.listViewTags);
         editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
+        editTextBio.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public void chamarHome(View view) {
@@ -98,7 +100,7 @@ public class InteressesActivity extends AppCompatActivity {
                 TagNegocio tagNegocio = new TagNegocio();
                 String text = editTextTags.getText().toString();
                 ArrayList<Tag> tags = tagNegocio.retornarTagsPorTexto(text);
-                ArrayAdapter<Tag> adapterSugerido = new ArrayAdapter<>(InteressesActivity.this, android.R.layout.simple_list_item_1);
+                ArrayAdapter<Tag> adapterSugerido = new ArrayAdapter<>(CadastroPerfilActivity.this, android.R.layout.simple_list_item_1);
                 adapterSugerido.addAll(tags);
                 editTextTags.setAdapter(adapterSugerido);
             }
