@@ -141,7 +141,7 @@ public class EditarAulaActivity extends AppCompatActivity {
         if(verificarNomeAula(nomeAula)&& verificarDescricao(descricao)&& verificarHorasDeAula(horasDeAula) && verificarPrecoHoraAula(precoHoraAula)){
             GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
             trabalharTags();
-            gerenciadorAulasTutor.editarAula(Session.getAula().getId(), nomeAula, descricao, Integer.parseInt(horasDeAula),Integer.parseInt(precoHoraAula));
+            gerenciadorAulasTutor.editarAula(Session.getAula().getId(), Integer.parseInt(horasDeAula),Integer.parseInt(precoHoraAula));
             voltar();
         }
     }

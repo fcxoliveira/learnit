@@ -68,15 +68,11 @@ public class AulaPersistencia {
         return cursor.getCount();
         }
 
-    public void editarAula(int id,String titulo, String descricao, int duracao,int valor){
+    public void editarAula(int id, int duracao,int valor){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
-        newValues.put("Descricao",descricao);
-        newValues.put("Titulo",titulo);
         newValues.put("HorasDisponiveis",duracao);
         newValues.put("Valor",valor);
-        newValues.put("IdPerfil",Session.getUsuario().getPerfil().getId()+"");
-        newValues.put("Id",id+"");
         db.update("AULAS",newValues,"Id='"+id+"'",null);
     }
 
