@@ -3,6 +3,7 @@ package ufrpe.edu.learnit.perfil.gui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -59,6 +60,7 @@ public class PerfilActivity extends AppCompatActivity {
         textViewNome = (TextView) findViewById(R.id.textViewNome);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
         textViewBiografia=(TextView) findViewById(R.id.textViewBiografia);
+        textViewBiografia.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public Perfil retornarPerfil(int id){

@@ -101,7 +101,7 @@ public class ConfirmacaoPersistencia {
         cursor.moveToFirst();
         int horasConfirmadasTotais = cursor.getInt(cursor.getColumnIndex("HorasConfirmadas"));
         int horasConfirmadas = horasConfirmadasTotais+confirmacao.getHorasConfirmadas();
-        newValuesAlunoAula.put("HorasConfirmadas",horasConfirmadas);
+        newValuesAlunoAula.put("HorasConfirmadas",horasConfirmadas+"");
         db.update("ALUNO_AULA",newValuesAlunoAula,"IdAula='"+confirmacao.getIdAula()+" AND "+"IdPerfilAluno="+confirmacao.getIdAluno()+"'",null);
         db.update("CONFIRMACAO",newValues,"Id='"+confirmacao.getId()+"'",null);
     }

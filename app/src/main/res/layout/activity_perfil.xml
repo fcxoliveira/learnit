@@ -91,41 +91,16 @@
             android:layout_alignLeft="@+id/textViewAvaliadores"
             android:layout_alignStart="@+id/textViewAvaliadores" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:fabSize="normal"
-            android:onClick="chamarEditarPerfil"
-            app:srcCompat="@android:drawable/ic_menu_edit"
-            android:layout_marginBottom="15dp"
-            android:id="@+id/floatingActionButton"
-            app:backgroundTint="#7bc8f3"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
         <TextView
             android:text="Biografia:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView8"
-            android:textSize="15sp"
             android:layout_marginBottom="36dp"
-            android:layout_alignBottom="@+id/textViewBiografia"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text=" Biografia do perfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewBiografia"
-            android:textSize="15sp"
-            android:layout_above="@+id/floatingActionButton"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="18dp" />
+            android:layout_above="@+id/textViewBiografia"
+            />
 
         <TextView
             android:text="@string/horas_de_aulas_dadas"
@@ -147,6 +122,32 @@
             android:layout_above="@+id/textView8"
             android:layout_toLeftOf="@+id/textViewAvaliadores"
             android:layout_toStartOf="@+id/textViewAvaliadores" />
+
+        <TextView
+            android:text=" Biografia do perfil"
+            android:id="@+id/textViewBiografia"
+            android:textSize="15sp"
+            android:maxLines = "5"
+            android:scrollbars = "vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_alignTop="@+id/floatingActionButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="normal"
+            android:onClick="chamarEditarPerfil"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            android:id="@+id/floatingActionButton"
+            app:backgroundTint="#7bc8f3"
+            android:layout_marginBottom="38dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/textViewAvaliadores"
+            android:layout_toEndOf="@+id/textViewAvaliadores" />
 
     </RelativeLayout>
     </ScrollView>
