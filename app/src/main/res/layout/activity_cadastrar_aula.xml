@@ -33,10 +33,10 @@
             android:layout_width="match_parent"
             android:hint="Digite aqui as descrições da sua aula"
             android:id="@+id/editTextDescricao"
-            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_below="@+id/EditTextNome"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_height="100dp" />
 
         <EditText
             android:layout_width="wrap_content"
