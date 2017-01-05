@@ -132,7 +132,7 @@ public class EditarAulaActivity extends AppCompatActivity {
 
 
 
-    public void cadastrarAulaTutor(View v){
+    public void editarAulaTutor(View v){
         String nomeAula = TextViewNomeAula.getText().toString();
         String descricao = TextViewDescricao.getText().toString();
         String horasDeAula = editTextHorasDeAula.getText().toString();

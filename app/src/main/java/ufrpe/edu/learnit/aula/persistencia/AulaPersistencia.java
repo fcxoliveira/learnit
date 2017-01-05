@@ -75,7 +75,7 @@ public class AulaPersistencia {
         newValues.put("Titulo",titulo);
         newValues.put("HorasDisponiveis",duracao);
         newValues.put("Valor",valor);
-        newValues.put("IdPerfil",id+"");
+        newValues.put("IdPerfil",Session.getUsuario().getPerfil().getId()+"");
         newValues.put("Id",id+"");
         db.update("AULAS",newValues,"Id='"+id+"'",null);
     }

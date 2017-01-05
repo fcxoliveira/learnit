@@ -118,7 +118,7 @@
             android:id="@+id/button5"
             android:background="#7bc8f3"
             android:textColor="@android:color/background_light"
-            android:onClick="cadastrarAulaTutor"
+            android:onClick="editarAulaTutor"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
