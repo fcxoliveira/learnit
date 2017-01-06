@@ -3,12 +3,15 @@ package ufrpe.edu.learnit.usuario.gui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -39,6 +42,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     EditText editText;
     CustomAdapter adapter;
     NavigationView navigationView;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +57,42 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         preencherMoedas();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        createButtonnavBar();
     }
+
+    private void createButtonnavBar() {
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                mDrawerLayout,         /* DrawerLayout object */
+                toolbar,  /* nav drawer icon to replace 'Up' caret */
+                R.string.drawer_open,  /* "open drawer" description */
+                R.string.drawer_close  /* "close drawer" description */
+        ) {
+
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+
+
+
+
+
 
     private void newListViewHome() {
         listView = (ListView) findViewById(R.id.listView);
@@ -196,11 +237,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Intent secondActivity = new Intent(this, CoinsActivity.class);
         startActivity(secondActivity);
         finish();
-    }
-
-    public void chamarMenuLateral(View v){
-        navigationView.bringToFront();
-        navigationView.buildLayer();
     }
 
 
