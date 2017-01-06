@@ -26,6 +26,15 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2"
+            android:background="@android:drawable/ic_menu_sort_by_size"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/listView"
+            android:onClick="chamarMenuLateral"/>
+
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,11 +44,12 @@
             android:paddingTop="0dp"
             android:textColor="@android:color/white"
             android:hint="Procurar"
-            android:layout_above="@+id/listView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignBaseline="@+id/button2"
+            android:layout_alignBottom="@+id/button2"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="67dp"
+            android:layout_marginEnd="67dp" />
 
     </RelativeLayout>
 </ScrollView>
