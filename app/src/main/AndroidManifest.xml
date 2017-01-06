@@ -30,7 +30,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".perfil.gui.PerfilActivity" />
         <activity
-            android:name=".usuario.gui.InteressesActivity"
+            android:name=".usuario.gui.CadastroPerfilActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
