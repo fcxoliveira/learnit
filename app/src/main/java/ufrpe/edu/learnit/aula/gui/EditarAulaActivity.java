@@ -38,16 +38,23 @@ public class EditarAulaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editar_aula);
         Session.setContext(getApplicationContext());
         Aula aula=Session.getAula();
-        listView = (ListView) findViewById(R.id.ListViewTags);
-        editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
+        findEditablesItens();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
         listView.setAdapter(adapter);
         setOnlistenerSearch();
-        findEditablesItens();
         editItens(aula);
         newListViewTags();
     }
 
+    private void findEditablesItens() {
+        TextViewNomeAula = (TextView) findViewById(R.id.EditTextNome);
+        TextViewDescricao = (TextView) findViewById(R.id.editTextDescricao);
+        editTextHorasDeAula = (EditText) findViewById(R.id.TextViewHorasDeAula);
+        editTextPreco = (EditText) findViewById(R.id.TextViewPreco);
+        TextViewDescricao.setMovementMethod(new ScrollingMovementMethod());
+        listView = (ListView) findViewById(R.id.ListViewTags);
+        editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
+    }
 
     public void populateListView(View v) {
         String tag = editTextTags.getText().toString();
@@ -79,13 +86,7 @@ public class EditarAulaActivity extends AppCompatActivity {
     }
 
 
-    private void findEditablesItens() {
-        TextViewNomeAula = (TextView) findViewById(R.id.EditTextNome);
-        TextViewDescricao = (TextView) findViewById(R.id.editTextDescricao);
-        editTextHorasDeAula = (EditText) findViewById(R.id.TextViewHorasDeAula);
-        editTextPreco = (EditText) findViewById(R.id.TextViewPreco);
-        TextViewDescricao.setMovementMethod(new ScrollingMovementMethod());
-    }
+
 
 
     public boolean verificarNomeAula(String nomeAula){
