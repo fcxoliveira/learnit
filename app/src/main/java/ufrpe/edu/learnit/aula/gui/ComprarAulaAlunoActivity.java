@@ -107,16 +107,12 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
                 String TotalMoedas =TextViewTotalDaCompra.getText().toString();
                 verificarTotalHoras(TotalDeHoras);
                 int valorPago = Math.round(Float.parseFloat(TotalMoedas));
-                if(verificarHoras()) {
-                    if (verificarMoedas()) {
-                        gerenciadorAulasAlunos.inscreverAlunoEmAula(usuarioId, aulaId, data, horas, valorPago);
-                        Intent secondActivity = new Intent(this, HomeActivity.class);
-                        startActivity(secondActivity);
-                        this.finish();
-                    }else{Toast toast = Toast.makeText(getApplicationContext(), "Moedas insuficientes", Toast.LENGTH_SHORT);
-                    toast.show();}
-                }else{Toast toast = Toast.makeText(getApplicationContext(), "Horas não disponiveis", Toast.LENGTH_SHORT);
-                toast.show();}
+                if(verificarHoras()||verificarMoedas()) {
+                    gerenciadorAulasAlunos.inscreverAlunoEmAula(usuarioId, aulaId, data, horas, valorPago);
+                    Intent secondActivity = new Intent(this, HomeActivity.class);
+                    startActivity(secondActivity);
+                    this.finish();
+                }
     }
 
     private void verificarTotalHoras(String totalDeHoras) {
@@ -143,6 +139,8 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
         boolean result = true;
         int moedas =(int) Float.parseFloat(TextViewTotalDaCompra.getText().toString());
         if(moedas>perfilNegocio.retornarPerfil(Session.getUsuario().getID()).getMoedas()){
+            Toast toast = Toast.makeText(getApplicationContext(), "Moedas insuficientes", Toast.LENGTH_SHORT);
+            toast.show();
             result = false;
         }
         return result;
@@ -152,6 +150,8 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
         boolean result = true;
         int horas = Integer.parseInt(EditTextTotalDeHorasDesejadas.getText().toString());
         if(horas>Session.getAula().getHoras()||horas==0){
+            Toast toast = Toast.makeText(getApplicationContext(), "Horas não disponiveis", Toast.LENGTH_SHORT);
+            toast.show();
             result = false;
         }
         return result;
