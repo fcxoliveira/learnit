@@ -108,7 +108,7 @@
             android:layout_below="@+id/textView1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_above="@+id/textView8"
+            android:layout_above="@+id/textViewPrecoAula"
             android:layout_toLeftOf="@+id/textViewAvaliadores"
             android:layout_toStartOf="@+id/textViewAvaliadores" />
 
@@ -128,7 +128,7 @@
             android:text="Biografia:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView8"
+            android:id="@+id/textViewPrecoAula"
             android:layout_marginBottom="20dp"
             android:layout_above="@+id/textViewBiografia"
             android:layout_alignParentLeft="true"

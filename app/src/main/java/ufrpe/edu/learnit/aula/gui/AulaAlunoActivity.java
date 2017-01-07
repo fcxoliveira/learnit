@@ -44,7 +44,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         nomeProfessor = (TextView)findViewById(R.id.textViewNomeDoProfessor);
         avaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
         nota = (TextView)findViewById(R.id.textViewRate);
-        descricaoAula = (TextView)findViewById(R.id.textViewDescricao);
+        descricaoAula = (TextView)findViewById(R.id.textViewDescricaoDaAula);
         horasPagas = (TextView)findViewById(R.id.textViewHoras);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
         descricaoAula.setMovementMethod(new ScrollingMovementMethod());

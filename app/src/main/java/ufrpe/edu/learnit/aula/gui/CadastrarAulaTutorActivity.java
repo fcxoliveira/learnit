@@ -32,6 +32,13 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_aula);
         Session.setContext(getApplicationContext());
+        findItens();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
+        listViewTags.setAdapter(adapter);
+        setOnlistenerSearch();
+    }
+
+    private void findItens() {
         editTextNomeAula = (EditText) findViewById(R.id.EditTextNome);
         editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
         editTextDescricao.setMovementMethod(new ScrollingMovementMethod());
@@ -39,10 +46,6 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         editTextPrecoHoraAula = (EditText) findViewById(R.id.TextViewPreco);
         listViewTags = (ListView) findViewById(R.id.ListViewTags);
         editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
-        listViewTags.setAdapter(adapter);
-        setOnlistenerSearch();
-
     }
 
     public void chamarTelaInicial(View view) {

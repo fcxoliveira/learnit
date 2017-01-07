@@ -12,8 +12,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.aula.dominio.Aula;
-import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.tag.dominio.Tag;
 import ufrpe.edu.learnit.tag.negocio.TagNegocio;
@@ -23,7 +21,7 @@ import static ufrpe.edu.learnit.aula.gui.ComprarAulaAlunoActivity.aula;
 
 
 public class AulaProfessorActivity extends AppCompatActivity {
-    private TextView  textView7,textView101, textView100, textView102,textView108;
+    private TextView   textViewHoras, textViewTitulo, textViewDescricaoAula, textViewPrecoAula;
     private ListView listView;
 
     @Override
@@ -46,27 +44,23 @@ public class AulaProfessorActivity extends AppCompatActivity {
     }
 
     private void editItens() {
-        textView101.setText(aula.getHoras()+"");
-        textView100.setText(aula.getTitulo());
-        textView7.setText(aula.getTitulo());
-        textView102.setText(aula.getDescricao());
-        textView108.setText(aula.getValor()+"");
+        textViewHoras.setText(aula.getHoras()+"");
+        textViewTitulo.setText(aula.getTitulo());
+        textViewDescricaoAula.setText(aula.getDescricao());
+        textViewPrecoAula.setText(aula.getValor()+"");
     }
 
     private void findEditableItens() {
-        textView7 = (TextView)findViewById(R.id.textViewNome);
-        textView101 = (TextView)findViewById(R.id.textView101);
-        textView100 = (TextView) findViewById(R.id.textView100);
-        textView102=(TextView) findViewById(R.id.textView102);
-        textView108=(TextView) findViewById(R.id.textView8);
-        textView102.setMovementMethod(new ScrollingMovementMethod());
-    }
-    public Aula retornarAula(int id){
-        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
-        return gerenciadorAulasTutor.retornarAula(id);
+
+        textViewHoras = (TextView)findViewById(R.id.textViewHorasFornecidas);
+        textViewTitulo = (TextView) findViewById(R.id.textViewNomeAula);
+        textViewDescricaoAula =(TextView) findViewById(R.id.textViewDescricaoAula);
+        textViewPrecoAula =(TextView) findViewById(R.id.textViewPrecoAula);
+        textViewDescricaoAula.setMovementMethod(new ScrollingMovementMethod());
     }
 
-    public void editarAula(View view){
+
+    public void chamarEditarAula(View view){
         Intent secondActivity = new Intent(this, EditarAulaActivity.class);
         startActivity(secondActivity);
         finish();
@@ -78,7 +72,7 @@ public class AulaProfessorActivity extends AppCompatActivity {
         finish();
     }
 
-    public void mostrarAlunos(View view){
+    public void chamarAlunosCadastrados(View view){
         Intent secondActivity = new Intent(this, AlunosCadastradosActivity.class);
         startActivity(secondActivity);
         finish();

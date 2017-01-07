@@ -109,9 +109,9 @@
                 android:layout_marginTop="38dp"
                 android:id="@+id/textViewBiografia"
                 android:textSize="15sp"
-                android:layout_alignTop="@+id/textView8"
-                android:layout_alignLeft="@+id/textView8"
-                android:layout_alignStart="@+id/textView8"
+                android:layout_alignTop="@+id/textViewPrecoAula"
+                android:layout_alignLeft="@+id/textViewPrecoAula"
+                android:layout_alignStart="@+id/textViewPrecoAula"
                 android:maxLines="3"
                 android:scrollbars="vertical"/>
 
@@ -130,7 +130,7 @@
                 android:text="Biografia:"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView8"
+                android:id="@+id/textViewPrecoAula"
                 android:textSize="15sp"
                 android:layout_marginTop="96dp"
                 android:layout_below="@+id/textViewHoras"

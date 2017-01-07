@@ -104,13 +104,8 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
                 int aulaId =Session.getAula().getId();
                 String data = this.getDateTime();
                 String TotalDeHoras = EditTextTotalDeHorasDesejadas.getText().toString();
-                try {
-                    horas = Math.round(Float.parseFloat(TotalDeHoras));
-                }catch (NumberFormatException exception){
-                    Toast.makeText(this, "Colocar um valor para horas é obrigatório", Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 String TotalMoedas =TextViewTotalDaCompra.getText().toString();
+                verificarTotalHoras(TotalDeHoras);
                 int valorPago = Math.round(Float.parseFloat(TotalMoedas));
                 if(verificarHoras()) {
                     if (verificarMoedas()) {
@@ -122,6 +117,14 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
                     toast.show();}
                 }else{Toast toast = Toast.makeText(getApplicationContext(), "Horas não disponiveis", Toast.LENGTH_SHORT);
                 toast.show();}
+    }
+
+    private void verificarTotalHoras(String totalDeHoras) {
+        try {
+            horas = Math.round(Float.parseFloat(totalDeHoras));
+        }catch (NumberFormatException exception){
+            Toast.makeText(this, "Colocar um valor para horas é obrigatório", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:id="@+id/textViewDescricao"
+            android:id="@+id/textViewDescricaoDaAula"
             android:layout_alignRight="@+id/textViewAvaliadores"
             android:layout_alignEnd="@+id/textViewAvaliadores"
             android:layout_below="@+id/toolbar" />
@@ -103,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewHoras"
-            android:layout_below="@+id/textViewDescricao"
+            android:layout_below="@+id/textViewDescricaoDaAula"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="103dp" />
