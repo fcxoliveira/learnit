@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -15,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.infra.ListaAlunoCheckboxAdapter;
+import ufrpe.edu.learnit.infra.adaptersDoProjeto.ListaAlunoCheckboxAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -26,11 +25,9 @@ import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 public class ConfirmarAulaProfessorActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     ListView listView;
     private EditText editText;
-    private ArrayAdapter<String> adapter;
     private ArrayList<Perfil> perfis;
     private ArrayList<String> nomesPerfis;
-    private ListaAlunoCheckboxAdapter lacAdapter;
-    private ArrayList<Perfil> perfisMarcados;
+    private ListaAlunoCheckboxAdapter adapterAlunoCheckbox;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,13 +37,16 @@ public class ConfirmarAulaProfessorActivity extends AppCompatActivity implements
         GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
         perfis = gerenciadorAulasTutor.retornarAlunosCadastrados(Session.getAula().getId());
         nomesPerfis = pegarNomesPerfil(perfis);
+        editText = (EditText) findViewById(R.id.editTextHorasDadas);
+        newListViewAlunosCadastrados();
+        setOnItemClickListener();
+
+    }
+    private void newListViewAlunosCadastrados() {
         listView = (ListView) findViewById(R.id.listView);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        editText = (EditText) findViewById(R.id.editTextHorasDadas);
-        setOnItemClickListener();
-        lacAdapter=new ListaAlunoCheckboxAdapter(perfis,this);
-        listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(lacAdapter);
+        adapterAlunoCheckbox =new ListaAlunoCheckboxAdapter(perfis,this);
+        listView.setAdapter(adapterAlunoCheckbox);
     }
 
     private ArrayList<String> pegarNomesPerfil(ArrayList<Perfil> perfis) {

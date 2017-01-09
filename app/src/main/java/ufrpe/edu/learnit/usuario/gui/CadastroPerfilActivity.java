@@ -34,15 +34,19 @@ public class CadastroPerfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_perfil);
         Session.setContext(getApplicationContext());
         findEditableItens();
+        newListViewTags();
+        setOnlistenerSearch();
+    }
+
+    private void newListViewTags() {
+        listViewTags = (ListView) findViewById(R.id.listViewTags);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
         listViewTags.setAdapter(adapter);
-        setOnlistenerSearch();
     }
 
     private void findEditableItens() {
         editTextNome = (EditText) findViewById(R.id.EditTextNome);
         editTextBio = (EditText) findViewById(R.id.editTextDescricao);
-        listViewTags = (ListView) findViewById(R.id.listViewTags);
         editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
         editTextBio.setMovementMethod(new ScrollingMovementMethod());
     }
@@ -77,9 +81,9 @@ public class CadastroPerfilActivity extends AppCompatActivity {
 
     public void populateListView(View v) {
         String tag = editTextTags.getText().toString();
-        if (tags.contains(tag) || tag== null) {
+        if (tags.contains(tag) || tag== null || tag=="") {
             editTextTags.requestFocus();
-            editTextTags.setError("este interesse ja foi adicionada a este perfil,ou esta vazia");
+            editTextTags.setError("este interesse ja foi adicionada a este perfil,ou o campo esta vazio");
         }else{
             tags.add(tag);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);

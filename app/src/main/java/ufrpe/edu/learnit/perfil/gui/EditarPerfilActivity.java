@@ -38,9 +38,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         int idUsuario = sessionNegocio.retornarUsuarioLogado().getID();
         PerfilNegocio perfilNegocio = new PerfilNegocio();
         Perfil perfil = perfilNegocio.retornarPerfil(idUsuario);
-        listView = (ListView) findViewById(R.id.ListViewTags);
         Session.setContext(getApplicationContext());
-        editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
         findEditablesItens();
         editItens(perfil);
         newListViewTags();
@@ -83,12 +81,13 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private void editItens(Perfil perfil) {
         editTextNome.setText(perfil.getNome());
         editTextBio.setText(perfil.getBio());
+        editTextBio.setMovementMethod(new ScrollingMovementMethod());
     }
 
     private void findEditablesItens() {
         editTextNome = (EditText) findViewById(R.id.EditTextNome);
         editTextBio = (EditText) findViewById(R.id.editTextDescricao);
-        editTextBio.setMovementMethod(new ScrollingMovementMethod());
+        editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
     }
 
     public boolean verificarNome(String nome) {
@@ -125,9 +124,9 @@ public class EditarPerfilActivity extends AppCompatActivity {
     }
     public void populateListView(View v) {
         String tag = editTextTags.getText().toString();
-        if (tags.contains(tag)){
+        if (tags.contains(tag)||tag==""||tag==null){
             editTextTags.requestFocus();
-            editTextTags.setError("Esta tag já foi adicionada à esta aula");
+            editTextTags.setError("Esta tag já foi adicionada à esta aula ou o campo esta vazio");
         }else{
             tags.add(tag);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);

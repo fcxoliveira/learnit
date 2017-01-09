@@ -33,9 +33,15 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_aula);
         Session.setContext(getApplicationContext());
         findItens();
+        newListViewTags();
+        setOnlistenerSearch();
+
+    }
+
+    private void newListViewTags() {
+        listViewTags = (ListView) findViewById(R.id.ListViewTags);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,tags);
         listViewTags.setAdapter(adapter);
-        setOnlistenerSearch();
     }
 
     private void findItens() {
@@ -44,7 +50,6 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
         editTextDescricao.setMovementMethod(new ScrollingMovementMethod());
         editTextHorasDeAula = (EditText) findViewById(R.id.TextViewHorasDeAula);
         editTextPrecoHoraAula = (EditText) findViewById(R.id.TextViewPreco);
-        listViewTags = (ListView) findViewById(R.id.ListViewTags);
         editTextTags = (AutoCompleteTextView) findViewById(R.id.editTextTag);
     }
 
@@ -128,9 +133,9 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
 
     public void populateListView(View v) {
         String tag = editTextTags.getText().toString();
-        if (tags.contains(tag)){
+        if (tags.contains(tag)|| tag=="" || tag==null){
             editTextTags.requestFocus();
-            editTextTags.setError("esta tag ja foi adicionada a esta aula");
+            editTextTags.setError("esta tag ja foi adicionada a esta aula ou o campo está vazio");
         }else{
             tags.add(tag);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);

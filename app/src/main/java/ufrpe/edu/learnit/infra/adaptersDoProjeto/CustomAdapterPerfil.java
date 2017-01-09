@@ -1,4 +1,4 @@
-package ufrpe.edu.learnit.infra;
+package ufrpe.edu.learnit.infra.adaptersDoProjeto;
 
 import android.content.Context;
 import android.os.Bundle;

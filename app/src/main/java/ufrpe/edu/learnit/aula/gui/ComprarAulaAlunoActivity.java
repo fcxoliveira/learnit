@@ -9,7 +9,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import java.util.Date;
 import java.text.DateFormat;
@@ -98,16 +98,14 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
             }
         });
     }
+
     public void confirmar(View view){
                 GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
                 int usuarioId =Session.getUsuario().getID();
                 int aulaId =Session.getAula().getId();
                 String data = this.getDateTime();
-                String TotalDeHoras = EditTextTotalDeHorasDesejadas.getText().toString();
-                String TotalMoedas =TextViewTotalDaCompra.getText().toString();
-                verificarTotalHoras(TotalDeHoras);
-                int valorPago = Math.round(Float.parseFloat(TotalMoedas));
-                if(verificarHoras()||verificarMoedas()) {
+                int valorPago = Math.round(Float.parseFloat(TextViewTotalDaCompra.getText().toString()));
+                if(verificarValorDeHoras()||verificarHorasDesejadas()||verificarMoedas() ) {
                     gerenciadorAulasAlunos.inscreverAlunoEmAula(usuarioId, aulaId, data, horas, valorPago);
                     Intent secondActivity = new Intent(this, HomeActivity.class);
                     startActivity(secondActivity);
@@ -115,12 +113,41 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
                 }
     }
 
-    private void verificarTotalHoras(String totalDeHoras) {
+    private boolean verificarValorDeHoras() {
+        String totalDeHoras = EditTextTotalDeHorasDesejadas.getText().toString();
+        boolean result = true;
         try {
             horas = Math.round(Float.parseFloat(totalDeHoras));
         }catch (NumberFormatException exception){
-            Toast.makeText(this, "Colocar um valor para horas é obrigatório", Toast.LENGTH_SHORT).show();
+            EditTextTotalDeHorasDesejadas.requestFocus();
+            EditTextTotalDeHorasDesejadas.setError("Colocar um valor para horas é obrigatório");
+            result = false;
         }
+        return result;
+    }
+
+
+    private boolean verificarMoedas(){
+        PerfilNegocio perfilNegocio = new PerfilNegocio();
+        boolean result = true;
+        int moedas =(int) Float.parseFloat(TextViewTotalDaCompra.getText().toString());
+        if(moedas>perfilNegocio.retornarPerfil(Session.getUsuario().getID()).getMoedas()){
+            TextViewTotalDaCompra.requestFocus();
+            TextViewTotalDaCompra.setError("Moedas insuficientes para realizar a compra, insira mais moedas");
+            result = false;
+        }
+        return result;
+    }
+
+    public boolean verificarHorasDesejadas(){
+        boolean result = true;
+        int horas = Integer.parseInt(EditTextTotalDeHorasDesejadas.getText().toString());
+        if(horas>Session.getAula().getHoras()||horas==0){
+            EditTextTotalDeHorasDesejadas.requestFocus();
+            EditTextTotalDeHorasDesejadas.setError("total de horas não disponiveis, insira um valor menor");
+            result = false;
+        }
+        return result;
     }
 
     @Override
@@ -132,29 +159,6 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
         Intent secondActivity = new Intent(this, HomeActivity.class);
         startActivity(secondActivity);
         finish();
-    }
-
-    private boolean verificarMoedas(){
-        PerfilNegocio perfilNegocio = new PerfilNegocio();
-        boolean result = true;
-        int moedas =(int) Float.parseFloat(TextViewTotalDaCompra.getText().toString());
-        if(moedas>perfilNegocio.retornarPerfil(Session.getUsuario().getID()).getMoedas()){
-            Toast toast = Toast.makeText(getApplicationContext(), "Moedas insuficientes", Toast.LENGTH_SHORT);
-            toast.show();
-            result = false;
-        }
-        return result;
-    }
-
-    public boolean verificarHoras(){
-        boolean result = true;
-        int horas = Integer.parseInt(EditTextTotalDeHorasDesejadas.getText().toString());
-        if(horas>Session.getAula().getHoras()||horas==0){
-            Toast toast = Toast.makeText(getApplicationContext(), "Horas não disponiveis", Toast.LENGTH_SHORT);
-            toast.show();
-            result = false;
-        }
-        return result;
     }
 
 }

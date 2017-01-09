@@ -51,6 +51,7 @@ public class PerfilActivity extends AppCompatActivity {
         textViewNome.setText(perfil.getNome());
         textViewBiografia.setText(perfil.getBio());
         ratingBar.setRating(perfil.getAvaliacao());
+        textViewBiografia.setMovementMethod(new ScrollingMovementMethod());
     }
 
     private void findEditableItens() {
@@ -60,7 +61,6 @@ public class PerfilActivity extends AppCompatActivity {
         textViewNome = (TextView) findViewById(R.id.textViewNome);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
         textViewBiografia=(TextView) findViewById(R.id.textViewBiografia);
-        textViewBiografia.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public Perfil retornarPerfil(int id){

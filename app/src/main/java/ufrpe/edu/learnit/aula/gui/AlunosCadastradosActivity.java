@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.infra.CustomAdapterPerfil;
+import ufrpe.edu.learnit.infra.adaptersDoProjeto.CustomAdapterPerfil;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;

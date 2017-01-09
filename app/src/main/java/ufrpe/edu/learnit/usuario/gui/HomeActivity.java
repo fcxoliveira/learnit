@@ -3,7 +3,6 @@ package ufrpe.edu.learnit.usuario.gui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,7 +22,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import ufrpe.edu.learnit.infra.CustomAdapter;
+import ufrpe.edu.learnit.infra.adaptersDoProjeto.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.gui.AulasCompradasActivity;
