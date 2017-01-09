@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
@@ -27,12 +29,6 @@ public class AulaAlunoActivity extends AppCompatActivity {
         AlunoAula aula= Session.getAlunoAula();
         setContentView(R.layout.activity_aula_aluno);
         Session.setContext(getApplicationContext());
-        GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
-        if(gerenciadorAulasAlunos.existeConfirmacaoRecebida()){
-            buttonConfirmar=(Button)findViewById(R.id.button4) ;
-            buttonConfirmar.setVisibility(View.VISIBLE);
-            confirmacao=gerenciadorAulasAlunos.retornarConfirmacaoRecebida();
-        }
 
         findEditableItens();
         editItens(aula);
@@ -69,24 +65,30 @@ public class AulaAlunoActivity extends AppCompatActivity {
         finish();
     }
     public void confirmar(View v){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Você confirma as "+confirmacao.getHorasConfirmadas()+" horas de aula, dita(s) pelo professor?");
-        builder.setCancelable(true);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                GerenciadorAulasAlunos gerenciadorAulasAlunos=new GerenciadorAulasAlunos();
-                gerenciadorAulasAlunos.aceitarConfirmacao(confirmacao);
-                Intent secondActivity = new Intent(getApplicationContext(),AulaAlunoActivity.class);
-                startActivity(secondActivity);
-                AulaAlunoActivity.super.finish();
+        GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
+        if (!gerenciadorAulasAlunos.existeConfirmacaoRecebida()){
+            Toast.makeText(this, "Você não tem horas para confirmar", Toast.LENGTH_LONG).show();
+            return;
+        }else{
+            confirmacao = gerenciadorAulasAlunos.retornarConfirmacaoRecebida();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Você confirma as "+confirmacao.getHorasConfirmadas()+" horas de aula, dita(s) pelo professor?");
+            builder.setCancelable(true);
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    GerenciadorAulasAlunos gerenciadorAulasAlunos=new GerenciadorAulasAlunos();
+                    gerenciadorAulasAlunos.aceitarConfirmacao(confirmacao);
+                    Intent secondActivity = new Intent(getApplicationContext(),AulaAlunoActivity.class);
+                    startActivity(secondActivity);
+                    AulaAlunoActivity.super.finish();
 
 
 
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
-
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
     }
 
 
