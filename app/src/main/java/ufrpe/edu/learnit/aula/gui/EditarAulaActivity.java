@@ -185,7 +185,9 @@ public class EditarAulaActivity extends AppCompatActivity {
             if(!tagNegocio.existeTag(tag)) {
                 tagNegocio.inserirTag(tag);
             }
-            tagNegocio.inserirRelacaoTagAula(tagNegocio.retornarTag(tag).getID());
+            if (!tagNegocio.existeRelacaoTagAula(tagNegocio.retornarTag(tag).getID())) {
+                tagNegocio.inserirRelacaoTagAula(tagNegocio.retornarTag(tag).getID());
+            }
         }
     }
 
