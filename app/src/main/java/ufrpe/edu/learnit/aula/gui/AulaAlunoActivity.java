@@ -51,7 +51,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         nomeProfessor.setText("Professor:"+"\n"+aula.getAula().getPerfil().getNome());
         avaliadores.setText("Avaliadores:"+aula.getAula().getPerfil().getAvaliadores()+"");
         nota.setText("Nota:"+"\n"+aula.getAula().getPerfil().getAvaliacao()+"");
-        descricaoAula.setText("Descrição:"+"\n"+aula.getAula().getDescricao());
+        descricaoAula.setText(aula.getAula().getDescricao());
         horasPagas.setText("Horas compradas:"+aula.getHorasTotal()+"     "+"Horas confirmadas:"+aula.getHorasConfirmadas());
         ratingBar.setRating(aula.getAula().getPerfil().getAvaliacao());
     }

@@ -28,49 +28,6 @@
             android:layout_centerHorizontal="true"
             android:textColor="@android:color/background_light" />
 
-        <TextView android:text="Nota 0,0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewRate"
-            android:layout_below="@+id/toolbar"
-            android:layout_alignBaseline="@+id/textViewAvaliadores"
-            android:layout_alignBottom="@+id/textViewAvaliadores"/>
-
-
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingBar2"
-            android:clickable="false"
-            android:numStars="5"
-            android:focusable="false"
-            android:isIndicator="true"
-            android:layout_marginBottom="19dp"
-            android:layout_above="@+id/textViewRate"
-            android:layout_centerHorizontal="true" />
-
-        <TextView android:text="Avaliadores 0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewAvaliadores"
-            android:layout_marginBottom="25dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginStart="25dp"
-            android:layout_alignLeft="@+id/ratingBar2"
-            android:layout_alignStart="@+id/ratingBar2" />
-
-        <TextView
-            android:text="Descricao"
-            android:maxLines = "5"
-            android:scrollbars = "vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/textViewDescricaoDaAula"
-            android:layout_alignRight="@+id/textViewAvaliadores"
-            android:layout_alignEnd="@+id/textViewAvaliadores"
-            android:layout_below="@+id/toolbar" />
 
         <com.github.clans.fab.FloatingActionMenu
             android:id="@+id/menu"
@@ -158,15 +115,69 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="103dp" />
 
+        <TextView
+            android:text=" Descrição aqui"
+            android:maxLines = "5"
+            android:scrollbars = "vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewDescricaoDaAula"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="21dp" />
+
+        <TextView
+            android:text="Descrição:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView2" />
+
+        <TextView android:text="Nota 0,0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewRate"
+            android:layout_alignBaseline="@+id/textViewAvaliadores"
+            android:layout_alignBottom="@+id/textViewAvaliadores"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
         <TextView android:text="Informações do professor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewNomeDoProfessor"
             android:textColor="@android:color/background_dark"
+            android:layout_marginTop="48dp"
             android:layout_below="@+id/textViewHoras"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="14dp" />
+            android:layout_alignParentStart="true" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar2"
+            android:clickable="false"
+            android:numStars="5"
+            android:focusable="false"
+            android:isIndicator="true"
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/textViewNomeDoProfessor"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView android:text="Avaliadores 0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewAvaliadores"
+            android:layout_marginTop="29dp"
+            android:layout_below="@+id/ratingBar2"
+            android:layout_toRightOf="@+id/textViewDescricaoDaAula"
+            android:layout_toEndOf="@+id/textViewDescricaoDaAula"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp" />
 
     </RelativeLayout>
 
