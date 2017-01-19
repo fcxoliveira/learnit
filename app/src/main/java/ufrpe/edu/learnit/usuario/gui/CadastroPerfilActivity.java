@@ -74,14 +74,14 @@ public class CadastroPerfilActivity extends AppCompatActivity {
         String nome =editTextNome.getText().toString();
         if(verificarNome(nome)) {
             Usuario user = Session.getUsuario();
-            SessionNegocio sessionNegocio = new SessionNegocio();
-            sessionNegocio.cadastrarUsuarioLogado(user);
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             usuarioNegocio.cadastrarUsuario(user.getLogin(), user.getSenha(), user.getEmail());
+            Session.setUsuario(usuarioNegocio.retornarUsuario(user.getLogin(), user.getSenha()));
+            SessionNegocio sessionNegocio = new SessionNegocio();
+            sessionNegocio.cadastrarUsuarioLogado(Session.getUsuario());
             PerfilNegocio perfilNegocio = new PerfilNegocio();
             perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString());
             trabalharTags();
-            Session.setUsuario(null);
             chamarHome(v);
         }
     }
