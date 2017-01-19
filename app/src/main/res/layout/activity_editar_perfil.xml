@@ -67,20 +67,6 @@
             android:layout_above="@+id/EditTextNome"
             android:layout_centerHorizontal="true" />
 
-        <Button
-            android:text="Confirmar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button3"
-            android:background="#7bc8f3"
-            android:textColor="@android:color/background_light"
-            android:onClick="confirmar"
-            android:layout_alignBottom="@+id/ListViewTags"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
         <AutoCompleteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,15 +75,7 @@
             android:hint="Tag"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            />
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/ListViewTags"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/ButtonAddTag" />
+            android:layout_alignParentStart="true" />
 
         <Button
             android:text="Add"
@@ -110,6 +88,28 @@
             android:layout_alignTop="@+id/editTextTag"
             android:layout_toRightOf="@+id/editTextTag"
             android:layout_toEndOf="@+id/editTextTag" />
+
+        <Button
+            android:text="Confirmar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:onClick="confirmar"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ListViewTags"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/ButtonAddTag"
+            android:layout_above="@+id/button3" />
 
     </RelativeLayout>
 </ScrollView>

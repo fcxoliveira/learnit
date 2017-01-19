@@ -134,12 +134,6 @@
             android:id="@+id/menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
             fab:menu_fab_size="normal"
             fab:menu_showShadow="true"
             fab:menu_shadowColor="#66000000"
@@ -173,7 +167,10 @@
             fab:menu_labels_position="left"
             fab:menu_openDirection="up"
             fab:menu_backgroundColor="@android:color/transparent"
-            fab:menu_fab_label="Fechar">
+            fab:menu_fab_label="Fechar"
+            android:layout_alignTop="@+id/textViewHoras"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
 
             <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/fabAlunos"
