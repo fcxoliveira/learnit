@@ -82,4 +82,15 @@ public class TagNegocio {
         TagPersistencia  tagPersistencia = new TagPersistencia();
         tagPersistencia.inserirRelacaoTagPerfil(idTag,Session.getUsuario().getID());
     }
+
+    public void inserirRelacaoRecomendacao(ArrayList<Tag> tags,int idPerfil){
+        TagPersistencia  tagPersistencia = new TagPersistencia();
+        for (Tag tag:tags){
+            if (tagPersistencia.existeRecomendacao(tag.getID(),idPerfil)){
+                tagPersistencia.atualizarValorRecomendacao(tag,idPerfil);
+            }else {
+                tagPersistencia.inserirValorRecomendacao(tag,idPerfil);
+            }
+        }
+    }
 }

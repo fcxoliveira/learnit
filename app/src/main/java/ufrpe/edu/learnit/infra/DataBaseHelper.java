@@ -6,10 +6,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "learnit.db";
-    private static final int DATABASE_VERSION = 31;
+    private static final int DATABASE_VERSION = 32;
     private static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
     private static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
     private static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas integer, Avaliacao real, Avaliadores integer, Horas integer);";
@@ -20,6 +21,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_CONFIRMACAO = "create table if not exists CONFIRMACAO(Id integer primary key autoincrement,IdAula integer,IdAluno integer, HorasParaConfirmar integer, Status integer);";
     private static final String TABLE_AULA_TAG = "create table if not exists AULA_TAG(IdAula integer,IdTag integer);";
     private static final String TABLE_PERFIL_TAG="create table if not exists PERFIL_TAG(IdPerfil integer,IdTag integer);";
+    private static final String TABLE_ALUNO_TAG_RECOMENDACAO="create table if not exists ALUNO_TAG_RECOMENDACAO(IdPerfil integer, IdTag integer, Valor integer);";
 
     public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
     {
@@ -37,6 +39,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_AULA_TAG);
         db.execSQL(TABLE_PERFIL_TAG);
         db.execSQL(TABLE_CONFIRMACAO);
+        db.execSQL(TABLE_ALUNO_TAG_RECOMENDACAO);
         for(String tag:TAGS) {
             populateTags(tag,db);
         }
@@ -56,6 +59,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS AULA_TAG");
         db.execSQL("DROP TABLE IF EXISTS PERFIL_TAG");
         db.execSQL("DROP TABLE IF EXISTS CONFIRMACAO");
+        db.execSQL("DROP TABLE IF EXISTS TABLE_ALUNO_TAG_RECOMENDACAO");
         onCreate(db);
     }
 

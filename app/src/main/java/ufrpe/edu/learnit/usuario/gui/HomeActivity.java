@@ -34,6 +34,7 @@ import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
+import ufrpe.edu.learnit.tag.negocio.TagNegocio;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -118,6 +119,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Object object= adapter.getItem(position);
                 Aula aula=(Aula)object;
                 Session.setAula(aula);
+                TagNegocio tagNegocio = new TagNegocio();
+                tagNegocio.inserirRelacaoRecomendacao(tagNegocio.retornarTagsAula(aula.getId()),Session.getUsuario().getID());
                 Intent secondActivity = new Intent(Session.getContext(),ComprarAulaAlunoActivity.class);
                 startActivity(secondActivity);
             }
