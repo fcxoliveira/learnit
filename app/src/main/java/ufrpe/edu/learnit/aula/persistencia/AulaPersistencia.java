@@ -44,6 +44,7 @@ public class AulaPersistencia {
         aula.setDescricao(descricao);
         aula.setValor(valor);
         Session.setAula(aula);
+        cursor.close();
         db.close();
     }
 
@@ -126,7 +127,6 @@ public class AulaPersistencia {
         Cursor cursor=db.query("AULAS", null, "Id=?",new String[]{id+""}, null, null, null);
         if (!cursor.moveToFirst()){
             result = null;
-            db.close();
         }else{
             String descricao = cursor.getString(cursor.getColumnIndex("Descricao"));
             String nome = cursor.getString(cursor.getColumnIndex("Titulo"));
@@ -134,7 +134,6 @@ public class AulaPersistencia {
             int horas = cursor.getInt(cursor.getColumnIndex("HorasDisponiveis"));
             int idPerfil = cursor.getInt(cursor.getColumnIndex("IdPerfil"));
             result = preencherDadosAula(id,nome,descricao,horas,valor,idPerfil);
-            db.close();
         }
         cursor.close();
         db.close();
@@ -188,6 +187,8 @@ public class AulaPersistencia {
         db.close();
         return result;
     }
+
+
 
 
 
