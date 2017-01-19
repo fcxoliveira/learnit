@@ -19,6 +19,7 @@ import ufrpe.edu.learnit.tag.dominio.Tag;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.tag.negocio.TagNegocio;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
+import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 
 public class CadastroPerfilActivity extends AppCompatActivity {
@@ -72,9 +73,15 @@ public class CadastroPerfilActivity extends AppCompatActivity {
     public void confirmar(View v){
         String nome =editTextNome.getText().toString();
         if(verificarNome(nome)) {
+            Usuario user = Session.getUsuario();
+            SessionNegocio sessionNegocio = new SessionNegocio();
+            sessionNegocio.cadastrarUsuarioLogado(user);
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            usuarioNegocio.cadastrarUsuario(user.getLogin(), user.getSenha(), user.getEmail());
             PerfilNegocio perfilNegocio = new PerfilNegocio();
             perfilNegocio.cadastrarPerfil(Session.getUsuario().getID(), editTextBio.getText().toString(), editTextNome.getText().toString());
             trabalharTags();
+            Session.setUsuario(null);
             chamarHome(v);
         }
     }
