@@ -88,9 +88,9 @@ public class CadastroPerfilActivity extends AppCompatActivity {
 
     public void populateListView(View v) {
         String tag = editTextTags.getText().toString();
-        if (tags.contains(tag) || tag== null || tag=="") {
+        if (tags.contains(tag) || tag.equals("")) {
             editTextTags.requestFocus();
-            editTextTags.setError("este interesse ja foi adicionada a este perfil,ou o campo esta vazio");
+            editTextTags.setError("Este interesse já foi adicionado a este perfil ou o campo está vazio");
         }else{
             tags.add(tag);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);

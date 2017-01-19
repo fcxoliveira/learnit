@@ -133,9 +133,9 @@ public class CadastrarAulaTutorActivity extends AppCompatActivity {
 
     public void populateListView(View v) {
         String tag = editTextTags.getText().toString();
-        if (tags.contains(tag)|| tag=="" || tag==null){
+        if (tags.contains(tag)|| tag.equals("")){
             editTextTags.requestFocus();
-            editTextTags.setError("esta tag ja foi adicionada a esta aula ou o campo está vazio");
+            editTextTags.setError("Esta tag já foi adicionada a esta aula ou o campo está vazio");
         }else{
             tags.add(tag);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, tags);

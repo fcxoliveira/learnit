@@ -57,7 +57,7 @@ public class EditarAulaActivity extends AppCompatActivity {
 
     public void populateListView(View v) {
         String tag = editTextTags.getText().toString();
-        if (tags.contains(tag)||tag==null||tag==""){
+        if (tags.contains(tag)|| tag.equals("")){
             editTextTags.requestFocus();
             editTextTags.setError("esta tag já foi adicionada a esta aula ou o campo está vazio");
         }else{
