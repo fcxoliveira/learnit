@@ -79,13 +79,14 @@ public class CustomAdapterAlunoAula extends ArrayAdapter<AlunoAula> implements V
 
     public String ajustarDescricao(String string){
         if (string.length()>25){
-            if (string.substring(23,23)!= " "){
-                string = string.substring(0,23)+"-\n"+string.substring(23);
-            }else {
-
-
-                string = string.substring(0, 24) + "\n" + string.substring(25);
-            }
+//            if (string.substring(23,23)!= " "){
+//                string = string.substring(0,23)+"-\n"+string.substring(23);
+//            }else {
+//
+//
+//                string = string.substring(0, 24) + "\n" + string.substring(25);
+//            }
+            string = string.substring(0,24)+"...";
         }
         return string;
     }
