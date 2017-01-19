@@ -57,7 +57,7 @@ public class ConfirmacaoPersistencia {
         return confirmacao;
     }
 
-    public ArrayList<Confirmacao> retornarTodasConfirmacoes(int idPerfil) {//retorna todas as confirmações do banco
+    public ArrayList<Confirmacao> retornarTodasConfirmacoes(int idPerfil) {//retorna todas as confirmações do banco relacionadas ao perfil
         ArrayList<Confirmacao> confirmacoes = new ArrayList<Confirmacao>();
         db = dbHelper.getReadableDatabase();
         Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdPerfil=?", new String[]{"0",idPerfil+""}, null, null, null);
@@ -79,7 +79,16 @@ public class ConfirmacaoPersistencia {
             return false;
         }
     }
-
+    public boolean confirmacaoPendente(int idAluno){ //checar se o professor ja enviou uma confirmação
+        int idAula=Session.getAula().getId();
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        if(cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public Confirmacao retornarConfirmacaoRecebida(){//recuperar a confirmação do banco
         db = dbHelper.getReadableDatabase();
         int idAula = Session.getAlunoAula().getAula().getId();
@@ -115,15 +124,6 @@ public class ConfirmacaoPersistencia {
         db.update("CONFIRMACAO",newValues,"Id='"+idConfirmacao+"'",null);
     }
 
-    public boolean confirmacaoPendente(int idAluno){ //checar se o professor ja enviou uma confirmação
-        int idAula=Session.getAula().getId();
-        db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
-        if(cursor.moveToFirst()){
-            return true;
-        }else{
-            return false;
-        }
-    }
+
 }
 //0-enviado 1-confirmado 2-cancelado

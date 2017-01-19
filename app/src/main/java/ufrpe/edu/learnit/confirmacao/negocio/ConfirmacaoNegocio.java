@@ -19,7 +19,15 @@ public class ConfirmacaoNegocio {
     public ArrayList<Confirmacao> retornarTodasConfirmacoes(int idPerfil) {
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
         return confirmacaoPersistencia.retornarTodasConfirmacoes(idPerfil);
+    }
 
+    public boolean ConfirmacaoRecebida(){
+        boolean result=false;
+        ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
+        if(confirmacaoPersistencia.existeConfirmacaoRecebida()){
+            result=true;
+        }
+        return result;
     }
     public boolean confirmacaoPendente(int idAluno){
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();

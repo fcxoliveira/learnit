@@ -16,26 +16,31 @@ import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
+import ufrpe.edu.learnit.confirmacao.negocio.ConfirmacaoNegocio;
 import ufrpe.edu.learnit.infra.dominio.Session;
 
 public class AulaAlunoActivity extends AppCompatActivity {
-    private TextView nomeAula, descricaoAula, horasPagas, nomeProfessor, avaliadores, nota;
+    private TextView nomeAula, descricaoAula, horasPagas, nomeProfessor, avaliadores, nota, avisoConfirmacao;
     RatingBar ratingBar;
-    Button buttonConfirmar;
     Confirmacao confirmacao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AlunoAula aula= Session.getAlunoAula();
+        ConfirmacaoNegocio confirmacaoNegocio = new ConfirmacaoNegocio();
+        if (confirmacaoNegocio.ConfirmacaoRecebida()){
+            avisoConfirmacao.setVisibility(View.VISIBLE);
+        }
+
         setContentView(R.layout.activity_aula_aluno);
         Session.setContext(getApplicationContext());
-
         findEditableItens();
         editItens(aula);
 
     }
 
     private void findEditableItens() {
+        avisoConfirmacao=(TextView)findViewById(R.id.textViewConfimacao);
         nomeAula = (TextView)findViewById(R.id.textViewNome);
         nomeProfessor = (TextView)findViewById(R.id.textViewNomeDoProfessor);
         avaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
@@ -72,7 +77,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         }else{
             confirmacao = gerenciadorAulasAlunos.retornarConfirmacaoRecebida();
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Você confirma as "+confirmacao.getHorasConfirmadas()+" horas de aula, dita(s) pelo professor?");
+            builder.setMessage("Você confirma as "+confirmacao.getHorasConfirmadas()+" horas de aula, enviadas pelo professor?");
             builder.setCancelable(true);
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
@@ -80,6 +85,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
                     gerenciadorAulasAlunos.aceitarConfirmacao(confirmacao);
                     Intent secondActivity = new Intent(getApplicationContext(),AulaAlunoActivity.class);
                     startActivity(secondActivity);
+                    avisoConfirmacao.setVisibility(View.INVISIBLE);
                     AulaAlunoActivity.super.finish();
 
 

@@ -145,7 +145,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <TextView android:text="Informações do professor"
+        <TextView android:text="Informações do professor:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewNomeDoProfessor"
@@ -178,6 +178,18 @@
             android:layout_toEndOf="@+id/textViewDescricaoDaAula"
             android:layout_marginLeft="12dp"
             android:layout_marginStart="12dp" />
+
+        <TextView
+            android:text="Confirmação de aula pendente"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewRate"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="57dp"
+            android:id="@+id/textViewConfimacao"
+            android:textColor="@android:color/holo_red_dark" />
 
     </RelativeLayout>
 
