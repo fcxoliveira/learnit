@@ -7,7 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,22 +28,21 @@ public class AulaAlunoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         AlunoAula aula= Session.getAlunoAula();
         ConfirmacaoNegocio confirmacaoNegocio = new ConfirmacaoNegocio();
-        if (confirmacaoNegocio.ConfirmacaoRecebida()){
-            avisoConfirmacao.setVisibility(View.VISIBLE);
-        }
-
         setContentView(R.layout.activity_aula_aluno);
         Session.setContext(getApplicationContext());
         findEditableItens();
         editItens(aula);
-
+        if (confirmacaoNegocio.ConfirmacaoRecebida()){
+            avisoConfirmacao.setVisibility(View.VISIBLE);
+            avisoConfirmacao.setError("");
+        }
     }
 
     private void findEditableItens() {
         avisoConfirmacao=(TextView)findViewById(R.id.textViewConfimacao);
         nomeAula = (TextView)findViewById(R.id.textViewNome);
         nomeProfessor = (TextView)findViewById(R.id.textViewNomeDoProfessor);
-        avaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
+        //avaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
         nota = (TextView)findViewById(R.id.textViewRate);
         descricaoAula = (TextView)findViewById(R.id.textViewDescricaoDaAula);
         horasPagas = (TextView)findViewById(R.id.textViewHoras);
@@ -54,7 +53,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
     private void editItens(AlunoAula aula) {
         nomeAula.setText(aula.getAula().getTitulo());
         nomeProfessor.setText("Professor:"+"\n"+aula.getAula().getPerfil().getNome());
-        avaliadores.setText("Avaliadores:"+aula.getAula().getPerfil().getAvaliadores()+"");
+        //avaliadores.setText("Avaliadores:"+aula.getAula().getPerfil().getAvaliadores()+"");
         nota.setText("Nota:"+"\n"+aula.getAula().getPerfil().getAvaliacao()+"");
         descricaoAula.setText(aula.getAula().getDescricao());
         horasPagas.setText("Horas compradas:"+aula.getHorasTotal()+"     "+"Horas confirmadas:"+aula.getHorasConfirmadas());
@@ -62,31 +61,35 @@ public class AulaAlunoActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed(){
-        carregarHome();
+        carregarAulasCompradas();
     }
-    public void carregarHome() {
+
+    public void carregarAulasCompradas() {
         Intent secondActivity = new Intent(this, AulasCompradasActivity.class);
         startActivity(secondActivity);
         finish();
     }
+
     public void confirmar(View v){
         GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
         if (!gerenciadorAulasAlunos.existeConfirmacaoRecebida()){
-            Toast.makeText(this, "Você não tem horas para confirmar", Toast.LENGTH_LONG).show();
-            return;
+            Toast.makeText(this, "Você não tem horas aula para confirmar", Toast.LENGTH_LONG).show();
         }else{
             confirmacao = gerenciadorAulasAlunos.retornarConfirmacaoRecebida();
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Você confirma as "+confirmacao.getHorasConfirmadas()+" horas de aula, enviadas pelo professor?");
+            builder.setMessage("Você confirma as "+confirmacao.getHorasConfirmadas()+" horas de aula, dadas pelo professor?");
             builder.setCancelable(true);
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
+                    AlunoAula aula= Session.getAlunoAula();
                     GerenciadorAulasAlunos gerenciadorAulasAlunos=new GerenciadorAulasAlunos();
                     gerenciadorAulasAlunos.aceitarConfirmacao(confirmacao);
-                    Intent secondActivity = new Intent(getApplicationContext(),AulaAlunoActivity.class);
-                    startActivity(secondActivity);
                     avisoConfirmacao.setVisibility(View.INVISIBLE);
-                    AulaAlunoActivity.super.finish();
+                    int novoTotalConfirmado=aula.getHorasConfirmadas()+confirmacao.getHorasConfirmadas();
+                    horasPagas.setText("Horas compradas:"+aula.getHorasTotal()+"     "+"Horas confirmadas:"+novoTotalConfirmado);
+                    //Intent secondActivity = new Intent(getApplicationContext(),AulaAlunoActivity.class);
+                    //startActivity(secondActivity);
+                    //AulaAlunoActivity.super.finish();
 
 
 

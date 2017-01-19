@@ -176,8 +176,8 @@ public class TagPersistencia {
     public boolean existeRecomendacao(int idPerfil,int idTag){
         db=dbHelper.getWritableDatabase();
         Cursor cursor=db.query("ALUNO_TAG_RECOMENDACAO",new String[]{"*"},"IdPerfil=? AND IdTag=?",new String[]{idPerfil+"",idTag+""},null ,null, null);
-        db.close();
-        cursor.close();
+        //db.close();
+        //cursor.close();
         return cursor.moveToFirst();
 
     }

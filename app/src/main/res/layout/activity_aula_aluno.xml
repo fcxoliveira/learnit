@@ -140,15 +140,6 @@
             android:layout_alignParentStart="true"
             android:id="@+id/textView2" />
 
-        <TextView android:text="Nota 0,0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewRate"
-            android:layout_alignBaseline="@+id/textViewAvaliadores"
-            android:layout_alignBottom="@+id/textViewAvaliadores"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
         <TextView android:text="Informações do professor:"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -172,17 +163,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <TextView android:text="Avaliadores 0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewAvaliadores"
-            android:layout_marginTop="29dp"
-            android:layout_below="@+id/ratingBar2"
-            android:layout_toRightOf="@+id/textViewDescricaoDaAula"
-            android:layout_toEndOf="@+id/textViewDescricaoDaAula"
-            android:layout_marginLeft="12dp"
-            android:layout_marginStart="12dp" />
-
         <TextView
             android:text="Confirmação de aula pendente"
             android:visibility="invisible"
@@ -194,6 +174,15 @@
             android:layout_marginTop="57dp"
             android:id="@+id/textViewConfimacao"
             android:textColor="@android:color/holo_red_dark" />
+
+        <TextView android:text="Nota 0,0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewRate"
+            android:layout_below="@+id/ratingBar2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
 
     </RelativeLayout>
 

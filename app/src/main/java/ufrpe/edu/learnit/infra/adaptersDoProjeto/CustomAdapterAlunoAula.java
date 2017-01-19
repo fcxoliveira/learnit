@@ -66,7 +66,7 @@ public class CustomAdapterAlunoAula extends ArrayAdapter<AlunoAula> implements V
         String descricao = ajustarDescricao(aulaAluno.getAula().getDescricao());
         viewHolder.name.setText(titulo);
         viewHolder.horasCompradas.setText(aulaAluno.getHorasConfirmadas()+"");
-        viewHolder.description.setText(descricao);
+        viewHolder.description.setText("\n" +descricao);
         viewHolder.horasTotaisCompradas.setText(aulaAluno.getHorasTotal()+"");
         return convertView;
     }
