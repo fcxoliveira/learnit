@@ -172,21 +172,39 @@ public class AulaPersistencia {
         db = dbHelper.getReadableDatabase();
         ArrayList<AlunoAula> result = new ArrayList<>();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        Perfil perfilAluno=perfilPersistencia.retornarPerfil(idAluno);
         Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfilAluno = ?",new String[] {idAluno+""},null ,null, null);
         while (cursor.moveToNext()){
-            AlunoAula alunoAula = new AlunoAula();
-            alunoAula.setPerfil(perfilPersistencia.retornarPerfil(idAluno));
-            alunoAula.setAula(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));
-            alunoAula.setDate(cursor.getString(cursor.getColumnIndex("Date")));
-            alunoAula.setHorasTotal(cursor.getInt(cursor.getColumnIndex("HorasCompradas")));
-            alunoAula.setValorTotal(cursor.getInt(cursor.getColumnIndex("ValorPago")));
-            alunoAula.setHorasConfirmadas(cursor.getInt(cursor.getColumnIndex("HorasConfirmadas")));
+            AlunoAula alunoAula = preencherAlunoAula(perfilAluno, cursor);
             result.add(alunoAula);
         }
         cursor.close();
         db.close();
         return result;
     }
+
+    private AlunoAula preencherAlunoAula(Perfil perfilAluno, Cursor cursor) {
+        AlunoAula alunoAula = new AlunoAula();
+        alunoAula.setId(cursor.getInt(cursor.getColumnIndex("Id")));
+        alunoAula.setPerfil(perfilAluno);
+        alunoAula.setAula(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));
+        alunoAula.setDate(cursor.getString(cursor.getColumnIndex("Date")));
+        alunoAula.setHorasTotal(cursor.getInt(cursor.getColumnIndex("HorasCompradas")));
+        alunoAula.setValorTotal(cursor.getInt(cursor.getColumnIndex("ValorPago")));
+        alunoAula.setHorasConfirmadas(cursor.getInt(cursor.getColumnIndex("HorasConfirmadas")));
+        return alunoAula;
+    }
+
+    public AlunoAula retornarAlunoAula(int idAlunoAula){
+        db=dbHelper.getReadableDatabase();
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"Id = ?",new String[] {idAlunoAula+""},null ,null, null);
+        int idAluno = cursor.getInt(cursor.getColumnIndex("IdPerfilAluno"));
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        Perfil perfilAluno =perfilPersistencia.retornarPerfil(idAluno);
+        AlunoAula alunoAula = preencherAlunoAula(perfilAluno, cursor);
+        return alunoAula;
+    }
+
 
 
 

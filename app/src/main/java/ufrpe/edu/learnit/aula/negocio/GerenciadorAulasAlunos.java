@@ -23,6 +23,11 @@ public class GerenciadorAulasAlunos {
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         return aulaPersistencia.retornarAulasCompradas(idAluno);
     }
+    public AlunoAula retornarAlunoAula(int idAlunoAula){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        return aulaPersistencia.retornarAlunoAula(idAlunoAula);
+    }
+
     public boolean existeConfirmacaoRecebida(){
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
         return confirmacaoPersistencia.existeConfirmacaoRecebida();

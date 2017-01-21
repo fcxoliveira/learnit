@@ -3,12 +3,18 @@ package ufrpe.edu.learnit.aula.dominio;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 public class AlunoAula {
+
+    private int id;
     private Aula aula;
     private Perfil perfil;
     private String date;
     private int horasTotal;
     private int horasConfirmadas;
     private int valorTotal;
+
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 
     public int getHorasConfirmadas() {return horasConfirmadas;}
 

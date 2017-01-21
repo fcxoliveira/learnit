@@ -81,15 +81,14 @@ public class AulaAlunoActivity extends AppCompatActivity {
             builder.setCancelable(true);
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    AlunoAula aula= Session.getAlunoAula();
+                    AlunoAula alunoAula= Session.getAlunoAula();
                     GerenciadorAulasAlunos gerenciadorAulasAlunos=new GerenciadorAulasAlunos();
                     gerenciadorAulasAlunos.aceitarConfirmacao(confirmacao);
                     avisoConfirmacao.setVisibility(View.INVISIBLE);
-                    int novoTotalConfirmado=aula.getHorasConfirmadas()+confirmacao.getHorasConfirmadas();
-                    horasPagas.setText("Horas compradas:"+aula.getHorasTotal()+"     "+"Horas confirmadas:"+novoTotalConfirmado);
-                    //Intent secondActivity = new Intent(getApplicationContext(),AulaAlunoActivity.class);
-                    //startActivity(secondActivity);
-                    //AulaAlunoActivity.super.finish();
+                    Session.setAlunoAula(gerenciadorAulasAlunos.retornarAlunoAula(alunoAula.getId()));
+                    Intent secondActivity = new Intent(getApplicationContext(),AulaAlunoActivity.class);
+                    startActivity(secondActivity);
+                    AulaAlunoActivity.super.finish();
 
 
 
