@@ -85,7 +85,8 @@ public class AulaAlunoActivity extends AppCompatActivity {
                     GerenciadorAulasAlunos gerenciadorAulasAlunos=new GerenciadorAulasAlunos();
                     gerenciadorAulasAlunos.aceitarConfirmacao(confirmacao);
                     avisoConfirmacao.setVisibility(View.INVISIBLE);
-                    Session.setAlunoAula(gerenciadorAulasAlunos.retornarAlunoAula(alunoAula.getId()));
+                    AlunoAula novoAlunoAula = gerenciadorAulasAlunos.retornarAlunoAula(alunoAula.getId());
+                    Session.setAlunoAula(novoAlunoAula);
                     Intent secondActivity = new Intent(getApplicationContext(),AulaAlunoActivity.class);
                     startActivity(secondActivity);
                     AulaAlunoActivity.super.finish();
