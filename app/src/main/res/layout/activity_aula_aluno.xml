@@ -186,7 +186,7 @@
             android:isIndicator="true"
             android:layout_alignBottom="@+id/textViewConfimacao"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"\ />
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
