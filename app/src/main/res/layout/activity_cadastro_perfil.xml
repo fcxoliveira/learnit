@@ -76,14 +76,6 @@
             android:layout_alignRight="@+id/ListViewTags"
             />
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/ButtonAddTag"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/listViewTags"
-            android:layout_above="@+id/button3" />
-
         <AutoCompleteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,7 +83,6 @@
             android:id="@+id/editTextTag"
             android:hint="Tag"
             android:layout_below="@+id/editTextDescricao"
-            android:layout_above="@+id/listViewTags"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -108,6 +99,15 @@
             android:layout_toEndOf="@+id/editTextTag"
             android:layout_marginLeft="28dp"
             android:layout_marginStart="28dp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listViewTags"
+            android:layout_below="@+id/editTextTag"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/button3" />
 
     </RelativeLayout>
 </ScrollView>

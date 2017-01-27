@@ -68,26 +68,13 @@
             android:layout_alignParentStart="true" />
 
 
-        <Button
-            android:text="Add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ButtonAddTag"
-            android:background="#7bc8f3"
-            android:textColor="@android:color/background_light"
-            android:onClick="populateListView"
-            android:layout_below="@+id/TextViewHorasDeAula"
-            android:layout_toRightOf="@+id/textViewNome"
-            android:layout_toEndOf="@+id/textViewNome"
-            android:layout_marginTop="19dp" />
-
         <AutoCompleteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:id="@+id/editTextTag"
             android:hint="Tag"
-            android:layout_above="@+id/ListViewTags"
+            android:layout_below="@+id/TextViewHorasDeAula"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -126,6 +113,18 @@
             android:layout_above="@+id/button5"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <Button
+            android:text="Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ButtonAddTag"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:onClick="populateListView"
+            android:layout_below="@+id/TextViewHorasDeAula"
+            android:layout_toRightOf="@+id/textViewNome"
+            android:layout_toEndOf="@+id/textViewNome" />
 
     </RelativeLayout>
 </ScrollView>

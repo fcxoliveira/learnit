@@ -29,16 +29,80 @@
             android:textColor="@android:color/background_light" />
 
 
+        <TextView
+            android:text="Horas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewHoras"
+            android:layout_below="@+id/textViewDescricaoDaAula"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="103dp" />
+
+        <TextView
+            android:text=" Descrição aqui"
+            android:maxLines = "5"
+            android:scrollbars = "vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewDescricaoDaAula"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="21dp" />
+
+        <TextView
+            android:text="Descrição:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView2" />
+
+        <TextView android:text="Informações do professor:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewNomeDoProfessor"
+            android:textColor="@android:color/background_dark"
+            android:layout_marginTop="48dp"
+            android:layout_below="@+id/textViewHoras"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Confirmação de aula pendente"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewRate"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="57dp"
+            android:id="@+id/textViewConfimacao"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView android:text="Nota 0,0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewRate"
+            android:layout_below="@+id/textViewNomeDoProfessor"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="14dp" />
+
+        <TextView android:text="Avaliadores 0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewAvaliadores"
+            android:layout_above="@+id/textViewConfimacao"
+            android:layout_toRightOf="@+id/textView2"
+            android:layout_toEndOf="@+id/textView2" />
+
         <com.github.clans.fab.FloatingActionMenu
             android:id="@+id/menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
             fab:menu_fab_size="normal"
             fab:menu_showShadow="true"
             fab:menu_shadowColor="#66000000"
@@ -73,7 +137,10 @@
             fab:menu_openDirection="up"
             fab:menu_backgroundColor="@android:color/transparent"
             fab:menu_fab_label="Fechar"
-            android:layout_below="@+id/textViewNomeDoProfessor">
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/textViewRate">
 
             <com.github.clans.fab.FloatingActionButton
                 android:text="Confirmar"
@@ -109,47 +176,6 @@
 
         </com.github.clans.fab.FloatingActionMenu>
 
-        <TextView
-            android:text="Horas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewHoras"
-            android:layout_below="@+id/textViewDescricaoDaAula"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="103dp" />
-
-        <TextView
-            android:text=" Descrição aqui"
-            android:maxLines = "5"
-            android:scrollbars = "vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewDescricaoDaAula"
-            android:layout_below="@+id/toolbar"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="21dp" />
-
-        <TextView
-            android:text="Descrição:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/textView2" />
-
-        <TextView android:text="Informações do professor:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewNomeDoProfessor"
-            android:textColor="@android:color/background_dark"
-            android:layout_marginTop="48dp"
-            android:layout_below="@+id/textViewHoras"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -158,31 +184,9 @@
             android:numStars="5"
             android:focusable="false"
             android:isIndicator="true"
-            android:layout_marginTop="27dp"
-            android:layout_below="@+id/textViewNomeDoProfessor"
+            android:layout_alignBottom="@+id/textViewConfimacao"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text="Confirmação de aula pendente"
-            android:visibility="invisible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewRate"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="57dp"
-            android:id="@+id/textViewConfimacao"
-            android:textColor="@android:color/holo_red_dark" />
-
-        <TextView android:text="Nota 0,0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewRate"
-            android:layout_below="@+id/ratingBar2"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp" />
 
     </RelativeLayout>
 
