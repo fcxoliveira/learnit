@@ -25,6 +25,16 @@ public class GerenciadorAulasTutor {
 
     }
 
+    public boolean verificarHorasDisponiveis(int idAula, int idAluno,int horasParaConfirmar){
+        boolean result = true;
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        int horasDisponoveis= aulaPersistencia.retornarHorasRestantes(idAula, idAluno);
+        if (horasDisponoveis< horasParaConfirmar){
+            result=false;
+        }
+        return result;
+    }
+
     public Aula retornarAula(int id){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         return aulaPersistencia.retornarAula(id);

@@ -72,15 +72,29 @@ public class ConfirmarAulaProfessorActivity extends AppCompatActivity implements
     }
 
     public void confirmar(View view) {
-        ConfirmacaoNegocio confirmacaoNegocio = new ConfirmacaoNegocio();
+
         if (perfis.isEmpty())
             Toast.makeText(this, "Não é possível confirmar horas sem ter alunos", Toast.LENGTH_SHORT).show();
+        ConfirmacaoNegocio confirmacaoNegocio = new ConfirmacaoNegocio();
+        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
+        int idAula= Session.getAula().getId();
+        int horasParaConfirmar = Integer.parseInt(editText.getText().toString());
         for(Perfil perfil:perfis) {
-            if (perfil.isSelected()) {
-                confirmacaoNegocio.enviarConfirmacao(Session.getAula().getId(), perfil.getId(), Integer.parseInt(editText.getText().toString()), 0);
+            int idAluno=perfil.getId();
+            if (perfil.isSelected()&& !checarConfirmaçãoPendente(perfil.getId()) && gerenciadorAulasTutor.verificarHorasDisponiveis(idAula,idAluno,horasParaConfirmar)) {
+                confirmacaoNegocio.enviarConfirmacao(Session.getAula().getId(), perfil.getId(), horasParaConfirmar, 0);
                 chamarHome(view);
             }
         }
+    }
+
+    public boolean checarConfirmaçãoPendente(int idAluno){
+        boolean result=false;
+        ConfirmacaoNegocio confirmacaoNegocio = new ConfirmacaoNegocio();
+        if(confirmacaoNegocio.confirmacaoPendente(idAluno)){
+            result=true;
+        }
+        return result;
     }
 
     public void chamarHome(View view) {

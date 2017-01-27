@@ -195,6 +195,7 @@ public class AulaPersistencia {
         return alunoAula;
     }
 
+
     public AlunoAula retornarAlunoAula(int idAlunoAula){
         db=dbHelper.getReadableDatabase();
         Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"Id = ?",new String[] {idAlunoAula+""},null ,null, null);
@@ -205,7 +206,22 @@ public class AulaPersistencia {
         return alunoAula;
     }
 
+    public AlunoAula retornarAlunoAula2 (int idAluno, int idAula){
+        db=dbHelper.getReadableDatabase();
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfilAluno = ? AND IdAula= ?" ,new String[] {idAluno+"", idAula+""},null ,null, null);
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        Perfil perfilAluno =perfilPersistencia.retornarPerfil(idAluno);
+        AlunoAula alunoAula = preencherAlunoAula(perfilAluno, cursor);
+        return alunoAula;
+    }
 
+    public int retornarHorasRestantes (int idAula, int idAluno){
+        AlunoAula alunoAula = retornarAlunoAula2(idAluno , idAula);
+        int horasconfirmadas = alunoAula.getHorasConfirmadas();
+        int horasTotal = alunoAula.getHorasTotal();
+        int horasDisponiveis = horasTotal-horasconfirmadas;
+        return horasDisponiveis;
+    }
 
 
 
