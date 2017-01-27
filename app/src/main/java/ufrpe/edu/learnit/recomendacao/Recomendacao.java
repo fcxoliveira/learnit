@@ -68,8 +68,8 @@ public class Recomendacao {
                 freqs.put(usuario2, aux2);
             }
         }
-        Map<Usuario, Map<Usuario, Float>> resultado;
-        resultado =
+        Map<Usuario, Map<Usuario, Float>> resultado = new HashMap<>();
+        return resultado;
     }
 
 }
