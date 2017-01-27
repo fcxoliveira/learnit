@@ -45,9 +45,31 @@ public class Recomendacao {
             Map<Usuario, Float> valor = diferenca.get(usuario3);
             for (Usuario usuario4: valor.keySet()) {
                 Float calculo = valor.get(usuario4);
-                calculo/= frequencia.get(usuario3).get(usuario4);
+                calculo /= frequencia.get(usuario3).get(usuario4);
             }
         }
+    }
+
+    public Map<Usuario, Map<Usuario, Float>> predizer(HashMap<Usuario, Float> avaliacaoUsuario){
+        Map<Usuario, Float> preds = new HashMap<>();
+        Map<Usuario, Integer> freqs = new HashMap<>();
+        for (Usuario usuario : avaliacaoUsuario.keySet()) {
+            Float nota = avaliacaoUsuario.get(usuario);
+            for (Usuario usuario2 : this.diferenca.keySet()) {
+                Map<Usuario, Float> valor = this.diferenca.get(usuario2);
+                int freq = this.frequencia.get(usuario2).get(usuario);
+                preds.put(usuario2, 0.0f);
+                freqs.put(usuario2, 0);
+                Float aux1 = preds.get(usuario2);
+                aux1 += freq * (valor.get(usuario) + nota);
+                preds.put(usuario2, aux1);
+                Integer aux2 = freqs.get(usuario2);
+                aux2++;
+                freqs.put(usuario2, aux2);
+            }
+        }
+        Map<Usuario, Map<Usuario, Float>> resultado;
+        resultado =
     }
 
 }
