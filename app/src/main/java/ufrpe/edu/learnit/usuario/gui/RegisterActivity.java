@@ -94,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
         if(verificarLogin(login) && verificarSenha(senha) && verificarEmail(email)){
             //UsuarioNegocio negocio = new UsuarioNegocio();
             //Usuario usuario = negocio.cadastrarUsuario(login, senha, email);
-            if (usuarioNegocio.retornarUsuario(login, senha) != null){
+            if ((usuarioNegocio.retornarUsuario(login, senha) != null) && (usuarioNegocio.retornarUsuarioPorEmail(email) != null)){
                 Toast.makeText(context, "Login ou e-mail não disponível, tente novamente!", Toast.LENGTH_LONG).show();
             }else{
                 Usuario usuario = new Usuario();
@@ -102,8 +102,6 @@ public class RegisterActivity extends AppCompatActivity {
                 usuario.setSenha(senha);
                 usuario.setEmail(email);
                 Session.setUsuario(usuario);
-                //SessionNegocio sessionNegocio = new SessionNegocio();
-                //sessionNegocio.cadastrarUsuarioLogado(usuario);
                 chamarTelaInteresses(v);
                 this.finish();
             }

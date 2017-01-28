@@ -64,6 +64,12 @@ public class AulaAlunoActivity extends AppCompatActivity {
         carregarAulasCompradas();
     }
 
+    public void comprarMaisHoras(View view){
+        Intent intent = new Intent(this, ComprarAulaAlunoActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void carregarAulasCompradas() {
         Intent secondActivity = new Intent(this, AulasCompradasActivity.class);
         startActivity(secondActivity);

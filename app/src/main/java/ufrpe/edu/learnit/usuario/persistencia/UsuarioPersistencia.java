@@ -20,6 +20,13 @@ public class UsuarioPersistencia {
 
     }
 
+    public Usuario retornarUsuarioPorEmail(String email){
+        /*
+        * João programa aqui cuzaum
+        */
+        Usuario usuario = new Usuario();
+        return usuario;
+    }
 
     public Usuario cadastrarUsuario(String login, String senha, String email){
         db = dbHelper.getWritableDatabase();

@@ -25,4 +25,9 @@ public class UsuarioNegocio {
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
         usuarioPersistencia.excluirUsuario(usuario.getLogin());
     }
+
+    public Usuario retornarUsuarioPorEmail(String email){
+        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
+        return usuarioPersistencia.retornarUsuarioPorEmail(email);
+    }
 }
