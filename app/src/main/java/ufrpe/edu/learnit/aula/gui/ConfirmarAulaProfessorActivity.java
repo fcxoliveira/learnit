@@ -45,7 +45,7 @@ public class ConfirmarAulaProfessorActivity extends AppCompatActivity implements
     private void newListViewAlunosCadastrados() {
         listView = (ListView) findViewById(R.id.listView);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        adapterAlunoCheckbox =new ListaAlunoCheckboxAdapter(perfis,this);
+        adapterAlunoCheckbox =new ListaAlunoCheckboxAdapter(perfis,this,Session.getAula().getId());
         listView.setAdapter(adapterAlunoCheckbox);
     }
 

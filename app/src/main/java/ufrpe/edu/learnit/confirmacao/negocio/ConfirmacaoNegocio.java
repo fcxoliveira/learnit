@@ -34,4 +34,7 @@ public class ConfirmacaoNegocio {
         return confirmacaoPersistencia.confirmacaoPendente(idAluno);
     }
 
+    public ArrayList<Confirmacao> retornarConfimacoesCanceladas(int idAula) {
+        return null;
+    }
 }
