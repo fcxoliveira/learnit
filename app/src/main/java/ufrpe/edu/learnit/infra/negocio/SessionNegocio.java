@@ -30,4 +30,19 @@ public class SessionNegocio {
         SessionPersistencia sessionPersistencia = new SessionPersistencia();
         sessionPersistencia.excluirUsuarioLogado(Session.getUsuario().getID());
     }
+
+    public void newRating(int idPerfil ,int idItem ,float rate){
+        SessionPersistencia sessionPersistencia = new SessionPersistencia();
+        sessionPersistencia.newRating(idPerfil,idItem,rate);
+    }
+    public void updateRating(int idPerfil ,int idItem ,float rate){
+        SessionPersistencia sessionPersistencia = new SessionPersistencia();
+        sessionPersistencia.updateRating(idPerfil,idItem,rate);
+    }
+    public float retornarRating(int idPerfil ,int idItem ,float rate){
+        SessionPersistencia sessionPersistencia = new SessionPersistencia();
+        float rating = sessionPersistencia.retornarRating(idPerfil,idItem,rate);
+        return rating;
+    }
+
 }

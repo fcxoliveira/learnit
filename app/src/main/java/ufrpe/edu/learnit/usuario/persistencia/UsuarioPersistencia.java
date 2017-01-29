@@ -21,11 +21,17 @@ public class UsuarioPersistencia {
     }
 
     public Usuario retornarUsuarioPorEmail(String email){
-        /*
-        * João programa aqui cuzaum
-        */
-        Usuario usuario = new Usuario();
-        return usuario;
+        db=dbHelper.getReadableDatabase();
+        Cursor cursor=db.query("USER",new String[]{"*"}, "Email=?", new String[]{email},null ,null, null);
+        if (cursor.moveToFirst()) {
+            int id = cursor.getInt(cursor.getColumnIndex("Id"));
+            String login = cursor.getString(cursor.getColumnIndex("Username"));
+            String senha = cursor.getString(cursor.getColumnIndex("Password"));
+            Usuario usuario = preencherDadosUsuario(login, senha, email);
+            usuario.setID(id);
+            return usuario;
+        }
+        return null;
     }
 
     public Usuario cadastrarUsuario(String login, String senha, String email){
@@ -52,6 +58,7 @@ public class UsuarioPersistencia {
         db.close();
         return numeroDeEntradasDeletadas;
     }
+
 
     public Usuario retornarUsuario(String userName, String password){
         db = dbHelper.getReadableDatabase();

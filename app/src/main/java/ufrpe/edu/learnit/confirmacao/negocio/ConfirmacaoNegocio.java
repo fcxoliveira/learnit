@@ -35,6 +35,8 @@ public class ConfirmacaoNegocio {
     }
 
     public ArrayList<Confirmacao> retornarConfimacoesCanceladas(int idAula) {
-        return null;
+        ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
+        ArrayList<Confirmacao> confirmacoesCanceladas = confirmacaoPersistencia.retornarConfimacoesCanceladas(idAula);
+        return confirmacoesCanceladas;
     }
 }

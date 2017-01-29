@@ -57,6 +57,21 @@ public class ConfirmacaoPersistencia {
         return confirmacao;
     }
 
+    public ArrayList<Confirmacao> retornarConfimacoesCanceladas(int idAula){
+        ArrayList<Confirmacao> confirmacoes = new ArrayList<Confirmacao>();
+        db=dbHelper.getReadableDatabase();
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAula=? AND IdAula=?", new String[]{"2",idAula+"",idAula+""}, null, null, null);
+        while(cursor.moveToNext()){
+            int id = cursor.getInt(cursor.getColumnIndex("Id"));
+            int horasConfirmadas = cursor.getInt(cursor.getColumnIndex("HorasParaConfirmar"));
+            int status = cursor.getInt(cursor.getColumnIndex("Status"));
+            int idAluno = cursor.getInt(cursor.getColumnIndex("IdAluno"));
+            Confirmacao confirmacao = preencherConfirmacao(idAula, idAluno,horasConfirmadas, status);
+            confirmacoes.add(confirmacao);
+        }
+        return confirmacoes;
+    }
+
     public ArrayList<Confirmacao> retornarTodasConfirmacoes(int idPerfil) {//retorna todas as confirmações do banco relacionadas ao perfil
         ArrayList<Confirmacao> confirmacoes = new ArrayList<Confirmacao>();
         db = dbHelper.getReadableDatabase();
