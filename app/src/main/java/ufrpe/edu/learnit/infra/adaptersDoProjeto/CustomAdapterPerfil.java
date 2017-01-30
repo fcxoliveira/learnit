@@ -20,6 +20,7 @@ import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 public class CustomAdapterPerfil extends ArrayAdapter<Perfil> implements View.OnClickListener {
 
+    private  int idAula;
     private ArrayList<Perfil> perfis;
     Context mContext;
     int layout, view;
@@ -45,6 +46,12 @@ public class CustomAdapterPerfil extends ArrayAdapter<Perfil> implements View.On
         this.mContext = context;
         this.layout = layout;
         this.view = view;
+    }
+    public CustomAdapterPerfil(ArrayList<Perfil> perfis, Context context, int idAula) {
+        super(context, R.layout.textview_adapter_perfil, perfis);
+        this.perfis = perfis;
+        this.mContext=context;
+        this.idAula = idAula;
     }
 
     @Override

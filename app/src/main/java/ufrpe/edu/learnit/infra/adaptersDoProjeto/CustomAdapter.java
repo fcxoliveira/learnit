@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
+import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
+import ufrpe.edu.learnit.confirmacao.negocio.ConfirmacaoNegocio;
 
 public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickListener{
 
@@ -40,7 +42,8 @@ public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickLis
     public View getView(int position, View convertView, ViewGroup parent) {
         Aula aula = getItem(position);
         ViewHolder viewHolder;
-
+        ConfirmacaoNegocio confirmacaoNegocio = new ConfirmacaoNegocio();
+        ArrayList<Confirmacao> confirmacaos = confirmacaoNegocio.retornarConfimacoesCanceladas(aula.getId());
 
         if (convertView == null) {
             viewHolder = new ViewHolder();
@@ -63,6 +66,9 @@ public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickLis
         viewHolder.price.setText(String.valueOf(aula.getValor()));
         viewHolder.description.setText(descricao);
         viewHolder.time.setText(String.valueOf(aula.getHoras()));
+        if (confirmacaos!=null){
+            viewHolder.name.setError("Há confirmações canceladas para essa aula");
+        }
         return convertView;
     }
 
