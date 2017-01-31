@@ -63,7 +63,6 @@ public class ListaAlunoCheckboxAdapter extends ArrayAdapter {
             holder.nomeAluno.setText(perfil.getNome());
             holder.checkbox.setChecked(perfil.isSelected());
             holder.checkbox.setTag(perfil);
-            return v;
         }
         else {
             holder.nomeAluno.setText(perfil.getNome());
@@ -74,7 +73,8 @@ public class ListaAlunoCheckboxAdapter extends ArrayAdapter {
                     holder.nomeAluno.setError("Confirmação Cancelada");
                 }
             }
-            return v;
+
         }
+        return v;
     }
 }

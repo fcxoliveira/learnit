@@ -12,6 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
+import ufrpe.edu.learnit.confirmacao.negocio.ConfirmacaoNegocio;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 
 /**
@@ -34,10 +36,11 @@ public class CustomAdapterPerfil extends ArrayAdapter<Perfil> implements View.On
         TextView nome;
 
     }
-    public CustomAdapterPerfil(ArrayList<Perfil> perfis, Context context) {
+    public CustomAdapterPerfil(ArrayList<Perfil> perfis, Context context, int idAula) {
         super(context, R.layout.textview_adapter_perfil, perfis);
         this.perfis = perfis;
         this.mContext=context;
+        this.idAula = idAula;
     }
 
     public CustomAdapterPerfil(ArrayList<Perfil> perfis, Context context, int layout, int view){
@@ -47,18 +50,13 @@ public class CustomAdapterPerfil extends ArrayAdapter<Perfil> implements View.On
         this.layout = layout;
         this.view = view;
     }
-    public CustomAdapterPerfil(ArrayList<Perfil> perfis, Context context, int idAula) {
-        super(context, R.layout.textview_adapter_perfil, perfis);
-        this.perfis = perfis;
-        this.mContext=context;
-        this.idAula = idAula;
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Perfil perfil = getItem(position);
         ViewHolder viewHolder;
-
+        ConfirmacaoNegocio confirmacaoNegocio = new ConfirmacaoNegocio();
+        ArrayList<Confirmacao> confirmacaos = confirmacaoNegocio.retornarConfimacoesCanceladas(idAula);
 
         if (convertView == null) {
 
@@ -72,9 +70,19 @@ public class CustomAdapterPerfil extends ArrayAdapter<Perfil> implements View.On
             viewHolder = (ViewHolder) convertView.getTag();
 
         }
-
-        String nomePerfil = perfil.getNome();
-        viewHolder.nome.setText(nomePerfil);
+        if (confirmacaos==null){
+            String nomePerfil = perfil.getNome();
+            viewHolder.nome.setText(nomePerfil);
+        }
+        else {
+            String nomePerfil = perfil.getNome();
+            viewHolder.nome.setText(nomePerfil);
+            for (Confirmacao confirmacao:confirmacaos) {
+                if (confirmacao.getIdAluno()== perfil.getId()){
+                    viewHolder.nome.setError("Confirmação Cancelada");
+                }
+            }
+        }
         return convertView;
     }
 
