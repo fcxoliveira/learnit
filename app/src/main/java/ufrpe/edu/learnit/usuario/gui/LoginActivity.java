@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.infra.Populador;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -31,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         logarAuto(usuarioLogado);
         setContentView(R.layout.activity_login);
         findEditableItens();
+        Populador populador = new Populador();
+        populador.popularBancoDeDados();
 
     }
 

@@ -48,6 +48,30 @@ public class AulaPersistencia {
         db.close();
     }
 
+    public void cadastrarAulaPopulador(String titulo, String descricao, int duracao, int valor, int idPerfil){
+        db = dbHelper.getWritableDatabase();
+        ContentValues newValues = new ContentValues();
+        newValues.put("Titulo", titulo);
+        newValues.put("Descricao",descricao);
+        newValues.put("HorasDisponiveis",duracao+"");
+        newValues.put("Valor",valor+"");
+        newValues.put("IdPerfil",idPerfil+"");
+        db.insert("AULAS", null, newValues);
+        Cursor cursor = db.query("AULAS",new String[]{"*"},"IdPerfil = ?",new String[]{idPerfil+""},null ,null, null);
+        cursor.moveToLast();
+        Aula aula = new Aula();
+        aula.setId(cursor.getInt(cursor.getColumnIndex("Id")));
+        aula.setHoras(duracao);
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        aula.setPerfil(perfilPersistencia.retornarPerfil(idPerfil));
+        aula.setTitulo(titulo);
+        aula.setDescricao(descricao);
+        aula.setValor(valor);
+        Session.setAula(aula);
+        cursor.close();
+        db.close();
+    }
+
     private Aula preencherDadosAula(int id, String titulo, String descricao, int duracao, int valor, int IdPerfil){
         Aula aula = new Aula();
         aula.setId(id);
