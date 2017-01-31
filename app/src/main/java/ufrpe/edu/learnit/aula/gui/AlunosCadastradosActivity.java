@@ -38,7 +38,7 @@ public class AlunosCadastradosActivity extends AppCompatActivity {
 
     private void newListViewAlunosCadastrados(int idAula) {
         ArrayList<Perfil> perfis =getAlunosCadastrados(idAula);
-        adapter = new CustomAdapterPerfil(perfis,getApplicationContext());
+        adapter = new CustomAdapterPerfil(perfis,getApplicationContext(),idAula);
         listView = (ListView) findViewById(R.id.listViewAlunosCadastrados);
         listView.setAdapter(adapter);
         setOnItemClickListener();
