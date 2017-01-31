@@ -8,7 +8,7 @@ import ufrpe.edu.learnit.tag.persistencia.TagPersistencia;
 import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
 /**
- * Created by silva on 30/01/2017.
+ * Created by silva and Felipe Morais on 30/01/2017.
  */
 
 public class Populador {

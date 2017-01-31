@@ -6,17 +6,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
+import static android.R.attr.version;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "learnit.db";
-    private static final int DATABASE_VERSION = 34;
-    private static final String TABLE_RATE = "create table IF NOT EXISTS RATE (IdPerfil integer, IdItem integer, Rating real);";
+    private static final int DATABASE_VERSION = 33;
     private static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
     private static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
     private static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas integer, Avaliacao real, Avaliadores integer, Horas integer);";
     private static final String TABLE_TAGS = "create table IF NOT EXISTS TAGS (Id integer primary key autoincrement, Tag text);";
-    private static final String TABLE_AULAS = "create table if not exists AULAS(Id integer primary key autoincrement, Titulo text, Descricao text, Valor integer, IdPerfil integer, HorasDisponiveis integer);";
+    private static final String TABLE_AULAS = "create table if not exists AULAS   (Id integer primary key autoincrement, Titulo text, Descricao text, Valor integer, IdPerfil integer, HorasDisponiveis integer);";
     private static final ArrayList<String> TAGS = new ArrayList<>(Arrays.asList("Informatica", "Musica", "Portugues", "Matematica", "Biologia", "Fisica", "Quimica", "Ed. Fisica"));
     private static final String TABLE_ALUNO_AULA = "create table if not exists ALUNO_AULA(Id integer primary key autoincrement, IdPerfilAluno integer, IdAula integer, Date text, HorasCompradas integer, ValorPago integer, HorasConfirmadas integer);";
     private static final String TABLE_CONFIRMACAO = "create table if not exists CONFIRMACAO(Id integer primary key autoincrement,IdAula integer,IdAluno integer, HorasParaConfirmar integer, Status integer);";
@@ -28,6 +29,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
+
+    
+
+
     @Override
     public void onCreate(SQLiteDatabase db)
     {
@@ -41,7 +46,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_PERFIL_TAG);
         db.execSQL(TABLE_CONFIRMACAO);
         db.execSQL(TABLE_ALUNO_TAG_RECOMENDACAO);
-        db.execSQL(TABLE_RATE);
         for(String tag:TAGS) {
             populateTags(tag,db);
         }
@@ -62,14 +66,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS PERFIL_TAG");
         db.execSQL("DROP TABLE IF EXISTS CONFIRMACAO");
         db.execSQL("DROP TABLE IF EXISTS TABLE_ALUNO_TAG_RECOMENDACAO");
-        db.execSQL("DROP TABLE IF EXISTS RATE");
+
         onCreate(db);
+
     }
 
     private void populateTags(String tag, SQLiteDatabase db){
         String PopulateTags = "INSERT INTO TAGS (Tag) values ('"+ tag +"');";
         db.execSQL(PopulateTags);
     }
+
+
 
 }
 
