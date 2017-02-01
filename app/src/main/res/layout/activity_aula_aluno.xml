@@ -19,6 +19,8 @@
             android:background="#7bc8f3"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+
+
         <TextView android:text="Aula Teste"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -212,6 +214,17 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="11dp"
             android:id="@+id/textView3" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ListViewTags"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="13dp"
+            android:layout_alignRight="@+id/textViewConfimacao"
+            android:layout_alignEnd="@+id/textViewConfimacao" />
 
     </RelativeLayout>
 

@@ -7,10 +7,13 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,6 +23,8 @@ import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
+import ufrpe.edu.learnit.tag.dominio.Tag;
+import ufrpe.edu.learnit.tag.negocio.TagNegocio;
 import ufrpe.edu.learnit.usuario.gui.HomeActivity;
 
 public class ComprarAulaAlunoActivity extends AppCompatActivity {
@@ -30,6 +35,7 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
     private TextView TextViewPrecoPorHoraAula;
     private TextView TextViewTotalDaCompra;
     private EditText EditTextTotalDeHorasDesejadas;
+    private ListView listView;
     int horas;
 
 
@@ -41,7 +47,15 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
         Session.setContext(getApplicationContext());
         findEditableItens();
         editItenss();
+        newListViewTags();
         this.setOnUserInputValue();
+    }
+    private void newListViewTags(){
+        listView=(ListView) findViewById(R.id.ListViewTags);
+        TagNegocio tagNegocio = new TagNegocio();
+        ArrayList<Tag> arrayTags = tagNegocio.retornarTagsAula(Session.getAula().getId());
+        ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayTags);
+        listView.setAdapter(adapter);
     }
 
     private void editItenss() {
