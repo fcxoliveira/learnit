@@ -53,7 +53,7 @@ public class ConfirmacaoPersistencia {
             confirmacao.setId(idConfirmacao);
 
         }
-        cursor.moveToLast()
+        cursor.moveToLast();
         return confirmacao;
     }
 
