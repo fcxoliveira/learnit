@@ -21,8 +21,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-import ufrpe.edu.learnit.infra.adaptersDoProjeto.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.gui.AulasCompradasActivity;
@@ -35,7 +36,11 @@ import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
+import ufrpe.edu.learnit.recomendacao.Recomendacao;
 import ufrpe.edu.learnit.tag.negocio.TagNegocio;
+import ufrpe.edu.learnit.usuario.dominio.Usuario;
+
+import static java.util.Collections.max;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -98,6 +103,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void newListViewHome() {
         listView = (ListView) findViewById(R.id.listView);
         editText = (EditText) findViewById(R.id.editText6);
+        ArrayList<Usuario> professoresRecomendados = recomendar();
         ArrayList<Aula> values = getValoresListView();
         adapter = new HomeAdapter(values, getApplicationContext());
         listView.setAdapter(adapter);
@@ -202,7 +208,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-        }
+    }
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -242,5 +248,24 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         finish();
     }
 
+    public ArrayList<Usuario> recomendar(){
+        Recomendacao slopeOne = new Recomendacao();
+        Map<Usuario, Map<Usuario, Float>> todosUsuariosComAvaliacoes = new HashMap<>();
+        slopeOne.atualizar(todosUsuariosComAvaliacoes);
+        //Avaliação do usuário para um determinado professor
+        Map<Usuario, Float> avaliacaoUsuario = new HashMap<>();
+        Map<Usuario, Float> predicao = slopeOne.predizer(avaliacaoUsuario);
+        ArrayList<Usuario> professoresRecomendados = new ArrayList<>();
+        while (!predicao.isEmpty()) {
+            for (Usuario professor : predicao.keySet()) {
+                Float avaliacao = predicao.get(professor);
+                if (avaliacao == max(predicao.values())) {
+                    professoresRecomendados.add(professor);
+                    predicao.remove(professor);
+                }
+            }
+        }
+        return professoresRecomendados;
+    }
 
 }
