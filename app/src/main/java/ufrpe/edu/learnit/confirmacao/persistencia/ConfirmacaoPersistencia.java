@@ -58,7 +58,7 @@ public class ConfirmacaoPersistencia {
     }
 
     public ArrayList<Confirmacao> retornarConfimacoesCanceladas(int idAula){
-        ArrayList<Confirmacao> confirmacoes = new ArrayList<Confirmacao>();
+        ArrayList<Confirmacao> confirmacoes = null;
         db=dbHelper.getReadableDatabase();
         Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAula=? AND IdAula=?", new String[]{"2",idAula+"",idAula+""}, null, null, null);
         while(cursor.moveToNext()){
