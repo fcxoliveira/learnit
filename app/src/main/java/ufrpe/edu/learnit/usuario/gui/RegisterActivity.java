@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ufrpe.edu.learnit.infra.Populador;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -29,6 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
         findEditableItens();
         Session.setContext(getApplicationContext());
+        Populador populador = new Populador();
+        populador.popularBancoDeDados();
     }
 
     private void findEditableItens() {

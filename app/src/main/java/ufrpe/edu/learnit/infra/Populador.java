@@ -26,9 +26,6 @@ public class Populador {
             "Gabriel Alves","Michael Jackson","Manoel Betmann","Angela Costa","João José Antônio",
             "Antonio Henrique","Flávio Daniel","Ícaro César","Íthalo José","José Maria"};
     private final String SENHA = "123456";
-//    private String[] tags = {"Informatica", "Matematica", "Musica", "Biologia", "Linguas",
-//            "Cultura", "Física", "Química", "Política", "Ética",
-//            "Culinária", "Calistenia", "Esportes", "Cantoria", "Computação"};
 
     public void cadastrarUsuario(String login, String senha, String email){
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
@@ -45,11 +42,6 @@ public class Populador {
         aulaPersistencia.cadastrarAulaPopulador(titulo, descricao, duracao, valor, idPerfil);
     }
 
-//    public void inserirTag(String tag){
-//        TagPersistencia tagPersistencia = new TagPersistencia();
-//        tagPersistencia.inserirTag(tag);
-//    }
-
     public void inserirRelacaoTagAula(int idTag, int idAula){
         TagPersistencia tagPersistencia = new TagPersistencia();
         tagPersistencia.inserirRelacaoTagAula(idTag, idAula);
@@ -60,14 +52,7 @@ public class Populador {
         tagPersistencia.inserirRelacaoTagPerfil(idTag, idPerfil);
     }
 
-//    public void trabalharTags(){
-//        for (String tag : tags) {
-//            inserirTag(tag);
-//        }
-//    }
-
     public void popularBancoDeDados(){
-        //trabalharTags();
         Random gerador = new Random();
         int idAula = 1;
         int auxiliar = 0;
@@ -80,7 +65,7 @@ public class Populador {
             int numInteresses = gerador.nextInt((3 - 1) + 1) + 1;
 
             for (int l = 0; l<numInteresses; l++){
-                if (auxiliar > 8){
+                if (auxiliar > 7){
                     auxiliar = 0;
                 }
                 inserirRelacaoTagPerfil(auxiliar+1, i);
@@ -96,7 +81,7 @@ public class Populador {
                 int numTags = gerador.nextInt((5 - 2) + 1) + 2;
 
                 for (int k = 0; k<numTags; k++){
-                    if (contador > 8) {
+                    if (contador > 7) {
                         contador = 0;
                     }
                     inserirRelacaoTagAula(contador+1,idAula);

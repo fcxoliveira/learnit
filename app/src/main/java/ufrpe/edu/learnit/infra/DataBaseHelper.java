@@ -75,8 +75,5 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String PopulateTags = "INSERT INTO TAGS (Tag) values ('"+ tag +"');";
         db.execSQL(PopulateTags);
     }
-
-
-
 }
 
