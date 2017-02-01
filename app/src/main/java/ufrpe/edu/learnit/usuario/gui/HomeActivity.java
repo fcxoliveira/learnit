@@ -30,6 +30,7 @@ import ufrpe.edu.learnit.aula.gui.AulasOferecidasActivity;
 import ufrpe.edu.learnit.aula.gui.CadastrarAulaTutorActivity;
 import ufrpe.edu.learnit.aula.gui.ComprarAulaAlunoActivity;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
+import ufrpe.edu.learnit.infra.adaptersDoProjeto.HomeAdapter;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
@@ -40,7 +41,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     ListView listView;
     EditText editText;
-    CustomAdapter adapter;
+    HomeAdapter adapter;
     NavigationView navigationView;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -98,7 +99,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         listView = (ListView) findViewById(R.id.listView);
         editText = (EditText) findViewById(R.id.editText6);
         ArrayList<Aula> values = getValoresListView();
-        adapter = new CustomAdapter(values, getApplicationContext());
+        adapter = new HomeAdapter(values, getApplicationContext());
         listView.setAdapter(adapter);
         setOnItemClickListener();
         setOnlistenerSearch();
@@ -186,9 +187,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
                 String text = editText.getText().toString();
-                CustomAdapter adapter;
+                HomeAdapter adapter;
                 ArrayList<Aula> aulas = gerenciadorAulasAlunos.getAulasPorTexto(text);
-                adapter = new CustomAdapter(aulas, getApplicationContext());
+                adapter = new HomeAdapter(aulas, getApplicationContext());
                 listView.setAdapter(adapter);
             }
 
