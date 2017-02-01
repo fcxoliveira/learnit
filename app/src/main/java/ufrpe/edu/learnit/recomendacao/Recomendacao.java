@@ -19,7 +19,7 @@ public class Recomendacao {
             for (Usuario usuario1 : ratings.keySet()) {
 
                 float valor1 = ratings.get(usuario1);
-                frequencia.put(usuario1, new HashMap<Usuario, Integer>());
+                frequencia.put(usuario1, new HashMap<Usuario, Integer>();
                 diferenca.put(usuario1, new HashMap<Usuario, Float>());
 
                 for (Usuario usuario2 : ratings.keySet()) {
