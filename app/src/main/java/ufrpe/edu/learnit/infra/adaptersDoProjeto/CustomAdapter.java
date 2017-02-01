@@ -1,18 +1,18 @@
 package ufrpe.edu.learnit.infra.adaptersDoProjeto;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+        import android.content.Context;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ArrayAdapter;
+        import android.widget.TextView;
 
-import java.util.ArrayList;
+        import java.util.ArrayList;
 
-import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.aula.dominio.Aula;
-import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
-import ufrpe.edu.learnit.confirmacao.negocio.ConfirmacaoNegocio;
+        import ufrpe.edu.learnit.R;
+        import ufrpe.edu.learnit.aula.dominio.Aula;
+        import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
+        import ufrpe.edu.learnit.confirmacao.negocio.ConfirmacaoNegocio;
 
 public class CustomAdapter extends ArrayAdapter<Aula> implements View.OnClickListener{
 
