@@ -59,7 +59,7 @@ public class PerfilActivity extends AppCompatActivity {
         textViewAvaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
         textViewHoras = (TextView)findViewById(R.id.textViewHoras);
         textViewNome = (TextView) findViewById(R.id.textViewNome);
-        ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
+        ratingBar = (RatingBar)findViewById(R.id.ratingBarMediaGeral);
         textViewBiografia=(TextView) findViewById(R.id.textViewBiografia);
     }
 

@@ -17,13 +17,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
     private static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas integer, Avaliacao real, Avaliadores integer, Horas integer);";
     private static final String TABLE_TAGS = "create table IF NOT EXISTS TAGS (Id integer primary key autoincrement, Tag text);";
-    private static final String TABLE_AULAS = "create table if not exists AULAS   (Id integer primary key autoincrement, Titulo text, Descricao text, Valor integer, IdPerfil integer, HorasDisponiveis integer);";
+    private static final String TABLE_AULAS = "create table if not exists AULAS   (Id integer primary key autoincrement, Titulo text, Descricao text, Valor integer, IdPerfil integer, HorasDisponiveis integer, Avaliacao real, Avaliadores integer);";
     private static final ArrayList<String> TAGS = new ArrayList<>(Arrays.asList("Informatica", "Musica", "Portugues", "Matematica", "Biologia", "Fisica", "Quimica", "Ed. Fisica"));
     private static final String TABLE_ALUNO_AULA = "create table if not exists ALUNO_AULA(Id integer primary key autoincrement, IdPerfilAluno integer, IdAula integer, Date text, HorasCompradas integer, ValorPago integer, HorasConfirmadas integer);";
     private static final String TABLE_CONFIRMACAO = "create table if not exists CONFIRMACAO(Id integer primary key autoincrement,IdAula integer,IdAluno integer, HorasParaConfirmar integer, Status integer);";
     private static final String TABLE_AULA_TAG = "create table if not exists AULA_TAG(IdAula integer,IdTag integer);";
     private static final String TABLE_PERFIL_TAG="create table if not exists PERFIL_TAG(IdPerfil integer,IdTag integer);";
     private static final String TABLE_ALUNO_TAG_RECOMENDACAO="create table if not exists ALUNO_TAG_RECOMENDACAO(IdPerfil integer, IdTag integer, Valor integer);";
+    private static final String TABLE_RATE_PERFIL="create table if not exists RATE(IdPerfil integer, IdItemPerfil integer, Avaliacao real, TotalAvaliadores int);";
+    private static final String TABLE_RATE_AULA="create table if not exists RATE(IdPerfil integer, IdItemAula integer, Avaliacao real, TotalAvaliadores int);";
 
     public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
     {
@@ -46,6 +48,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_PERFIL_TAG);
         db.execSQL(TABLE_CONFIRMACAO);
         db.execSQL(TABLE_ALUNO_TAG_RECOMENDACAO);
+        db.execSQL(TABLE_RATE_PERFIL);
+        db.execSQL(TABLE_RATE_AULA);
         for(String tag:TAGS) {
             populateTags(tag,db);
         }
@@ -66,7 +70,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS PERFIL_TAG");
         db.execSQL("DROP TABLE IF EXISTS CONFIRMACAO");
         db.execSQL("DROP TABLE IF EXISTS TABLE_ALUNO_TAG_RECOMENDACAO");
-
+        db.execSQL("DROP TABLE IF EXISTS RATE_PERFIL");
+        db.execSQL("DROP TABLE IF EXISTS RATE_AULA");
         onCreate(db);
 
     }

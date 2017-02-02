@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="61dp"
-                android:id="@+id/ratingBar2"
+                android:id="@+id/ratingBarMediaGeral"
                 android:layout_below="@+id/textViewNome"
                 android:layout_centerHorizontal="true"
                 android:clickable="false"
@@ -70,7 +70,7 @@
                 android:id="@+id/textViewAvaliadores"
                 android:layout_marginLeft="32dp"
                 android:layout_marginStart="32dp"
-                android:layout_below="@+id/ratingBar2"
+                android:layout_below="@+id/ratingBarMediaGeral"
                 android:layout_alignLeft="@+id/textView6"
                 android:layout_alignStart="@+id/textView6" />
 
@@ -78,9 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewRate"
-                android:layout_below="@+id/ratingBar2"
-                android:layout_toRightOf="@+id/textViewAulaOferecida1"
-                android:layout_toEndOf="@+id/textViewAulaOferecida1" />
+                android:layout_below="@+id/ratingBarMediaGeral"
+                 />
 
             <TextView android:text="0"
                 android:layout_width="wrap_content"

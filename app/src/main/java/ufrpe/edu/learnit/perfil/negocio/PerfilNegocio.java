@@ -26,6 +26,6 @@ public class PerfilNegocio {
     }
     public void setNota(int idPerfil,float avaliacao){
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        perfilPersistencia.setNota(idPerfil,avaliacao);
+        perfilPersistencia.setAvaliacao(idPerfil,avaliacao);
     }
 }

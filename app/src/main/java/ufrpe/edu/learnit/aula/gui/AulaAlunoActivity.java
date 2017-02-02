@@ -46,7 +46,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         nota = (TextView)findViewById(R.id.textViewRate);
         descricaoAula = (TextView)findViewById(R.id.textViewDescricaoDaAula);
         horasPagas = (TextView)findViewById(R.id.textViewHoras);
-        ratingBar = (RatingBar)findViewById(R.id.ratingBar2);
+        ratingBar = (RatingBar)findViewById(R.id.ratingBarMediaGeral);
         descricaoAula.setMovementMethod(new ScrollingMovementMethod());
     }
 

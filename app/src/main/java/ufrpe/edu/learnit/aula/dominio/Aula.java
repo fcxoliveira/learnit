@@ -9,8 +9,16 @@ public class Aula {
     private String titulo, descricao;
     private int valor;
     private int id;
+    private int avaliadores;
+    private float avaliacao;
 
+    public int getAvaliadores() {return avaliadores;}
 
+    public void setAvaliadores(int avaliadores) {this.avaliadores = avaliadores;}
+
+    public float getAvaliacao() {return avaliacao;}
+
+    public void setAvaliacao(float avaliacao) {this.avaliacao = avaliacao;}
 
     public int getHoras() {
         return horas;

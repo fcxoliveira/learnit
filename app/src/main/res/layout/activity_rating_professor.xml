@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_editar_perfil"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="ufrpe.edu.learnit.rating.gui.RatingActivityAula">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#7bc8f3"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:id="@+id/textViewNome"
+        android:textSize="25sp"
+        tools:text="NomeProfessor" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:id="@+id/ratingBarMediaGeral"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignLeft="@+id/ratingBarSuaNota"
+        android:layout_alignStart="@+id/ratingBarSuaNota" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="135dp"
+        android:id="@+id/ratingBarSuaNota"
+        android:layout_below="@+id/ratingBarMediaGeral"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Confirmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonConfirmar"
+        android:background="#7bc8f3"
+        android:textColor="@android:color/background_light"
+        android:layout_below="@+id/ratingBarSuaNota"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp" />
+
+    <TextView
+        android:text="Média geral do Professor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:id="@+id/textViewMediaGeral"
+        android:textSize="25sp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Sua nota para o Professor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="62dp"
+        android:id="@+id/textViewSuaNota"
+        android:textSize="25sp"
+        android:layout_above="@+id/buttonConfirmar"
+        android:layout_alignRight="@+id/textViewMediaGeral"
+        android:layout_alignEnd="@+id/textViewMediaGeral" />
+</RelativeLayout>

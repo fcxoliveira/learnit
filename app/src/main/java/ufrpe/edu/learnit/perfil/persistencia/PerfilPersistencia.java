@@ -31,7 +31,7 @@ public class PerfilPersistencia {
         db.close();
     }
 
-    public void setNota(int idPerfil,float avaliacao){
+    public void setAvaliacao(int idPerfil, float avaliacao){
         db=dbHelper.getWritableDatabase();
         Cursor cursor=db.query("PERFIL", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
         int avaliadores = cursor.getInt(cursor.getColumnIndex("Avaliadores"));
@@ -42,6 +42,7 @@ public class PerfilPersistencia {
         newValues.put("Avaliadores", avaliadores+1);
         db.update("PERFIL",newValues,"IdPerfil='"+idPerfil+"'",null);
     }
+
     public Perfil retornarPerfil(int id){
         Perfil result = new Perfil();
         db = dbHelper.getReadableDatabase();

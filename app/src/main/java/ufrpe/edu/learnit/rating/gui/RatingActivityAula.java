@@ -1,13 +1,15 @@
-package ufrpe.edu.learnit;
+package ufrpe.edu.learnit.rating.gui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class RatingActivity extends AppCompatActivity {
+import ufrpe.edu.learnit.R;
+
+public class RatingActivityAula extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rating);
+        setContentView(R.layout.activity_rating_aula);
     }
 }

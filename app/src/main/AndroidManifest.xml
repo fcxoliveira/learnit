@@ -31,31 +31,25 @@
         <activity android:name=".perfil.gui.PerfilActivity" />
         <activity
             android:name=".usuario.gui.CadastroPerfilActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity
-            android:name=".perfil.gui.EditarPerfilActivity"
-             />
+            android:screenOrientation="portrait" />
+        <activity android:name=".perfil.gui.EditarPerfilActivity" />
         <activity
             android:name=".aula.gui.ComprarAulaAlunoActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize"
-             />
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity android:name=".aula.gui.AulasOferecidasActivity" />
         <activity android:name=".aula.gui.AulasCompradasActivity" />
         <activity android:name=".usuario.gui.CoinsActivity" />
         <activity
             android:name=".aula.gui.CadastrarAulaTutorActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize"
-             />
+            android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity android:name=".aula.gui.AulaProfessorActivity" />
         <activity android:name=".aula.gui.AulaAlunoActivity" />
-        <activity
-            android:name=".aula.gui.EditarAulaActivity"
-           />
+        <activity android:name=".aula.gui.EditarAulaActivity" />
         <activity android:name=".aula.gui.ConfirmarAulaProfessorActivity" />
         <activity android:name=".perfil.gui.PerfilAlheioActivity" />
         <activity android:name=".aula.gui.AlunosCadastradosActivity" />
-        <activity android:name=".RatingActivity"></activity>
+        <activity android:name=".rating.gui.RatingActivityAula" />
+        <activity android:name=".rating.gui.RatingActivityProfessor"/>
     </application>
 
 </manifest>

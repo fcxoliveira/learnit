@@ -32,6 +32,8 @@ public class AulaPersistencia {
         newValues.put("HorasDisponiveis",duracao+"");
         newValues.put("Valor",valor+"");
         newValues.put("IdPerfil",Session.getUsuario().getID()+"");
+        newValues.put("Avaliadores", 0);
+        newValues.put("Avaliacao", 0);
         db.insert("AULAS", null, newValues);
         Cursor cursor = db.query("AULAS",new String[]{"*"},"IdPerfil = ?",new String[]{Session.getUsuario().getID()+""},null ,null, null);
         cursor.moveToLast();
@@ -72,8 +74,10 @@ public class AulaPersistencia {
         db.close();
     }
 
-    private Aula preencherDadosAula(int id, String titulo, String descricao, int duracao, int valor, int IdPerfil){
+    private Aula preencherDadosAula(int id, String titulo, String descricao, int duracao, int valor, int IdPerfil,int avaliadores, float avaliacao){
         Aula aula = new Aula();
+        aula.setAvaliadores(avaliadores);
+        aula.setAvaliacao(avaliacao);
         aula.setId(id);
         aula.setTitulo(titulo);
         aula.setDescricao(descricao);
@@ -157,7 +161,9 @@ public class AulaPersistencia {
             int valor = cursor.getInt(cursor.getColumnIndex("Valor"));
             int horas = cursor.getInt(cursor.getColumnIndex("HorasDisponiveis"));
             int idPerfil = cursor.getInt(cursor.getColumnIndex("IdPerfil"));
-            result = preencherDadosAula(id,nome,descricao,horas,valor,idPerfil);
+            int avaliadores= cursor.getInt(cursor.getColumnIndex("Avaliadores"));
+            float avaliacao = cursor.getInt(cursor.getColumnIndex("Avaliadores"));
+            result = preencherDadosAula(id,nome,descricao,horas,valor,idPerfil,avaliadores,avaliacao);
         }
         cursor.close();
         db.close();
