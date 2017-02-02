@@ -32,5 +32,4 @@
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="title_activity_drawer">DrawerActivity</string>
     <string name="pre_o_por_hora_aula">Preço por hora/aula</string>
-    <string name="title_activity_rating_professor">RatingActivityProfessor</string>
 </resources>

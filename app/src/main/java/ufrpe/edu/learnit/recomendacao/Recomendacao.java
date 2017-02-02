@@ -1,8 +1,11 @@
 package ufrpe.edu.learnit.recomendacao;
 
+import android.test.mock.MockApplication;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 
 /**
@@ -13,8 +16,8 @@ public class Recomendacao {
     Map<Usuario, Map<Usuario, Float>> diferenca = new HashMap<>();
     Map<Usuario, Map<Usuario, Integer>> frequencia = new HashMap<>();
 
-    public void atualizar(Map<Usuario, Map<Usuario, Float>> todosUsuariosESuasAvaliacoesProfessor) {
-        for (Map<Usuario, Float> ratings : todosUsuariosESuasAvaliacoesProfessor.values()) {
+    public void atualizar(Map<Usuario, Map<Usuario, Float>> userData) {
+        for (Map<Usuario, Float> ratings : userData.values()) {
 
             for (Usuario usuario1 : ratings.keySet()) {
 
@@ -43,12 +46,11 @@ public class Recomendacao {
             for (Usuario usuario4: valor.keySet()) {
                 Float calculo = valor.get(usuario4);
                 calculo /= frequencia.get(usuario3).get(usuario4);
-                valor.put(usuario4, calculo);
             }
         }
     }
 
-    public Map<Usuario, Float> predizer(Map<Usuario, Float> avaliacaoUsuario){
+    public Map<Usuario, Float> predizer(HashMap<Usuario, Float> avaliacaoUsuario){
         Map<Usuario, Float> preds = new HashMap<>();
         Map<Usuario, Integer> freqs = new HashMap<>();
         for (Usuario usuario : avaliacaoUsuario.keySet()) {

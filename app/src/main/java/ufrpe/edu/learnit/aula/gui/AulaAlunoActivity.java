@@ -8,13 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
@@ -22,14 +18,11 @@ import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
 import ufrpe.edu.learnit.confirmacao.negocio.ConfirmacaoNegocio;
 import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.tag.dominio.Tag;
-import ufrpe.edu.learnit.tag.negocio.TagNegocio;
 
 public class AulaAlunoActivity extends AppCompatActivity {
     private TextView nomeAula, descricaoAula, horasPagas, nomeProfessor, avaliadores, nota, avisoConfirmacao;
     RatingBar ratingBar;
     Confirmacao confirmacao;
-    private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,18 +32,10 @@ public class AulaAlunoActivity extends AppCompatActivity {
         Session.setContext(getApplicationContext());
         findEditableItens();
         editItens(aula);
-        newListViewTags();
         if (confirmacaoNegocio.ConfirmacaoRecebida()){
             avisoConfirmacao.setVisibility(View.VISIBLE);
             avisoConfirmacao.setError("");
         }
-    }
-    private void newListViewTags(){
-        listView=(ListView) findViewById(R.id.ListViewTags);
-        TagNegocio tagNegocio = new TagNegocio();
-        ArrayList<Tag> arrayTags = tagNegocio.retornarTagsAula(Session.getAula().getId());
-        ArrayAdapter<Tag> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayTags);
-        listView.setAdapter(adapter);
     }
 
     private void findEditableItens() {

@@ -30,30 +30,16 @@ public class ConfirmacaoPersistencia {
 
     public Confirmacao enviarConfirmacao(int idAula, int idAluno, int horasConfirmadas, int status) {
         db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "IdAluno = ? AND IdAula = ? ", new String[]{idAluno + "", idAula + ""}, null, null, null);
         ContentValues newValues = new ContentValues();
-        Confirmacao confirmacao;
-        if (cursor.moveToFirst()){
-            int idConfirmacao = cursor.getColumnIndex("Id");
-            newValues.put("HorasParaConfirmar", horasConfirmadas);
-            newValues.put("Status", status);
-            db.update("CONFIRMACAO",newValues,"Id='"+idConfirmacao +"'",null);
-            confirmacao = preencherConfirmacao(idAula, idAluno, horasConfirmadas, status);
-            confirmacao.setId(idConfirmacao);
-
-        }else {
-            newValues.put("IdAula", idAula);
-            newValues.put("IdAluno", idAluno);
-            newValues.put("HorasParaConfirmar", horasConfirmadas);
-            newValues.put("Status", status);
-            db.insert("CONFIRMACAO", null, newValues);
-            Cursor neWcursor = db.query("CONFIRMACAO", new String[]{"*"}, "IdAluno = ? AND IdAula = ? ", new String[]{idAluno + "", idAula + ""}, null, null, null);
-            int idConfirmacao = neWcursor.getColumnIndex("Id");
-            confirmacao = preencherConfirmacao(idAula, idAluno, horasConfirmadas, status);
-            confirmacao.setId(idConfirmacao);
-
-        }
+        newValues.put("IdAula", idAula);
+        newValues.put("IdAluno", idAluno);
+        newValues.put("HorasParaConfirmar", horasConfirmadas);
+        newValues.put("Status", status);
+        db.insert("CONFIRMACAO", null, newValues);
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "IdAluno = ? AND IdAula = ? ", new String[]{idAluno + "", idAula + ""}, null, null, null);
         cursor.moveToLast();
+        Confirmacao confirmacao = preencherConfirmacao(idAula, idAluno, horasConfirmadas, status);
+        confirmacao.setId(cursor.getInt(cursor.getColumnIndex("Id")));
         return confirmacao;
     }
 
