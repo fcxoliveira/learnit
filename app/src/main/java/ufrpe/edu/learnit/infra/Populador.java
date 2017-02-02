@@ -13,7 +13,7 @@ import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
 public class Populador {
 
-    private String[] nomesLogin = {"lokaine", "setoper", "masterhunterxx1", "gcmaia", "blackprincess",
+    private String[] nomesLogin = {"admin", "admin2", "admin3", "gcmaia", "blackprincess",
             "blackburn", "lokisora", "azren", "ramonrcm", "kingstank",
             "catfelina", "mastermoon", "igordragonblack", "goenji", "leonel",
             "tsunade", "jiraya", "orochimaru", "naruto", "sasuke",

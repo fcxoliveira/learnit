@@ -186,6 +186,7 @@ public class TagPersistencia {
         db=dbHelper.getWritableDatabase();
         Cursor cursor=db.query("ALUNO_TAG_RECOMENDACAO",new String[]{"*"},"IdPerfil=? AND IdTag=?",new String[]{idPerfil+"",idTag+""},null ,null, null);
         return cursor.getInt(cursor.getColumnIndex("Valor"));
+
     }
 
 }
