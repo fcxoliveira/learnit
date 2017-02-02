@@ -28,4 +28,4 @@ public class RatingActivityProfessor extends AppCompatActivity {
         });
     }
 
-}
+    }
