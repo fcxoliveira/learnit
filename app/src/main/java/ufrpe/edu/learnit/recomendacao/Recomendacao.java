@@ -52,7 +52,8 @@ public class Recomendacao {
         }
     }
 
-    public Map<Usuario, Float> predizer(HashMap<Usuario, Float> avaliacaoUsuario){
+    public Map<Usuario, Float> predizer(HashMap<Usuario, Float> avaliacaoUsuario,Map<Usuario, Map<Usuario, Float>> dadosDeTodosUsuarios){
+        this.atualizar(dadosDeTodosUsuarios);
         Map<Usuario, Float> preds = new HashMap<>();
         Map<Usuario, Integer> freqs = new HashMap<>();
         for (Usuario usuario : avaliacaoUsuario.keySet()) {

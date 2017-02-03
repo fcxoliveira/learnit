@@ -120,7 +120,7 @@ public class UsuarioPersistencia {
         return usuario;
     }
 
-    public ArrayList<Usuario> retornarTodosOsUsusarios(){
+    public ArrayList<Usuario> retornarTodosOsUsuarios(){
         db = dbHelper.getReadableDatabase();
         ArrayList<Usuario> usuarios =new ArrayList<>();
         Usuario usuario;

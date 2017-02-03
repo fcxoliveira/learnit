@@ -1,5 +1,7 @@
 package ufrpe.edu.learnit.usuario.negocio;
 
+import java.util.ArrayList;
+
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
@@ -29,5 +31,9 @@ public class UsuarioNegocio {
     public Usuario retornarUsuarioPorEmail(String email){
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
         return usuarioPersistencia.retornarUsuarioPorEmail(email);
+    }
+    public ArrayList<Usuario> retornarTodosOsUsuarios(){
+        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
+        return usuarioPersistencia.retornarTodosOsUsuarios();
     }
 }
