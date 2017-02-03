@@ -22,13 +22,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-
 import ufrpe.edu.learnit.infra.Populador;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
@@ -116,7 +116,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void newListViewHome() {
         listView = (ListView) findViewById(R.id.listView);
         editText = (EditText) findViewById(R.id.editText6);
-        ArrayList<Aula> values = getValoresListView();
+        ArrayList<Aula> values = recomendar(Session.getUsuario().getID());
         adapter = new HomeAdapter(values, getApplicationContext());
         listView.setAdapter(adapter);
         setOnItemClickListener();
@@ -259,7 +259,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         startActivity(secondActivity);
         finish();
     }
-    public Map<Float,Perfil> recomendar(int idPerfil){
+    public ArrayList<Aula> recomendar(int idPerfil){
         PerfilNegocio perfilNegocio = new PerfilNegocio();
         ArrayList<Perfil> perfils = perfilNegocio.retornarTodosOsPerfis();
         Map<Perfil,Map<Perfil, Float>> DadosUsuario = new HashMap<>();
@@ -284,7 +284,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                 });
         treeMap.putAll(recomendacoes);
-        return treeMap;
+        ArrayList<Perfil> list = new ArrayList<>(treeMap.values());
+        ArrayList<Aula> resultado = new ArrayList<>();
+        ArrayList<Aula> suporte = new ArrayList<>();
+        for(Aula aula:getValoresListView()){
+            for(Perfil perfil:list){
+                if(aula.getPerfil().getId()==perfil.getId()){
+                    resultado.add(aula);
+                }else{
+                    suporte.add(aula);
+                }
+            }
+        }
+        resultado.addAll(suporte);
+        return resultado;
+
+
     }
 
 
