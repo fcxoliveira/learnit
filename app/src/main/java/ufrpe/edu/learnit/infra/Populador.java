@@ -1,10 +1,17 @@
 package ufrpe.edu.learnit.infra;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
 import ufrpe.edu.learnit.tag.persistencia.TagPersistencia;
+import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 
 /**
@@ -52,6 +59,17 @@ public class Populador {
         tagPersistencia.inserirRelacaoTagPerfil(idTag, idPerfil);
     }
 
+    public void inscreverAlunoEmAula(int idAluno, int idAula, String date, int horas, int valorPago){
+        AulaPersistencia aula = new AulaPersistencia();
+        aula.inscreverAlunoEmAulaPopulador(idAluno, idAula, date, horas, valorPago);
+    }
+
+    private String getDateTime() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
     public void popularBancoDeDados(){
         Random gerador = new Random();
         int idAula = 1;
@@ -91,5 +109,18 @@ public class Populador {
             }
         }
 
+    }
+
+    public void comprarAulas(){
+        Random gerador = new Random();
+        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        for (int idAula = 1; idAula<151; idAula++) {
+            for (int i = 1; i < 6; i++) {
+                int horas = gerador.nextInt((10 - 3) + 1) + 3;
+                inscreverAlunoEmAula((idAula%5)+1,idAula, getDateTime(), horas, aulaPersistencia.retornarAula(idAula).getValor()*horas);
+
+            }
+        }
     }
 }

@@ -122,6 +122,24 @@ public class AulaPersistencia {
 
     public void inscreverAlunoEmAula(int idAluno, int idAula, String date,int horas,int valorPago){
         db = dbHelper.getWritableDatabase();
+        String idAlunoString = String.valueOf(idAluno);
+        String idAulaString = String.valueOf(idAula);
+        ContentValues newValues = new ContentValues();
+        newValues.put("IdPerfilAluno",idAlunoString);
+        newValues.put("IdAula", idAulaString);
+        newValues.put("Date",date);
+        newValues.put("HorasCompradas",horas);
+        newValues.put("ValorPago",valorPago);
+        newValues.put("HorasConfirmadas","0");
+        db.insert("ALUNO_AULA", null, newValues);
+        removerHorasDisponiveis(idAula,horas);
+        db.close();
+
+
+    }
+
+    public void inscreverAlunoEmAulaPopulador(int idAluno, int idAula, String date,int horas,int valorPago){
+        db = dbHelper.getWritableDatabase();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         String idAlunoString = String.valueOf(idAluno);
         String idAulaString = String.valueOf(idAula);
@@ -219,6 +237,7 @@ public class AulaPersistencia {
             AlunoAula alunoAula = preencherAlunoAula(perfilAluno, cursor);
             result.add(alunoAula);
         }
+
         cursor.close();
         db.close();
         return result;

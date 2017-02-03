@@ -46,6 +46,8 @@ public class Recomendacao {
             for (Usuario usuario4: valor.keySet()) {
                 Float calculo = valor.get(usuario4);
                 calculo /= frequencia.get(usuario3).get(usuario4);
+                valor.put(usuario4, calculo);
+                
             }
         }
     }
