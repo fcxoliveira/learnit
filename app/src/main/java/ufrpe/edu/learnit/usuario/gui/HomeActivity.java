@@ -19,15 +19,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import ufrpe.edu.learnit.infra.Populador;
-import ufrpe.edu.learnit.infra.adaptersDoProjeto.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.gui.AulasCompradasActivity;
@@ -42,8 +36,7 @@ import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
 import ufrpe.edu.learnit.recomendacao.Recomendacao;
 import ufrpe.edu.learnit.tag.negocio.TagNegocio;
-import ufrpe.edu.learnit.usuario.dominio.Usuario;
-import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
+
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -51,7 +44,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     EditText editText;
     HomeAdapter adapter;
     NavigationView navigationView;
-    private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     Toolbar toolbar;
     Recomendacao recomendacao;
@@ -79,7 +71,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void createButtonnavBar() {
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
