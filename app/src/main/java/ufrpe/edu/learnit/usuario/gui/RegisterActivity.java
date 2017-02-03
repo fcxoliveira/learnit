@@ -35,8 +35,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
         findEditableItens();
         Session.setContext(getApplicationContext());
-        Populador populador = new Populador();
-        populador.popularBancoDeDados();
     }
 
     private void findEditableItens() {

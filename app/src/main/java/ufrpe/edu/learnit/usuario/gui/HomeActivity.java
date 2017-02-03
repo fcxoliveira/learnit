@@ -19,11 +19,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import ufrpe.edu.learnit.infra.Populador;
 import ufrpe.edu.learnit.infra.adaptersDoProjeto.CustomAdapter;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
@@ -66,6 +69,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         preencherMoedas();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         createButtonnavBar();
+    }
+
+    public void populate(View v){
+        Populador populador = new Populador();
+        populador.popularBancoDeDados();
+        Toast toast = Toast.makeText(Session.getContext(), "Sucesso", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     private void createButtonnavBar() {

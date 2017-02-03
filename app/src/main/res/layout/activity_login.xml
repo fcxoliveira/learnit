@@ -94,6 +94,7 @@
         android:layout_below="@+id/textViewSignUp"
         android:layout_alignRight="@+id/imageView"
         android:layout_alignEnd="@+id/imageView"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:onClick="populate"/>
 </RelativeLayout>
 </ScrollView>
