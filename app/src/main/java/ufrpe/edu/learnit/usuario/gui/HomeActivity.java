@@ -23,9 +23,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import ufrpe.edu.learnit.infra.Populador;
 import ufrpe.edu.learnit.R;
@@ -257,7 +259,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         startActivity(secondActivity);
         finish();
     }
-    public Map<Perfil,Float> recomendar(int idPerfil){
+    public Map<Float,Perfil> recomendar(int idPerfil){
         PerfilNegocio perfilNegocio = new PerfilNegocio();
         ArrayList<Perfil> perfils = perfilNegocio.retornarTodosOsPerfis();
         Map<Perfil,Map<Perfil, Float>> DadosUsuario = new HashMap<>();
@@ -271,8 +273,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 }
                 DadosUsuario.put(usuario,avaliacaoUsuario);
             }
-        Map<Perfil, Float> recomendacoes =recomendacao.predizer(avaliacaoUsuario,DadosUsuario);
-        return recomendacoes;
+        Map<Float, Perfil> recomendacoes =recomendacao.predizer(avaliacaoUsuario,DadosUsuario);
+        Map<Float, Perfil> treeMap = new TreeMap<>(
+                new Comparator<Float>() {
+
+                    @Override
+                    public int compare(Float o1, Float o2) {
+                        return o2.compareTo(o1);
+                    }
+
+                });
+        treeMap.putAll(recomendacoes);
+        return treeMap;
     }
 
 

@@ -52,7 +52,7 @@ public class Recomendacao {
         }
     }
 
-    public Map<Perfil, Float> predizer(HashMap<Perfil, Float> avaliacaoUsuario,Map<Perfil, Map<Perfil, Float>> dadosDeTodosUsuarios){
+    public Map<Float, Perfil> predizer(HashMap<Perfil, Float> avaliacaoUsuario,Map<Perfil, Map<Perfil, Float>> dadosDeTodosUsuarios){
         this.atualizar(dadosDeTodosUsuarios);
         Map<Perfil, Float> preds = new HashMap<>();
         Map<Perfil, Integer> freqs = new HashMap<>();
@@ -71,12 +71,12 @@ public class Recomendacao {
                 freqs.put(usuario2, aux2);
             }
         }
-        Map<Perfil, Float> resultado = new HashMap<>();
+        Map<Float, Perfil> resultado = new HashMap<>();
         for (Perfil usuario :
                 preds.keySet()) {
             float nota = preds.get(usuario);
             if (!preds.containsKey(usuario) && (freqs.get(usuario) > 0)){
-                resultado.put(usuario, (nota/freqs.get(usuario)));
+                resultado.put((nota/freqs.get(usuario)),usuario);
             }
         }
         return resultado;
