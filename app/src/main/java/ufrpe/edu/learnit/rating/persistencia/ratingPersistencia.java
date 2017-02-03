@@ -12,11 +12,11 @@ import ufrpe.edu.learnit.infra.dominio.Session;
  * Created by joel_ on 02/02/2017.
  */
 
-public class ratingPersistencia {
+public class RatingPersistencia {
     private SQLiteDatabase db;
     private DataBaseHelper dbHelper;
 
-    public ratingPersistencia(){
+    public RatingPersistencia(){
         Context context = Session.getContext();
         dbHelper = new DataBaseHelper(context, null);
 

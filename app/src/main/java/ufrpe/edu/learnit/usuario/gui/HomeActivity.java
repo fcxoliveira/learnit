@@ -248,12 +248,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         finish();
     }
 
-    public ArrayList<Aula> recomendar(){
-        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-        ArrayList<Usuario> usuarios = usuarioNegocio.retornarTodosOsUsuarios();
-        Map<Usuario, Float> recomendacoes =recomendacao.predizer();
-
-    }
+//    public ArrayList<Aula> recomendar(){
+//        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+//        ArrayList<Usuario> usuarios = usuarioNegocio.retornarTodosOsUsuarios();
+//        Map<Usuario, Float> recomendacoes =recomendacao.predizer();
+//
+//    }
 
 
 }

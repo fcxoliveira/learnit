@@ -32,7 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         Session.setContext(getApplicationContext());
         Populador populador = new Populador();
         populador.popularBancoDeDados();
-        populador.comprarAulas();
     }
 
     private void findEditableItens() {

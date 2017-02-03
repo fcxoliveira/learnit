@@ -3,13 +3,16 @@ package ufrpe.edu.learnit.infra;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Random;
 
+import ufrpe.edu.learnit.aula.dominio.AlunoAula;
+import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
+import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
+import ufrpe.edu.learnit.confirmacao.persistencia.ConfirmacaoPersistencia;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
+import ufrpe.edu.learnit.rating.persistencia.RatingPersistencia;
 import ufrpe.edu.learnit.tag.persistencia.TagPersistencia;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
@@ -108,7 +111,7 @@ public class Populador {
                 idAula++;
             }
         }
-
+        comprarAulas();
     }
 
     public void comprarAulas(){
@@ -120,6 +123,31 @@ public class Populador {
                 int horas = gerador.nextInt((10 - 3) + 1) + 3;
                 inscreverAlunoEmAula(idUsuario, idAula, getDateTime(), horas, aulaPersistencia.retornarAula(idAula).getValor()*horas);
                 idAula--;
+            }
+        }
+        confirmarAulasERatear();
+    }
+
+    public void confirmarAulasERatear(){
+        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
+        RatingPersistencia ratingPersistencia = new RatingPersistencia();
+        Random gerador = new Random();
+        for (int idUsuario = 1; idUsuario<31; idUsuario++){
+            Usuario usuario = usuarioPersistencia.retornarUsuario(idUsuario);
+            ArrayList<AlunoAula> aulasCompradas = aulaPersistencia.retornarAulasCompradas(idUsuario);
+            for (AlunoAula alunoAula : aulasCompradas) {
+                Aula aula = alunoAula.getAula();
+                if (aula.getId() % 2 == 0) {
+                    int max = alunoAula.getHorasTotal();
+                    int min = 0;
+                    confirmacaoPersistencia.enviarConfirmacao(aula.getId(), idUsuario, gerador.nextInt((max - min) + 1) + min, 0);
+                    Confirmacao confirmacao = confirmacaoPersistencia.retornarConfirmacaoRecebidaPopulador(aula.getId(), idUsuario);
+                    confirmacaoPersistencia.aceitarConfirmacao(confirmacao);
+                    ratingPersistencia.novaAvaliacaoPerfil(usuario.getPerfil().getId(), aula.getPerfil().getId(), gerador.nextInt((5 - 1) + 1) + 1);
+                    ratingPersistencia.novaAvaliacaoAula(usuario.getPerfil().getId(), aula.getId(), gerador.nextInt((5 - 1) + 1) + 1);
+                }
             }
         }
     }

@@ -114,6 +114,14 @@ public class ConfirmacaoPersistencia {
         return retornarConfirmacao(id);
     }
 
+    public Confirmacao retornarConfirmacaoRecebidaPopulador(int idAula, int idAluno){//recuperar a confirmação do banco
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query("CONFIRMACAO", new String[]{"*"}, "Status = ? AND IdAula=? AND IdAluno=?", new String[]{"0",idAula+"",idAluno+""}, null, null, null);
+        cursor.moveToFirst();
+        int id = cursor.getInt(cursor.getColumnIndex("Id"));
+        return retornarConfirmacao(id);
+    }
+
     public void aceitarConfirmacao(Confirmacao confirmacao){//aluno aceitar confirmação recebida
         db=dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
