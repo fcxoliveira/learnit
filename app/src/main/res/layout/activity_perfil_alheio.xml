@@ -32,16 +32,6 @@
             tools:context="ufrpe.edu.learnit.perfil.gui.PerfilAlheioActivity"
             tools:ignore="ScrollViewSize">
 
-            <TextView
-                android:text="Seus interesses"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="89dp"
-                android:id="@+id/textView1"
-                android:layout_below="@+id/textViewRate"
-                android:layout_marginRight="29dp"
-                android:layout_marginEnd="29dp" />
-
 
             <TextView android:text="Teste123456"
                 android:layout_width="wrap_content"
@@ -113,17 +103,6 @@
                 android:layout_alignStart="@+id/textViewPrecoAula"
                 android:maxLines="3"
                 android:scrollbars="vertical"/>
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/ListViewTags"
-                android:layout_below="@+id/textView6"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_above="@+id/textViewBiografia"
-                android:layout_toLeftOf="@+id/textView6"
-                android:layout_toStartOf="@+id/textView6" />
 
             <TextView
                 android:text="Biografia:"
