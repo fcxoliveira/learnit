@@ -148,7 +148,7 @@ public class Populador {
                     int min = 1;
                     confirmacaoPersistencia.enviarConfirmacao(aula.getId(), idUsuario, gerador.nextInt((max - min) + 1) + min, 0);
                     Confirmacao confirmacao = confirmacaoPersistencia.retornarConfirmacaoRecebidaPopulador(aula.getId(), idUsuario);
-                    confirmacaoPersistencia.aceitarConfirmacao(confirmacao);
+                    //confirmacaoPersistencia.aceitarConfirmacao(confirmacao);
                     ratingPersistencia.novaAvaliacaoPerfil(usuario.getPerfil().getId(), aula.getPerfil().getId(), gerador.nextInt((5 - 1) + 1) + 1);
                     ratingPersistencia.novaAvaliacaoAula(usuario.getPerfil().getId(), aula.getId(), gerador.nextInt((5 - 1) + 1) + 1);
                 }
