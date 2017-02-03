@@ -32,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         Session.setContext(getApplicationContext());
         Populador populador = new Populador();
         populador.popularBancoDeDados();
+        populador.comprarAulas();
     }
 
     private void findEditableItens() {
@@ -95,8 +96,6 @@ public class RegisterActivity extends AppCompatActivity {
         String senha = editTextPassword.getText().toString();
         UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
         if(verificarLogin(login) && verificarSenha(senha) && verificarEmail(email)){
-            //UsuarioNegocio negocio = new UsuarioNegocio();
-            //Usuario usuario = negocio.cadastrarUsuario(login, senha, email);
             if ((usuarioNegocio.retornarUsuario(login, senha) != null) && (usuarioNegocio.retornarUsuarioPorEmail(email) != null)){
                 Toast.makeText(context, "Login ou e-mail não disponível, tente novamente!", Toast.LENGTH_LONG).show();
             }else{

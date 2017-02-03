@@ -22,7 +22,7 @@ public class Populador {
 
     private String[] nomesLogin = {"lokaine", "setoper", "masterhunterxx1", "gcmaia", "blackprincess",
             "blackburn", "lokisora", "azren", "ramonrcm", "kingstank",
-            "catfelina", "mastermoon", "igordragonblack", "goenji", "leonel",
+            "catfelina", "mastermoon", "igordragonblack", "admin", "aluno",
             "tsunade", "jiraya", "orochimaru", "naruto", "sasuke",
             "kabuto", "moraisbsi", "princessgod", "ragnarl", "godrumala",
             "silva", "oliveirax", "barbosinha", "geeholiveira", "guylima"};
@@ -113,13 +113,13 @@ public class Populador {
 
     public void comprarAulas(){
         Random gerador = new Random();
-        UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        for (int idAula = 1; idAula<151; idAula++) {
-            for (int i = 1; i < 6; i++) {
+        int idAula = 150;
+        for (int idUsuario = 1; idUsuario<31; idUsuario++){
+            for (int i = 0; i<5; i++){
                 int horas = gerador.nextInt((10 - 3) + 1) + 3;
-                inscreverAlunoEmAula((idAula%5)+1,idAula, getDateTime(), horas, aulaPersistencia.retornarAula(idAula).getValor()*horas);
-
+                inscreverAlunoEmAula(idUsuario, idAula, getDateTime(), horas, aulaPersistencia.retornarAula(idAula).getValor()*horas);
+                idAula--;
             }
         }
     }

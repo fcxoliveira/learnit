@@ -124,6 +124,7 @@ public class AulaPersistencia {
         db = dbHelper.getWritableDatabase();
         String idAlunoString = String.valueOf(idAluno);
         String idAulaString = String.valueOf(idAula);
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         ContentValues newValues = new ContentValues();
         newValues.put("IdPerfilAluno",idAlunoString);
         newValues.put("IdAula", idAulaString);
@@ -133,6 +134,7 @@ public class AulaPersistencia {
         newValues.put("HorasConfirmadas","0");
         db.insert("ALUNO_AULA", null, newValues);
         removerHorasDisponiveis(idAula,horas);
+        perfilPersistencia.removerMoedas(idAluno, valorPago);
         db.close();
 
 
@@ -140,7 +142,7 @@ public class AulaPersistencia {
 
     public void inscreverAlunoEmAulaPopulador(int idAluno, int idAula, String date,int horas,int valorPago){
         db = dbHelper.getWritableDatabase();
-        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+
         String idAlunoString = String.valueOf(idAluno);
         String idAulaString = String.valueOf(idAula);
         ContentValues newValues = new ContentValues();
@@ -152,7 +154,7 @@ public class AulaPersistencia {
         newValues.put("HorasConfirmadas","0");
         db.insert("ALUNO_AULA", null, newValues);
         removerHorasDisponiveis(idAula,horas);
-        perfilPersistencia.removerMoedas(idAluno, valorPago);
+
         db.close();
 
 
