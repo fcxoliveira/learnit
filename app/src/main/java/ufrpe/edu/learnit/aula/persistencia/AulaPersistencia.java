@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import ufrpe.edu.learnit.aula.dominio.Aula;
@@ -12,6 +13,7 @@ import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
+import ufrpe.edu.learnit.usuario.dominio.Usuario;
 
 
 public class AulaPersistencia {
@@ -107,7 +109,7 @@ public class AulaPersistencia {
 
     public ArrayList<Aula> getAulasPorTexto(String texto){
         db = dbHelper.getReadableDatabase();
-        Cursor cursor=db.query("AULAS",new String[]{"*"},"(Titulo LIKE ? OR Descricao LIKE ?) AND IdPerfil!=?",new String[] { "%"+texto+"%","%"+texto+"%",Session.getUsuario().getID()+"" },null ,null, null);
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"(Titulo LIKE ? OR Descricao LIKE ?) AND IdPerfil!=?",new String[] { "%"+texto+"%","%"+texto+"%",Session.getUsuario().getID()+"" },null , "ORDER BY=Titulo", null);
         ArrayList<Aula> aulas = new ArrayList<>();
         while (cursor.moveToNext()){
             Aula aula = retornarAula(cursor.getInt(cursor.getColumnIndex("Id")));
@@ -145,13 +147,20 @@ public class AulaPersistencia {
         String idAulaString = String.valueOf(idAula);
         String horasString = String.valueOf(horasTotal);
         newValues.put("HorasDisponiveis", horasString);
-        db = dbHelper.getWritableDatabase();
+        db = dbHelper.getReadableDatabase();
         db.update("AULAS",newValues,"Id = ?",new String[]{idAulaString});
         db.close();
     }
     public Aula retornarAula(int id){
-        Aula result;
         db = dbHelper.getReadableDatabase();
+        Aula result = getAula(id,db);
+        db.close();
+        return result;
+    }
+
+    @Nullable
+    private Aula getAula(int id,SQLiteDatabase db) {
+        Aula result;
         Cursor cursor=db.query("AULAS", null, "Id=?",new String[]{id+""}, null, null, null);
         if (!cursor.moveToFirst()){
             result = null;
@@ -166,7 +175,6 @@ public class AulaPersistencia {
             result = preencherDadosAula(id,nome,descricao,horas,valor,idPerfil,avaliadores,avaliacao);
         }
         cursor.close();
-        db.close();
         return result;
     }
 
@@ -176,21 +184,24 @@ public class AulaPersistencia {
         String idPerfilString = String.valueOf(Session.getUsuario().getID());
         Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil LIKE ?",new String[] {idPerfilString},null ,null, null);
         while (cursor.moveToNext()){
-            aulas.add(retornarAula(cursor.getInt(cursor.getColumnIndex("Id"))));
+            aulas.add(getAula(cursor.getInt(cursor.getColumnIndex("Id")),db));
         }
         cursor.close();
         db.close();
         return aulas;
     }
 
-    public ArrayList<Perfil> retornarAlunosCadastrados(int id){
+    public ArrayList<Perfil> retornarAlunosCadastrados(int idAula){
         db = dbHelper.getReadableDatabase();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         ArrayList<Perfil> alunos = new ArrayList<>();
-        String idAulaString = String.valueOf(id);
-        Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdAula = ?",new String[] {idAulaString},null ,null, null);
+        String idAulaString = String.valueOf(idAula);
+        Cursor cursor=db.query("ALUNO_AULA",new String[]{"IdPerfilAluno"},"IdAula = ?",new String[] {idAulaString},null ,null, null);
         while (cursor.moveToNext()){
-            alunos.add(perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdPerfilAluno"))));
+            int indexPerfilAluno = cursor.getColumnIndex("IdPerfilAluno");
+            int idPerfil = cursor.getInt(indexPerfilAluno);
+            Perfil perfil = perfilPersistencia.retornarPerfil(idPerfil);
+            alunos.add(perfil);
         }
         cursor.close();
         db.close();
