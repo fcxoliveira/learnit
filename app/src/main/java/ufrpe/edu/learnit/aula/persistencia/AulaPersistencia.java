@@ -226,6 +226,7 @@ public class AulaPersistencia {
             AlunoAula alunoAula = preencherAlunoAula(perfilAluno, cursor);
             result.add(alunoAula);
         }
+
         cursor.close();
         db.close();
         return result;

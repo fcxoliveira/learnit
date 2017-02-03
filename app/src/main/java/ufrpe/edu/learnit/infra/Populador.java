@@ -119,6 +119,7 @@ public class Populador {
             for (int i = 1; i < 6; i++) {
                 int horas = gerador.nextInt((10 - 3) + 1) + 3;
                 inscreverAlunoEmAula((idAula%5)+1,idAula, getDateTime(), horas, aulaPersistencia.retornarAula(idAula).getValor()*horas);
+
             }
         }
     }
