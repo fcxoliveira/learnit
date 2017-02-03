@@ -25,8 +25,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_AULA_TAG = "create table if not exists AULA_TAG(IdAula integer,IdTag integer);";
     private static final String TABLE_PERFIL_TAG="create table if not exists PERFIL_TAG(IdPerfil integer,IdTag integer);";
     private static final String TABLE_ALUNO_TAG_RECOMENDACAO="create table if not exists ALUNO_TAG_RECOMENDACAO(IdPerfil integer, IdTag integer, Valor integer);";
-    private static final String TABLE_RATE_PERFIL="create table if not exists RATE(IdPerfil integer, IdItemPerfil integer, Avaliacao real);";
-    private static final String TABLE_RATE_AULA="create table if not exists RATE(IdPerfil integer, IdItemAula integer, Avaliacao real);";
+    private static final String TABLE_RATE_PERFIL="create table if not exists RATE_PERFIL(IdPerfil integer, IdItemPerfil integer, Avaliacao real);";
+    private static final String TABLE_RATE_AULA="create table if not exists RATE_AULA(IdPerfil integer, IdItemAula integer, Avaliacao real);";
 
     public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
     {
