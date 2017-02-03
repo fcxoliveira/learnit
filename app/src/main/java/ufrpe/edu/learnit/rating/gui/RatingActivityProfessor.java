@@ -19,6 +19,7 @@ public class RatingActivityProfessor extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+
     }
 
 }
