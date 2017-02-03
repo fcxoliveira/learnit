@@ -127,7 +127,7 @@ public class RatingPersistencia {
         db.update("PERFIL",newValues,"IdPerfil=?",new String[]{idPerfil+""});
     }
 
-    public ArrayList<Perfil> retornarTodasAvalicoesPerfil(int idPerfil){
+    public ArrayList<Perfil> retornarTodasAvaliacoesPerfil(int idPerfil){
         db = dbHelper.getWritableDatabase();
         Perfil perfil;
         ArrayList<Perfil> perfis = new ArrayList<>();
@@ -142,7 +142,7 @@ public class RatingPersistencia {
         return perfis;
     }
 
-    public ArrayList<Aula> retornarTodasAvalicoesAula(int idPerfil){
+    public ArrayList<Aula> retornarTodasAvaliacoesAula(int idPerfil){
         db = dbHelper.getWritableDatabase();
         Aula aula;
         ArrayList<Aula> aulas = new ArrayList<>();

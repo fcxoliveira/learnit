@@ -7,25 +7,25 @@ import java.util.Map;
 
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
-
+import ufrpe.edu.learnit.perfil.dominio.Perfil;
 /**
  * Created by Filipe on 26/01/2017.
  */
 
 public class Recomendacao {
-    Map<Usuario, Map<Usuario, Float>> diferenca = new HashMap<>();
-    Map<Usuario, Map<Usuario, Integer>> frequencia = new HashMap<>();
+    Map<Perfil, Map<Perfil, Float>> diferenca = new HashMap<>();
+    Map<Perfil, Map<Perfil, Integer>> frequencia = new HashMap<>();
 
-    public void atualizar(Map<Usuario, Map<Usuario, Float>> userData) {
-        for (Map<Usuario, Float> ratings : userData.values()) {
+    public void atualizar(Map<Perfil, Map<Perfil, Float>> userData) {
+        for (Map<Perfil, Float> ratings : userData.values()) {
 
-            for (Usuario usuario1 : ratings.keySet()) {
+            for (Perfil usuario1 : ratings.keySet()) {
 
                 float valor1 = ratings.get(usuario1);
-                frequencia.put(usuario1, new HashMap<Usuario, Integer>());
-                diferenca.put(usuario1, new HashMap<Usuario, Float>());
+                frequencia.put(usuario1, new HashMap<Perfil, Integer>());
+                diferenca.put(usuario1, new HashMap<Perfil, Float>());
 
-                for (Usuario usuario2 : ratings.keySet()) {
+                for (Perfil usuario2 : ratings.keySet()) {
 
                     float valor2 = ratings.get(usuario2);
                     frequencia.get(usuario1).put(usuario2, 0);
@@ -41,9 +41,9 @@ public class Recomendacao {
 
         }
 
-        for (Usuario usuario3: diferenca.keySet()) {
-            Map<Usuario, Float> valor = diferenca.get(usuario3);
-            for (Usuario usuario4: valor.keySet()) {
+        for (Perfil usuario3: diferenca.keySet()) {
+            Map<Perfil, Float> valor = diferenca.get(usuario3);
+            for (Perfil usuario4: valor.keySet()) {
                 Float calculo = valor.get(usuario4);
                 calculo /= frequencia.get(usuario3).get(usuario4);
                 valor.put(usuario4, calculo);
@@ -52,14 +52,14 @@ public class Recomendacao {
         }
     }
 
-    public Map<Usuario, Float> predizer(HashMap<Usuario, Float> avaliacaoUsuario,Map<Usuario, Map<Usuario, Float>> dadosDeTodosUsuarios){
+    public Map<Perfil, Float> predizer(HashMap<Perfil, Float> avaliacaoUsuario,Map<Perfil, Map<Perfil, Float>> dadosDeTodosUsuarios){
         this.atualizar(dadosDeTodosUsuarios);
-        Map<Usuario, Float> preds = new HashMap<>();
-        Map<Usuario, Integer> freqs = new HashMap<>();
-        for (Usuario usuario : avaliacaoUsuario.keySet()) {
+        Map<Perfil, Float> preds = new HashMap<>();
+        Map<Perfil, Integer> freqs = new HashMap<>();
+        for (Perfil usuario : avaliacaoUsuario.keySet()) {
             Float nota = avaliacaoUsuario.get(usuario);
-            for (Usuario usuario2 : this.diferenca.keySet()) {
-                Map<Usuario, Float> valor = this.diferenca.get(usuario2);
+            for (Perfil usuario2 : this.diferenca.keySet()) {
+                Map<Perfil, Float> valor = this.diferenca.get(usuario2);
                 int freq = this.frequencia.get(usuario2).get(usuario);
                 preds.put(usuario2, 0.0f);
                 freqs.put(usuario2, 0);
@@ -71,8 +71,8 @@ public class Recomendacao {
                 freqs.put(usuario2, aux2);
             }
         }
-        Map<Usuario, Float> resultado = new HashMap<>();
-        for (Usuario usuario :
+        Map<Perfil, Float> resultado = new HashMap<>();
+        for (Perfil usuario :
                 preds.keySet()) {
             float nota = preds.get(usuario);
             if (!preds.containsKey(usuario) && (freqs.get(usuario) > 0)){

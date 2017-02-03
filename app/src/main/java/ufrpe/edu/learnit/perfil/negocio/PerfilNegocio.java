@@ -1,5 +1,7 @@
 package ufrpe.edu.learnit.perfil.negocio;
 
+import java.util.ArrayList;
+
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
 
@@ -27,5 +29,9 @@ public class PerfilNegocio {
     public void setNota(int idPerfil,float avaliacao){
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         perfilPersistencia.setAvaliacao(idPerfil,avaliacao);
+    }
+    public ArrayList<Perfil> retornarTodosOsPerfis(){
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        return perfilPersistencia.retornarTodosOsPerfis();
     }
 }

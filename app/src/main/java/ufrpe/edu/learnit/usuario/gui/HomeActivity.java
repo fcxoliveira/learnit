@@ -3,6 +3,7 @@ package ufrpe.edu.learnit.usuario.gui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,6 +22,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import ufrpe.edu.learnit.infra.Populador;
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
@@ -32,8 +38,10 @@ import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.adaptersDoProjeto.HomeAdapter;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
+import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
+import ufrpe.edu.learnit.rating.negocio.RatingNegocio;
 import ufrpe.edu.learnit.recomendacao.Recomendacao;
 import ufrpe.edu.learnit.tag.negocio.TagNegocio;
 
@@ -249,13 +257,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         startActivity(secondActivity);
         finish();
     }
-
-//    public ArrayList<Aula> recomendar(){
-//        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-//        ArrayList<Usuario> usuarios = usuarioNegocio.retornarTodosOsUsuarios();
-//        Map<Usuario, Float> recomendacoes =recomendacao.predizer();
-//
-//    }
+    public Map<Perfil,Float> recomendar(int idPerfil){
+        PerfilNegocio perfilNegocio = new PerfilNegocio();
+        ArrayList<Perfil> perfils = perfilNegocio.retornarTodosOsPerfis();
+        Map<Perfil,Map<Perfil, Float>> DadosUsuario = new HashMap<>();
+        HashMap <Perfil, Float> avaliacaoUsuario = new HashMap<>();
+            for (Perfil usuario : perfils) {
+                RatingNegocio ratingNegocio = new RatingNegocio();
+                ArrayList<Perfil> avaliacaoTemp = ratingNegocio.retornarTodasAvaliacoesPerfil(idPerfil);
+                for(Perfil perfil :avaliacaoTemp) {
+                    float avaliacao = ratingNegocio.retornarAvaliacaoPerfil(usuario.getId(), perfil.getId());
+                    avaliacaoUsuario.put(perfil, avaliacao);
+                }
+                DadosUsuario.put(usuario,avaliacaoUsuario);
+            }
+        Map<Perfil, Float> recomendacoes =recomendacao.predizer(avaliacaoUsuario,DadosUsuario);
+        return recomendacoes;
+    }
 
 
 }

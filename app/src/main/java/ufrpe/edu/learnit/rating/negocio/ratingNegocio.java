@@ -2,6 +2,9 @@ package ufrpe.edu.learnit.rating.negocio;
 
 import android.media.Rating;
 
+import java.util.ArrayList;
+
+import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.rating.persistencia.RatingPersistencia;
 
 /**
@@ -37,6 +40,11 @@ public class RatingNegocio {
     public float retornarAvaliacaoAula(int idPerfilAvaliador , int idItemAula){
         RatingPersistencia ratingPersistencia = new RatingPersistencia();
         float resultado = ratingPersistencia.retornarAvaliacaoAula(idPerfilAvaliador, idItemAula);
+        return resultado;
+    }
+    public ArrayList<Perfil> retornarTodasAvaliacoesPerfil(int idPerfil){
+        RatingPersistencia ratingPersistencia = new RatingPersistencia();
+        ArrayList<Perfil> resultado = ratingPersistencia.retornarTodasAvaliacoesPerfil(idPerfil);
         return resultado;
     }
 }
