@@ -7,9 +7,11 @@ import ufrpe.edu.learnit.R;
 
 public class RatingActivityAula extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_aula);
+
     }
 }
