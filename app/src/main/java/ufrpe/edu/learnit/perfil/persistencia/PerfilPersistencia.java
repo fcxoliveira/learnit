@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
@@ -99,5 +102,18 @@ public class PerfilPersistencia {
         newValues.put("Moedas",moedas);
         db.update("PERFIL",newValues,"IdPerfil='"+idString+"'",null);
         db.close();
+    }
+    public ArrayList<Perfil> retornarTodosOsPerfis(){
+        ArrayList<Perfil> result = new ArrayList<>();
+        Perfil perfil;
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor=db.query("PERFIL", null, null,null, null, null, null);
+        while (cursor.moveToNext()){
+            int idColumPerfil = cursor.getColumnIndex("IdPerfil");
+            int idPerfil = cursor.getInt(idColumPerfil);
+            perfil = retornarPerfil(idPerfil);
+            result.add(perfil);
+      }
+        return result;
     }
 }
