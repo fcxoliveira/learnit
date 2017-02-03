@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 import static android.R.attr.version;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
+
     private static final String DATABASE_NAME = "learnit.db";
     private static final int DATABASE_VERSION = 34;
     private static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
