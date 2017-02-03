@@ -5,8 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
+import ufrpe.edu.learnit.aula.dominio.Aula;
+import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.perfil.dominio.Perfil;
+import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
 
 public class RatingPersistencia {
     private SQLiteDatabase db;
@@ -120,6 +126,37 @@ public class RatingPersistencia {
         newValues.put("Avaliadores", avaliadores);
         db.update("PERFIL",newValues,"IdPerfil=?",new String[]{idPerfil+""});
     }
+
+    public ArrayList<Perfil> retornarTodasAvalicoesPerfil(int idPerfil){
+        db = dbHelper.getWritableDatabase();
+        Perfil perfil;
+        ArrayList<Perfil> perfis = new ArrayList<>();
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        Cursor cursor=db.query("RATE_AULA", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
+        while (cursor.moveToNext()){
+            int idColumItemAula = cursor.getColumnIndex("IdItemAula");
+            int idItemAula = cursor.getInt(idColumItemAula);
+            perfil = perfilPersistencia.retornarPerfil(idItemAula);
+            perfis.add(perfil);
+        }
+        return perfis;
+    }
+
+    public ArrayList<Aula> retornarTodasAvalicoesAula(int idPerfil){
+        db = dbHelper.getWritableDatabase();
+        Aula aula;
+        ArrayList<Aula> aulas = new ArrayList<>();
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        Cursor cursor=db.query("RATE_AULA", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
+        while (cursor.moveToNext()){
+            int idColumItemAula = cursor.getColumnIndex("IdItemAula");
+            int idItemAula = cursor.getInt(idColumItemAula);
+            aula = aulaPersistencia.retornarAula(idItemAula);
+            aulas.add(aula);
+        }
+        return aulas;
+    }
+
 
 
 }
