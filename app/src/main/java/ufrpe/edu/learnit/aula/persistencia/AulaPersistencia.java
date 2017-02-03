@@ -247,6 +247,7 @@ public class AulaPersistencia {
 
     private AlunoAula preencherAlunoAula(Perfil perfilAluno, Cursor cursor) {
         AlunoAula alunoAula = new AlunoAula();
+        cursor.moveToFirst();
         alunoAula.setId(cursor.getInt(cursor.getColumnIndex("Id")));
         alunoAula.setPerfil(perfilAluno);
         alunoAula.setAula(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));
