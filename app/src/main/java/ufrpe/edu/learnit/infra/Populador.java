@@ -37,32 +37,32 @@ public class Populador {
             "Antonio Henrique","Flávio Daniel","Ícaro César","Íthalo José","José Maria"};
     private final String SENHA = "123456";
 
-    public void cadastrarUsuario(String login, String senha, String email){
+    private void cadastrarUsuario(String login, String senha, String email){
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
         usuarioPersistencia.cadastrarUsuario(login, senha, email);
     }
 
-    public void cadastrarPerfil(int id, String bio, String nome){
+    private void cadastrarPerfil(int id, String bio, String nome){
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         perfilPersistencia.cadastrarPerfil(id, bio, nome);
     }
 
-    public void cadastrarAula(String titulo, String descricao, int duracao, int valor, int idPerfil){
+    private void cadastrarAula(String titulo, String descricao, int duracao, int valor, int idPerfil){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         aulaPersistencia.cadastrarAulaPopulador(titulo, descricao, duracao, valor, idPerfil);
     }
 
-    public void inserirRelacaoTagAula(int idTag, int idAula){
+    private void inserirRelacaoTagAula(int idTag, int idAula){
         TagPersistencia tagPersistencia = new TagPersistencia();
         tagPersistencia.inserirRelacaoTagAula(idTag, idAula);
     }
 
-    public void inserirRelacaoTagPerfil(int idTag, int idPerfil){
+    private void inserirRelacaoTagPerfil(int idTag, int idPerfil){
         TagPersistencia tagPersistencia = new TagPersistencia();
         tagPersistencia.inserirRelacaoTagPerfil(idTag, idPerfil);
     }
 
-    public void inscreverAlunoEmAula(int idAluno, int idAula, String date, int horas, int valorPago){
+    private void inscreverAlunoEmAula(int idAluno, int idAula, String date, int horas, int valorPago){
         AulaPersistencia aula = new AulaPersistencia();
         aula.inscreverAlunoEmAulaPopulador(idAluno, idAula, date, horas, valorPago);
     }
@@ -114,7 +114,7 @@ public class Populador {
         comprarAulas();
     }
 
-    public void comprarAulas(){
+    private void comprarAulas(){
         Random gerador = new Random();
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         int idAula = 150;
@@ -128,7 +128,7 @@ public class Populador {
         confirmarAulasERatear();
     }
 
-    public void confirmarAulasERatear(){
+    private void confirmarAulasERatear(){
         UsuarioPersistencia usuarioPersistencia = new UsuarioPersistencia();
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
@@ -141,7 +141,7 @@ public class Populador {
                 Aula aula = alunoAula.getAula();
                 if (aula.getId() % 2 == 0) {
                     int max = alunoAula.getHorasTotal();
-                    int min = 0;
+                    int min = 1;
                     confirmacaoPersistencia.enviarConfirmacao(aula.getId(), idUsuario, gerador.nextInt((max - min) + 1) + min, 0);
                     Confirmacao confirmacao = confirmacaoPersistencia.retornarConfirmacaoRecebidaPopulador(aula.getId(), idUsuario);
                     confirmacaoPersistencia.aceitarConfirmacao(confirmacao);

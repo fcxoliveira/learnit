@@ -6,4 +6,5 @@ package ufrpe.edu.learnit.rating.negocio;
 
 public class RatingNegocio {
 
+
 }
