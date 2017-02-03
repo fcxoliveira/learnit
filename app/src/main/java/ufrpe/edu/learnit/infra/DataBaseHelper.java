@@ -12,7 +12,7 @@ import static android.R.attr.version;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "learnit.db";
-    private static final int DATABASE_VERSION = 33;
+    private static final int DATABASE_VERSION = 34;
     private static final String TABLE_USER_CREATE = "create table IF NOT EXISTS USER (Id integer primary key autoincrement, Username  text,Password text, Email text);";
     private static final String TABLE_SESSION = "create table IF NOT EXISTS SESSION (LogedUserId integer);";
     private static final String TABLE_PERFIL = "create table IF NOT EXISTS PERFIL (IdPerfil int, Bio text, Nome text, Moedas integer, Avaliacao real, Avaliadores integer, Horas integer);";
@@ -24,8 +24,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_AULA_TAG = "create table if not exists AULA_TAG(IdAula integer,IdTag integer);";
     private static final String TABLE_PERFIL_TAG="create table if not exists PERFIL_TAG(IdPerfil integer,IdTag integer);";
     private static final String TABLE_ALUNO_TAG_RECOMENDACAO="create table if not exists ALUNO_TAG_RECOMENDACAO(IdPerfil integer, IdTag integer, Valor integer);";
-    private static final String TABLE_RATE_PERFIL="create table if not exists RATE(IdPerfil integer, IdItemPerfil integer, Avaliacao real, TotalAvaliadores int);";
-    private static final String TABLE_RATE_AULA="create table if not exists RATE(IdPerfil integer, IdItemAula integer, Avaliacao real, TotalAvaliadores int);";
+    private static final String TABLE_RATE_PERFIL="create table if not exists RATE(IdPerfil integer, IdItemPerfil integer, Avaliacao real);";
+    private static final String TABLE_RATE_AULA="create table if not exists RATE(IdPerfil integer, IdItemAula integer, Avaliacao real);";
 
     public DataBaseHelper(Context context , SQLiteDatabase.CursorFactory factory)
     {
