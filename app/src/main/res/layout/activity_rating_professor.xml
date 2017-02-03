@@ -35,7 +35,8 @@
         android:id="@+id/ratingBarMediaGeral"
         android:layout_below="@+id/toolbar"
         android:layout_alignLeft="@+id/ratingBarSuaNota"
-        android:layout_alignStart="@+id/ratingBarSuaNota" />
+        android:layout_alignStart="@+id/ratingBarSuaNota"
+        android:clickable="false"/>
 
     <RatingBar
         android:layout_width="wrap_content"
