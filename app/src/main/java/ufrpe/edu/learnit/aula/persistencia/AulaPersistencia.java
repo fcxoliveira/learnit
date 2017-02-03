@@ -107,9 +107,9 @@ public class AulaPersistencia {
         db.update("AULAS",newValues,"Id='"+id+"'",null);
     }
 
-    public ArrayList<Aula> getAulasPorTexto(String texto){
+    public ArrayList<Aula> getAulasPorTexto(String texto, int idUser){
         db = dbHelper.getReadableDatabase();
-        Cursor cursor=db.query("AULAS",new String[]{"*"},"(Titulo LIKE ? OR Descricao LIKE ?) AND IdPerfil!=? ORDER BY Titulo",new String[] { "%"+texto+"%","%"+texto+"%",Session.getUsuario().getID()+"" },null , null, null);
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"(Titulo LIKE ? OR Descricao LIKE ?) AND IdPerfil!=? ORDER BY Titulo",new String[] { "%"+texto+"%","%"+texto+"%",idUser+"" },null , null, null);
         ArrayList<Aula> aulas = new ArrayList<>();
         while (cursor.moveToNext()){
             Aula aula = retornarAula(cursor.getInt(cursor.getColumnIndex("Id")));
@@ -235,6 +235,7 @@ public class AulaPersistencia {
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         Perfil perfilAluno=perfilPersistencia.retornarPerfil(idAluno);
         Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfilAluno = ?",new String[] {idAluno+""},null ,null, null);
+        cursor.moveToFirst();
         while (cursor.moveToNext()){
             AlunoAula alunoAula = preencherAlunoAula(perfilAluno, cursor);
             result.add(alunoAula);
@@ -247,7 +248,6 @@ public class AulaPersistencia {
 
     private AlunoAula preencherAlunoAula(Perfil perfilAluno, Cursor cursor) {
         AlunoAula alunoAula = new AlunoAula();
-        cursor.moveToFirst();
         alunoAula.setId(cursor.getInt(cursor.getColumnIndex("Id")));
         alunoAula.setPerfil(perfilAluno);
         alunoAula.setAula(retornarAula(cursor.getInt(cursor.getColumnIndex("IdAula"))));

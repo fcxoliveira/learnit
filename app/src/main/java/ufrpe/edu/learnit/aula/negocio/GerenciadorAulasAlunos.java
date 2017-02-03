@@ -9,9 +9,9 @@ import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
 import ufrpe.edu.learnit.confirmacao.persistencia.ConfirmacaoPersistencia;
 
 public class GerenciadorAulasAlunos {
-    public ArrayList<Aula> getAulasPorTexto(String texto){
+    public ArrayList<Aula> getAulasPorTexto(String texto,int idUser){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        return  aulaPersistencia.getAulasPorTexto(texto);
+        return  aulaPersistencia.getAulasPorTexto(texto,idUser);
     }
 
     public void inscreverAlunoEmAula(int idAluno, int idAula,String date,int horas,int valorPago){

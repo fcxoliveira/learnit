@@ -184,7 +184,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     public ArrayList<Aula> getValoresListView() {
         GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
-        return gerenciadorAulasAlunos.getAulasPorTexto("");
+        return gerenciadorAulasAlunos.getAulasPorTexto("",Session.getUsuario().getID());
     }
 
 
@@ -201,7 +201,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
                 String text = editText.getText().toString();
                 HomeAdapter adapter;
-                ArrayList<Aula> aulas = gerenciadorAulasAlunos.getAulasPorTexto(text);
+                ArrayList<Aula> aulas = gerenciadorAulasAlunos.getAulasPorTexto(text,Session.getUsuario().getID());
                 adapter = new HomeAdapter(aulas, getApplicationContext());
                 listView.setAdapter(adapter);
             }

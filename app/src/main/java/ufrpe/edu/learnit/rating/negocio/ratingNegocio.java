@@ -24,7 +24,7 @@ public class RatingNegocio {
     public void novaAvaliacaoPerfil(int idPerfilAvaliador , int idItemPerfil , float avaliacao) {
         RatingPersistencia ratingPersistencia = new RatingPersistencia();
         float resultado = ratingPersistencia.retornarAvaliacaoPerfil(idPerfilAvaliador, idItemPerfil);
-        if (resultado != -1) {
+        if (resultado !=0) {
             ratingPersistencia.updateAvaliacaoPerfil(idPerfilAvaliador, idItemPerfil, avaliacao, resultado);
         } else {
             ratingPersistencia.novaAvaliacaoPerfil(idPerfilAvaliador, idItemPerfil, avaliacao);

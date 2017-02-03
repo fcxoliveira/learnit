@@ -65,7 +65,7 @@ public class RatingPersistencia {
     public float retornarAvaliacaoPerfil(int idPerfilAvaliador ,int idItemPerfil){//retorna -1 caso não exista um rating dado para o item
         db=dbHelper.getReadableDatabase();
         Cursor cursor=db.query("RATE_PERFIL", null, "IdPerfil=? AND IdItemPerfil = ?",new String[]{idPerfilAvaliador+"",idItemPerfil+""}, null, null, null);
-        float result = -1;
+        float result = 0;
         if (cursor.moveToFirst()){
             result = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
         }
@@ -132,9 +132,9 @@ public class RatingPersistencia {
         Perfil perfil;
         ArrayList<Perfil> perfis = new ArrayList<>();
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        Cursor cursor=db.query("RATE_AULA", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
+        Cursor cursor=db.query("RATE_PERFIL", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
         while (cursor.moveToNext()){
-            int idColumItemAula = cursor.getColumnIndex("IdItemAula");
+            int idColumItemAula = cursor.getColumnIndex("IdItemPerfil");
             int idItemAula = cursor.getInt(idColumItemAula);
             perfil = perfilPersistencia.retornarPerfil(idItemAula);
             perfis.add(perfil);
