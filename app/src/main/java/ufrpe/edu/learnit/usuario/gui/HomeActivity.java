@@ -21,6 +21,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import ufrpe.edu.learnit.infra.adaptersDoProjeto.CustomAdapter;
 import ufrpe.edu.learnit.R;
@@ -35,7 +37,10 @@ import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
 import ufrpe.edu.learnit.perfil.negocio.PerfilNegocio;
+import ufrpe.edu.learnit.recomendacao.Recomendacao;
 import ufrpe.edu.learnit.tag.negocio.TagNegocio;
+import ufrpe.edu.learnit.usuario.dominio.Usuario;
+import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -46,6 +51,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     Toolbar toolbar;
+    Recomendacao recomendacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -240,6 +246,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Intent secondActivity = new Intent(this, CoinsActivity.class);
         startActivity(secondActivity);
         finish();
+    }
+
+    public ArrayList<Aula> recomendar(){
+        UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+        ArrayList<Usuario> usuarios = usuarioNegocio.retornarTodosOsUsuarios();
+        Map<Usuario, Float> recomendacoes =recomendacao.predizer();
+
     }
 
 
