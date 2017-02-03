@@ -84,10 +84,13 @@ public class RatingPersistencia {
         db=dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         Cursor cursor=db.query("PERFIL", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
-        float avaliacao = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
-        float totalAvalicao= (avaliacao-oldAvaliacao)+newAvaliacao;
-        newValues.put("Avaliacao", totalAvalicao);
-        db.update("PERFIL",newValues,"IdPerfil=",new String[]{idPerfil+""});
+        if(cursor.moveToFirst()){
+            float avaliacao = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
+            float totalAvalicao= (avaliacao-oldAvaliacao)+newAvaliacao;
+            newValues.put("Avaliacao", totalAvalicao);
+            db.update("PERFIL",newValues,"IdPerfil=?",new String[]{idPerfil+""});
+        }
+
     }
 
 
@@ -96,11 +99,8 @@ public class RatingPersistencia {
         ContentValues newValues = new ContentValues();
         Cursor cursor=db.query("AULAS", null, "Id=?",new String[]{idAula+""}, null, null, null);
         float avaliacao = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
-        int avaliadores =cursor.getInt(cursor.getColumnIndex("Avaliadores"));
         float totalAvalicao=(avaliacao-oldAvaliacao)+newAvaliacao;
-        avaliadores+=1;
         newValues.put("Avaliacao", totalAvalicao);
-        newValues.put("Avalidores", avaliadores);
         db.update("AULAS",newValues,"Id=",new String[]{idAula+""});
     }
      public void inserirAvaliadorAula(int idAula){
@@ -110,16 +110,16 @@ public class RatingPersistencia {
          int avaliadores =cursor.getInt(cursor.getColumnIndex("Avaliadores"));
          avaliadores+=1;
          newValues.put("Avalidores", avaliadores);
-         db.update("AULAS",newValues,"Id=",new String[]{idAula+""});
+         db.update("AULAS",newValues,"Id=?",new String[]{idAula+""});
      }
     public void inserirAvaliadorPerfil(int idPerfil){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
-        Cursor cursor=db.query("AULAS", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
+        Cursor cursor=db.query("PERFIL", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
         int avaliadores =cursor.getInt(cursor.getColumnIndex("Avaliadores"));
         avaliadores+=1;
         newValues.put("Avalidores", avaliadores);
-        db.update("AULAS",newValues,"Id=",new String[]{idPerfil+""});
+        db.update("PERFIL",newValues,"IdPerfil=?",new String[]{idPerfil+""});
     }
 
 
