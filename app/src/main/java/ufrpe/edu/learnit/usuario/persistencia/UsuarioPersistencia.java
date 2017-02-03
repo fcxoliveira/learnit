@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.perfil.persistencia.PerfilPersistencia;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
@@ -116,5 +118,18 @@ public class UsuarioPersistencia {
         }
         db.close();
         return usuario;
+    }
+
+    public ArrayList<Usuario> retornarTodosOsUsusarios(){
+        db = dbHelper.getReadableDatabase();
+        ArrayList<Usuario> usuarios =new ArrayList<>();
+        Usuario usuario;
+        Cursor cursor=db.query("USER",new String[]{"*"}, null, null,null ,null, null);
+        while (cursor.moveToNext()){
+            int idCollum = cursor.getColumnIndex("Id");
+            usuario = retornarUsuario(cursor.getInt(idCollum));
+            usuarios.add(usuario);
+        }
+        return usuarios;
     }
 }
