@@ -109,7 +109,7 @@ public class AulaPersistencia {
 
     public ArrayList<Aula> getAulasPorTexto(String texto){
         db = dbHelper.getReadableDatabase();
-        Cursor cursor=db.query("AULAS",new String[]{"*"},"(Titulo LIKE ? OR Descricao LIKE ?) AND IdPerfil!=?",new String[] { "%"+texto+"%","%"+texto+"%",Session.getUsuario().getID()+"" },null , "ORDER BY=Titulo", null);
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"(Titulo LIKE ? OR Descricao LIKE ?) AND IdPerfil!=? ORDER BY Titulo",new String[] { "%"+texto+"%","%"+texto+"%",Session.getUsuario().getID()+"" },null , null, null);
         ArrayList<Aula> aulas = new ArrayList<>();
         while (cursor.moveToNext()){
             Aula aula = retornarAula(cursor.getInt(cursor.getColumnIndex("Id")));

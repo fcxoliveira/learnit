@@ -1,7 +1,11 @@
 package ufrpe.edu.learnit.usuario.gui;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +16,7 @@ import android.widget.Toast;
 
 import ufrpe.edu.learnit.infra.Populador;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
+import ufrpe.edu.learnit.perfil.gui.PerfilActivity;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.usuario.negocio.UsuarioNegocio;
@@ -107,5 +112,12 @@ public class RegisterActivity extends AppCompatActivity {
                 this.finish();
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent secondActivity = new Intent(this, LoginActivity.class);
+        startActivity(secondActivity);
+        finish();
     }
 }

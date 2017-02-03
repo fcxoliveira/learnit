@@ -8,10 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import ufrpe.edu.learnit.infra.DataBaseHelper;
 import ufrpe.edu.learnit.infra.dominio.Session;
 
-/**
- * Created by joel_ on 02/02/2017.
- */
-
 public class RatingPersistencia {
     private SQLiteDatabase db;
     private DataBaseHelper dbHelper;
@@ -98,27 +94,30 @@ public class RatingPersistencia {
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         Cursor cursor=db.query("AULAS", null, "Id=?",new String[]{idAula+""}, null, null, null);
+        cursor.moveToFirst();
         float avaliacao = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
         float totalAvalicao=(avaliacao-oldAvaliacao)+newAvaliacao;
         newValues.put("Avaliacao", totalAvalicao);
-        db.update("AULAS",newValues,"Id=",new String[]{idAula+""});
+        db.update("AULAS",newValues,"Id=?",new String[]{idAula+""});
     }
      public void inserirAvaliadorAula(int idAula){
          db = dbHelper.getWritableDatabase();
          ContentValues newValues = new ContentValues();
          Cursor cursor=db.query("AULAS", null, "Id=?",new String[]{idAula+""}, null, null, null);
+         cursor.moveToFirst();
          int avaliadores =cursor.getInt(cursor.getColumnIndex("Avaliadores"));
          avaliadores+=1;
-         newValues.put("Avalidores", avaliadores);
+         newValues.put("Avaliadores", avaliadores);
          db.update("AULAS",newValues,"Id=?",new String[]{idAula+""});
      }
     public void inserirAvaliadorPerfil(int idPerfil){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         Cursor cursor=db.query("PERFIL", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
+        cursor.moveToFirst();
         int avaliadores =cursor.getInt(cursor.getColumnIndex("Avaliadores"));
         avaliadores+=1;
-        newValues.put("Avalidores", avaliadores);
+        newValues.put("Avaliadores", avaliadores);
         db.update("PERFIL",newValues,"IdPerfil=?",new String[]{idPerfil+""});
     }
 
