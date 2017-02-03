@@ -37,6 +37,7 @@ public class PerfilPersistencia {
     public void setAvaliacao(int idPerfil, float avaliacao){
         db=dbHelper.getWritableDatabase();
         Cursor cursor=db.query("PERFIL", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
+        cursor.moveToFirst();
         int avaliadores = cursor.getInt(cursor.getColumnIndex("Avaliadores"));
         float avaliacaoTotal = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
         avaliacaoTotal= avaliacao+avaliacaoTotal;

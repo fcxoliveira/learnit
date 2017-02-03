@@ -45,6 +45,7 @@ public class Populador {
     private void cadastrarPerfil(int id, String bio, String nome){
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         perfilPersistencia.cadastrarPerfil(id, bio, nome);
+
     }
 
     private void cadastrarAula(String titulo, String descricao, int duracao, int valor, int idPerfil){
@@ -83,6 +84,8 @@ public class Populador {
             cadastrarUsuario(nomesLogin[i-1], SENHA, email);
             String bio = "Teste de descrição para Perfil de "+nomesPerfis[i-1];
             cadastrarPerfil(i,bio,nomesPerfis[i-1]);
+            PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+            perfilPersistencia.setAvaliacao(i,gerador.nextInt((5 - 1) + 1) + 1);
             int numInteresses = gerador.nextInt((3 - 1) + 1) + 1;
 
             for (int l = 0; l<numInteresses; l++){
@@ -133,6 +136,7 @@ public class Populador {
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
         RatingPersistencia ratingPersistencia = new RatingPersistencia();
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         Random gerador = new Random();
         for (int idUsuario = 1; idUsuario<31; idUsuario++){
             Usuario usuario = usuarioPersistencia.retornarUsuario(idUsuario);

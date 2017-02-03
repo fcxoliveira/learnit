@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     private ActionBarDrawerToggle mDrawerToggle;
     Toolbar toolbar;
-    Recomendacao recomendacao;
+    Recomendacao recomendacao = new Recomendacao();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +74,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         createButtonnavBar();
     }
 
-    public void populate(View v){
-        Populador populador = new Populador();
-        populador.popularBancoDeDados();
-        Toast toast = Toast.makeText(Session.getContext(), "Sucesso", Toast.LENGTH_SHORT);
-        toast.show();
-    }
 
     private void createButtonnavBar() {
         DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -287,15 +282,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ArrayList<Perfil> list = new ArrayList<>(treeMap.values());
         ArrayList<Aula> resultado = new ArrayList<>();
         ArrayList<Aula> suporte = new ArrayList<>();
-        for(Aula aula:getValoresListView()){
+        ArrayList<Aula> aulas = getValoresListView();
+        boolean teste;
+        for(Aula aula:aulas){
+            teste =false;
             for(Perfil perfil:list){
-                if(aula.getPerfil().getId()==perfil.getId()){
+                if(aula.getPerfil().getId()==perfil.getId()) {
                     resultado.add(aula);
-                }else{
-                    suporte.add(aula);
+                    teste = true;
                 }
             }
+            if (!teste) {
+                suporte.add(aula);
+            }
         }
+
         resultado.addAll(suporte);
         return resultado;
 

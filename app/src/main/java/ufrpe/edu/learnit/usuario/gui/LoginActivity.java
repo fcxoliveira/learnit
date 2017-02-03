@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.infra.Populador;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
 import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -40,6 +41,12 @@ public class LoginActivity extends AppCompatActivity {
             View v = new View(Session.getContext());
             chamarTelaInicial(v);
         }
+    }
+    public void populate(View v){
+        Populador populador = new Populador();
+        populador.popularBancoDeDados();
+        Toast toast = Toast.makeText(Session.getContext(), "Sucesso", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     private void findEditableItens() {
