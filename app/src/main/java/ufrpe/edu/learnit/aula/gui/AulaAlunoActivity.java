@@ -42,7 +42,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         avisoConfirmacao=(TextView)findViewById(R.id.textViewConfimacao);
         nomeAula = (TextView)findViewById(R.id.textViewNome);
         nomeProfessor = (TextView)findViewById(R.id.textViewNomeDoProfessor);
-        //avaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
+        avaliadores = (TextView)findViewById(R.id.textViewAvaliadores);
         nota = (TextView)findViewById(R.id.textViewRate);
         descricaoAula = (TextView)findViewById(R.id.textViewDescricaoDaAula);
         horasPagas = (TextView)findViewById(R.id.textViewHoras);
@@ -53,7 +53,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
     private void editItens(AlunoAula aula) {
         nomeAula.setText(aula.getAula().getTitulo());
         nomeProfessor.setText("Professor:"+"\n"+aula.getAula().getPerfil().getNome());
-        //avaliadores.setText("Avaliadores:"+aula.getAula().getPerfil().getAvaliadores()+"");
+        avaliadores.setText("Avaliadores:"+aula.getAula().getPerfil().getAvaliadores()+"");
         nota.setText("Nota:"+"\n"+aula.getAula().getPerfil().getAvaliacao()+"");
         descricaoAula.setText(aula.getAula().getDescricao());
         horasPagas.setText("Horas compradas:"+aula.getHorasTotal()+"     "+"Horas confirmadas:"+aula.getHorasConfirmadas());
