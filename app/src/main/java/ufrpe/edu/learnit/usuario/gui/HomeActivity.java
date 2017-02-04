@@ -239,8 +239,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Intent secondActivity = new Intent(this, AulasOferecidasActivity.class);
             startActivity(secondActivity);
             finish();
-        } else if (id == R.id.chat) {
-
         } else if (id == R.id.sair) {
             fazerLogoff();
         }
