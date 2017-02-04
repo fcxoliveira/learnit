@@ -98,7 +98,7 @@ public class Populador {
                 String titulo = nomesPerfis[i-1]+" Aula " + j;
                 String descricao = "Teste de descrição para Aula " + j +" de "+nomesPerfis[i-1];
                 int valor = gerador.nextInt((50 - 20) + 1) + 20;
-                int duracao = gerador.nextInt((100 - 5) + 1) + 5;
+                int duracao = gerador.nextInt((100 - 30) + 1) + 5;
                 cadastrarAula(titulo, descricao, duracao, valor, i);
                 int numTags = gerador.nextInt((5 - 2) + 1) + 2;
 
@@ -120,10 +120,22 @@ public class Populador {
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
         for (int idUsuario = 1; idUsuario<31; idUsuario++){
             ArrayList<Aula> aulas = aulaPersistencia.getAulasPorTexto("",idUsuario);
+            ArrayList<Aula> aulasJaCompradas = new ArrayList<>();
             for (int i = 0; i<5; i++){
                 int horas = gerador.nextInt((10 - 3) + 1) + 3;
-                int index = gerador.nextInt(((aulas.size()-1) - 1) + 1) + 1;
-                inscreverAlunoEmAula(idUsuario, aulas.get(index).getId(), getDateTime(), horas, aulaPersistencia.retornarAula(aulas.get(index).getId()).getValor()*horas);
+                int index = gerador.nextInt((aulas.size()-1) + 1) + 1;
+                Aula aula = aulas.get(index-1);
+                boolean anticompra = false;
+                for (Aula aux : aulasJaCompradas) {
+                    if (aux.getId() == aula.getId()) {
+                        anticompra = true;
+                    }
+                }
+                if (anticompra){
+                    continue;
+                }
+                inscreverAlunoEmAula(idUsuario, aula.getId(), getDateTime(), horas, aulaPersistencia.retornarAula(aulas.get(index).getId()).getValor()*horas);
+                aulasJaCompradas.add(aula);
             }
         }
         confirmarAulasERatear();
