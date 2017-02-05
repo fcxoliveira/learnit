@@ -256,65 +256,66 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public ArrayList<Aula> recomendar(int idPerfil){
         PerfilNegocio perfilNegocio = new PerfilNegocio();
         RatingNegocio ratingNegocio = new RatingNegocio();
-        ArrayList<Perfil> perfils = perfilNegocio.retornarTodosOsPerfis();
-        HashMap<Perfil, Float> notasUsuarioAtual = retornarUsuarioAvaliacao(idPerfil, ratingNegocio);
-        Map<Perfil, Map<Perfil, Float>> DadosUsuario = retornarUsuariosAvaliacoes(ratingNegocio, perfils);
+        ArrayList<Integer> perfils = perfilNegocio.retornarTodosOsPerfis();
+        HashMap<Integer, Float> notasUsuarioAtual = retornarUsuarioAvaliacao(idPerfil, ratingNegocio);
+        Map<Integer, Map<Integer, Float>> DadosUsuario = retornarUsuariosAvaliacoes(ratingNegocio, perfils);
         recomendacao.setUserData(DadosUsuario);
-        Map<Float,Perfil> recomendacoes =recomendacao.predizer(notasUsuarioAtual);
-        ArrayList<Aula> resultado = retornarAulasRecomendadas(recomendacoes);
+        Map<Float,Integer> recomendacoes =recomendacao.predizer(notasUsuarioAtual);
+        ArrayList<Float> list = new ArrayList<>(recomendacoes.keySet());
+        Collections.sort(list);
+        Collections.reverse(list);
+        ArrayList<Integer> perfis = new ArrayList<>();
+        for(Float notas:list){
+            if(!perfis.contains(recomendacoes.get(notas))){
+                perfis.add(recomendacoes.get(notas));
+            }
+
+        }
+        ArrayList<Aula> resultado = retornarAulasRecomendadas(perfis);
         return resultado;
 
     }
 
     @NonNull
-    private ArrayList<Aula> retornarAulasRecomendadas(Map<Float, Perfil> treeMap) {
-        ArrayList<Perfil> list = new ArrayList<>(treeMap.values());
+    private ArrayList<Aula> retornarAulasRecomendadas(ArrayList<Integer> list) {
         ArrayList<Aula> resultado = new ArrayList<>();
         ArrayList<Aula> suporte;
         ArrayList<Aula> aulas = getValoresListView();
         GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
-        for(Perfil perfil:list){
-            suporte = gerenciadorAulasTutor.retornarAulasOfertadas(perfil.getId());
+        for (Integer perfil : list) {
+            suporte = gerenciadorAulasTutor.retornarAulasOfertadas(perfil);
             resultado.addAll(suporte);
         }
-        for (Aula aula: aulas){
-            boolean teste = false;
-            for(Perfil perfil:list) {
-
-                if (aula.getPerfil().getId() == perfil.getId()) {
-                    teste = true;
-                }
-            }
-                if (!teste){
-                    resultado.add(aula);
-                    break;
-                }
-
+        for (Aula aula : aulas) {
+            if (!list.contains(aula.getPerfil().getId())) {
+                resultado.add(aula);
             }
 
+
+        }
         return resultado;
     }
 
 
     @NonNull
-    private HashMap<Perfil, Float> retornarUsuarioAvaliacao(int idPerfil, RatingNegocio ratingNegocio) {
-        ArrayList<Perfil> avaliacaoUsuarioAtual = ratingNegocio.retornarTodasAvaliacoesPerfil(idPerfil);
-        HashMap<Perfil, Float> notasUsuarioAtual= new HashMap<>();
-        for(Perfil perfil :avaliacaoUsuarioAtual) {
-            float avaliacao = ratingNegocio.retornarAvaliacaoPerfil(idPerfil, perfil.getId());
+    private HashMap<Integer, Float> retornarUsuarioAvaliacao(int idPerfil, RatingNegocio ratingNegocio) {
+        ArrayList<Integer> avaliacaoUsuarioAtual = ratingNegocio.retornarTodasAvaliacoesPerfil(idPerfil);
+        HashMap<Integer, Float> notasUsuarioAtual= new HashMap<>();
+        for(Integer perfil :avaliacaoUsuarioAtual) {
+            float avaliacao = ratingNegocio.retornarAvaliacaoPerfil(idPerfil, perfil);
             notasUsuarioAtual.put(perfil, avaliacao);
         }
         return notasUsuarioAtual;
     }
 
     @NonNull
-    private Map<Perfil, Map<Perfil, Float>> retornarUsuariosAvaliacoes(RatingNegocio ratingNegocio, ArrayList<Perfil> perfils) {
-        Map<Perfil,Map<Perfil, Float>> DadosUsuario = new HashMap<>();
-        for (Perfil usuario : perfils) {
-            HashMap <Perfil, Float> avaliacaoUsuario = new HashMap<>();
-            ArrayList<Perfil> avaliacaoTemp = ratingNegocio.retornarTodasAvaliacoesPerfil(usuario.getId());
-            for(Perfil perfil :avaliacaoTemp) {
-                float avaliacao = ratingNegocio.retornarAvaliacaoPerfil(usuario.getId(), perfil.getId());
+    private Map<Integer, Map<Integer, Float>> retornarUsuariosAvaliacoes(RatingNegocio ratingNegocio, ArrayList<Integer> perfils) {
+        Map<Integer,Map<Integer, Float>> DadosUsuario = new HashMap<>();
+        for (Integer usuario : perfils) {
+            HashMap <Integer, Float> avaliacaoUsuario = new HashMap<>();
+            ArrayList<Integer> avaliacaoTemp = ratingNegocio.retornarTodasAvaliacoesPerfil(usuario);
+            for(Integer perfil :avaliacaoTemp) {
+                float avaliacao = ratingNegocio.retornarAvaliacaoPerfil(usuario, perfil);
                 avaliacaoUsuario.put(perfil, avaliacao);
             }
             DadosUsuario.put(usuario,avaliacaoUsuario);

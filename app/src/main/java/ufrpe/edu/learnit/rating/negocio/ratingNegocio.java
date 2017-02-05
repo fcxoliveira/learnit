@@ -43,9 +43,9 @@ public class RatingNegocio {
         float resultado = ratingPersistencia.retornarAvaliacaoAula(idPerfilAvaliador, idItemAula);
         return resultado;
     }
-    public ArrayList<Perfil> retornarTodasAvaliacoesPerfil(int idPerfil){
+    public ArrayList<Integer> retornarTodasAvaliacoesPerfil(int idPerfil){
         RatingPersistencia ratingPersistencia = new RatingPersistencia();
-        ArrayList<Perfil> resultado = ratingPersistencia.retornarTodasAvaliacoesPerfil(idPerfil);
+        ArrayList<Integer> resultado = ratingPersistencia.retornarTodasAvaliacoesPerfil(idPerfil);
         return resultado;
     }
 

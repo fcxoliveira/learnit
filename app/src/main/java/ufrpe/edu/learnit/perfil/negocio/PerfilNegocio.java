@@ -30,7 +30,7 @@ public class PerfilNegocio {
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         perfilPersistencia.setAvaliacao(idPerfil,avaliacao);
     }
-    public ArrayList<Perfil> retornarTodosOsPerfis(){
+    public ArrayList<Integer> retornarTodosOsPerfis(){
         PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
         return perfilPersistencia.retornarTodosOsPerfis();
     }

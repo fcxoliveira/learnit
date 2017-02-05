@@ -128,17 +128,15 @@ public class RatingPersistencia {
         db.update("PERFIL",newValues,"IdPerfil=?",new String[]{idPerfil+""});
     }
 
-    public ArrayList<Perfil> retornarTodasAvaliacoesPerfil(int idPerfil){
+    public ArrayList<Integer> retornarTodasAvaliacoesPerfil(int idPerfil){
         db = dbHelper.getWritableDatabase();
         Perfil perfil;
-        ArrayList<Perfil> perfis = new ArrayList<>();
-        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        ArrayList<Integer> perfis = new ArrayList<>();
         Cursor cursor=db.query("RATE_PERFIL", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
         while (cursor.moveToNext()){
             int idColumItemAula = cursor.getColumnIndex("IdItemPerfil");
             int idItemAula = cursor.getInt(idColumItemAula);
-            perfil = perfilPersistencia.retornarPerfil(idItemAula);
-            perfis.add(perfil);
+            perfis.add(idItemAula);
         }
         return perfis;
     }

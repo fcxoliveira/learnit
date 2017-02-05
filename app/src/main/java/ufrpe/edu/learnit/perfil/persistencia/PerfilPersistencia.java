@@ -104,16 +104,15 @@ public class PerfilPersistencia {
         db.update("PERFIL",newValues,"IdPerfil='"+idString+"'",null);
         db.close();
     }
-    public ArrayList<Perfil> retornarTodosOsPerfis(){
-        ArrayList<Perfil> result = new ArrayList<>();
+    public ArrayList<Integer> retornarTodosOsPerfis(){
+        ArrayList<Integer> result = new ArrayList<>();
         Perfil perfil;
         db = dbHelper.getReadableDatabase();
         Cursor cursor=db.query("PERFIL", null, null,null, null, null, null);
         while (cursor.moveToNext()){
             int idColumPerfil = cursor.getColumnIndex("IdPerfil");
             int idPerfil = cursor.getInt(idColumPerfil);
-            perfil = retornarPerfil(idPerfil);
-            result.add(perfil);
+            result.add(idPerfil);
       }
         return result;
     }
