@@ -254,7 +254,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ArrayList<Perfil> perfils = perfilNegocio.retornarTodosOsPerfis();
         HashMap<Perfil, Float> notasUsuarioAtual = retornarUsuarioAvaliacao(idPerfil, ratingNegocio);
         Map<Perfil, Map<Perfil, Float>> DadosUsuario = retornarUsuariosAvaliacoes(ratingNegocio, perfils);
-        Map<Float, Perfil> recomendacoes =recomendacao.predizer(notasUsuarioAtual,DadosUsuario);
+        recomendacao.setUserData(DadosUsuario);
+        Map<Perfil,Float> recomendacoes =recomendacao.predizer(notasUsuarioAtual);
         Map<Float, Perfil> treeMap = organizarMapDeRecomendacao();
         treeMap.putAll(recomendacoes);
         ArrayList<Aula> resultado = retornarAulasRecomendadas(treeMap);
