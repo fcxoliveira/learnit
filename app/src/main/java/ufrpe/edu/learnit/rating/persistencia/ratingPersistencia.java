@@ -68,8 +68,9 @@ public class RatingPersistencia {
         String idPerfilString = idPerfilAvaliador+"";
         Cursor cursor=db.query("RATE_PERFIL", new String[]{"*"}, "IdPerfil='"+idPerfilString+"' AND IdItemPerfil='"+idItemPerfilString+"'",null, null, null, null);
         float result = 0;
-        cursor.moveToFirst();
-        result = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
+        if (cursor.moveToFirst()){
+            result = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
+        }
         return result;
     }
 

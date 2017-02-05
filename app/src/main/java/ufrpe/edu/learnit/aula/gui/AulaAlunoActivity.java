@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.RatingActivityProfessor;
+import ufrpe.edu.learnit.rating.gui.RatingActivityProfessor;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
@@ -80,7 +80,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         finish();
     }
     public void carregarAvaliacaoProfessor(View v){
-        Intent secondActivity= new Intent(this, RatingActivityProfessor.class);
+        Intent secondActivity= new Intent(this, ufrpe.edu.learnit.rating.gui.RatingActivityProfessor.class);
         startActivity(secondActivity);
         finish();
     }

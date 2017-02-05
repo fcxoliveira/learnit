@@ -27,8 +27,8 @@ public class RatingActivityProfessor extends AppCompatActivity {
         Session.setContext(getApplicationContext());
         RatingNegocio ratingNegocio = new RatingNegocio();
         int idPerfilAvaliador = Session.getUsuario().getID();
-        int idItemPerfil= Session.getPerfilAlheio().getId();
-        Perfil perfilAlheio = Session.getPerfilAlheio();
+        int idItemPerfil= Session.getAlunoAula().getAula().getPerfil().getId();
+        Perfil perfilAlheio = Session.getAlunoAula().getPerfil();
         float avaliacaoIndividualPerfil = ratingNegocio.retornarAvaliacaoPerfil(idPerfilAvaliador,idItemPerfil);
         float avaliacaoMedia = AvaliacaoMediaPerfil(perfilAlheio);
         Aula aula=Session.getAlunoAula().getAula();
@@ -59,11 +59,11 @@ public class RatingActivityProfessor extends AppCompatActivity {
         ratingBarSuaNota=(RatingBar) findViewById(R.id.ratingBarSuaNota);
     }
 
-    public void confirmar(View view){
+    public void confirmarAvalicaoProfessor(View view){
         float avaliacao = ratingBarSuaNota.getRating();
         RatingNegocio ratingNegocio = new RatingNegocio();
         int idPerfilAvaliador = Session.getUsuario().getID();
-        int idItemPerfil= Session.getPerfilAlheio().getId();
+        int idItemPerfil= Session.getAlunoAula().getAula().getPerfil().getId();
         ratingNegocio.novaAvaliacaoPerfil(idPerfilAvaliador,idItemPerfil,avaliacao);
         Intent secondActivity = new Intent(this, AulaAlunoActivity.class);
         startActivity(secondActivity);
