@@ -2,8 +2,6 @@ package ufrpe.edu.learnit.recomendacao;
 import java.util.HashMap;
 import java.util.Map;
 
-import ufrpe.edu.learnit.perfil.dominio.Perfil;
-
 
 public class Recomendacao {
     Map<Integer,Map<Integer,Float>> mData;
@@ -49,31 +47,28 @@ public class Recomendacao {
         HashMap<Float,Integer> predictions = new HashMap<>();
         HashMap<Integer,Integer> frequencies = new HashMap<>();
         for (Integer j : matrizDiferenca.keySet()) {
-            predictions.put(0.0f,j);
             frequencies.put(j,0);
+            predictions.put(0.0f,j);
         }
         for (Integer j : user.keySet()) {
             for (Integer k : matrizDiferenca.keySet()) {
                 try {
-                Float aFloat = user.get(j);
-                Float aFloat1 = matrizDiferenca.get(k).get(j);
-                float newval = ( aFloat1 + aFloat) ;
-                    for(Float key:predictions.keySet()){
-                        if(predictions.get(key)==k){
-                            predictions.put(key+newval,k);
-                        }
-                    }
-
+                    float newval = ( matrizDiferenca.get(k).get(j).floatValue() + user.get(j).floatValue() ) * matrizFrequencia.get(k).get(j).intValue();
+                    predictions.put(predictions.get(k)+newval,k);
+                    frequencies.put(k, frequencies.get(k)+matrizFrequencia.get(k).get(j).intValue());
                 } catch(NullPointerException e) {}
             }
         }
-        for (Float j : predictions.keySet()) {
-            predictions.put(j/user.size(),predictions.get(j));
+        HashMap<Float,Integer> cleanpredictions = new HashMap<Float,Integer>();
+        for (Integer j : predictions.values()) {
+            if (frequencies.get(j)>0) {
+                cleanpredictions.put(predictions.get(j).floatValue()/frequencies.get(j).intValue(),j);
+            }
         }
         for (Integer j : user.keySet()) {
-            predictions.put(user.get(j),j);
+            cleanpredictions.put(user.get(j),j);
         }
-        return predictions;
+        return cleanpredictions;
     }
 
 }
