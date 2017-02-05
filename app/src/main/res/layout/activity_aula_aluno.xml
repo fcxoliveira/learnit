@@ -173,24 +173,6 @@
                 android:layout_alignParentTop="true" />
 
             <com.github.clans.fab.FloatingActionButton
-                android:text="avaliar professor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button5"
-                android:background="#7bc8f3"
-                android:textColor="@android:color/background_light"
-                android:onClick="carregarAvaliacaoProfessor"
-                android:src="@android:drawable/ic_menu_add"
-                fab:fab_colorNormal="@color/colorPrimary"
-                fab:fab_colorPressed="@color/colorPrimaryDark"
-                fab:fab_colorRipple="@color/colorAccent"
-                fab:fab_label="Confirmar horas"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true" />
-
-            <com.github.clans.fab.FloatingActionButton
                 android:id="@+id/comprar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -206,6 +188,23 @@
                 fab:fab_label="Comprar mais horas"/>
 
         </com.github.clans.fab.FloatingActionMenu>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:text="avaliar professor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button5"
+            android:background="#7bc8f3"
+            android:textColor="@android:color/background_light"
+            android:onClick="carregarAvaliacaoProfessor"
+            android:src="@android:drawable/ic_menu_add"
+            fab:fab_colorNormal="@color/colorPrimary"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+            fab:fab_colorRipple="@color/colorAccent"
+            fab:fab_label="Avaliar Professor"
+            android:layout_alignTop="@+id/ratingBarMediaGeral"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

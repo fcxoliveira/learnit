@@ -79,7 +79,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         startActivity(secondActivity);
         finish();
     }
-    public void carregarAvaliacaoProfessor(){
+    public void carregarAvaliacaoProfessor(View v){
         Intent secondActivity= new Intent(this, RatingActivityProfessor.class);
         startActivity(secondActivity);
         finish();
