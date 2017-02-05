@@ -47,4 +47,9 @@ public class RatingNegocio {
         ArrayList<Perfil> resultado = ratingPersistencia.retornarTodasAvaliacoesPerfil(idPerfil);
         return resultado;
     }
+
+    public ArrayList<Perfil> retornarRatesIguais(int idItemPerfil){
+        RatingPersistencia ratingPersistencia = new RatingPersistencia();
+        return ratingPersistencia.retornarRatesIguais(idItemPerfil);
+    }
 }

@@ -158,5 +158,18 @@ public class RatingPersistencia {
         return aulas;
     }
 
+    public ArrayList<Perfil> retornarRatesIguais(int idItemPerfil){
+        db = dbHelper.getReadableDatabase();
+        ArrayList<Perfil> perfis = new ArrayList<>();
+        Perfil perfil;
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        Cursor cursor=db.query("RATE_PERFIL", null, "IdItemPerfil=?",new String[]{idItemPerfil+""}, null, null, null);
+        while (cursor.moveToNext()){
+            perfil= perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdPerfil")));
+            perfis.add(perfil);
+        }
+        return perfis;
+    }
+
 
 }

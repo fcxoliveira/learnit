@@ -253,24 +253,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         finish();
     }
     public ArrayList<Aula> recomendar(int idPerfil){
-        PerfilNegocio perfilNegocio = new PerfilNegocio();
         RatingNegocio ratingNegocio = new RatingNegocio();
-        ArrayList<Perfil> perfils = perfilNegocio.retornarTodosOsPerfis();
         Map<Perfil,Map<Perfil, Float>> DadosUsuario = new HashMap<>();
+        ArrayList<Perfil> perfils = new ArrayList<>();
         ArrayList<Perfil> avaliacaoUsuarioAtual = ratingNegocio.retornarTodasAvaliacoesPerfil(idPerfil);
+        for(Perfil perfil:avaliacaoUsuarioAtual){
+            perfils.addAll(ratingNegocio.retornarRatesIguais(perfil.getId()));
+        }
         HashMap<Perfil, Float> notasUsuarioAtual= new HashMap<>();
         for(Perfil perfil :avaliacaoUsuarioAtual) {
-            float avaliacao = ratingNegocio.retornarAvaliacaoPerfil(idPerfil, perfil.getId());
-            notasUsuarioAtual.put(perfil, avaliacao);
-        }
+            float avaliacaoAtual = ratingNegocio.retornarAvaliacaoPerfil(idPerfil, perfil.getId());
+            notasUsuarioAtual.put(perfil, avaliacaoAtual);
+
             for (Perfil usuario : perfils) {
-                HashMap <Perfil, Float> avaliacaoUsuario = new HashMap<>();
+                HashMap<Perfil, Float> avaliacaoUsuario = new HashMap<>();
                 ArrayList<Perfil> avaliacaoTemp = ratingNegocio.retornarTodasAvaliacoesPerfil(usuario.getId());
-                for(Perfil perfil :avaliacaoTemp) {
-                    float avaliacao = ratingNegocio.retornarAvaliacaoPerfil(usuario.getId(), perfil.getId());
-                    avaliacaoUsuario.put(perfil, avaliacao);
-                }
-                DadosUsuario.put(usuario,avaliacaoUsuario);
+                float avaliacao = ratingNegocio.retornarAvaliacaoPerfil(usuario.getId(), perfil.getId());
+                avaliacaoUsuario.put(perfil, avaliacao);
+
+                DadosUsuario.put(usuario, avaliacaoUsuario);
+            }
             }
         Map<Float, Perfil> recomendacoes =recomendacao.predizer(notasUsuarioAtual,DadosUsuario);
         Map<Float, Perfil> treeMap = new TreeMap<>(
