@@ -81,5 +81,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String PopulateTags = "INSERT INTO TAGS (Tag) values ('"+ tag +"');";
         db.execSQL(PopulateTags);
     }
+    private void populateUser(String usuario, String password, String email,SQLiteDatabase db){
+        String PopulateUser="INSERT INTO USER (Username, Password, Email) VALUES ('"+usuario+"','"+password+"','"+email+"');";
+        db.execSQL(PopulateUser);
+    }
+    private void populatePerfil(int IdPerfil, String Bio, String Nome, int  Moedas, float Avaliacao, int Avaliadores, int Horas,SQLiteDatabase db){
+        String PopulatePerfil ="INSERT INTO PERFIL (IdPerfil, Bio, Nome, Moedas, Avaliacao, Avaliadores, Horas) VALUES ('"+IdPerfil+"','"+Bio+"','"+Nome+"','"+Moedas+"','"+Avaliacao+"','"+Avaliadores+"','"+Horas+"');";
+        db.execSQL(PopulatePerfil);
+    }
+    private void populateAulas(String Titulo, String Descricao, int Valor, int IdPerfil, int HorasDisponiveis, float Avaliacao, int Avaliadores){
+        String PopulateAulas ="INSERT INTO AULAS (Titulo, Descricao, Valor, IdPerfil, HorasDisponiveis, Avaliacao, Avaliadores) VALUES('"+Titulo+"','"+Descricao+"','"+Valor+"','"+IdPerfil+"','"+HorasDisponiveis+"','"+Avaliacao+"','"+Avaliadores+"');";
+    }
+    private void populateAlunoAula(int IdPerfilAluno, int IdAula,String Date,int HorasCompradas,int ValorPago,int HorasConfirmadas){
+        String PopulateAlunoAula="INSERT INTO ALUNO_AULA (IdPerfilAluno, IdAula, Date, HorasCompradas, ValorPago, HorasConfirmadas) VALUES('"+IdPerfilAluno+"','"+IdAula+"','"+Date+"','"+HorasCompradas+"','"+ValorPago+"','"+HorasConfirmadas+"');";
+
+    }
+    private void populateAulaTag(){
+
+    }
 }
 

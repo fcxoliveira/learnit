@@ -12,6 +12,7 @@ import ufrpe.edu.learnit.rating.persistencia.RatingPersistencia;
  */
 
 public class RatingNegocio {
+
     public void novaAvaliacaoAula(int idPerfilAvaliador , int idItemAula , float avaliacao){
         RatingPersistencia ratingPersistencia = new RatingPersistencia();
         float resultado=ratingPersistencia.retornarAvaliacaoAula(idPerfilAvaliador ,idItemAula);

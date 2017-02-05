@@ -13,11 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.RatingActivityProfessor;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
 import ufrpe.edu.learnit.confirmacao.negocio.ConfirmacaoNegocio;
 import ufrpe.edu.learnit.infra.dominio.Session;
+import ufrpe.edu.learnit.rating.gui.RatingActivityAula;
 
 public class AulaAlunoActivity extends AppCompatActivity {
     private TextView nomeAula, descricaoAula, horasPagas, nomeProfessor, avaliadores, nota, avisoConfirmacao;
@@ -57,7 +59,9 @@ public class AulaAlunoActivity extends AppCompatActivity {
         nota.setText("Nota:"+"\n"+aula.getAula().getPerfil().getAvaliacao()+"");
         descricaoAula.setText(aula.getAula().getDescricao());
         horasPagas.setText("Horas compradas:"+aula.getHorasTotal()+"     "+"Horas confirmadas:"+aula.getHorasConfirmadas());
-        ratingBar.setRating(aula.getAula().getPerfil().getAvaliacao());
+        float avaliacao=aula.getAula().getPerfil().getAvaliacao();
+        int avaliadores=aula.getAula().getAvaliadores();
+        ratingBar.setRating(avaliacao/avaliadores);
     }
     @Override
     public void onBackPressed(){
@@ -73,6 +77,16 @@ public class AulaAlunoActivity extends AppCompatActivity {
     public void carregarAulasCompradas() {
         Intent secondActivity = new Intent(this, AulasCompradasActivity.class);
         startActivity(secondActivity);
+        finish();
+    }
+    public void carregarAvaliacaoProfessor(){
+        Intent secondActivity= new Intent(this, RatingActivityProfessor.class);
+        startActivity(secondActivity);
+        finish();
+    }
+    public void carregarAvaliacaoAluno(){
+        Intent seconActivity = new Intent(this, RatingActivityAula.class);
+        startActivity(seconActivity);
         finish();
     }
 

@@ -40,7 +40,7 @@ public class RatingActivityProfessor extends AppCompatActivity {
     private void editItens(float avaliacaoIndividualPerfil, float avaliacaoMedia, Aula aula) {
         ratingBarMediaGeral.setRating(avaliacaoMedia);
         textViewNome.setText(aula.getTitulo());
-        if(avaliacaoIndividualPerfil==-1){
+        if(avaliacaoIndividualPerfil==0){
             ratingBarSuaNota.setRating(0);
         }else{
             ratingBarSuaNota.setRating(avaliacaoIndividualPerfil);
