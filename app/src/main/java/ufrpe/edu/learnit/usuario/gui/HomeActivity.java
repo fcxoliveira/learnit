@@ -22,10 +22,15 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.SortedSet;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import ufrpe.edu.learnit.R;
 import ufrpe.edu.learnit.aula.dominio.Aula;
@@ -34,6 +39,8 @@ import ufrpe.edu.learnit.aula.gui.AulasOferecidasActivity;
 import ufrpe.edu.learnit.aula.gui.CadastrarAulaTutorActivity;
 import ufrpe.edu.learnit.aula.gui.ComprarAulaAlunoActivity;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
+import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasTutor;
+import ufrpe.edu.learnit.aula.persistencia.AulaPersistencia;
 import ufrpe.edu.learnit.infra.adaptersDoProjeto.HomeAdapter;
 import ufrpe.edu.learnit.infra.dominio.Session;
 import ufrpe.edu.learnit.infra.negocio.SessionNegocio;
@@ -129,8 +136,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Object object= adapter.getItem(position);
                 Aula aula=(Aula)object;
                 Session.setAula(aula);
-                TagNegocio tagNegocio = new TagNegocio();
-                tagNegocio.inserirRelacaoRecomendacao(tagNegocio.retornarTagsAula(aula.getId()),Session.getUsuario().getID());
                 Intent secondActivity = new Intent(Session.getContext(),ComprarAulaAlunoActivity.class);
                 startActivity(secondActivity);
             }
@@ -255,12 +260,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         HashMap<Perfil, Float> notasUsuarioAtual = retornarUsuarioAvaliacao(idPerfil, ratingNegocio);
         Map<Perfil, Map<Perfil, Float>> DadosUsuario = retornarUsuariosAvaliacoes(ratingNegocio, perfils);
         recomendacao.setUserData(DadosUsuario);
-        Map<Perfil,Float> recomendacoes =recomendacao.predizer(notasUsuarioAtual);
-        Map<Float, Perfil> treeMap = organizarMapDeRecomendacao();
-        treeMap.putAll(recomendacoes);
-        ArrayList<Aula> resultado = retornarAulasRecomendadas(treeMap);
+        Map<Float,Perfil> recomendacoes =recomendacao.predizer(notasUsuarioAtual);
+        ArrayList<Aula> resultado = retornarAulasRecomendadas(recomendacoes);
         return resultado;
-
 
     }
 
@@ -268,37 +270,31 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private ArrayList<Aula> retornarAulasRecomendadas(Map<Float, Perfil> treeMap) {
         ArrayList<Perfil> list = new ArrayList<>(treeMap.values());
         ArrayList<Aula> resultado = new ArrayList<>();
-        ArrayList<Aula> suporte = new ArrayList<>();
+        ArrayList<Aula> suporte;
         ArrayList<Aula> aulas = getValoresListView();
-        boolean teste;
-        for(Aula aula:aulas){
-            teste =false;
-            for(Perfil perfil:list){
-                if(aula.getPerfil().getId()==perfil.getId()) {
-                    resultado.add(aula);
+        GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
+        for(Perfil perfil:list){
+            suporte = gerenciadorAulasTutor.retornarAulasOfertadas(perfil.getId());
+            resultado.addAll(suporte);
+        }
+        for (Aula aula: aulas){
+            boolean teste = false;
+            for(Perfil perfil:list) {
+
+                if (aula.getPerfil().getId() == perfil.getId()) {
                     teste = true;
                 }
             }
-            if (!teste) {
-                suporte.add(aula);
+                if (!teste){
+                    resultado.add(aula);
+                    break;
+                }
+
             }
-        }
-        resultado.addAll(suporte);
+
         return resultado;
     }
 
-    @NonNull
-    private Map<Float, Perfil> organizarMapDeRecomendacao() {
-        return new TreeMap<>(
-                    new Comparator<Float>() {
-
-                        @Override
-                        public int compare(Float o1, Float o2) {
-                            return o2.compareTo(o1);
-                        }
-
-                    });
-    }
 
     @NonNull
     private HashMap<Perfil, Float> retornarUsuarioAvaliacao(int idPerfil, RatingNegocio ratingNegocio) {

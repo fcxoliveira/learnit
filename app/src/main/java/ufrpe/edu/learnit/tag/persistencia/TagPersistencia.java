@@ -155,37 +155,5 @@ public class TagPersistencia {
         db.close();
     }
 
-    public void atualizarValorRecomendacao(Tag tag,int idPerfil){
-        db=dbHelper.getWritableDatabase();
-        ContentValues newValues = new ContentValues();
-        newValues.put("IdPerfil",idPerfil);
-        newValues.put("IdTag",tag.getID());
-        newValues.put("Valor",retornarValorRecomendacao(idPerfil,tag.getID())+1);
-        db.update("ALUNO_TAG_RECOMENDACAO",newValues,"IdPerfil=? AND IdTag=?",new String[]{idPerfil+"",tag.getID()+""});
-    }
-
-    public void inserirValorRecomendacao(Tag tag,int idPerfil){
-        db=dbHelper.getWritableDatabase();
-        ContentValues newValues = new ContentValues();
-        newValues.put("IdPerfil",idPerfil);
-        newValues.put("IdTag",tag.getID());
-        newValues.put("Valor",1);
-        db.insert("ALUNO_TAG_RECOMENDACAO",null,newValues);
-    }
-
-    public boolean existeRecomendacao(int idPerfil,int idTag){
-        db=dbHelper.getWritableDatabase();
-        Cursor cursor=db.query("ALUNO_TAG_RECOMENDACAO",new String[]{"*"},"IdPerfil=? AND IdTag=?",new String[]{idPerfil+"",idTag+""},null ,null, null);
-        //db.close();
-        //cursor.close();
-        return cursor.moveToFirst();
-
-    }
-
-    public int retornarValorRecomendacao(int idPerfil, int idTag){
-        db=dbHelper.getWritableDatabase();
-        Cursor cursor=db.query("ALUNO_TAG_RECOMENDACAO",new String[]{"*"},"IdPerfil=? AND IdTag=?",new String[]{idPerfil+"",idTag+""},null ,null, null);
-        return cursor.getInt(cursor.getColumnIndex("Valor"));
-    }
 
 }

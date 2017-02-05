@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.SortedMap;
 
 import ufrpe.edu.learnit.infra.adaptersDoProjeto.CustomAdapter;
 import ufrpe.edu.learnit.R;
@@ -39,7 +40,7 @@ public class AulasOferecidasActivity extends AppCompatActivity {
 
     private ArrayList<Aula> getValoresListView() {
         GerenciadorAulasTutor gerenciadorAulasTutor = new GerenciadorAulasTutor();
-        ArrayList<Aula> aulas = gerenciadorAulasTutor.retornarAulasOfertadas();
+        ArrayList<Aula> aulas = gerenciadorAulasTutor.retornarAulasOfertadas(Session.getUsuario().getID());
         return aulas;
     }
 

@@ -24,17 +24,9 @@ import ufrpe.edu.learnit.usuario.persistencia.UsuarioPersistencia;
 public class Populador {
 
     private String[] nomesLogin = {"lokaine", "setoper", "masterhunterxx1", "gcmaia", "blackprincess",
-            "blackburn", "lokisora", "azren", "ramonrcm", "kingstank",
-            "catfelina", "mastermoon", "igordragonblack", "admin", "aluno",
-            "tsunade", "jiraya", "orochimaru", "naruto", "sasuke",
-            "kabuto", "moraisbsi", "princessgod", "ragnarl", "godrumala",
-            "silva", "oliveirax", "barbosinha", "geeholiveira", "guylima"};
+            "blackburn", "lokisora", "azren", "ramonrcm"};
     private String[] nomesPerfis = {"Filipe Carlos","Felipe Morais","Matheus Campos","Hugo Teixeira","Igor Gomes",
-            "Isabel Santiago","João Victor","André Araújo","Monaliza Albuquerque","Lisandra Aragão",
-            "Aurinez Araújo","Jorge Matheus","Cassandra Villar","Cassia Oliveira","Caique Silva",
-            "Carlos Eduardo","Afonso Rodolfo","Mateus Silva","Felipe Mei","José Romilson",
-            "Gabriel Alves","Michael Jackson","Manoel Betmann","Angela Costa","João José Antônio",
-            "Antonio Henrique","Flávio Daniel","Ícaro César","Íthalo José","José Maria"};
+            "Isabel Santiago","João Victor","André Araújo","Monaliza Albuquerque"};
     private final String SENHA = "123456";
 
     private void cadastrarUsuario(String login, String senha, String email){
@@ -94,7 +86,7 @@ public class Populador {
                 auxiliar++;
             }
 
-            for (int j = 1; j<6; j++) {
+            for (int j = 1; j<3; j++) {
                 String titulo = nomesPerfis[i-1]+" Aula " + j;
                 String descricao = "Teste de descrição para Aula " + j +" de "+nomesPerfis[i-1];
                 int valor = gerador.nextInt((50 - 20) + 1) + 20;
@@ -147,7 +139,7 @@ public class Populador {
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
         RatingPersistencia ratingPersistencia = new RatingPersistencia();
         Random gerador = new Random();
-        for (int idUsuario = 1; idUsuario<31; idUsuario++){
+        for (int idUsuario = 1; idUsuario<10; idUsuario++){
             Usuario usuario = usuarioPersistencia.retornarUsuario(idUsuario);
             ArrayList<AlunoAula> aulasCompradas = aulaPersistencia.retornarAulasCompradas(idUsuario);
             for (AlunoAula alunoAula : aulasCompradas) {
@@ -157,8 +149,8 @@ public class Populador {
                 confirmacaoPersistencia.enviarConfirmacao(aula.getId(), idUsuario, gerador.nextInt((max - min) + 1) + min, 0);
                 Confirmacao confirmacao = confirmacaoPersistencia.retornarConfirmacaoRecebidaPopulador(aula.getId(), idUsuario);
                 confirmacaoPersistencia.aceitarConfirmacao(confirmacao);
-                ratingPersistencia.novaAvaliacaoPerfil(usuario.getID(), aula.getPerfil().getId(), gerador.nextInt((5 - 1) + 1) +1);
-                ratingPersistencia.novaAvaliacaoAula(usuario.getID(), aula.getId(), gerador.nextInt((5 - 1) + 1) +1);
+                ratingPersistencia.novaAvaliacaoPerfil(usuario.getID(), aula.getPerfil().getId(), gerador.nextInt((5 - 2) + 1) +1);
+                ratingPersistencia.novaAvaliacaoAula(usuario.getID(), aula.getId(), gerador.nextInt((5 - 2) + 1) +1);
             }
         }
     }

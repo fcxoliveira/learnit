@@ -10,7 +10,7 @@ public class Recomendacao {
     Map<Perfil,Map<Perfil,Float>> matrizDiferenca;
     Map<Perfil,Map<Perfil,Integer>> matrizFrequencia;
 
-    private void setUserData(Map<Perfil,Map<Perfil,Float>> data) {
+    public void setUserData(Map<Perfil,Map<Perfil,Float>> data) {
         mData = data;
         atualizar();
     }
@@ -45,24 +45,33 @@ public class Recomendacao {
             }
         }
     }
-    public Map<Perfil,Float> predizer(Map<Perfil,Float> user) {
-        HashMap<Perfil,Float> predictions = new HashMap<>();
+    public Map<Float,Perfil> predizer(Map<Perfil,Float> user) {
+        HashMap<Float,Perfil> predictions = new HashMap<>();
         HashMap<Perfil,Integer> frequencies = new HashMap<>();
         for (Perfil j : matrizDiferenca.keySet()) {
-            predictions.put(j,0.0f);
+            predictions.put(0.0f,j);
             frequencies.put(j,0);
         }
         for (Perfil j : user.keySet()) {
             for (Perfil k : matrizDiferenca.keySet()) {
-                float newval = ( matrizDiferenca.get(k).get(j).floatValue() + user.get(j).floatValue() ) ;
-                predictions.put(k, predictions.get(k)+newval);
+                try {
+                Float aFloat = user.get(j);
+                Float aFloat1 = matrizDiferenca.get(k).get(j);
+                float newval = ( aFloat1 + aFloat) ;
+                    for(Float key:predictions.keySet()){
+                        if(predictions.get(key).getId()==k.getId()){
+                            predictions.put(key+newval,k);
+                        }
+                    }
+
+                } catch(NullPointerException e) {}
             }
         }
-        for (Perfil j : predictions.keySet()) {
-            predictions.put(j, predictions.get(j).floatValue()/user.size());
+        for (Float j : predictions.keySet()) {
+            predictions.put(j/user.size(),predictions.get(j));
         }
         for (Perfil j : user.keySet()) {
-            predictions.put(j,user.get(j));
+            predictions.put(user.get(j),j);
         }
         return predictions;
     }

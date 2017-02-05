@@ -40,9 +40,9 @@ public class GerenciadorAulasTutor {
         return aulaPersistencia.retornarAula(id);
     }
 
-    public ArrayList<Aula> retornarAulasOfertadas(){
+    public ArrayList<Aula> retornarAulasOfertadas(int idPerfil){
         AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        return aulaPersistencia.retornarAulasOfertadas();
+        return aulaPersistencia.retornarAulasOfertadas(idPerfil);
     }
 
     public ArrayList<Perfil> retornarAlunosCadastrados(int idAula){

@@ -198,11 +198,10 @@ public class AulaPersistencia {
         return result;
     }
 
-    public ArrayList<Aula> retornarAulasOfertadas(){
+    public ArrayList<Aula> retornarAulasOfertadas(int idPerfil){
         db = dbHelper.getReadableDatabase();
         ArrayList<Aula> aulas = new ArrayList<>();
-        String idPerfilString = String.valueOf(Session.getUsuario().getID());
-        Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil LIKE ?",new String[] {idPerfilString},null ,null, null);
+        Cursor cursor=db.query("AULAS",new String[]{"*"},"IdPerfil LIKE ?",new String[] {idPerfil+""},null ,null, null);
         while (cursor.moveToNext()){
             aulas.add(getAula(cursor.getInt(cursor.getColumnIndex("Id")),db));
         }
