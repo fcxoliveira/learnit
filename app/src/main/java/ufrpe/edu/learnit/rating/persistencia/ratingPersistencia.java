@@ -24,7 +24,7 @@ public class RatingPersistencia {
 
     }
     public void novaAvaliacaoPerfil(int idPerfilAvaliador , int idItemPerfil , float avaliacao){
-        db=dbHelper.getReadableDatabase();
+        db=dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("IdPerfil", idPerfilAvaliador);
         newValues.put("IdItemPerfil",idItemPerfil);
@@ -36,7 +36,7 @@ public class RatingPersistencia {
     }
 
     public void novaAvaliacaoAula(int idPerfilAvaliador , int idItemAula , float avaliacao){
-        db=dbHelper.getReadableDatabase();
+        db=dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("IdPerfil", idPerfilAvaliador);
         newValues.put("IdItemAula",idItemAula);
@@ -64,11 +64,12 @@ public class RatingPersistencia {
 
     public float retornarAvaliacaoPerfil(int idPerfilAvaliador ,int idItemPerfil){//retorna -1 caso não exista um rating dado para o item
         db=dbHelper.getReadableDatabase();
-        Cursor cursor=db.query("RATE_PERFIL", null, "IdPerfil=? AND IdItemPerfil = ?",new String[]{idPerfilAvaliador+"",idItemPerfil+""}, null, null, null);
+        String idItemPerfilString = idItemPerfil+"";
+        String idPerfilString = idPerfilAvaliador+"";
+        Cursor cursor=db.query("RATE_PERFIL", new String[]{"*"}, "IdPerfil='"+idPerfilString+"' AND IdItemPerfil='"+idItemPerfilString+"'",null, null, null, null);
         float result = 0;
-        if (cursor.moveToFirst()){
-            result = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
-        }
+        cursor.moveToFirst();
+        result = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
         return result;
     }
 

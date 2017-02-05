@@ -1,16 +1,9 @@
 package ufrpe.edu.learnit.recomendacao;
-
-import android.test.mock.MockApplication;
-
 import java.util.HashMap;
 import java.util.Map;
 
-import ufrpe.edu.learnit.aula.dominio.Aula;
-import ufrpe.edu.learnit.usuario.dominio.Usuario;
 import ufrpe.edu.learnit.perfil.dominio.Perfil;
-/**
- * Created by Filipe on 26/01/2017.
- */
+
 
 public class Recomendacao {
     Map<Perfil, Map<Perfil, Float>> diferenca = new HashMap<>();
@@ -41,18 +34,18 @@ public class Recomendacao {
 
         }
 
-        for (Perfil usuario3: diferenca.keySet()) {
+        for (Perfil usuario3 : diferenca.keySet()) {
             Map<Perfil, Float> valor = diferenca.get(usuario3);
-            for (Perfil usuario4: valor.keySet()) {
+            for (Perfil usuario4 : valor.keySet()) {
                 Float calculo = valor.get(usuario4);
                 calculo /= frequencia.get(usuario3).get(usuario4);
                 valor.put(usuario4, calculo);
-                
+
             }
         }
     }
 
-    public Map<Float, Perfil> predizer(HashMap<Perfil, Float> avaliacaoUsuario,Map<Perfil, Map<Perfil, Float>> dadosDeTodosUsuarios){
+    public Map<Float, Perfil> predizer(HashMap<Perfil, Float> avaliacaoUsuario, Map<Perfil, Map<Perfil, Float>> dadosDeTodosUsuarios) {
         this.atualizar(dadosDeTodosUsuarios);
         Map<Perfil, Float> preds = new HashMap<>();
         Map<Perfil, Integer> freqs = new HashMap<>();
@@ -75,11 +68,10 @@ public class Recomendacao {
         for (Perfil usuario :
                 preds.keySet()) {
             float nota = preds.get(usuario);
-            if (!preds.containsKey(usuario) && (freqs.get(usuario) > 0)){
-                resultado.put((nota/freqs.get(usuario)),usuario);
+            if (!preds.containsKey(usuario) && (freqs.get(usuario) > 0)) {
+                resultado.put((nota / freqs.get(usuario)), usuario);
             }
         }
         return resultado;
     }
-
 }

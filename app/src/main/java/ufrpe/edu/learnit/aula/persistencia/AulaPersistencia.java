@@ -191,7 +191,7 @@ public class AulaPersistencia {
             int horas = cursor.getInt(cursor.getColumnIndex("HorasDisponiveis"));
             int idPerfil = cursor.getInt(cursor.getColumnIndex("IdPerfil"));
             int avaliadores= cursor.getInt(cursor.getColumnIndex("Avaliadores"));
-            float avaliacao = cursor.getInt(cursor.getColumnIndex("Avaliadores"));
+            float avaliacao = cursor.getInt(cursor.getColumnIndex("Avaliacao"));
             result = preencherDadosAula(id,nome,descricao,horas,valor,idPerfil,avaliadores,avaliacao);
         }
         cursor.close();

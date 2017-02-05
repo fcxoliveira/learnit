@@ -123,7 +123,7 @@ public class Populador {
             ArrayList<Aula> aulasJaCompradas = new ArrayList<>();
             for (int i = 0; i<5; i++){
                 int horas = gerador.nextInt((10 - 3) + 1) + 3;
-                int index = gerador.nextInt((aulas.size()-1) + 1) + 1;
+                int index = gerador.nextInt(((aulas.size()-1)-1) + 1) + 1;
                 Aula aula = aulas.get(index-1);
                 boolean anticompra = false;
                 for (Aula aux : aulasJaCompradas) {
@@ -157,8 +157,8 @@ public class Populador {
                 confirmacaoPersistencia.enviarConfirmacao(aula.getId(), idUsuario, gerador.nextInt((max - min) + 1) + min, 0);
                 Confirmacao confirmacao = confirmacaoPersistencia.retornarConfirmacaoRecebidaPopulador(aula.getId(), idUsuario);
                 confirmacaoPersistencia.aceitarConfirmacao(confirmacao);
-                ratingPersistencia.novaAvaliacaoPerfil(usuario.getPerfil().getId(), aula.getPerfil().getId(), gerador.nextInt((5 - 1) + 1) +1);
-                ratingPersistencia.novaAvaliacaoAula(usuario.getPerfil().getId(), aula.getId(), gerador.nextInt((5 - 1) + 1) +1);
+                ratingPersistencia.novaAvaliacaoPerfil(usuario.getID(), aula.getPerfil().getId(), gerador.nextInt((5 - 1) + 1) +1);
+                ratingPersistencia.novaAvaliacaoAula(usuario.getID(), aula.getId(), gerador.nextInt((5 - 1) + 1) +1);
             }
         }
     }

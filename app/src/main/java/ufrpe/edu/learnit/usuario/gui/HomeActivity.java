@@ -254,19 +254,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
     public ArrayList<Aula> recomendar(int idPerfil){
         PerfilNegocio perfilNegocio = new PerfilNegocio();
+        RatingNegocio ratingNegocio = new RatingNegocio();
         ArrayList<Perfil> perfils = perfilNegocio.retornarTodosOsPerfis();
         Map<Perfil,Map<Perfil, Float>> DadosUsuario = new HashMap<>();
-        HashMap <Perfil, Float> avaliacaoUsuario = new HashMap<>();
+        ArrayList<Perfil> avaliacaoUsuarioAtual = ratingNegocio.retornarTodasAvaliacoesPerfil(idPerfil);
+        HashMap<Perfil, Float> notasUsuarioAtual= new HashMap<>();
+        for(Perfil perfil :avaliacaoUsuarioAtual) {
+            float avaliacao = ratingNegocio.retornarAvaliacaoPerfil(idPerfil, perfil.getId());
+            notasUsuarioAtual.put(perfil, avaliacao);
+        }
             for (Perfil usuario : perfils) {
-                RatingNegocio ratingNegocio = new RatingNegocio();
-                ArrayList<Perfil> avaliacaoTemp = ratingNegocio.retornarTodasAvaliacoesPerfil(idPerfil);
+                HashMap <Perfil, Float> avaliacaoUsuario = new HashMap<>();
+                ArrayList<Perfil> avaliacaoTemp = ratingNegocio.retornarTodasAvaliacoesPerfil(usuario.getId());
                 for(Perfil perfil :avaliacaoTemp) {
                     float avaliacao = ratingNegocio.retornarAvaliacaoPerfil(usuario.getId(), perfil.getId());
                     avaliacaoUsuario.put(perfil, avaliacao);
                 }
                 DadosUsuario.put(usuario,avaliacaoUsuario);
             }
-        Map<Float, Perfil> recomendacoes =recomendacao.predizer(avaliacaoUsuario,DadosUsuario);
+        Map<Float, Perfil> recomendacoes =recomendacao.predizer(notasUsuarioAtual,DadosUsuario);
         Map<Float, Perfil> treeMap = new TreeMap<>(
                 new Comparator<Float>() {
 
