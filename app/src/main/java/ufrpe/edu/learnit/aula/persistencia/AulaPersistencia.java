@@ -171,6 +171,7 @@ public class AulaPersistencia {
         db.update("ALUNO_AULA", newValues, "Id='"+idAulaAluno+"'", null);
         removerHorasDisponiveis(idAula,horas);
         perfilPersistencia.removerMoedas(idUsuario, valorPago);
+        cursor.close();
         db.close();
     }
 
