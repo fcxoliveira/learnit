@@ -44,4 +44,14 @@ public class GerenciadorAulasAlunos {
         ConfirmacaoPersistencia confirmacaoPersistencia = new ConfirmacaoPersistencia();
         confirmacaoPersistencia.cancelarConfirmacao(idConfirmacao);
     }
+
+    public AlunoAula retornarAlunoAula2(int idAluno, int idAula){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        return aulaPersistencia.retornarAlunoAula2(idAluno, idAula);
+    }
+
+    public void atualizarAlunoAula(int idUsuario, int idAula, int horas, int valorPago){
+        AulaPersistencia aulaPersistencia = new AulaPersistencia();
+        aulaPersistencia.atualizarAlunoAula(idUsuario, idAula, horas, valorPago);
+    }
     }

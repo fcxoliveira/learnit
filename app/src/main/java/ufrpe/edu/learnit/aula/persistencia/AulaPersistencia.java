@@ -160,6 +160,23 @@ public class AulaPersistencia {
 
     }
 
+    public void atualizarAlunoAula(int idUsuario, int idAula, int horas, int valorPago){
+        db = dbHelper.getWritableDatabase();
+        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+        Cursor cursor = db.query("ALUNO_AULA",new String[]{"*"},"IdPerfilAluno = ? AND IdAula= ?" ,new String[] {idUsuario+"", idAula+""},null ,null, null);
+        cursor.moveToFirst();
+        int idAulaAluno = cursor.getInt(cursor.getColumnIndex("Id"));
+        int oldHoras = cursor.getInt(cursor.getColumnIndex("HorasCompradas"));
+        int oldValorPago = cursor.getInt(cursor.getColumnIndex("ValorPago"));
+        ContentValues newValues = new ContentValues();
+        newValues.put("HorasCompradas",oldHoras + horas);
+        newValues.put("ValorPago",oldValorPago + valorPago);
+        db.update("ALUNO_AULA", newValues, "Id='"+idAulaAluno+"'", null);
+        removerHorasDisponiveis(idAula,horas);
+        perfilPersistencia.removerMoedas(idUsuario, valorPago);
+        db.close();
+    }
+
     private void removerHorasDisponiveis(int idAula, int horas){
         ContentValues newValues = new ContentValues();
         Aula aula =  retornarAula(idAula);

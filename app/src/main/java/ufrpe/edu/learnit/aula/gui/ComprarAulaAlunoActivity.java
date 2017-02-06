@@ -16,6 +16,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import ufrpe.edu.learnit.R;
+import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.dominio.Aula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.infra.dominio.Session;
@@ -106,10 +107,13 @@ public class ComprarAulaAlunoActivity extends AppCompatActivity {
                 String data = this.getDateTime();
                 int valorPago = Math.round(Float.parseFloat(TextViewTotalDaCompra.getText().toString()));
                 if(verificarValorDeHoras()||verificarHorasDesejadas()||verificarMoedas() ) {
-                    gerenciadorAulasAlunos.inscreverAlunoEmAula(usuarioId, aulaId, data, horas, valorPago);
-                    Intent secondActivity = new Intent(this, HomeActivity.class);
-                    startActivity(secondActivity);
-                    this.finish();
+                    AlunoAula alunoAula = gerenciadorAulasAlunos.retornarAlunoAula2(usuarioId, aulaId);
+                    if (alunoAula == null) {
+                        gerenciadorAulasAlunos.inscreverAlunoEmAula(usuarioId, aulaId, data, horas, valorPago);
+                    }else{
+                        gerenciadorAulasAlunos.atualizarAlunoAula(usuarioId, aulaId, horas, valorPago);
+                    }
+                    carregarHome();
                 }
     }
 
