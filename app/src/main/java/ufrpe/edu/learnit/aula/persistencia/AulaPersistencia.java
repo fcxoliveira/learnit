@@ -75,10 +75,8 @@ public class AulaPersistencia {
         db.close();
     }
 
-    private Aula preencherDadosAula(int id, String titulo, String descricao, int duracao, int valor, int IdPerfil,int avaliadores, float avaliacao){
+    private Aula preencherDadosAula(int id, String titulo, String descricao, int duracao, int valor, int IdPerfil){
         Aula aula = new Aula();
-        aula.setAvaliadores(avaliadores);
-        aula.setAvaliacao(avaliacao);
         aula.setId(id);
         aula.setTitulo(titulo);
         aula.setDescricao(descricao);
@@ -206,9 +204,8 @@ public class AulaPersistencia {
             int valor = cursor.getInt(cursor.getColumnIndex("Valor"));
             int horas = cursor.getInt(cursor.getColumnIndex("HorasDisponiveis"));
             int idPerfil = cursor.getInt(cursor.getColumnIndex("IdPerfil"));
-            int avaliadores= cursor.getInt(cursor.getColumnIndex("Avaliadores"));
-            float avaliacao = cursor.getInt(cursor.getColumnIndex("Avaliacao"));
-            result = preencherDadosAula(id,nome,descricao,horas,valor,idPerfil,avaliadores,avaliacao);
+
+            result = preencherDadosAula(id,nome,descricao,horas,valor,idPerfil);
         }
         cursor.close();
         return result;
@@ -287,11 +284,13 @@ public class AulaPersistencia {
 
     public AlunoAula retornarAlunoAula2 (int idAluno, int idAula){
         db=dbHelper.getReadableDatabase();
+        AlunoAula alunoAula = null;
         Cursor cursor=db.query("ALUNO_AULA",new String[]{"*"},"IdPerfilAluno = ? AND IdAula= ?" ,new String[] {idAluno+"", idAula+""},null ,null, null);
-        cursor.moveToFirst();
-        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        Perfil perfilAluno =perfilPersistencia.retornarPerfil(idAluno);
-        AlunoAula alunoAula = preencherAlunoAula(perfilAluno, cursor);
+        if(cursor.moveToFirst()) {
+            PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
+            Perfil perfilAluno = perfilPersistencia.retornarPerfil(idAluno);
+            alunoAula = preencherAlunoAula(perfilAluno, cursor);
+        }
         return alunoAula;
     }
 
