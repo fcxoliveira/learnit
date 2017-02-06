@@ -50,7 +50,6 @@
         <activity android:name=".aula.gui.ConfirmarAulaProfessorActivity" />
         <activity android:name=".perfil.gui.PerfilAlheioActivity" />
         <activity android:name=".aula.gui.AlunosCadastradosActivity" />
-        <activity android:name=".rating.gui.RatingActivityAula" />
         <activity android:name=".rating.gui.RatingActivityProfessor"/>
 
     </application>

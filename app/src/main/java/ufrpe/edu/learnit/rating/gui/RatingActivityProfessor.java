@@ -18,7 +18,7 @@ import ufrpe.edu.learnit.perfil.dominio.Perfil;
 import ufrpe.edu.learnit.rating.negocio.RatingNegocio;
 
 public class RatingActivityProfessor extends AppCompatActivity {
-    TextView textViewNome; TextView textViewMediaGeral; TextView textViewSuaNota;
+    TextView textViewNome;
     RatingBar ratingBarMediaGeral; RatingBar ratingBarSuaNota;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -35,32 +35,14 @@ public class RatingPersistencia {
 
     }
 
-    public void novaAvaliacaoAula(int idPerfilAvaliador , int idItemAula , float avaliacao){
-        db=dbHelper.getWritableDatabase();
-        ContentValues newValues = new ContentValues();
-        newValues.put("IdPerfil", idPerfilAvaliador);
-        newValues.put("IdItemAula",idItemAula);
-        newValues.put("Avaliacao", avaliacao);
-        db.insert("RATE_AULA", null, newValues);
-        atualizarAvaliacaoAula(idItemAula, 0, avaliacao);
-        inserirAvaliadorAula(idItemAula);
-    }
-
     public void updateAvaliacaoPerfil(int idPerfilAvaliador , int idItemPerfil , float novaAvaliacao, float antigaAvaliacao){
         db=dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
         newValues.put("Avaliacao", novaAvaliacao);
         db.update("RATE_PERFIL",newValues,"IdPerfil = ? AND IdItemPerfil = ?",new String[]{idPerfilAvaliador+"" ,idItemPerfil+""});
         atualizarAvaliacaoPerfil(idItemPerfil, antigaAvaliacao, novaAvaliacao);
-    }
-    public void updateAvaliacaoAula(int idPerfilAvaliador , int idItemAula , float novaAvaliacao, float antigaAvaliacao){
-        db=dbHelper.getWritableDatabase();
-        ContentValues newValues = new ContentValues();
-        newValues.put("Avaliacao", novaAvaliacao);
-        db.update("RATE_AULA",newValues,"IdPerfil = ? AND IdItemAula = ?",new String[]{idPerfilAvaliador+"" ,idItemAula+""});
-        atualizarAvaliacaoAula(idItemAula, antigaAvaliacao, novaAvaliacao);
-    }
 
+    }
 
     public float retornarAvaliacaoPerfil(int idPerfilAvaliador ,int idItemPerfil){//retorna -1 caso não exista um rating dado para o item
         db=dbHelper.getReadableDatabase();
@@ -74,15 +56,6 @@ public class RatingPersistencia {
         return result;
     }
 
-    public float retornarAvaliacaoAula(int idPerfilAvaliador ,int idItemAula){//retorna -1 caso não exista um rating dado para o item
-        db=dbHelper.getReadableDatabase();
-        Cursor cursor=db.query("RATE_AULA", null, "IdPerfil=? AND IdItemAula = ?",new String[]{idPerfilAvaliador+"",idItemAula+""}, null, null, null);
-        float result = -1;
-        if (cursor.moveToFirst()){
-            result = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
-        }
-        return result;
-    }
 
     public void atualizarAvaliacaoPerfil(int idPerfil,float oldAvaliacao, float newAvaliacao){
         db=dbHelper.getWritableDatabase();
@@ -97,27 +70,6 @@ public class RatingPersistencia {
 
     }
 
-
-    public void atualizarAvaliacaoAula(int idAula,float oldAvaliacao, float newAvaliacao){
-        db = dbHelper.getWritableDatabase();
-        ContentValues newValues = new ContentValues();
-        Cursor cursor=db.query("AULAS", null, "Id=?",new String[]{idAula+""}, null, null, null);
-        cursor.moveToFirst();
-        float avaliacao = cursor.getFloat(cursor.getColumnIndex("Avaliacao"));
-        float totalAvalicao=(avaliacao-oldAvaliacao)+newAvaliacao;
-        newValues.put("Avaliacao", totalAvalicao);
-        db.update("AULAS",newValues,"Id=?",new String[]{idAula+""});
-    }
-     public void inserirAvaliadorAula(int idAula){
-         db = dbHelper.getWritableDatabase();
-         ContentValues newValues = new ContentValues();
-         Cursor cursor=db.query("AULAS", null, "Id=?",new String[]{idAula+""}, null, null, null);
-         cursor.moveToFirst();
-         int avaliadores =cursor.getInt(cursor.getColumnIndex("Avaliadores"));
-         avaliadores+=1;
-         newValues.put("Avaliadores", avaliadores);
-         db.update("AULAS",newValues,"Id=?",new String[]{idAula+""});
-     }
     public void inserirAvaliadorPerfil(int idPerfil){
         db = dbHelper.getWritableDatabase();
         ContentValues newValues = new ContentValues();
@@ -131,41 +83,12 @@ public class RatingPersistencia {
 
     public ArrayList<Integer> retornarTodasAvaliacoesPerfil(int idPerfil){
         db = dbHelper.getWritableDatabase();
-        Perfil perfil;
         ArrayList<Integer> perfis = new ArrayList<>();
         Cursor cursor=db.query("RATE_PERFIL", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
         while (cursor.moveToNext()){
             int idColumItemAula = cursor.getColumnIndex("IdItemPerfil");
             int idItemAula = cursor.getInt(idColumItemAula);
             perfis.add(idItemAula);
-        }
-        return perfis;
-    }
-
-    public ArrayList<Aula> retornarTodasAvaliacoesAula(int idPerfil){
-        db = dbHelper.getWritableDatabase();
-        Aula aula;
-        ArrayList<Aula> aulas = new ArrayList<>();
-        AulaPersistencia aulaPersistencia = new AulaPersistencia();
-        Cursor cursor=db.query("RATE_AULA", null, "IdPerfil=?",new String[]{idPerfil+""}, null, null, null);
-        while (cursor.moveToNext()){
-            int idColumItemAula = cursor.getColumnIndex("IdItemAula");
-            int idItemAula = cursor.getInt(idColumItemAula);
-            aula = aulaPersistencia.retornarAula(idItemAula);
-            aulas.add(aula);
-        }
-        return aulas;
-    }
-
-    public ArrayList<Perfil> retornarRatesIguais(int idItemPerfil){
-        db = dbHelper.getReadableDatabase();
-        ArrayList<Perfil> perfis = new ArrayList<>();
-        Perfil perfil;
-        PerfilPersistencia perfilPersistencia = new PerfilPersistencia();
-        Cursor cursor=db.query("RATE_PERFIL", null, "IdItemPerfil=?",new String[]{idItemPerfil+""}, null, null, null);
-        while (cursor.moveToNext()){
-            perfil= perfilPersistencia.retornarPerfil(cursor.getInt(cursor.getColumnIndex("IdPerfil")));
-            perfis.add(perfil);
         }
         return perfis;
     }

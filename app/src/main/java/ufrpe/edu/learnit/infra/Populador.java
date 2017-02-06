@@ -150,7 +150,6 @@ public class Populador {
                 Confirmacao confirmacao = confirmacaoPersistencia.retornarConfirmacaoRecebidaPopulador(aula.getId(), idUsuario);
                 confirmacaoPersistencia.aceitarConfirmacao(confirmacao);
                 ratingPersistencia.novaAvaliacaoPerfil(usuario.getID(), aula.getPerfil().getId(), gerador.nextInt((5 - 2) + 1) +1);
-                ratingPersistencia.novaAvaliacaoAula(usuario.getID(), aula.getId(), gerador.nextInt((5 - 2) + 1) +1);
             }
         }
     }

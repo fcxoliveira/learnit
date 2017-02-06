@@ -13,13 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ufrpe.edu.learnit.R;
-import ufrpe.edu.learnit.rating.gui.RatingActivityProfessor;
 import ufrpe.edu.learnit.aula.dominio.AlunoAula;
 import ufrpe.edu.learnit.aula.negocio.GerenciadorAulasAlunos;
 import ufrpe.edu.learnit.confirmacao.dominio.Confirmacao;
 import ufrpe.edu.learnit.confirmacao.negocio.ConfirmacaoNegocio;
 import ufrpe.edu.learnit.infra.dominio.Session;
-import ufrpe.edu.learnit.rating.gui.RatingActivityAula;
 
 public class AulaAlunoActivity extends AppCompatActivity {
     private TextView nomeAula, descricaoAula, horasPagas, nomeProfessor, avaliadores, nota, avisoConfirmacao;
@@ -84,11 +82,7 @@ public class AulaAlunoActivity extends AppCompatActivity {
         startActivity(secondActivity);
         finish();
     }
-    public void carregarAvaliacaoAluno(){
-        Intent seconActivity = new Intent(this, RatingActivityAula.class);
-        startActivity(seconActivity);
-        finish();
-    }
+
 
     public void confirmar(View v){
         GerenciadorAulasAlunos gerenciadorAulasAlunos = new GerenciadorAulasAlunos();
