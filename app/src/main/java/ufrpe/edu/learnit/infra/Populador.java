@@ -90,7 +90,7 @@ public class Populador {
                 String titulo = nomesPerfis[i-1]+" Aula " + j;
                 String descricao = "Teste de descrição para Aula " + j +" de "+nomesPerfis[i-1];
                 int valor = gerador.nextInt((50 - 20) + 1) + 20;
-                int duracao = gerador.nextInt((100 - 30) + 1) + 5;
+                int duracao = gerador.nextInt((350 - 300) + 1) + 300;
                 cadastrarAula(titulo, descricao, duracao, valor, i);
                 int numTags = gerador.nextInt((5 - 2) + 1) + 2;
 
